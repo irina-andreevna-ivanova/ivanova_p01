@@ -1,0 +1,37 @@
+Mail catre Java leadership:
+Salut,
+
+Ma gandesc sa fac la urmatoarea JavaArea meeting o prezentare cu tema �JUnit: Assumptions, Theories and Anti-Patterns �.
+
+Cum spune si numele, intentionez sa ating elementele noi introduse in JUnit 4.4:
+-          assumptions
+-          theories
+-          hamcrest assertions
+
+In plus, ma gandesc sa ating si:
+-          parameterized tests
+
+De asemenea un punct important (cred ca mai important chiar decat primele) sunt JUnit AntiPatterns.
+Structura prezentarii si ordinea elementelor sunt cam cele de mai sus.
+
+Orice observatii, critici, sugestii, sunt binevenite.
+
+Numai bine,
+
+// -------------------------------------------------------------------------------------------------
+
+- introduction
+- test fixtures (Before, After, BeforeClass, AfterClass)
+- parameterized tests
+- hamcrest assertions (metode cu aceeasi functionalitate, comparative)
+    - examples of assertions
+- assumptions
+- theories + assumptions
+- resurse
+    - junit README: http://junit.sourceforge.net/README.html
+    - wakaleo JUnit 4 presentation (http://www.wakaleo.com/public_resources/wjug-junit4.pdf)
+
+http://junit.sourceforge.net/README.html
+http://joe.truemesh.com/blog/000511.html
+http://github.com/KentBeck/junit/raw/23ffc6baf5768057e366e183e53f4dfa86fbb005/doc/ReleaseNotes4.7.txt
+http://www.wakaleo.com/public_resources/wjug-junit4.pdf

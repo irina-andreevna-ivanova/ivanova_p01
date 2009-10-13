@@ -1,0 +1,30 @@
+<class-diagram version="0.9.86" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class corner="BOTTOM_RIGHT" language="java" name="ro.bmocanu.eval.junit44.PriceCalculator" project="eval-junit-44" 
+    file="/eval-junit-44/src/main/java/ro/bmocanu/eval/junit44/PriceCalculator.java" binary="false">    
+    <position x="125" y="112" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <enumeration corner="BOTTOM_RIGHT" language="java" name="ro.bmocanu.eval.junit44.Location" project="eval-junit-44" 
+    file="/eval-junit-44/src/main/java/ro/bmocanu/eval/junit44/Location.java" binary="false">    
+    <position x="396" y="111" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </enumeration>  
+  <dependency>    
+    <source project="eval-junit-44" name="ro.bmocanu.eval.junit44.PriceCalculator" 
+      file="/eval-junit-44/src/main/java/ro/bmocanu/eval/junit44/PriceCalculator.java" binary="false"/>    
+    <target project="eval-junit-44" name="ro.bmocanu.eval.junit44.Location" 
+      file="/eval-junit-44/src/main/java/ro/bmocanu/eval/junit44/Location.java" binary="false"/>  
+  </dependency>  
+  <classifier-display autosize="true" package="true" initial-value="false" signature="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

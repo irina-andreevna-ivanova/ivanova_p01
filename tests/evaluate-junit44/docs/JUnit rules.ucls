@@ -1,0 +1,152 @@
+<class-diagram version="0.9.86" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <annotation corner="BOTTOM_RIGHT" language="java" name="org.junit.Rule" project="eval-junit-44" 
+    file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true">    
+    <position x="88" y="39" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </annotation>  
+  <class corner="BOTTOM_RIGHT" language="java" name="org.junit.rules.TestWatchman" project="eval-junit-44" 
+    file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true">    
+    <position x="472" y="453" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="org.junit.rules.ExternalResource" project="eval-junit-44" 
+    file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true">    
+    <position x="178" y="290" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="org.junit.rules.ErrorCollector" project="eval-junit-44" 
+    file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true">    
+    <position x="776" y="899" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="org.junit.rules.Timeout" project="eval-junit-44" 
+    file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true">    
+    <position x="776" y="427" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="org.junit.rules.TemporaryFolder" project="eval-junit-44" 
+    file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true">    
+    <position x="177" y="578" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="org.junit.rules.TestName" project="eval-junit-44" 
+    file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true">    
+    <position x="472" y="696" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="org.junit.rules.MethodRule" project="eval-junit-44" 
+    file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true">    
+    <position x="398" y="91" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <class corner="BOTTOM_RIGHT" language="java" name="org.junit.rules.ExpectedException" project="eval-junit-44" 
+    file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true">    
+    <position x="1133" y="476" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="org.junit.rules.Verifier" project="eval-junit-44" 
+    file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true">    
+    <position x="783" y="664" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="org.junit.runners.model.Statement" project="eval-junit-44" 
+    file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true">    
+    <position x="802" y="88" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="org.junit.runners.model.FrameworkMethod" project="eval-junit-44" 
+    file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true">    
+    <position x="1287" y="163" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <realization>    
+    <source project="eval-junit-44" name="org.junit.rules.TestWatchman" 
+      file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true"/>    
+    <target project="eval-junit-44" name="org.junit.rules.MethodRule" 
+      file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true"/>  
+  </realization>  
+  <generalization>    
+    <source project="eval-junit-44" name="org.junit.rules.TemporaryFolder" 
+      file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true"/>    
+    <target project="eval-junit-44" name="org.junit.rules.ExternalResource" 
+      file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true"/>  
+  </generalization>  
+  <realization>    
+    <source project="eval-junit-44" name="org.junit.rules.Timeout" 
+      file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true"/>    
+    <target project="eval-junit-44" name="org.junit.rules.MethodRule" 
+      file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true"/>  
+  </realization>  
+  <realization>    
+    <source project="eval-junit-44" name="org.junit.rules.Verifier" 
+      file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true"/>    
+    <target project="eval-junit-44" name="org.junit.rules.MethodRule" 
+      file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true"/>  
+  </realization>  
+  <generalization>    
+    <source project="eval-junit-44" name="org.junit.rules.TestName" 
+      file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true"/>    
+    <target project="eval-junit-44" name="org.junit.rules.TestWatchman" 
+      file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true"/>  
+  </generalization>  
+  <generalization>    
+    <source project="eval-junit-44" name="org.junit.rules.ErrorCollector" 
+      file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true"/>    
+    <target project="eval-junit-44" name="org.junit.rules.Verifier" 
+      file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true"/>  
+  </generalization>  
+  <realization>    
+    <source project="eval-junit-44" name="org.junit.rules.ExternalResource" 
+      file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true"/>    
+    <target project="eval-junit-44" name="org.junit.rules.MethodRule" 
+      file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true"/>  
+  </realization>  
+  <realization>    
+    <source project="eval-junit-44" name="org.junit.rules.ExpectedException" 
+      file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true"/>    
+    <target project="eval-junit-44" name="org.junit.rules.MethodRule" 
+      file="E:/Repositories/Maven/junit/junit/4.7/junit-4.7.jar" binary="true"/>  
+  </realization>  
+  <classifier-display autosize="true" package="true" initial-value="false" signature="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
