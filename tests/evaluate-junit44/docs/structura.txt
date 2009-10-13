@@ -1,3 +1,18 @@
+// -------------------------------------------------------------------------------------------------
+- introduction
+- parameterized tests
+- test fixtures (Before, After, BeforeClass, AfterClass)
+- hamcrest assertions (metode cu aceeasi functionalitate, comparative)
+    - examples of assertions
+- rules
+- assumptions
+- theories + assumptions
+- resurse
+    - junit README: http://junit.sourceforge.net/README.html
+    - wakaleo JUnit 4 presentation (http://www.wakaleo.com/public_resources/wjug-junit4.pdf)
+
+// -------------------------------------------------------------------------------------------------
+
 Mail catre Java leadership:
 Salut,
 

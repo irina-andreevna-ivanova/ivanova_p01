@@ -1,0 +1,180 @@
+<!-- Copyright Bogdan Mocanu, 2008
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ -->
+<project name="Metris" default="build" basedir=".">
+	<property environment="env" />
+	
+	<property name="etc" value="${basedir}/etc" />
+	<property name="etc.midlet-properties" value="${etc}/midlet.properties" />
+	<property name="etc.midlet-icon" value="${etc}/midlet.png" />
+
+	<property file="${etc.midlet-properties}" />
+
+	<property name="src" value="${basedir}/src" />
+	<property name="src.java" value="${src}/main/java" />
+	<property name="src.resources" value="${src}/main/resources" />
+
+	<property name="build" value="${basedir}/target/build" />
+	<property name="build.generated" value="${build}/generated" />
+	<property name="build.generated.template.jad" value="${build.generated}/template-APP.jad" />
+	<property name="build.generated.template.manifest" value="${build.generated}/template-MANIFEST.MF" />
+	<property name="build.meta-inf" value="${build}/meta-inf" />
+	<property name="build.meta-inf.manifest-mf" value="${build.meta-inf}/MANIFEST.MF" />
+	<property name="build.compiled-classes" value="${build}/compiled-classes" />
+	<property name="build.verified-classes" value="${build}/verified-classes" />
+	<property name="build.packed-sources" value="${build}/packed-sources" />
+	<property name="build.jar.file-name" value="${application.name}-${application.version}.jar" />
+	<property name="build.jar.file" value="${build}/${build.jar.file-name}" />
+	<property name="build.jad.file-name" value="${application.name}-${application.version}.jad" />
+	<property name="build.jad.file" value="${build}/${build.jad.file-name}" />
+	<property name="build.icon.file-name" value="${application.name}-${application.version}.png" />
+	<property name="build.icon.file" value="${build}/${build.icon.file-name}" />
+	<property name="build.src.file-name" value="${application.name}-${application.version}-src.zip" />
+	<property name="build.src.file" value="${build}/${build.src.file-name}" />
+	
+	<property name="build-archive" value="${basedir}/build-archive" />
+	<property name="build-archive.current-dir" value="${build-archive}/${application.version}" />
+	
+	<property name="jme.home" value="${env.JME_HOME}" />
+	<property name="jme.bin" value="${jme.home}/bin" />
+	<property name="jme.bin.preverify" value="${jme.bin}/preverify.exe" />
+	<property name="jme.bin.emulator" value="${jme.bin}/emulator.exe" />
+	<property name="jme.lib" value="${jme.home}/lib" />
+
+	<filter filtersfile="${etc.midlet-properties}" />
+	
+	<path id="compile.classpath">
+	   <filelist dir="${jme.lib}" files="${source.depends.JMEjars}"/>
+	</path>
+	
+	<property name="build.compile.classpath" refid="compile.classpath" />
+
+	<!-- ////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+	<target name="clean" description="Clean build directory">
+		<delete dir="${build}" />
+	</target>
+
+	<target name="build" depends="clean, generate-template-jad, generate-template-manifest" description="Build project JAR and JAD files">
+		<echo message="JME path=${env.JME_HOME}" />
+		<mkdir dir="${build.meta-inf}" />
+		<mkdir dir="${build.compiled-classes}" />
+		<mkdir dir="${build.verified-classes}" />
+		
+		<filter token="midlet.head" value="${application.name}, ${build.icon.file-name}, ${application.mainClass}" />
+		<filter token="midlet.jar.url" value="${build.jar.file-name}" />
+		
+		<!-- 1. Create the JAR's manifest file -->
+		<copy file="${build.generated.template.manifest}" tofile="${build.meta-inf.manifest-mf}" filtering="true" />
+		
+		<!-- 2. Compile the MIDlet classes -->
+		<javac srcdir="${src.java}" destdir="${build.compiled-classes}" 
+			   source="1.3" target="1.3"
+			   classpathref="compile.classpath">
+		</javac>
+		
+		<!-- 3. Preverify the classes using WTK's preverifier -->
+		<exec executable="${jme.bin.preverify}">
+			<arg value="-classpath"/>
+			<arg value="${build.compile.classpath}"/>
+			<arg value="-d"/>
+			<arg value="${build.verified-classes}"/>
+			<arg value="${build.compiled-classes}"/>
+		</exec>
+
+		<!-- 4. Create the JAR file and get the file size -->
+		<jar basedir="${build.verified-classes}" manifest="${build.meta-inf.manifest-mf}" destfile="${build.jar.file}">
+			<fileset dir="${build.verified-classes}" />
+			<fileset dir="${src.resources}"/>
+		</jar>
+		<length file="${build.jar.file}" property="build.jar.file-size"/>
+		<filter	token="midlet.jar.size" value="${build.jar.file-size}" />
+		
+		<!-- 5. Create the JAD file -->
+		<copy file="${build.generated.template.jad}" tofile="${build.jad.file}" filtering="true" />
+		
+		<!-- 6. Create the ICON file -->
+		<copy file="${etc.midlet-icon}" tofile="${build.icon.file}" />
+
+		<!-- 7. Cleanup the generated classes and misc files -->
+		<delete dir="${build.compiled-classes}"/>
+		<delete dir="${build.verified-classes}"/>
+		<delete dir="${build.meta-inf}"/>
+		<delete dir="${build.generated}"/>
+	</target>
+	
+	<target name="launch" description="Launches the application by invoking the JME emulator">
+        <exec executable="${jme.bin.emulator}" >
+            <arg value="-Xdevice:${runtime.device}" />
+            <arg value="-Xdescriptor:${build.jad.file}" />
+        </exec>
+	</target>
+	
+	<target name="generate-template-jad" description="Generates the template file for the JAD file">
+		<mkdir dir="${build.generated}"/>
+		<echo file="${build.generated.template.jad}">MIDlet-1: @midlet.head@
+MIDlet-Description: @application.description@
+MIDlet-Jar-URL: @midlet.jar.url@
+MIDlet-Jar-Size: @midlet.jar.size@
+MIDlet-Name: @application.name@
+MIDlet-Version: @application.version@
+MIDlet-Vendor: @application.vendor@
+MicroEdition-Configuration: @application.microedition.configuration@
+MicroEdition-Profile: @application.microedition.profile@</echo>
+	</target>
+    
+    <target name="generate-template-manifest" description="Generates the template file for the MANIFEST file, inside the JAR">
+        <mkdir dir="${build.generated}"/>
+        <echo file="${build.generated.template.manifest}">MIDlet-1: @midlet.head@
+MIDlet-Name: @application.name@
+MIDlet-Version: @application.version@
+MIDlet-Description: @application.description@
+MIDlet-Vendor: @application.vendor@
+MicroEdition-Configuration: @application.microedition.configuration@
+MicroEdition-Profile: @application.microedition.profile@
+Manifest-Version: @application.manifest.version@
+Created-By: @application.manifest.createdBy@</echo>
+    </target>
+	
+	<!-- ////////////////////////////////////////////////////////////////////////////////////////////////// -->
+	
+	<target name="pack sources" description="Creates a JAR with the sources of the current version">
+		<mkdir dir="${build.packed-sources}"/>
+		<copy todir="${build.packed-sources}/src" >
+			<fileset dir="${src}"/>
+		</copy>
+		
+		<mkdir dir="${build.packed-sources}/docs"/>
+		<javadoc sourcepath="${src.java}" destdir="${build.packed-sources}/docs" classpathref="compile.classpath"/>
+		
+		<copy file="${basedir}/build.xml" todir="${build.packed-sources}" />
+		
+		<zip destfile="${build.src.file}" basedir="${build.packed-sources}"/>
+		<delete dir="${build.packed-sources}"/>
+	</target>
+	
+	<target name="archive" depends="build, pack sources" description="">
+		<mkdir dir="${build-archive.current-dir}"/>
+		<copy todir="${build-archive.current-dir}">
+			<fileset dir="${build}"/>
+		</copy>
+	</target>
+	
+	<!-- Composite targets /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    
+    <target name="build + launch" depends="build, launch" description="Builds the project and then launches the J2ME emulator"/>
+	
+</project>

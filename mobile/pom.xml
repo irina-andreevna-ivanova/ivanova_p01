@@ -12,5 +12,9 @@
     <version>0.1</version>
     <name>mobile-root</name>
     <url>http://maven.apache.org</url>
-	
+
+	<modules>
+        <module>apps</module>
+        <module>libs</module>
+    </modules>	
 </project>
