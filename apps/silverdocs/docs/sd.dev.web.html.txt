@@ -1,0 +1,42 @@
+HTML
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Default HTML template
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+	<head>
+		<title></title>
+		<meta http-equiv="pragma" content="no-cache"/>
+		<meta http-equiv="cache-control" content="no-cache"/>
+		<meta http-equiv="expires" content="0"/>
+		<meta http-equiv="keywords" content="keyword1, keyword2"/>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="common/styles/main.css"></link>
+		<script type="text/javascript">
+			//<!--
+			//-->
+		</script>
+	</head>
+	<body>
+		Hello world!
+	</body>
+</html>
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Character encoding for Apache WebServer (must be added in httpd.conf (for all apps), or in a VirtualHost config node)
+
+AddType 'text/html; charset=UTF-8' html
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+FRAMEs
+
+<frameset rows="*,*" cols="*,*">
+	<frame name="topleft" src="topleft.htm">
+	<frame name="topright" src="topright.htm">
+	<frame name="bottomleft" src="botleft.htm">
+	<frame name="bottomright" src="botright.htm">
+</frameset>
+
+<iframe id="Iframe1" frameborder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" width="100" scrolling="yes" height="100" src="http://www.yahoo.com">
+</iframe>

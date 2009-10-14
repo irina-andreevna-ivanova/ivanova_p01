@@ -21,6 +21,7 @@
     </build>
 
     <modules>
+        <module>apps</module>
         <module>mobile</module>
         <module>tests</module>
     </modules>

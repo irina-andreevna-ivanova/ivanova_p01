@@ -1,0 +1,50 @@
+Windows XP
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+ZIP support in Windows XP
+
+To Disable:
+1) Start Menu > Run
+2) Type: regsvr32 /u %windir%\system32\zipfldr.dll
+
+To Enable:
+1) Start Menu > Run
+2) Type: regsvr32 %windir%\system32\zipfldr.dll
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Delete the RecycleBin icon from desktop in Windows XP
+
+To delete the Recycle Bin icon from the Windows XP/2003 desktop follow these steps:
+
+   1. Open Registry Editor.
+
+   2. In Registry Editor, navigate to the following registry key:
+        HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace
+
+   3. Find the following key:
+        {645FF040-5081-101B-9F08-00AA002F954E}
+
+   4. Delete the above key. There is no need to reboot. Just wait a few seconds and see how the icon
+      disappears from the desktop.
+
+   5. In order to restore the Recycle Bin icon to the desktop just re-create the missing key (or import it back to the registry in case you've exported it earlier).
+        In Registry Editor, navigate to the following registry key:
+        HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace
+
+        Create the following key: {645FF040-5081-101B-9F08-00AA002F954E}
+        (just copy/paste, including the brackets).
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Create folders with date and time in their name
+
+set DATE_MM=%DATE:~4,2%
+set DATE_DD=%DATE:~7,2%
+set DATE_YYYY=%DATE:~10,4%
+set DATE_STR=%DATE_YYYY%-%DATE_MM%-%DATE_DD%
+set TIME_HH=%TIME:~0,2%
+set TIME_MM=%TIME:~3,2%
+set TIME_SS=%TIME:~6,2%
+set TIME_MLS=%TIME:~9,2%
+set TIME_STR=%TIME_HH%%TIME_MM%%TIME_SS%%TIME_MLS%
+
+set BACKUP_DIR=backup-%DATE_STR%-%TIME_STR%
+

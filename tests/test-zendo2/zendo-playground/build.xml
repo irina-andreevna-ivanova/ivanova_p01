@@ -1,0 +1,78 @@
+<!--  
+ * Copyright Bogdan Mocanu, 2008
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *-->
+
+<project name="commons" basedir="./../">
+	<property environment="env" />
+	<property name="maven.home" value="${env.M2_HOME}" />
+	
+	<!-- ////////////////////////////////////////////////////////////////// -->
+	
+	<target name="mvn clean">
+		<exec executable="${maven.home}/bin/mvn.bat" dir="${basedir}" >
+			<arg value="clean"/>
+		</exec>
+	</target>
+	
+	<target name="mvn clean compile">
+		<exec executable="${maven.home}/bin/mvn.bat" dir="${basedir}" >
+			<arg value="clean"/>
+			<arg value="compile"/>
+		</exec>
+	</target>
+	
+	<target name="mvn clean install">
+		<exec executable="${maven.home}/bin/mvn.bat" dir="${basedir}" >
+			<arg value="clean"/>
+			<arg value="install"/>
+		</exec>
+	</target>
+	
+	<target name="mvn clean package">
+		<exec executable="${maven.home}/bin/mvn.bat" dir="${basedir}" >
+			<arg value="clean"/>
+			<arg value="package"/>
+		</exec>
+	</target>
+	
+	<target name="mvn install">
+		<exec executable="${maven.home}/bin/mvn.bat" dir="${basedir}" >
+			<arg value="install"/>
+		</exec>
+	</target>
+	
+	<target name="mvn compile">
+		<exec executable="${maven.home}/bin/mvn.bat" dir="${basedir}" >
+			<arg value="install"/>
+		</exec>
+	</target>
+	
+	<target name="mvn eclipse:clean">
+		<exec executable="${maven.home}/bin/mvn.bat" dir="${basedir}" >
+			<arg value="eclipse:clean"/>
+		</exec>
+	</target>
+	
+	<target name="mvn eclipse:eclipse">
+		<exec executable="${maven.home}/bin/mvn.bat" dir="${basedir}" >
+			<arg value="eclipse:eclipse"/>
+		</exec>
+	</target>
+
+	<!-- ////////////////////////////////////////////////////////////////// -->
+
+</project>

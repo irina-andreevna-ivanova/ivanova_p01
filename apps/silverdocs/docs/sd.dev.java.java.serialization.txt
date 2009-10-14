@@ -1,0 +1,62 @@
+--------------------------------------------------------------------------------------------------------
+Serialization
+--------------------------------------------------------------------------------------------------------
+- steps in serialization
+    1. write magic data
+    2. write description of classes, bottom-up
+        2. write description of Derived Class 3
+        2. write description of Derived Class 2
+        2. write description of Derived Class 1
+        2. write description of Parent Class
+    3. write data associated with classes, top-down
+        2. write data of Parent Class
+        2. write data of Derived Class 1
+        2. write data of Derived Class 2
+        2. write data of Derived Class 3
+    4. write description of contained objects
+    5. write data of contained objects
+
+--------------------------------------------------------------------------------------------------------
+Serial Version UID
+--------------------------------------------------------------------------------------------------------
+
+- Object serialization: Object -> ObjectOutputStream -> bytes
+- Object deserialization: bytes -> ObjectInputStream -> Object
+- data written: class definition/metadata (class name, field names, types, superclass) + actual object data
+- two scenarios:
+    - store-and-retrieve
+    - send-through-the-wire
+- anticipating the need for class evolve, Java provides serialVersionUID, aka suid
+- can be assigned to a class:
+    - manually by the developer
+    - manually by the serialver tool from JDK
+    - dinamically by Java: ObjectOutputStream -> ObjectStreamClass -> bytes -> ObjectStreamClass -> ObjectInputStream
+- in case of mismatched suids -> InvalidClassException
+- items involved in computing suid:
+    - class name
+    - sorted member names
+    - modifiers
+    - interfaces
+- changes to classes
+    - compatible changes
+        - add fields (set to default values upon deserialization)
+        - change field from static to non-static
+        - change field from transient to non-transient
+        - add classes to object tree
+    - incompatible changes
+        - delete fields
+        - change class hierarchy
+        - change non-static to static
+        - change non-transient to transient
+        - change type of a primitive field
+- alternatives to implementing Serializable:
+    - implement Externalizable, and make you own serialization of objects
+    - serialize your objects using XML and an XML parser
+    - serialize your objects using your own custom protocol
+- before making a class serializable:
+    - stability: is this class in its initial state, promising more changes in the future until it settles?
+    - visibility: is this class used internally by the implementor (so the implementor has more control over it),
+      or is a class that is used by multiple parties, in a public manner?
+    - usage pattern: will this class be used in a store-and-retrieve or mixed-version scenario? Perhaps in an
+      over-the-wire scenario?
+-

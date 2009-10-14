@@ -1,0 +1,19 @@
+Spring > Problems
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Spring resource loading problem with classpath*:/...
+        - according to (http://static.springframework.org/spring/docs/2.5.x/reference/resources.html#resources-wildcards-in-path-other-stuff)
+          when loading resources from all the places in the classpath, the loaded resources MUST be in at least one
+          folder deep. This means that the resources cannot be loaded from the root of the classpath:
+          Expr: classpath*:/*Props.properties                    -> NOT WORKING
+          cannot be loaded, since the resources are checked in the root of the classpath. Instead, this will work:
+          Expr: classpath*:/props/*Props.properties              -> OK
+
+2 Spring web applications using Log4JListener, throw exceptions at runtime
+        - the Log4JListener exposes the web application root system property, and when running two web
+          applications, the system property exposed by one of the is overidden by the other one. The solution
+          is to declare the log4jExposeWebAppRoot context param:
+            <context-param>
+                <param-name>log4jExposeWebAppRoot</param-name>
+                <param-value>false</param-value>
+            </context-param>
+            

@@ -1,0 +1,29 @@
+1. setup LDAP server:
+	- slapd.conf
+		ucdata-path	./ucdata
+		include		./schema/core.schema
+		include 	./schema/java.schema
+	
+		database	bdb
+		suffix		"dc=mydomain,dc=com"
+		rootdn		"cn=Manager,dc=mydomain,dc=com"
+		rootpw		secret
+	
+	- ldap.conf
+		BASE	dc=mydomain,dc=com
+		URI		ldap://ldap.mydomain.com ldap://ldap-master.mydomain.com:666
+		
+2. manage the LDAP server from Windows Services (if you install the Windows built version of OpenLDAP)
+3. create the root node
+	- create ldif file (mydomain-root.ldif):
+		dn: dc=mydomain,dc=com
+		objectclass: organization
+		objectclass: dcObject
+		o: mydomain
+		dc: mydomain	
+		
+	- import the ldif file:
+		ldapadd -x -D "cn=Manager,dc=mydomain,dc=com" -W -f mydomain-root.ldif
+		
+4. now you can connect to the server using LDAP Browser
+	- 

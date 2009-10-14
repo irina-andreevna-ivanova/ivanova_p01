@@ -1,0 +1,90 @@
+Reading Tom DeMarco, Slack
+----------------------------------------------------
+
+Business instead of Busyness
+    - Human capital
+    - how much a person that leaves really cost you?
+Culture of Fear
+    - quote from Umberto Eco's "The name of the rose": laughter, for a few minutes, distracts the villein from fear. But law is imposed by fear, whose true name is the fear of God"
+    - many organizations today promote the Culture of Fear
+    - managers and bosses in general are depicted as angry mobs
+    - once established, the Culture of Fear gets in the way of everything that is healthy and worthwhile
+    - the paradox of overstaffind (loading a project with too many people, making the project fail or at least evolve in a bad shape or manner).
+      This also imposes great stress on the manager, who now has to divide the work not only of a half dozen, but on 30-60 people, keeping them busy,
+      giving them something (anything!!) to do. Not to mention the fact that the design phase must be performed with as few people as possible, until
+      all the important design decisions have been made
+    - ironically: in this age of "lean and mean", it is positively unsafe for you to run the project with a lean (optimal) staff
+Litigation
+    - nowadays, litigation is more than common between medium-to-large companies (most of the time also involving small companies, which however
+      don't stand a chance, in most cases)
+    - rule for litigations: nobody wins! everybody loose!
+    - enormously costing
+    - reasons for litigations:
+        - litigation can be an effective way to deflect blame
+        - litigation can be a consequence of an intrinsically flawed contract
+    - sometimes litigations of first type are created just to cover problems of the second type
+    - in healthy organizations, a certain amount of failure is acceptable, and not assessed with blame
+        - ex Microsoft, with "sink, and swim" policy (people are loaded with a certain amount of responsability, so that they fail the first
+          time, then have a chance to rest and analyze their performance, and then succeed the next times)
+    - in a Culture of Fear organization, failure MUST be punished
+        - in some companies all the managers are evaluated every year, and the bottom 10% are fired
+        - competition and suspicion between departments
+        - you have either to do good, or the other departments to do bad
+    - the flawed contract could be the guilt
+        - of the Buyer (incorrect specs, incomplete, out-of-the requirements)
+        - of the Seller (desperate need for getting the contract, getting ahead of the competition by winning the contract at a impossible
+          schedule/price)
+        -
+    - !!!both sides deserve to loose!!!
+    - purpose of negotiation
+        - NOT: screw the other side
+        - OK: principle of fair exchange: you should arrive to an agreement that is equally acceptable from both sides
+    - a good contract requires slack
+        - you as Buyer have to see that the vendor has left enough slack on its side
+Process Obsession
+    - standards are a very good thing: but only product standards, not process standards
+    - regulations exist for how a product should look like or function, but not how the internal parts are organized, or how it is manufactured
+    - Frederick Winslow Taylor: The Principles Of Scientific Management: he called for standardization of manual factory activity so that the human
+      pieces
+    - star workers: analyzing the stars in a company, and the general workers, people have identified that the tasks completed by the stars were pretty
+      much done in the same manner as the non-start workers, the efficiency was the same. However, the connections between the stars and the other
+      workers were much more tight, more warm and more friendly.
+    - ownership of the standards should be in the hands of those who do the work. It doesn't mean that you give all the control, only some of it.
+    - along with this control given, you also give responsibility and possibility of error for the destination people. This however also motivates them
+      so that they don't disappoint you or let you down/make you look bad.
+Quality
+    - best program ever: Photoshop :)
+    - talking about quality while at the same time not allowing for slack is useless
+    - quality improvement programs should focus on: uniqueness, usefulness, market impact, change of customer work modes, etc
+      and not only on absence of bugs and deffects
+    - a common way to make yourself more efficient is by shifting some of your work to your customer
+Efficient and/or Effective
+    - efficient: get the job done on time (even though it could not be the right thing to do)
+    - effective: get the right job done
+    - directing an entire organization is hard. Seeming to direct it, on the other hand, is easy. All you have to do
+      is not which way the drift is moving and instruct the organization to go that way.
+    - the more optimized and specialized an organism is, the more likely that the slack necessary
+      to help it become more effective has been eliminated.
+Management by Objectives
+    - performance of each department or division is characterized by one or a few quantitative measures,
+      called objectives. Managers are encouraged to manage to objectives, to do more of X, to do exactly the
+      same thing as last year, but this time with more of X.
+    - MBO wrongfully believes that
+        - the success of the overall organization can be viewed as the simple sum of all the lower-level objectives
+        - the net contribution of something so large as a corporation department can be reasonably approximated by a single indicator.
+Vision
+    - one of the most common signs of absence of vision is not knowing "who we are". In that direction, perhaps the first good
+      step is to make a list and acknowledge what we are NOT.
+    - without vision, a company can react, but cannot pro-act
+    - successful change can only come in the context of knowing what CANNOT change in the organization.
+      That forms the organization culture. Culture is that which CANNOT, WILL NOT and MUST NOT change.
+    - the leadership is much more powerful when it happens horizontally inside a company, and not vertically, in the company's hierarchy structure
+    -
+Dilbert reconsidered
+    - who then shall lead? -> How about you?
+    - most discussions about leadership are actually monologues about followership
+    - in a good company, sometimes the people follow, but are not innate followers. Leadership must be 
+      everybody's business. 
+    - leadership is a rotating function. Following whoever has got the hot hand is just a side effect
+Fear and Safety
+    - 

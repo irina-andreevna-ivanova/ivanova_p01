@@ -1,0 +1,87 @@
+<html>
+<head>
+<script type="text/javascript" src="../common/scripts/sd-modules.js"></script>
+</head>
+<body onLoad="onModuleLoad( 'sd.design.patterns' )">
+<div id="sd.module.content">
+                <form name="xp.designPatterns.wikipedia.form" method="get" action="" target="_blank"></form>
+               	<table cellpadding="0px" cellspacing="0px" width="100%"><tr><td width="1%" style="white-space: nowrap;">
+                	<a href="http://en.wikipedia.org/wiki/Design_pattern_(computer_science)" target="_blank">Patterns: Design Patterns (wikipedia)</a><br/>
+               	</td><td>
+                	<select id="xp.designPatterns.wikipedia.form.select" style="width: 100%; font-size: 10pt;" onChange="theForm = document.forms[ 'xp.designPatterns.wikipedia.form' ]; theForm.action = this.options[ this.selectedIndex ].value; theForm.submit();">
+                		<option class="select_option_header" value="http://en.wikipedia.org/wiki/Fundamental_pattern">Fundamental patterns</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Delegation_pattern">Delegation</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Functional_design">Functional design</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Interface_pattern">Interface</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Proxy_pattern">Proxy</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Facade_pattern">Facade</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Composite_pattern">Composite</option>
+                		<option class="select_option_header" value="http://en.wikipedia.org/wiki/Creational_pattern">Creational patterns</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Abstract_factory_pattern">Abstract Factory</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Factory_method_pattern">Factory method</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Builder_pattern">Builder</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Lazy_initialization_pattern">Lazy initialization</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Object_pool">Object pool</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Prototype_pattern">Prototype</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Singleton_pattern">Singleton</option>
+                		<option class="select_option_header" value="http://en.wikipedia.org/wiki/Structural_pattern">Structural patterns</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Adapter_pattern">Adapter</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Aggregate_pattern">Aggregate</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Bridge_pattern">Bridge</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Composite_pattern">Composite</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Decorator_pattern">Decorator</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Extensibility_pattern">Extensibility</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Facade_pattern">Facade</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Flyweight_pattern">Flyweight</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Proxy_pattern">Proxy</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Pipes_and_filters">Pipes and filters</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Private_class_data_pattern">Private class data</option>
+                		<option class="select_option_header" value="http://en.wikipedia.org/wiki/Behavioral_pattern">Behavioral patterns</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Chain_of_responsibility_pattern">Chain of responsibility</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Command_pattern">Command</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Interpreter_pattern">Interpreter</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Iterator_pattern">Iterator</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Mediator_pattern">Mediator</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Memento_pattern">Memento</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Null_Object_pattern">Null object</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Observer_pattern">Observer</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/State_pattern">State</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Strategy_pattern">Strategy</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Specification_pattern">Specification</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Template_method_pattern">Template method</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Visitor_pattern">Visitor</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Single-serving_visitor_pattern">Single-serving visitor</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Hierarchical_visitor_pattern">Hierarchical visitor</option>
+                		<option class="select_option_header" value="http://en.wikipedia.org/wiki/Concurrency_pattern">Concurrency patterns</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Active_Object">Active object</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Balking_pattern">Balking</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Double_checked_locking_pattern">Double checked locking</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Guarded_suspension">Guarded suspension</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/w/index.php?title=Leaders_followers_pattern&action=edit">Leaders/followers</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Monitor_%28synchronization%29">Monitor</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Read_write_lock_pattern">Read/write lock</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Scheduler_pattern">Scheduler</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Thread_pool_pattern">Thread pool</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Thread-Specific_Storage">Thread specific</option>
+                		<option class="select_option_item" value="http://en.wikipedia.org/wiki/Reactor_pattern">Reactor</option>
+                	</select>
+               	</td></tr></table>
+                <a href="http://static.scribd.com/docs/7fkm3464wn85u.pdf" target="_blank">Patterns: Design Patterns The Java Companion</a><img src="common/images/icon-book.gif"><br/>
+                <a href="http://static.scribd.com/docs/k8dtr1ubz2dgk.pdf" target="_blank">Patterns: Core J2EE Patterns</a><img src="common/images/icon-book.gif"><br/>
+				
+				<table class="spot_part_even" cellpadding="0px" cellspacing="0px" width="100%"><tr><td>
+                <a href="http://www.refactoring.com">Refactoring: Homepage (Martin Fowler)</a><br/>
+                <a href="http://www.refactoring.com/catalog/index.html">Refactoring: Catalog of Refactorings</a><br/>
+                <a href="http://www.agiledata.org/essays/databaseRefactoring.html">Refactoring: Database Refactoring (Scott W. Ambler)</a><br/>
+				</td></tr></table>
+				
+				<table class="spot_part_odd" cellpadding="0px" cellspacing="0px" width="100%"><tr><td>
+                <a href="http://static.scribd.com/docs/8hcqyu3n78sfu.pdf">XP: Planning Extreme Programming</a><img src="common/images/icon-book.gif"><br/>
+				</td></tr></table>
+				
+				<table class="spot_part_even" cellpadding="0px" cellspacing="0px" width="100%"><tr><td>
+                <a href="http://static.scribd.com/docs/4hlom02ijnkck.pdf" target="_blank">General: How to design a good API</a><img src="common/images/icon-book.gif"><br/>
+				</td></tr></table>
+</div>
+</body>
+</html>       

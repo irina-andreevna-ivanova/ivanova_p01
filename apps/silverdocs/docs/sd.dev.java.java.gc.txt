@@ -1,0 +1,234 @@
+Garbage collection Notes:
+----------------------------------------------------------------------------------------------------------------
+Garbage Collector Statistics
+    -XX:+UseSerialGC                        Serial
+    -XX:+UseParallelGC                      Parallel
+    -XX:+UseParallelOldGC                   Parallel compacting
+    -XX:+UseConcMarkSweepGC                 Concurrent mark-sweep (CMS)
+----------------------------------------------------------------------------------------------------------------
+Garbage Collector Statistics
+    -XX:+PrintGC                            Outputs basic information at every garbage collection.
+    -XX:+PrintGCDetails                     Outputs more detailed information at every garbage collection.
+    -XX:+PrintGCTimeStamps                  Outputs a time stamp at the start of each garbage collection event. Used with -XX:+PrintGC or -XX:+PrintGCDetails to show when each garbage collection begins.
+----------------------------------------------------------------------------------------------------------------
+Heap and Generation Sizes
+    -Xmsn                                   Initial size, in bytes, of the heap.
+    -Xmxn                                   Maximum size, in bytes, of the heap.
+    -XX:MinHeapFreeRatio=minimum            Default 40. Target range for the proportion of free space to
+    -XX:MaxHeapFreeRatio=maximum            Default 70. total heap size. These are applied per generation.
+                                                        For example, if minimum is 30 and the percent of
+                                                        free space in a generation falls below 30%, the size
+                                                        of the generation is expanded so as to have 30% of
+                                                        the space free. Similarly, if maximum is 60 and the
+                                                        percent of free space exceeds 60%, the size of the
+                                                        generation is shrunk so as to have only 60% of the
+                                                        space free
+    -XX:NewSize=n                           Platform-dependent default value. Default initial size of the new (young) generation, in bytes.
+    -XX:NewRatio=n                          Default 2 on client JVM, 8 on server JVM. Ratio between the young and old generations. For
+                                            example, if n is 3, then the ratio is 1:3 and the
+                                            combined size of Eden and the survivor spaces is
+                                            one fourth of the total size of the young and old
+                                            generations.
+    -XX:SurvivorRatio=n                     Default 32. Ratio between each survivor space and Eden. For example, if n is 7, each survivor space is one-ninth
+                                            of the young generation (not one-eighth, because
+                                            there are two survivor spaces).
+    -XX:MaxPermSize=n                       Default is Platform-dependent. Maximum size of the permanent generation.
+    -XX:ParallelGCThreads=n                 The number of CPUs Number of garbage collector threads.
+    -XX:MaxGCPauseMillis=n                  No default. Indicates to the collector that pause times of n milliseconds or less are desired.
+    -XX:GCTimeRatio=n                       Default 99. Number that sets a goal that 1/(1+n) of the total time be spent on garbage collection.
+----------------------------------------------------------------------------------------------------------------
+Options for the CMS Collector
+    -XX:+CMSIncrementalMode                 Default is Disabled. Enables a mode in which the concurrent phases are done
+                                            incrementally, periodically stopping the concurrent phase
+                                            to yield back the processor to the application.
+    -XX:+CMSIncrementalPacing               Default Disabled. Enables automatic control of the amount of work the CMS
+                                            collector is allowed to do before giving up the processor,
+                                            based on application behavior.
+    -XX:ParallelGCThreads=n                 The number of CPUs Number of garbage collector threads for the parallel
+                                            young generation collections and for the parallel parts of
+                                            the old generation collections.
+-------------------------------------------------------------------------------------------------------------
+GC is responsible for
+    - allocating memory -> on the heap: the large pool of memory used for creating new objects
+    - ensuring that any referenced objects remain in memory
+    - recovering the memory used by objects that are no longer reachable from references in executing code
+
+GC must be
+    - safe: it must make sure that any live data remains in memory, and it is not erroneously freed
+    - comprehensive: it must make sure that any dead objects do not remain in memory more than a certain number of collection cycles
+    - must prevent fragmentation as much as possible -> GC makes compaction
+
+GC design choices:
+    - Serial vs Parallel
+    - Concurrent vs Stop-the-World
+    - Compacting vs NonCompating vs Copying (Copying: live objects are copied to a different memory area, therefore making the entire heap free)
+    -
+
+Performance metrics:
+    - Troughput (the percentage of total time NOT spent on GC)
+    - Garbage collection overhead (the inverse of troughput: the percentage of total time spent in GC)
+    - Pause time
+    - Frequency of collection
+    - Footprint
+    - Promptness
+----------------------------------------------------------------------------------------------------------------
+For OOM problems:
+    - activate Heap Dump on OOM: 
+        -XX:+HeapDumpOnOutOfMemoryError
+    - use jMap or a similar tool for analyzing the heap dump
+----------------------------------------------------------------------------------------------------------------
+Generations:
+    - young generation + old generation -> common scheme for generations
+    - Weak generational hypothesis:
+        - Most allocated objects are not reference for long -> they die very vast, and young
+        - Few references from older to younger objects exist
+    - inside Java HotSpot:
+        - young generation -> most objects go here, as they die very fast
+            - Zone: Eden
+            - Zone 2+3: survivor spaces: "From" and "To"
+        - old generation   -> objects that survive several young collections, are promoted to old generation (some large objects are directly allocated here)
+        - permanent generation -> objects that are convenient for JVM to store, such as objects describing classes and methods, including the classes and methods themselves)
+    - Fast Allocation
+        - TLABs (Thread-Local Allocation Buffers) -> usage of the bump-the-pointer in a multithreaded manner
+            - for each thread, JVM allocates a portion of the generation, and then the bump-the-pointer technique is used, so the allocation
+              is fast and thread safe
+    - Collectors:
+        - Serial Collector
+            - (young G and old G are done serially, in the stop-the-world fashion)
+            - for young G: moving live objects from Eden to TO and/or OLD, also moving objects from FROM to OLD, then clearing everything
+            - for old   G: mark-sweep-compact: objects are checked for liveness, then marked and compacted, leaving a big chunk of free space
+              at the end of the zone
+            - USAGE: for most apps, run on the client-style machines with no requirement for low pause times. Worst case of pause of less than
+              half a second for full collections. In J2SE 5.0 release, the serial collector is selected by default for non sever-class machines
+            - SELECTION: -XX:+UseSerialGC
+        - Parallel Collector
+            - for young G: similar to serial collector. Stop-the-world, but the operations of copying and cleaning are performed on
+              multiple CPUs.
+            - for old G: serial, similar to serial collector
+            - USAGE: for those applications executed on machines that benefit from multiple CPUs, but don't have strict pause time constraints,
+              since the time required for the old generation is similar to the serial collector. In J2SE 5.0 release, the parallel collector
+              is selected when the app is executed on server-class machines.
+            - SELECTION: -XX:+UserParallelGC
+        - Parallel Compacting Collector
+            - introduced since J2SE 5.0 Update 6
+            - for young G: identical to the parallel collector
+            - for old G and perm G: the collector operates in 3 phases, with stop-the-world, mostly parallel: marking, summary and compaction.
+              > In the marking phase, the generation zone is divided in regions, and all the live objects that are directly accessible from the
+              app code are marked. This is executed in parallel, with multiple threads.
+              > In the summary phase, the collector operates serially (the cost of parallelization is not so much at this phase).
+              Each region is scanned and evaluated, and the cost of compaction is computed. If the cost is bigger than the amount of
+              space released, then that zone is densely packaged, so it is skipped in the next phase. Also at this point the collector stores
+              the first byte of live data from each region.
+              > In the last phase (compation), the collector operates in parallel and compacts all the regions that have been marked for
+              compaction.
+            - USAGE: for apps executed on server-class machines, with multiple CPUs available (except for SunRay, for ex, where it is restricted
+              to monopolize multiple CPUs for long period of times) and also with pause time constraints. The number of threads used by the
+              parallel compacting collector can be decreased:
+                    -XX:ParallelGCThreads=n
+            - SELECTION: -XX:+UserParallelOldGC
+        - Concurrent Mark Sweep Collector (low latency collector)
+            - for young G: similar to parallel collector
+            - for old G: most of the collection for old G is done concurrently with the execution of the application (so no stop-the-world).
+              > The collection starts with a small pause, called the initial mark. The collector identifies the initial set of objects that are directly
+                reachable from the code.
+              > The concurrent marking phase: the collector identifies the objects that are transitively reachable from the initial set of
+                live objects.
+              > The second small pause, called the remark phase: revisits all the objects that were changed during the marking phase. This
+                is done in parallel, with multiple threads. This forms the complete set of live objects.
+              > The concurrent sweep phase reclaims all the garbage that has been identified.
+            - the collector is not compacting. It simply frees the spaces, without compation. It creates some linked lists with all the free
+              spaces. These lists are then used when a new object must be allocated.
+            - floating garbage: the garbage that is produced during the cleaning phases of CMS. This garbage will be reclaimed on the next
+              collection cycle.
+            - to optimize the fragmentation and when to be executed, CMS tracks popular object sizes, estimates future demand, splits and
+              joins the free spaces.
+            - CMS attempts to start a collection not when the old generation is full, but in advance. To control this:
+                    -XX:CMSInitiatingOccupancyFraction=n
+              where n is the percentage of the old generation when the CMS starts. Defaults to 68.
+            - PLUS : decreases (sometimes dramatically) the collection pause times
+            - MINUS: slightly longer young generation phases, some reduction in troughput and extra heap requirements
+            - Incremental mode: the concurrent phases are done incrementally, with the collector threads pausing periodically and yielding
+              to the other app threads. -XX:+CMSIncrementalMode
+            - USAGE: for apps that need shorted pause times for GC, and can afford to share CPU time with the GC.
+            - SELECTION: must be manually selected: -XX:+UseConcMarkSweepGC
+----------------------------------------------------------------------------------------------------------------
+Ergonomics
+    - ergonomics: the combination of platform-dependent default selections and the garbage collection tunning that uses the desired behaviour
+    - server-class machine:
+        - 2 processor or more
+        - 2 GB of physical memory or more
+    - default selection for non-server-class machines: client JVM, serial GC, initial heap of 4M, max heap of 64M
+    - default selection for     server-class machines: server JVM, parallel GC, initial heap 1/64 of physical memory (max 1GB), max heap
+        1/4 of physical memory (max 1GB)
+    - behaviour-based parallel collector tunning
+        - maximum pause time goal:
+            -XX:MaxGCPauseMillis=n
+            - the time is applied to each generation
+            - the app throughput might suffer
+            - the generation sizes might decrease, in order to reach the goal
+        - troughput goal:
+            -XX:GCTimeRation=n
+            - ratio of garbage collection time to application time (=  1/(1+n) ).
+            - default: 99 (1% for GC, 99% for app)
+        - footprint goal
+            - when the first two goals are met, the GC reduces the size of the heaps until one of the goals above is not met. Then the goal
+              is addressed.
+    - priority of goals: max pause time -> troughtput -> footprint goal
+----------------------------------------------------------------------------------------------------------------
+Recommendation
+    - first, do nothing!
+    - if app behaves badly and it looks like GC problems, set the GC to something different
+    - if app behaves badly, then tune the memory/heap allocation
+----------------------------------------------------------------------------------------------------------------
+Handling OutOfMemoryError
+    - thrown when there is insufficient space to allocate an object
+    - it might not be a memory leak problem. It could be a an insufficient size of the heap (specific or default selected)
+    - inspect the message of the OOME
+        - Java heap space
+            - heap too small
+            - objects are left reacheable, so GC cannot collect them. The HAT tool can show which objects are reachable
+            - excessive use of finalizers. The finalizing thread cannot keep up with the rate of new finalizers. The jconsole tool can be used to
+              monitor the amount of objects pending finalization
+            -
+        - PermGen space
+            - the permanent generation area is too small, and the application is loading many classes and has no room for their metadata
+            - increase the perm gen size: -XX:MaxPermSize=n
+        - Requested array size exceeds VM limit
+            - the application tries to allocate an array that does not fit in memory
+----------------------------------------------------------------------------------------------------------------
+Tools to evaluate GC performance
+    - -XX:+PrintGCDetails
+    - -XX:+PrintGCTimeStamps
+    - jmap
+        - prints memory statistics for a running JVM
+        - included in Solaris and Linux
+    - jstat
+    - HPROF: Heap Profiler
+    - HAT: Heap Analysis Tool
+----------------------------------------------------------------------------------------------------------------
+For more information:
+-------------------------------------
+HotSpot Garbage Collection and Performance Tuning
+    - Garbage Collection in the Java HotSpot Virtual Machine    (http://www.devx.com/Java/Article/21977)
+    - Tuning Garbage Collection with the 5.0 Java[tm] Virtual Machine   (http://java.sun.com/docs/hotspot/gc5.0/gc_tuning_5.html)
+Ergonomics
+    - Server-Class Machine Detection    (http://java.sun.com/j2se/1.5.0/docs/guide/vm/server-class.html)
+    - Garbage Collector Ergonomics  (http://java.sun.com/j2se/1.5.0/docs/guide/vm/gc-ergonomics.html)
+    - Ergonomics in the 5.0 Java- Virtual Machine(http://java.sun.com/docs/hotspot/gc5.0/ergo5.html)
+Options
+    - Java- HotSpot VM Options(http://java.sun.com/docs/hotspot/VMOptions.html)
+    - Solaris and Linux options(http://java.sun.com/j2se/1.5.0/docs/tooldocs/solaris/java.html)
+    - Windows options(http://java.sun.com/j2se/1.5.0/docs/tooldocs/windows/java.html)
+Tools and Troubleshooting
+    - Java- 2 Platform, Standard Edition 5.0 Trouble-Shooting and Diagnostic Guide(http://java.sun.com/j2se/1.5/pdf/jdk50_ts_guide.pdf)
+    - HPROF: A Heap/CPU Profiling Tool in J2SE 5.0(http://java.sun.com/developer/technicalArticles/Programming/HPROF.html)
+    - Hat: Heap Analysis Tool(https://hat.dev.java.net/)
+
+Finalization
+    - Finalization, threads, and the Java technology-based memory model(http://devresource.hp.com/drc/resources/jmemmodel/index.jsp)
+    - How to Handle Java Finalization's Memory-Retention Issues(http://www.devx.com/Java/Article/30192)
+Miscellaneous
+    - J2SE 5.0 Release Notes(http://java.sun.com/j2se/1.5.0/relnotes.html)
+    - Java- Virtual Machines(http://java.sun.com/j2se/1.5.0/docs/guide/vm/index.html)
+    - Sun Java- Real-Time System (Java RTS)(http://java.sun.com/j2se/realtime/index.jsp)
+    - General book on garbage collection: Garbage Collection: Algorithms for Automatic Dynamic Memory Management by Richard Jones and Rafael Lins, John Wiley & Sons, 1996.

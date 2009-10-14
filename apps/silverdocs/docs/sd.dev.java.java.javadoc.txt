@@ -1,0 +1,101 @@
+Notes on Writing doc comments for Javadoc tool
+------------------------------------------------------------------------------------------------------
+Tags
+    - param
+        - return
+            - throws/exceptions
+                - author
+                    - version
+                        - see
+                            - since
+                                - serial
+                                    - deprecated
+    - multiple tags of the same name
+        - @author - chronologically
+        - @param - order of params
+        - @throws - alphabetically
+        - @see - order from nearest to farthest, from least-qualified to fully-qualified, from 0 arguments to MAX arguments
+    - required tags
+        - @param, @return
+    - @param
+        - do not end with a period unless it is a sentence, and it was tarted with capital letter
+        - use angle brackets for type parameters (@param <E> type of the element stored in the list)
+        -
+    - @throws (synonym @exception)
+    - @author
+        - optional, could be included at overview level, package and class level
+        - if the author is unknown, use "unascribed"
+---------------------------------------------------------------------------------------------------------
+Writing doc comments: 2 forms:
+    - writing API comments
+    - writing programming guide
+Difference between programming guide and API documentation
+    - API doc might not contain
+        - examples
+        - definitions of programming terms
+        - certain conceptual overviews (e.g. metaphors)
+        - description of implementation bugs and workarounds
+-----------
+    - put in an API doc: ONLY API ASSERTIONS
+    - 4 types of files that are considered by javadoc:
+        - source files (*.java)
+        - package comment files
+        - overview comment files - they contain comments about a set of packages
+        - misc unprocessed files (images, sample source code, class files, applets, HTML files, etc)
+Doc comment
+    - overview
+        - written in HTML
+        - precedes a class, field, method, constructor
+        - made of two parts:
+            - description
+            - block of tags
+        - the first sentence from the description block of a method should be the short summary of the method. Javadoc places this summary
+          sentence in the overview list of methods.
+        - the first line that starts with @ end the description block
+        - starting with javadoc 1.4, the leading asterisks are optional
+        - limitation: max 80 chars length
+    - first sentence must summarize the method, class, field or constructor. javadoc uses this sentence for all the summary places where it
+      needs it. javadoc stops reading the first sentence when it encounters a period followed by a blank, tab or line terminator, or at the
+      first tag.
+        - tricks to escape the period from javadoc: "_____Prof.&nbsp;Jack's manual_____" or "___Prof.<!-- --> Jack's manual____"
+        - the first sentences must always be crips and be able to stand on their own
+        - make sure that the first sentences differentiate overloaded methods
+    - write docs as implementation-independent API specification
+    - define clearly what is allowed and what is required to vary across platforms/implementations
+    - include enough documentation so that someone reading the source code can implement a substantial suite of conformance tests
+    - the spec should be complete, including boundary conditions, parameter ranges and corner cases
+    - for implementation or platform specific, start a new paragraph, and use a phrase beginning such as:
+        - "On <platform> ...."
+        - "Implementation-Specific: ......"
+    - javadoc handles the cases with inheriting the comments. This occurs for method overriding class-class, method overriding interface-interface
+      and method implementation. If the implementation method has no comments, javadoc copies the comment from the super method. Otherwise,
+      adds a "Overrides ...." with a link to the super method, or a "Specified by ...." with a link to the method implemented.
+Style
+    - use <code>..</code> for keywords and names, package names, class names, attribute names, method names and code samples.
+    - use {@link} economically: link for the first occurence of a API name (do not repeat links). Use only if the user might actually want to
+      click on it
+    - use parantheses only when referring to a particular overloaded form of a method. Otherwise, use no parantheses. Also use the "method"
+      word prefix to make clear that a method is referred
+    - use 3rd person (Descriptive), not 2nd person (prescriptive): "Gets the label" not "Get the label"
+    - method descriptions begin with a verb: "Gets the label..." not "This method gets...."
+    - Class/interface/field descriptions can omit the subject and simply state the object: "A button label" not "This field is a button label"
+    - Use "this" instead of "the" when referring to an object created from the current class.
+    - Add description beyond the API name (simply repeating the API name as the documentation is not helpful)
+    - Be clear when using the term "field"
+    - Avoid Latin (avoid "e.g.", "aka", "i.e.", "namely", "viz.")
+Tag Conventions
+    ->
+DocCheck
+    - tool for checking doc comments (called Sun Doc Check Doclet)
+    - generates a report describing what style and tag errors the comments have, and suggets improvements
+Package-Level comments
+    - package.html
+    - what javadoc does:
+        - copies everything from <body>---</body> below the summary tables in the destination file package-summary.html
+        - processes any @see, @since or {@link}
+        - copies the first sentence to the right-hand columb of the Overview Summary
+    - make first sentence a summary of what the package does.
+doc-files
+    - directory that can be placed in any package
+    - contains the resources (images) used by the documentation for that package
+    - Javadoc 1.2 and 1.3 makes a shallow copy, 1.4 and above makes a deep copy

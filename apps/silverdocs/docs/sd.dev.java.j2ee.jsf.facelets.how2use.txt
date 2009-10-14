@@ -1,0 +1,160 @@
+Facelets - How to use
+-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+1) Configure web.xml:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+	<!-- Use Documents Saved as *.xhtml -->
+	<context-param>
+		<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+		<param-value>.xhtml</param-value>
+	</context-param>
+	<!-- Special Debug Output for Development -->
+	<context-param>
+		<param-name>facelets.DEVELOPMENT</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+	<filter>
+		<filter-name>MyFacesExtensionsFilter</filter-name>
+		<filter-class>
+			org.apache.myfaces.webapp.filter.ExtensionsFilter
+		</filter-class>
+		<init-param>
+			<param-name>maxFileSize</param-name>
+			<param-value>20m</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>MyFacesExtensionsFilter</filter-name>
+		<url-pattern>*.jsf</url-pattern>
+	</filter-mapping>
+
+	<listener>
+		<listener-class>
+			org.apache.myfaces.webapp.StartupServletContextListener
+		</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.jsf</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+2) Configure faces-config.xml:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE faces-config PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN" "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+<faces-config>
+	<application>
+		<view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
+	</application>
+
+	<!-- Managed beans -->
+	<!-- Navigation rules -->
+</faces-config>
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+3) Configure pom.xml (in case of maven projects. 
+   WARNING: facelets, el-api and el-ri require a different repository for maven):
+
+<dependency>
+	<groupId>org.apache.myfaces.core</groupId>
+	<artifactId>myfaces-impl</artifactId>
+	<version>1.1.5</version>
+	<scope>runtime</scope>
+</dependency>
+<dependency>
+	<groupId>org.apache.myfaces.tomahawk</groupId>
+	<artifactId>tomahawk</artifactId>
+	<version>1.1.5</version>
+	<scope>runtime</scope>
+</dependency>
+<dependency>
+	<groupId>com.sun.facelets</groupId>
+	<artifactId>jsf-facelets</artifactId>
+	<version>1.1.10</version>
+	<scope>runtime</scope>
+</dependency>
+<dependency>
+	<groupId>javax.el</groupId>
+	<artifactId>el-api</artifactId>
+	<version>1.0</version>
+</dependency>
+<dependency>
+	<groupId>com.sun.el</groupId>
+	<artifactId>el-ri</artifactId>
+	<version>1.0</version>
+</dependency>
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+4) Create a master template (template.xhtml)
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core">
+	<head>
+		<meta http-equiv="Content-Type"
+			content="text/html; charset=iso-8859-1" />
+		<title>Facelets: Number Guess Tutorial</title>
+		<style type="text/css">
+			<!--
+			body {
+				font-family: Verdana, Arial, Helvetica, sans-serif;
+				font-size: small;
+			}
+			-->
+		</style>
+	</head>
+	<body>
+		<h1>
+			<ui:insert name="title">Default Title</ui:insert>
+		</h1>
+		<p>
+			<ui:insert name="body">Default Body</ui:insert>
+		</p>
+	</body>
+</html>
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+5) Create a composition (an actual page, based on the above template) (guess.xhtml):
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+<body>
+<ui:composition template="/template.xhtml">
+  <ui:define name="title">
+		I'm thinking of a number from #{NumberBean.min} to #{NumberBean.max}.  Can you guess it?
+  </ui:define>
+  <ui:define name="body">
+		<h:form id="helloForm">
+		  <h:inputText type="text" id="userNo" value="#{NumberBean.guess}" validator="#{NumberBean.validate}"/>
+		  <br/>
+		  <h:commandButton type="submit" id="submit" action="success" value="Submit" />
+		  <br/>
+		  <h:message showSummary="true" showDetail="false" style="color: red; font-weight: bold;" id="errors1" for="userNo"/>
+		</h:form>
+  </ui:define>
+</ui:composition>
+</body>
+</html>

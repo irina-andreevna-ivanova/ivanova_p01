@@ -1,0 +1,1 @@
+ldapadd -x -D "cn=Manager,dc=mydomain,dc=com" -W -f mydomain.ldif

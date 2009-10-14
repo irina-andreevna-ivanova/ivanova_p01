@@ -1,0 +1,79 @@
+Various notes
+--------------------------------------------------------------------------------------------------------------------
+____________________________________________________________________________________________________________________
+Big-endian - Little-endian 
+____________________________________________________________________________________________________________________
+- URL: http://en.wikipedia.org/wiki/Endianness
+Be-LE: 
+    - the position where the most significat byte is written
+    - the actual location (on the right of the registry, on the left of the registry - depends on how the
+      computer is storing the data (the next examples assume that the order is left-to-right in the 
+      registry)
+
+Big-endian: 
+    - the most significant byte is written first
+    - ABCDEF    -> ...][A][B][C][D][E][F][......
+    - 1234      -> ...][1][2][3][4][....
+    - problematic if two numbers must be added, since the CPU must compute the length of the numbers, jump
+      position in order to add the correct values)
+
+Little-endian
+    - the least significat byte is written first
+    - ABCDEF    -> ...][F][E][D][C][B][A][...
+    - 1234      -> ...][4][3][2][1][...
+    - very fast for adding numbers
+    - problematic for reading and displaying data with left-to-right languages. Ok with right-to-left 
+      languages.
+      
+____________________________________________________________________________________________________________________
+Character sets + Encoding + Collations 
+____________________________________________________________________________________________________________________
+- URL: http://www.joelonsoftware.com/articles/Unicode.html
+- letters: symbols
+- codes associated to them: encodings
+- the sum of letters and codes associated: character set
+- collation: the set of rules applied to a character set for comparing symbols
+- binary collation: the simplest of collations: compare the encoding of symbols, and decide A<B if A's encoding < B's encoding
+- case-insensitive collation: the comparing of symbols, so that "a" equals "A"
+- usually a character set has many alphabets, plus markings for some symbols (such as accents), and also multi-character mappings
+  (o with umlaut = OE)
+
+About charsets and encoding:
+- ASCII: represent chars with codes: 32-127 -> storeable in 7bits
+  ASCII: -> chars above 128 were left open -> IBM OEM character set (accented chars, plus chars for
+  drawing boxes and dialogs in text)
+- ANSI standard: standardization for below-128, code pages for above 128
+  ANSI: one code page for each language, and set of characters
+- DBCS (DoubleByteCharacterSet): character set used in Asian countries in order to store the (sometimes) 
+  thousands of characters of the language. Some characters occupied one char, some occupied 2 chars.
+- Unicode:
+    - a letter maps to a code point -> U+0639, U+0041
+- UCS-2 = UTF-16 (?)
+    - initial idea was to encode the number in 2bytes -> UCS-2
+    - Hello: U+0048 U+0065 U+006C U+006C U+006F
+    - storing Hello as two bytes: 00 48 00 65 00 6C 00 6C 00 6F
+    - big-endian, little-endian -> the FEFF prefix was added, which was little-endian
+        - ByteOrderMark: FE FF
+- UTF-8
+    - way of storing Unicode chars: first byte stores the first 127 characters, the next characters are
+      stored in 2,3-6 bytes
+    - advantage: for english texts, this has the same effect as ASCII (looks the same)
+    -  
+- UTF-7
+    - just like UTF-8, stores the first 127 chars in 7 bits, and makes the high bit always null
+    - 
+- UCS-4 (UTF-32)
+    - stores the 
+    
+Encoding for English texts:
+- Windows 1252 (Windows 9x standard for Western European langs)
+- ISO-8859-1 (Latin-1)
+
+Content-Type: text/plain; charset="UTF-8"
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+
+     

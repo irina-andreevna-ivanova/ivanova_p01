@@ -1,0 +1,54 @@
+# File: ldif00.ldif
+
+# Root node
+dn: dc=example,dc=com
+objectclass: organization
+objectclass: dcObject
+o: example.com
+dc: example.com
+
+# The IT branch node
+dn: ou=IT, dc=example,dc=com
+objectclass: organizationalUnit
+ou: IT
+
+# The Sales branch node
+dn: ou=Sales, dc=example,dc=com
+objectclass: organizationalUnit
+ou: Sales
+
+# The Super-User's node
+dn: cn=Manager, dc=example,dc=com
+objectclass: organizationalRole
+cn: Manager
+
+# A leaf node
+dn: cn=Michael Yee, ou=IT, dc=example,dc=com
+objectclass: person
+cn: Michael Yee
+sn: Yee
+
+# Another leaf node
+dn: cn=Rick Francis, ou=IT, dc=example,dc=com
+objectclass: person
+cn: Rick Francis
+sn: Francis
+
+# Yet another leaf node
+dn: cn=Dhananjay Kulkarni, ou=Sales, dc=example,dc=com
+objectclass: person
+cn: Dhananjay Kulkarni
+sn: Kulkarni
+
+dn: cn=Wil Cooley, ou=Sales, dc=example,dc=com
+objectclass: person
+cn: Wil Cooley
+sn: Cooley
+
+# Finally, geez!
+dn: cn=Jennifer Jones, ou=Sales, dc=example,dc=com
+objectclass: person
+cn: Jennifer Jones
+cn: Jenny Jones
+cn: Jenny Smith
+sn: Jones

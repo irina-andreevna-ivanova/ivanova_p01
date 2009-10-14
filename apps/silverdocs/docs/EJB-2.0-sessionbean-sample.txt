@@ -1,0 +1,131 @@
+EJB 2.0 > Sample of SessionBean
+-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Remote interface
+
+import java.rmi.RemoteException;
+import javax.ejb.EJBObject;
+
+public interface TableContentRetriever extends EJBObject {
+    public String[][] getNameAgeValues() throws RemoteException;
+}
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Home interface
+
+import java.rmi.RemoteException;
+import javax.ejb.CreateException;
+import javax.ejb.EJBHome;
+
+public interface TableContentRetrieverHome extends EJBHome {
+    public TableContentRetriever create() throws RemoteException, CreateException;
+}
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Session bean implementation class
+
+import java.rmi.RemoteException;
+import javax.ejb.CreateException;
+import javax.ejb.EJBException;
+import javax.ejb.SessionBean;
+import javax.ejb.SessionContext;
+
+public class TableContentRetrieverImpl implements SessionBean {
+
+    public void ejbCreate() throws CreateException {
+    }
+
+    public void ejbActivate() throws EJBException, RemoteException {
+    }
+
+    public void ejbPassivate() throws EJBException, RemoteException {
+    }
+
+    public void ejbRemove() throws EJBException, RemoteException {
+    }
+
+    public void setSessionContext( SessionContext context ) throws EJBException, RemoteException {
+    }
+
+    public String[][] getNameAgeValues() {
+        // do smt here
+    }
+}
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+ejb-jar.xml declaration
+
+<!DOCTYPE ejb-jar PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN"  "http://java.sun.com/j2ee/dtds/ejb-jar_1_1.dtd">
+<ejb-jar>
+	<enterprise-beans>
+		<session>
+		   <ejb-name>test/TableContentRetriever</ejb-name>
+		   <home>test.ejb.server.TableContentRetrieverHome</home>
+		   <remote>test.ejb.server.TableContentRetriever</remote>
+		   <ejb-class>test.ejb.server.impl.TableContentRetrieverImpl</ejb-class>
+		   <session-type>Stateless</session-type>
+		   <transaction-type>Container</transaction-type>
+		</session>
+	</enterprise-beans>
+</ejb-jar>
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+weblogic-ejb-jar.xml declaration (just for BEA WebLogic 8.1)
+
+<?xml version="1.0"?>
+<!DOCTYPE weblogic-ejb-jar PUBLIC '-//BEA Systems, Inc.//DTD WebLogic 8.1.0 EJB//EN' 'http://www.bea.com/servers/wls810/dtd/weblogic-ejb-jar.dtd' >
+<weblogic-ejb-jar>
+	<weblogic-enterprise-bean>
+		<ejb-name>test/TableContentRetriever</ejb-name>
+		<enable-call-by-reference>true</enable-call-by-reference>
+		<jndi-name>ejb/test/TableContentRetriever</jndi-name>
+	</weblogic-enterprise-bean>
+</weblogic-ejb-jar>
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+For any additional jar, you need to add an entry in MANIFEST.MF, in META-INF, in proiectul EJB. The jar must be placed
+in the root of the EAR, along with the EJB jar, WAR file.
+
+Manifest-Version: 1.0
+Class-Path: additional.jar
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+application.xml (for EAR project)
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE application PUBLIC "-//Sun Microsystems, Inc.//DTD J2EE Application 1.3//EN" "http://java.sun.com/dtd/application_1_3.dtd">
+<application>
+  <display-name>TableTestEAR</display-name>
+  <module>
+    <ejb>TableTestEJB.jar</ejb>
+  </module>
+</application>
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Client access code (customized for BEA Weblogic 8.1) (for weblogic, the client must have wlclient.jar in its path)
+
+try {
+    Hashtable contextProperties = new Hashtable();
+    contextProperties.put( Context.INITIAL_CONTEXT_FACTORY, "weblogic.jndi.WLInitialContextFactory" );
+    contextProperties.put( Context.PROVIDER_URL, "t3://localhost:7001" );
+
+    String jndiPath = "ejb/test/TableContentRetriever";
+
+    Context context = new InitialContext( contextProperties );
+    TableContentRetrieverHome tcrHome = (TableContentRetrieverHome) PortableRemoteObject.narrow( context.lookup( jndiPath ), TableContentRetrieverHome.class );
+
+    TableContentRetriever tcrSession = tcrHome.create();
+    data = tcrSession.getNameAgeValues();
+
+    tcrSession.remove();
+
+} catch ( NamingException e ) {
+    e.printStackTrace();
+} catch ( RemoteException e ) {
+    e.printStackTrace();
+} catch ( CreateException e ) {
+    e.printStackTrace();
+} catch ( RemoveException e ) {
+    e.printStackTrace();
+}

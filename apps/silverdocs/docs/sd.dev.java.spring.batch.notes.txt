@@ -1,0 +1,67 @@
+Notes on Spring Batch (tested with version 2.0.2.RELEASE)
+-----------------------------------------------------------------------------------------------------------------------
+
+_______________________________________________________________________________________________________________________________________
+1. Add the binaries to the project
+        <dependency>
+            <groupId>org.springframework.batch</groupId>
+            <artifactId>spring-batch-core</artifactId>
+            <version>2.0.2.RELEASE</version>
+        </dependency>
+
+_______________________________________________________________________________________________________________________________________
+2. Make sure the project uses JdbcTemplate or SimpleJdbTemplate
+
+_______________________________________________________________________________________________________________________________________
+3. Add the following advice + pointcut configuration
+
+    <!-- configure the policy for how long should the app wait after each erroneous operation -->
+    <bean name="retryJdbcOperationBackOffPolicy" class="org.springframework.batch.retry.backoff.FixedBackOffPolicy">
+        <property name="backOffPeriod" value="${app.retryJdbcOperations.backOffMilliseconds}"/>
+    </bean>
+
+    <!-- configure the policy for how/when should the app retry an operation -->
+    <bean name="retryJdbcOperationRetryPolicy" class="org.springframework.batch.retry.policy.SimpleRetryPolicy">
+        <property name="maxAttempts" value="${app.retryJdbcOperations.maxAttempts}" />
+        <property name="retryableExceptionClasses">
+            <list>
+                <value>org.springframework.dao.DataAccessException</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- mix the two policies above, creating the complete retry template -->
+    <bean name="retryJdbcOperationRetryTemplate" class="org.springframework.batch.retry.support.RetryTemplate">
+        <property name="backOffPolicy" ref="retryJdbcOperationBackOffPolicy" />
+        <property name="retryPolicy" ref="retryJdbcOperationRetryPolicy" />
+    </bean>
+
+    <bean id="retryJdbcOperationAdvice" class="org.springframework.batch.retry.interceptor.RetryOperationsInterceptor">
+        <property name="retryOperations" ref="retryJdbcOperationRetryTemplate" />
+    </bean>
+
+    <aop:config>
+        <aop:pointcut id="jdbcTemplatePointcut" expression="execution(* org.springframework.jdbc.core.simple.SimpleJdbcOperations.*(..))" />
+        <aop:advisor id="jdbcTemplateAdvisor" pointcut-ref="jdbcTemplatePointcut" advice-ref="retryJdbcOperationAdvice" />
+    </aop:config>
+_______________________________________________________________________________________________________________________________________
+3.1 Or, you can use direct implementation and usage of the Retry classes from spring-batch
+
+    FixedBackOffPolicy backOffPolicy = new FixedBackOffPolicy();
+    backOffPolicy.setBackOffPeriod( 50 ); // wait 50ms between retries
+
+    SimpleRetryPolicy retryPolicy = new SimpleRetryPolicy( 3 );
+    Collection<Class<? extends Throwable>> retryableExceptions = new ArrayList<Class<? extends Throwable>>();
+    retryableExceptions.add( DataAccessException.class );
+    retryPolicy.setRetryableExceptionClasses( retryableExceptions );
+
+    RetryTemplate retryTemplate = new RetryTemplate();
+    retryTemplate.setRetryPolicy( retryPolicy );
+    retryTemplate.setBackOffPolicy( backOffPolicy );
+
+    list = retryTemplate.execute( new RetryCallback<List<MyDTO>>() {
+        @Override
+        public List<MyDTO> doWithRetry( RetryContext context ) throws Exception {
+            return jdbcTemplate.query( sqlMap.getScript( "sql.findByID" ), new MyDTORowMapper(), paramMap );
+        }
+    });

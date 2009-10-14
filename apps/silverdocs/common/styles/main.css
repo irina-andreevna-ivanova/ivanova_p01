@@ -1,0 +1,272 @@
+.main_body {
+    font-family: Verdana, sans-serif;
+    font-size: 10pt;
+    color: #000000;
+    overflow: scroll;
+}
+
+input[type=text], textarea, select {
+    border: 1px solid #AAAAAA;
+    background-color: #F5F5F5;
+}
+input[type=button], input[type=submit], select {
+    font-size: 8pt;
+}
+.select_option_header {
+    background-color: #DDDDDD;
+    color: #000000;
+}
+.select_option_item {
+    text-indent: 10px;
+}
+a, a:visited, a:active {
+    font-family: Arial, sans-serif;
+    font-size: 9pt;
+    color: #1111AA;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+.a_index {
+    font-size: 8pt;
+}
+.a_index_closed {
+    font-size: 8pt;
+}
+.a_index_opened {
+    font-size: 8pt;
+    font-weight: bold;
+}
+form {
+    font-family: Verdana, sans-serif;
+    font-size: 9pt;
+    color: #000000;
+    display: inline;
+}
+table {
+    font-family: Verdana, sans-serif;
+    font-size: 8pt;
+    color: #000000;
+    border: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+img {
+    border: 0px;
+}
+.spaceL {
+    padding-left: 3px;
+}
+.spaceR {
+    padding-right: 3px;
+}
+.invisible {
+    display: none;
+}
+.bigLetter {
+    font-family: Verdana, sans-serif;
+    font-size: 16pt;
+}
+
+/* ----------------------------------------------------------------------------------------------- */
+.spot_header {
+    background-color: #D0D0D0;
+    font-family: Arial, sans-serif;
+    font-size: 10pt;
+    color: #000000;
+    text-align: right;
+    cursor: pointer;
+    background-image: url("../images/spot-header-background.jpg");
+    background-repeat: repeat-x;
+    background-position: top left;
+    border-bottom: solid 1px rgb(180,180,180);
+    height: 24px;
+}
+.spot_header_icon_pinned {
+    width: 16px;
+    background-image: url("../images/sd-icon-pinned.png");
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+.spot_header_icon_unpinned {
+    width: 16px;
+    /*background: none;
+    background-color: #B8B8B8;*/
+    background-image: url("../images/sd-icon-pinned-faded.png");
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.spot_div {
+    width: 100%;
+    background-color: #FFFFFF;
+}
+
+.spot_div_invisible_table {
+    width: 100%;
+    height: 1px;
+    background-color: #FFFFFF;
+}
+
+.spot_div_loading_table {
+    font-family: Arial, sans-serif;
+    font-size: 8pt;
+    color: #AAAAAA;
+    background-color: #FFFFFF;
+    height: 10px;
+}
+
+.spot_part_even {
+    background-color: #EEEEEE;
+}
+.spot_part_odd {
+    background-color: #FFFFFF;
+}
+/* bookmark bar ----------------------------------------------------------------------- */
+.bookmarkbar_body {
+    width: 16px;
+    background-color: #FF8800;
+}
+.bookmarkDiv_visible {
+    width: 200px;
+    display: block;
+}
+.bookmarkDiv_visible a {
+    font-family: Arial, sans-serif;
+    font-size: 8pt;
+    padding-left: 10px;
+}
+.bookmarkDiv_notVisible {
+    width: 0px;
+}
+.bookmarkItem_folder {
+    padding-left: 18px;
+    background-image: url( "../images/bookmarks-folder.png" );
+    background-position: left center;
+    background-repeat: no-repeat;
+}
+/* topbar ----------------------------------------------------------------------------- */
+.topbar_body {
+    font-family: Verdana, sans-serif;
+    font-size: 12pt;
+    color: #FFFFFF;
+    background-color: #deeff7;
+    background-image: url( "../images/bar-background.jpg" );
+    background-repeat: no-repeat;
+    margin: 0px;
+    margin-top: 1px;
+}
+.topbar_title {
+    font-size: 12pt;
+    font-weight: bold;
+    color: #000000;
+}
+.topbar_version {
+    font-size: 8pt;
+    color: #000000;
+}
+.topbar_commonText {
+    height: 100%;
+    color: #A0A0A0;
+}
+.topbar_body a {
+    font-family: Verdana, sans-serif;
+    font-size: 8pt;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.topbar_body a:hover {
+    text-decoration: underline;
+}
+.leftbar_cell {
+    background-color: #D0D0D0;
+}
+.leftbar_table {
+    width: 30px;
+    border: 0px;
+}
+.leftbar_icon_separator {
+    height: 5px;
+}
+.leftbar_quickarrows_input {
+    width: 32px;
+    background-image: url("../images/tool32-quick-arrows.png");
+}
+.bottombar {
+    padding: 5px;
+    font-family: Verdana, sans-serif;
+    font-size: 8pt;
+    color: #000000;
+    background-color: #000000;
+    background-image: url( "../images/bar-background.jpg" );
+    background-repeat: repeat-x;
+    border-top: solid 1px #808080;
+    height: 24px;
+}
+.bottombar a {
+    font-family: Verdana, sans-serif;
+    font-size: 8pt;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.bottombar a:hover {
+    text-decoration: underline;
+}
+/*.window_body {
+    font-family: Arial, sans-serif;
+    font-size: 8pt;
+}
+.window_table {
+    font-family: Arial, sans-serif;
+    font-size: 10pt;
+    background-color: #FAFAFA;
+}
+table tbody th, table tbody td {
+    padding:  3px;
+    text-align: left;
+    vertical-align: top;
+}
+table tbody th {
+    font-family: Arial, sans-serif;
+    font-size: 10pt;
+    font-weight: bold;
+    background-color: #DDDDDD;
+}
+.table_row_even {
+    background-color: #F5F5F5;
+}
+.table_row_odd {
+    background-color: #FFFFFF;
+}
+*/
+.table_indexList {
+}
+.table_indexList a {
+    font-size: 8pt;
+}
+
+.table_locallinks {
+    width: 100%;
+}
+.table_locallinks_row_even {
+    background-color: #FFFFFF;
+}
+.table_locallinks_row_odd {
+    background-color: #EEEEFF;
+}
+.table_locallinks_cell_name {
+}
+.table_locallinks_cell_actions {
+    width: 20px;
+    text-align: center;
+}
+.table_locallinks_cell_add {
+    width: 20px;
+    text-align: center;
+}
+
+/* ------------------------------------------------------------------------------------ */
+.text_orange {
+	color: #FF8000;
+}

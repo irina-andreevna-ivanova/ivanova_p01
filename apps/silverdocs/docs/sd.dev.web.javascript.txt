@@ -1,0 +1,49 @@
+JavaScript
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+________________________________________________________________________________________________________________________
+---------------------------------------------------------------------------------------------------- Working with FRAMEs
+window.parent.otherframe.someElement
+________________________________________________________________________________________________________________________
+---------------------------------------------------------------------------------------------------- Enter key in a Form
+onkeypress="if (window.event && window.event.keyCode == 13)this.form.submit();"
+________________________________________________________________________________________________________________________
+---------------------------------------------------------------------------------------------------- Opening windows
+window.open('somefile.html','My window name','width=630px,height=500px');
+window.open('url to open','window name','attribute1,attribute2')
+
+Center window on the screen:
+window.open('somefile.html','My window name','width=630px,height=500px,left=' + ((screen.width-630)/2) + 'px,top=' + ((screen.height-500)/2) + 'px');
+
+This is the function that allows you to open a new browser window for the viewer to use. Note that all the names and attributes are separated with a comma rather than spaces. Here is what all the stuff inside is:
+   1. 'url to open'
+      This is the web address of the page you wish to appear in the new window.
+   2. 'window name'
+      You can name your window whatever you like, in case you need to make a reference to the window later.
+   3. 'attribute1,attribute2'
+      As with alot of other things, you have a choice of attributes you can adjust.
+
+   1. width=300                      Use this to define the width of the new window.
+   2. height=200                     Use this to define the height of the new window.
+   3. resizable=yes or no            Use this to control whether or not you want the user to be able to resize the window.
+   4. scrollbars=yes or n            This lets you decide whether or not to have scrollbars on the window.
+   5. toolbar=yes or no              Whether or not the new window should have the browser navigation bar at the top (The back, foward, stop buttons..etc.).
+   6. location=yes or no             Whether or not you wish to show the location box with the current url (The place to type http://address).
+   7. directories=yes or no          Whether or not the window should show the extra buttons. (what's cool, personal buttons, etc...).
+   8. status=yes or no               Whether or not to show the window status bar at the bottom of the window.
+   9. menubar=yes or no              Whether or not to show the menus at the top of the window (File, Edit, etc...).
+  10. copyhistory=yes or no          Whether or not to copy the old browser window's history list to the new window.
+
+  11. screenX=number in pixels       Sets the position of the window in pixels from the left of the screen in Netscape 4+.
+  12. screenY=number in pixels       Sets the position of the window in pixels from the top of the screen in Netscape 4+.
+  13. left=number in pixels          Sets the position of the window in pixels from the left of the screen in IE 4+.
+  14. top=number in pixels           Sets the position of the window in pixels from the top of the screen in IE 4+.
+
+________________________________________________________________________________________________________________________
+---------------------------------------------------------------------------------------------------- Embed a SWF file
+<OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" WIDTH="320" HEIGHT="240" id="Yourfilename" ALIGN="">
+    <PARAM NAME=movie VALUE="Yourfilename.swf">
+    <PARAM NAME=quality VALUE=high>
+    <PARAM NAME=bgcolor VALUE=#333399>
+    <EMBED src="Yourfilename.swf" quality=high bgcolor=#333399 WIDTH="610" HEIGHT="480" NAME="Yourfilename" ALIGN="" TYPE="application/x-shockwave-flash" PLUGINSPAGE="http://www.macromedia.com/go/getflashplayer"></EMBED> 
+</OBJECT>
+

@@ -3,10 +3,10 @@
     xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>apps</artifactId>
         <groupId>ro.bmocanu.mobile</groupId>
-        <version>1.0</version>
-    </parent>
+        <artifactId>mobile-apps</artifactId>
+        <version>0.1</version>
+     </parent>
     <groupId>ro.bmocanu.mobile.apps</groupId>
     <artifactId>metris</artifactId>
     <version>0.1-SNAPSHOT</version>

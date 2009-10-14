@@ -1,0 +1,43 @@
+Spring Webflow Notes
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:webflow="http://www.springframework.org/schema/webflow-config"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://www.springframework.org/schema/webflow-config http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd">
+
+    <webflow:flow-registry id="flowRegistry">
+        <webflow:flow-location id="testFlow" path="classpath:/zendo/playground/spring/TestCustomWebFlow-testFlow.xml" id="testFlow"/>
+    </webflow:flow-registry>
+    <webflow:flow-executor id="flowExecutor" />
+    <bean name="cat" class="zendo.playground.spring.CatBean" />
+</beans>
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+    <on-start>
+        <evaluate expression="cat.getMessage()" result="flowScope.catMessage" />
+    </on-start>
+
+    <action-state id="state1">
+        <evaluate expression="cat.doSmtPhase1()"></evaluate>
+        <transition to="state2"/>
+    </action-state>
+    
+    <action-state id="state2">
+        <evaluate expression="cat.doSmtPhase2()"></evaluate>
+        <transition to="state3"/>
+    </action-state>
+    
+    <action-state id="state3">
+        <evaluate expression="cat.doSmtPhase3()"></evaluate>
+        <transition to="endState"/>
+    </action-state>
+
+    <end-state id="endState" />
+</flow>
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+FlowExecutor executor = (FlowExecutor) appContext.getBean( "flowExecutor" );
+executor.launchExecution( "testFlow", null, null );

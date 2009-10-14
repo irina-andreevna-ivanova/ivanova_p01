@@ -1,0 +1,59 @@
+JDBC - DBUtils - accessing the database in a non ORM-manner
+-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Getting a connection through a datasource
+
+        try {
+            String dataSourceJNDIName = "someName";
+
+            Hashtable<String, String> contextProperties = new Hashtable<String, String>();
+            contextProperties.put( Context.INITIAL_CONTEXT_FACTORY, "weblogic.jndi.WLInitialContextFactory" );
+            contextProperties.put( Context.PROVIDER_URL, "t3://localhost:7001" );
+            
+            Context ctx = new InitialContext( contextProperties );
+            // Context ctx = new InitialContext();
+
+            DataSource dataSource = (DataSource) ctx.lookup( dataSourceJNDIName );
+            Connection con = dataSource.getConnection();
+            
+        } catch ( NamingException exception ) {
+            exception.printStackTrace();
+        } catch ( SQLException exception ) {
+            exception.printStackTrace();
+        }
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Getting a connection through DriverManager
+
+        String sqlDriverClassName = "com.microsoft.jdbc.sqlserver.SQLServerDriver";
+        try {
+            Class.forName( sqlDriverClassName );
+            String url = "jdbc:microsoft:sqlserver://localhost:1433;databaseName=TestDB;SelectMethod=CURSOR";
+            String username = "sa";
+            String password = "sa";
+            Connection con = DriverManager.getConnection( url, username, password );
+            
+        } catch ( ClassNotFoundException exception ) {
+            exception.printStackTrace();
+        } catch ( SQLException exception ) {
+            exception.printStackTrace();
+        }
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Various cases using plain JDBC calls
+            
+        PreparedStatement prepStat = con.prepareStatement( "SELECT * FROM Table1 WHERE id=?" );
+        prepStat.setLong( 1, 23 ); // the index starts from 1 
+        ResultSet rSet = prepStat.executeQuery();
+        
+        while( rSet.next() ) {
+            User user = new User();
+            user.setId( rSet.getLong( 1 ) ); // the first column index is 1
+            user.setUsername( rSet.getString( 2 ) );
+            user.setPassword( rSet.getString( 3 ) );
+        }
+        
+        rSet.close();
+        
+        con.close(); // always remember to close the connection

@@ -1,0 +1,201 @@
+------------------------------------------------------------------------------------------------------------
+JUnit
+------------------------------------------------------------------------------------------------------------
+- tests can use test fixture: methods annotated with @Before, @After
+- a good decision is Design For Testing: write methods so that they can easily be tested (instead of receiving
+    a FileWriter to write to, make them receive a Writer, so that you can use a StringWriter, for ex)
+- for tests that need to fail when an exception is thrown, simply let the exception bubble up
+- DO NOT report multiple failures per test
+- DO NOT catch exceptions, of any kind. Let them bubble up to JUnit
+- DO NOT use the constructor of the test case to set things up
+- DO NOT just test the happy path, test the boundary conditions and the out-of-domain values as well
+- DO NOT test the implementation, test the fixture
+- DO NOT make your tests more complicated that the code under test
+- DO NOT load data from hard-coded locations on a filesystem
+- DO NOT assume the order in which the tests in a test case are executed
+    - if however you still need an ordering, then use a suite() method, that returns a Test object,
+      and which builds the Test suite by adding tests
+- AVOID writing tests that have side effects
+- Keep tests in the same location as the source code
+    - well, best is to keep the tests in the same module, but in a different source folder, so that the
+      packaging of the source and binary files can be made independent from the test files
+- Name tests properly
+    - TestXXXXXXX; methods public void testXxxxxxxxxx()
+- Ensure that tests are time-independent
+- Consider locale when writing tests
+- Call a superclass's setUp() and tearDown() methods when subclassing
+- Utilize JUnit's assert/fail methods and exception handling for clean test code
+- Document tests in javadoc
+- Keep tests small and fast
+- Build a test case for the entire system
+- Test thread safety
+- Avoid visual inspection
+    - Swing
+    - XML
+    - Servlets
+- the basic structure of a test:
+    - set up
+    - declare the expected results
+    - excercise the CUT (class under test)
+    - get the actual results
+    - assert that the actual results match the expected results
+- use test fixtures sparingly (methods that test multiple actions for CUT (ClassUnderTest))
+- running JUnit with "-ea" reports failed Java "assert"ions as JUnit assertions
+- Use Cactus to test JEE components in their natural env
+- use @BeforeClass and @AfterClass for fixtures common to all tests, fixtures that must be executed once
+  before all the tests, and once after all the tests -> general execution steps:
+            oneTimeSetUp()
+            setUp()
+            testEmptyCollection()
+            tearDown()
+            setUp()
+            testOneItemCollection()
+            tearDown()
+            oneTimeTearDown()
+- ignore a test method or an entire class with @Ignore
+- @RunWith(Parameterized.class)
+        .....
+        @Parameters
+        public static Collection<Object[]> data() {
+            return Arrays.asList(new Object[][] { Fibonacci, { { 0, 0 }, { 1, 1 }, { 2, 1 }, { 3, 2 }, { 4, 3 }, { 5, 5 }, { 6, 8 } } });
+        }
+
+        @Test
+        public void test(@HeresHowYouGetValue Type value) {
+                assertAnswerKey(new Object[][] { Fibonacci, { { 0, 0 }, { 1, 1 }, { 2, 1 }, { 3, 2 }, { 4, 3 }, { 5, 5 }, { 6, 8 } } });
+                assertEquals(fExpected, Fibonacci.compute(fInput));
+        }
+- tests can be sorted, although this should not be used for making inter-dependent tests
+- @RunWith( JUnit4.class ) - always runs the JUnit test with the default runner, for that version of JUnit
+- since JUnit 4.4, one can use hamcrest-style assertions:
+        assertThat(x, is(3));
+        assertThat(x, is(not(4)));
+        assertThat(responseString, either(containsString("color")).or(containsString("colour")));
+        assertThat(myList, hasItem("3"));
+- since JUnit 4.4, Theories have been introduced:
+        @RunWith(Theories.class)
+        public class SomeTest {
+            @Theory
+            public void testTheNewTheoriesStuff(int value) {
+                // test which involves int value
+            }
+            public static @DataPoints int[] values = {1,2,3,4,5};
+        }
+- since JUnit 4.4, Assumptions have been introduced. When an assumption fails, that test is simply ignored
+  and not executed beyond the failed assumption
+- @Theory, Theories.class (the runner for theories tests), @DataPoint, @DataPoints
+- @Theory - combined usage with Assumptions
+        @Theory
+        defnOfSquareRoot(double  n)  {
+            assumeTrue(n >= 0);
+            assertEquals(n, sqrRoot(n) * sqrRoot(n), 0.01);
+            assertTrue(sqrRoot(n) >= 0);
+        }
+
+        @RunWith(Theories)
+        public  class  SquareRoot  {
+            @DataPoint public  double  FOUR  =  4.0;
+            @DataPoint public  double  NINE  =  9.0;
+            @Theory
+            defnOfSquareRoot(double  n)  {  ...  }
+        }
+- David Saff, from MIT:
+    - developed (http://groups.csail.mit.edu/pag/pubs/test-theory-demo-oopsla2007.pdf) Theories.class runner
+      for JUnit (included in 4.4)
+    - devleoped Theory Explorer, which analyzes the code, the data points and the results of the test, and
+      for inputs that fail, it prompts the user for: a) creating a new DataPoint, if this is a bug, or b)
+      adding the required assumption in case this is a missing assumption.
+- with parameterized tests (either simple or in conjunction with Theories), a test can be fed multiple sets
+  of data
+        @Parameters
+        public static Collection<Object[]> data() {
+            ...
+        }
+------------------------------------------------------------------------------------------------------------
+JUnit AntiPatterns
+------------------------------------------------------------------------------------------------------------
+- Misuse of Assertions
+          o Manual Assertions
+          o Multiple Assertions
+          o Redundant Assertions
+          o Using the Wrong Assert
+- Superficial Test Coverage
+- Overly Complex Tests
+- External Dependencies
+- Catching Unexpected Exceptions
+- Mixing Production and Test Code
+- No Unit Tests
+- Happy paths tests
+    - testing the happy path is ok, but doing only this kind of test is NOT
+    - if you test the happy path, at least make 2 tests of happy paths. Chances that both tests are validated by
+      an erroneous implementation are drastically reduced (comparing with the case of having only one happy path test)
+- Missing validation and boundary tests
+- Easy tests
+-
+
+------------------------------------------------------------------------------------------------------------
+Code snippets
+------------------------------------------------------------------------------------------------------------
+
+package junitfaq;
+
+import org.junit.*;
+import static org.junit.Assert.*;
+
+import java.util.*;
+
+public class SimpleTest {
+    @Test
+    public void testEmptyCollection() {
+        Collection collection = new ArrayList();
+        assertTrue(collection.isEmpty());
+    }
+
+    public static junit.framework.Test suite() {
+        return new junit.framework.JUnit4TestAdapter(SimpleTest.class);
+    }
+
+    public static void main(String args[]) {
+      org.junit.runner.JUnitCore.main("junitfaq.SimpleTest");
+    }
+}
+
+------------------------------------------------------------------------------------------------------------
+JUnit test template
+------------------------------------------------------------------------------------------------------------
+
+import org.junit.*;
+import static org.junit.Assert.*;
+
+public class SampleTest {
+
+    private java.util.List emptyList;
+
+    /**
+     * Sets up the test fixture.
+     * (Called before every test case method.)
+     */
+    @Before
+    public void setUp() {
+        emptyList = new java.util.ArrayList();
+    }
+
+    /**
+     * Tears down the test fixture.
+     * (Called after every test case method.)
+     */
+    @After
+    public void tearDown() {
+        emptyList = null;
+    }
+
+    @Test
+    public void testSomeBehavior() {
+        assertEquals("Empty list should have 0 elements", 0, emptyList.size());
+    }
+
+    @Test(expected=IndexOutOfBoundsException.class)
+    public void testForException() {
+        Object o = emptyList.get(0);
+    }
+}

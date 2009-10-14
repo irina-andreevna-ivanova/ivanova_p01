@@ -1,0 +1,29 @@
+<html>
+<head>
+	<script type="text/javascript">
+		function onModuleLoad(spotname) {
+			var moduleContent = document.getElementById("sd.module.content").innerHTML;
+			if (parent.processModuleContent) parent.processModuleContent(spotname, moduleContent); else alert("Error loading module!");
+			if (parent.refreshLocalLinks) parent.refreshLocalLinks(); else alert("Error loading LocalLinks module!");
+		}
+	</script>
+</head>
+<body onLoad="onModuleLoad( 'sd.locallinks' )">
+<div id="sd.module.content">
+    <div id="moduleLocalLinksHolder" style="width: 100%;"></div>
+</div>
+</body>
+</html>       
+<!--
+<img src="common/images/icon-pdf.png">
+<img src="common/images/icon-img.png">
+<img src="common/images/icon-spec.png">
+<img src="common/images/icon-apache-maven.png">
+<img src="common/images/icon-apache-maven-altrepo.png">
+<img src="common/images/icon-txt.png">
+<img src="common/images/icon-txtdoc.png">
+<img src="common/images/icon-book.gif">
+<img src="common/images/rated-1s.jpg">
+<img src="common/images/rated-2s.jpg">
+<img src="common/images/rated-3s.jpg">
+-->

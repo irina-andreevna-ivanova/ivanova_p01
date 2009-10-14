@@ -1,0 +1,48 @@
+Apache Maven repositories
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+    <repositories>
+        <repository>
+            <id>jboss.org</id>
+            <name>jboss.org</name>
+            <url>http://repository.jboss.org/maven2</url>
+        </repository>
+        <repository>
+            <id>mirrors.ibiblio.org</id>
+            <name>mirrors.ibiblio.org</name>
+            <url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
+        </repository>
+        <repository>
+            <id>java.net/maven/2</id>
+            <name>java.net repository for Maven 2</name>
+            <url>http://download.java.net/maven/2</url>
+        </repository>
+        <repository>
+            <id>java.net/maven/1</id>
+            <name>java.net repository for Maven 1</name>
+            <url>http://download.java.net/maven/1</url>
+            <layout>legacy</layout>
+        </repository>
+        <repository>
+            <id>smile.mit.edu</id>
+            <name>smile.mid.edu</name>
+            <url>http://simile.mit.edu/maven</url>
+        </repository>
+        <repository>
+            <id>codehaus.org</id>
+            <name>codehaus.org</name>
+            <url>http://repository.codehaus.org</url>
+        </repository>
+        <repository>
+            <id>snapshots.codehaus.org</id>
+            <name>snapshotscodehaus.org</name>
+            <url>http://snapshots.repository.codehaus.org</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>maven.atlassian.com</id>
+            <name>maven.atlassian.com</name>
+            <url>http://maven.atlassian.com/repository/public/</url>
+        </repository>
+    </repositories>

@@ -1,0 +1,56 @@
+<html>
+<head>
+<script type="text/javascript" src="../common/scripts/sd-modules.js"></script>
+</head>
+<body onLoad="onModuleLoad( 'sd.dev.java.apache.maven' )">
+<div id="sd.module.content">
+                Maven <a href="http://maven.apache.org/">Homepage</a> | <a href="http://maven.apache.org/download.html">Download</a> | <a href="http://maven.apache.org/guides/index.html">Guide index</a> | <a href="http://maven.apache.org/guides/getting-started/maven-in-five-minutes.html">5min</a> | <a href="http://maven.apache.org/guides/getting-started/index.html">30min</a><br/>
+                <a href="http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html">Maven Standard directory layout</a><br/>
+                <a href="http://maven.apache.org/ref/2.0.4/maven-settings/settings.html">Maven 2.0.4 settings.xml file reference</a><br/>
+                <a href="http://maven.apache.org/ref/2.0.4/maven-model/maven.html">Maven 2.0.4 pom.xml file reference</a><br/>
+                <a href="docs/sd.dev.java.apache.maven.commandsamples.txt">Maven Various command samples</a><img src="common/images/icon-txtdoc.png"> | <a href="docs/sd.dev.java.apache.maven.pomxmlsamples.txt">pom.xml samples</a><img src="common/images/icon-txtdoc.png"><br/>
+                <a href="http://maven.apache.org/guides/introduction/introduction-to-repositories.html">Maven Repositories</a> | <a href="http://maven.apache.org/guides/mini/guide-mirror-settings.html">Using mirrors</a> | <a href="docs/sd.dev.java.apache.maven.repos.txt">Repositories</a><img src="common/images/icon-txtdoc.png"><br/>
+                Sonatype <a href="http://repository.sonatype.org/index.html">Nexus Maven repository</a><img src="common/images/rated-3s.jpg"> | <a href="http://www.sonatype.com/documentation/books">Books</a><br/>
+                Sonatype <a href="http://www.sonatype.com/books/m2eclipse-book/reference/">m2eclipse reference</a><img src="common/images/icon-book.gif"><br/>
+                Sonatype <a href="http://www.sonatype.com/books/maven-book/reference/public-book.html">Maven: The Definitive Guide</a><img src="common/images/icon-book.gif"><br/>
+                Sonatype <a href="http://www.sonatype.com/books/mcookbook/reference/">Maven: Cookbook</a><img src="common/images/icon-book.gif"><br/>
+
+                <table cellpadding="0px" cellspacing="0px" width="100%">
+                    <tr>
+                        <td>Search</td>
+                        <td style="width: 1%;">
+                            <select id="apache.maven.searchSelect">
+                                <option value="site:maven.org maven2" selected>maven.org</option>
+                                <option value="site:ibiblio.org maven2">ibiblio.org</option>
+                                <option value="site:jboss.org maven2">jboss.org</option>
+                                <option value="site:download.java.net maven2">java.net</option>
+                            </select>
+                        </td>
+                        <td>
+                            <form method="get" action="" target="_blank" >
+                                <table cellpadding="0px" cellspacing="0px" width="100%"><tr><td>
+                                    <input id="apache.maven.searchText" name="q" size="20" maxlength="255" value="" type="text" style="width: 100%;" onClick="this.value='';">
+                                </td><td style="width: 1%">
+                                    <input value="Go" type="submit" onClick="searchOnGoogle( document.getElementById('apache.maven.searchSelect').options[ document.getElementById('apache.maven.searchSelect').selectedIndex ].value + ' ' + document.getElementById('apache.maven.searchText').value ); return false;"><br/>
+                                </td></tr></table>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><a href="http://www.mvnrepository.com" target="_blank">mvnrepository.com</a></td>
+                        <td>
+                            <form action="http://www.mvnrepository.com/search.html" target="_blank">
+                                <table cellpadding="0px" cellspacing="0px" width="100%"><tr><td>
+                                    <input type="text" value="" name="query" maxlength="40" size="40" id="query" style="width: 100%; background-color: #DDEEFF;" onClick="this.value='';"/>
+                                </td><td style="width: 1%">
+                                    <input type="submit" value="Go"/>
+                                </td></tr></table>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+                <a href="http://maven.apache.org/doxia/references/apt-format.html">Maven The APT format</a> | <a href="http://maven.apache.org/plugins/">Maven Plugins</a><br/>
+                Maven <a href="http://www.nabble.com/War-plugin-and-filtering-webapp-files-td4384723.html">Filtering the web.xml</a>
+</div>
+</body>
+</html>

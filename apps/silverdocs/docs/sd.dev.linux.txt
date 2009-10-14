@@ -1,0 +1,31 @@
+Linux 
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Various commands
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+RPM
+
+rpm -ivh mypack-2.0.3-i386.rpm                               -> install package (full filename)
+rpm -i mypack-2.0.3-i386.rpm
+rpm -e mypack                                                -> remove package installation/record (package name only)
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+TAR GZ
+
+tar -zxvf file.tar.gz                                        -> unpacks the archive, creating a folder with the same name
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Misc
+
+/usr/bin                                                     -> installed user programs
+/var/lib/mysql/mysql.sock                                    -> socket file for LOCAL access to mysql
+chmod -R +rw .                                               -> assign read+write rights to all files+folder in the current directory (plus recursion)
+
+/etc/bashrc                                                  -> settings of global variables
+/etc/profile                                                 -> settings of environment variables
+/etc/resolv.conf                                             -> list of nameservers (it is overwritten on each restart, if Automatic DNS is set on the network card)
+/home/myuser/.bashrc                                         -> settings for each user
+/home/myuser/.bashrc_profile                                 -> settings for env variables, for each user
+
+service <name> start|stop|restart|status                     -> service management
+chkconfig --level=345 <name> on                              -> set service to start automatically on startup
+

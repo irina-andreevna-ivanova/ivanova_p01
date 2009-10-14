@@ -1,0 +1,99 @@
+SQL - Various sql samples
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+CREATE
+
+CREATE customers (customer_id INTEGER PRIMARY KEY, first_name VARCHAR(25), last_name VARCHAR(30), credit_limit MONEY)
+CREATE invoices (invoice_number INTEGER PRIMARY KEY, ordered_by INTEGER,invoice_total MONEY, total_paid MONEY)
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+SELECT
+
+SELECT customer_id, first_name, last_name, credit_limit
+ FROM customers, invoices
+ WHERE ordered_by = customer_id
+ AND credit_limit < (SELECT SUM(invoice_total - total_paid)
+                     FROM invoices
+                     WHERE ordered_by = customer_id)
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+CREATE PROCEDURE
+
+CREATE PROCEDURE <procedure name> [; <version number>]
+  [
+  {@<parameter name> <data type> [VARYING] [=<default value>][OUTPUT],
+  {@<parameter name> <data type> [VARYING] [=<default value>][OUTPUT],
+  {@<parameter name> <data type> [VARYING] [=<default value>][OUTPUT],
+  ]
+  [WITH {RECOMPILE|ENCRYPTION|RECOMPILE,ENCRYPTION}]
+  [FOR REPLICATION]
+AS <Transact-SQL statement(s)>
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+DECLARE
+
+DECLARE @<variable name> <data type>
+         [...,@<last variable name> <last data type>]
+
+DECLARE @customer_count INTEGER, @total_sales REAL, @best_sales_date DATETIME
+SET @customer_count = 0
+SET @total_sales = 0.00
+SET @best_sales_date = ''
+SELECT @customer_count =  0, @total_sales = 0.00, @best_sales_date = ''
+
+DECLARE
+  @customer_name VARCHAR(26)
+  @largest_order MONEY      /* largest order placed by a
+                               single customer */
+  @total_sales MONEY        /* grand total sales made */
+  @salesperson_ID
+
+SELECT @customer_name =
+         RTRIM(first_name) + ' ' + RTRIM(last_name),
+       @largest_order = order_total,
+       @salesperson_ID = salesperson_ID
+FROM customers
+ORDER BY order_total
+
+SELECT @total_sales = SUM(order__total)
+FROM customers
+WHERE salesperson_ID = @salesperson_ID
+
+PRINT 'Largest order ('+CONVERT(VARCHAR(10),@largest_order)
+  + ') placed by' +@customer_name+' Sales Rep: '
+  +CONVERT (VARCHAR(6),@salesperson_ID)
+PRINT  'Total  sales  for rep: '
+  +CONVERT(VARCHAR(6),@salesperson_ID)+' = '
+  +CONVERT(VARCHAR(10),@total_sales)
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+EXECUTE
+
+create Procedure dbo.ap_EqIdByMakeModel_List_6
+     @chvMake  varchar(50) = '%',
+     @chvModel varchar(50) = '%'
+as
+     Select *
+     from dbo.Equipment
+     where Make Like @chvMake
+     and Model Like @chvModel
+
+Execute dbo.ap_EqIdByMakeModel_List_6 'T%' , 'Portege%'
+Execute dbo.ap_EqIdByMakeModel_List_6 'T%'
+Execute dbo.ap_EqIdByMakeModel_List_6
+Execute dbo.ap_EqIdByMakeModel_List_6 ©Model = 'T%'
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+RETURNING VALUES FROM SP
+
+Create Procedure dbo.ap_Eq!dByMakeModel_List_5
+     @chvMake varchar(50),
+     @chvModel varchar(50),
+     @intEqId int output
+as
+     select @intEqId = EqId
+     from dbo.Equipment
+     where Make = @chvMake
+     and Model = @chvModel
+Return @@error
+

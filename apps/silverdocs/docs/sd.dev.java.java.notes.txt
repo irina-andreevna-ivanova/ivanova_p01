@@ -1,0 +1,54 @@
+Java Notes ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+___________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Memory allocation
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Stack - the place where method names, local variables, intermediate computations and return values (if any)
+        are kept. The stack contains stack frames. Upon each invocation, the JVM pushes another frame
+        in the stack. Upon return from a method, the JVM pops the frame from the stack.
+      - member variables
+      - each thread has its own stack instance
+      - stack is thread safe
+      
+      -Xss512k -> control the size of the stack
+      
+Heap  - the place where the instance variables and the object data are kept. To allocate the memory for
+        the heap, use -Xmn, -Xms, -Xmx
+      - local variables
+      - all threads share the same heap
+      - heap is not thread safe
+      
+Setting Java heap for various apps: 
+http://javahowto.blogspot.com/2006/06/6-common-errors-in-setting-java-heap.html
+
+___________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Collections
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Collection - Set   - SortedSet
+           - List
+           - Queue
+Map        - SortedMap
+
+___________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Using java.net Authenticator
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Authenticator.setDefault(new MyAuthenticator("user","password"));
+URL url = new URL("http://localhost:5300/database?_query='for $a in collection('test')/types return $a'");
+InputStream resultStream = url.openStream();
+
+class MyAuthenticator extends Authenticator {
+  private String username, password;
+
+  public MyAuthenticator(String username, String password) {
+      this.username = username;
+      this.password = password;
+  }
+
+  // This method is called when a password-protected URL is accessed
+  protected PasswordAuthentication getPasswordAuthentication() {
+      return new PasswordAuthentication(username, password.toCharArray());
+  }
+}

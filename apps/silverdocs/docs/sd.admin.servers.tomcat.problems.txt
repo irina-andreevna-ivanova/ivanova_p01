@@ -1,0 +1,46 @@
+Problems encountered with Tomcat
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Tomcat 5.0
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    NoSuchMethodError: org.w3c.dom.Document.setXmlStandalone(Z)
+            - each Tomcat application has an XML parser embedded, which is used by all the web application deployed 
+              on it. Tomcat 5.0 has the XML parse in <tomcat>/common/endorsed/xml-apis.jar. This jar contains, among 
+              other classes, the org.w3c.dom.Document class, but in an old version, which has no 
+              setXmlStandalone(boolean) method.
+            - an web application has another version of this class, as well as JDK 1.5, but Tomcat loads his 
+              own xml-apis.jar library before all the others, so that is why it throws the 
+              NoSuchMethodError: org.w3c.dom.Document.setXmlStandalone(Z)
+            - the problem was put into focus by deploying an application that uses Apache CXF. The service was
+              working fine, servicing requests ok. But when the "?wsdl" generation was called, it thrown the
+              aforementioned exception.
+            - stack trace sample:
+              2008-11-20 10:10:49 StandardWrapperValve[CXFServlet]: Servlet.service() for servlet CXFServlet threw exception
+                java.lang.NoSuchMethodError: org.w3c.dom.Document.setXmlStandalone(Z)V
+                    at org.apache.cxf.transport.http.WSDLQueryHandler.updateDoc(WSDLQueryHandler.java:253)
+                    at org.apache.cxf.transport.http.WSDLQueryHandler.writeResponse(WSDLQueryHandler.java:201)
+                    at org.apache.cxf.transport.servlet.ServletController.invoke(ServletController.java:152)
+                    at org.apache.cxf.transport.servlet.AbstractCXFServlet.invoke(AbstractCXFServlet.java:174)
+                    at org.apache.cxf.transport.servlet.AbstractCXFServlet.doGet(AbstractCXFServlet.java:156)
+                    at javax.servlet.http.HttpServlet.service(HttpServlet.java:689)
+                    at javax.servlet.http.HttpServlet.service(HttpServlet.java:802)
+                    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:252)
+                    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:173)
+
+            - TEST: tested with various versions of Apache CXF: 2.1.3 (latest one at that time), 2.1, 2.0.6 -> NO SUCCESS
+            - TEST: the app was also using Xalan 2.1.7 that in turn uses xml-apis-1.3.04.jar. Tried replacing xml-apis.jar
+              from <tomcat>/common/endorsed with this version, but of course it didn't work, Tomcat was crashing at startup
+              asking for some more libs.             
+              
+            - SOL: delete the <tomcat>/common/endorsed/xml-apis.jar. This will force Tomcat to load the library 
+              from the web app WAR, and it should work ok. However, if on that Tomcat there are other 
+              applications that are using this jar, problems might arise.
+            - SOL: At this address: http://tomcat.apache.org/download-55.cgi one can find the JDK 1.4 Compatibility 
+              Package, which contains 2 jars: xml-apis.jar and xercesImpl.jar. Overwriting the files in 
+              <tomcat>/common/endorsed fixes the problem. However, this might not be suitable for production
+              environments and clients that do not accept this type of Tomcat change.
+            - SOL: Upgrade Tomcat to Tomcat 5.5. This again solves the problem. 
+        
+
+ 
+         

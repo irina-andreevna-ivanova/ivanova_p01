@@ -1,0 +1,52 @@
+JSTL - How to use
+-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+1) Configure web.xml:
+
+...
+<welcome-file-list>
+	<welcome-file>index.jsp</welcome-file>
+</welcome-file-list>
+
+<taglib>
+	<taglib-uri>http://java.sun.com/jstl/fmt</taglib-uri>
+	<taglib-location>/WEB-INF/fmt.tld</taglib-location>
+</taglib>
+<taglib>
+	<taglib-uri>http://java.sun.com/jstl/core</taglib-uri>
+	<taglib-location>/WEB-INF/c.tld</taglib-location>
+</taglib>
+<taglib>
+	<taglib-uri>http://java.sun.com/jstl/sql</taglib-uri>
+	<taglib-location>/WEB-INF/sql.tld</taglib-location>
+</taglib>
+<taglib>
+	<taglib-uri>http://java.sun.com/jstl/x</taglib-uri>
+	<taglib-location>/WEB-INF/x.tld</taglib-location>
+</taglib>
+...
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+2) Put the tld files in /WEB-INF or in some other folder from /WEB-INF
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+3) Use the tags in a page
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  ....
+	  xmlns:jstlc="http://java.sun.com/jstl/core">
+<body>
+
+<jstlc:forEach items="#{comps}" var="comp">
+		<tr>
+			<td>
+				#{comp}
+			</td>
+		</tr>
+</jstlc:forEach>

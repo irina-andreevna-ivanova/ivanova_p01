@@ -1,0 +1,144 @@
+Sun Coding Conventions
+------------------------------------------------------------------------------------------------------------
+- files longer than 2000 lines are cumbersome
+- each java source file contains a single public class or interface. It may also contain private classes and 
+  interfaces
+- structure of a java file:
+    - beginning comments -> c-style, /* .......... ........... .............. */
+    - package and import statements
+    - class+interface declaration
+        - documentation comment
+            /**
+             *
+             */
+        - class or interface statement
+        - implementation comment
+            /*
+             *
+             */
+        - static variables: public -> protected -> private
+        - instance variables: public -> protected -> private
+        - constructors
+        - methods
+            - grouping must be made by functionality, instead of scope or accessibility (or name)
+    - 4 spaces should be used (spaces or tab). Tabs must be 8 spaces (not 4)
+    - lines max 80 chars
+    - wrapping:
+        - break after comma
+        - break before an operator
+        - prefer higher level break to lower level breaks
+        - when the wrapping makes the code hard to read, use the 8 spaces rule (use 1 tab)
+    - comments 
+        - implementation comments: /* .... */, //
+        - documentation comments: /** .... */
+            - should be implementation free, since these comments go in the documentation, and the users might
+              not have the source at hand
+        - avoid any comments that are likely to get outdated as the code evolves
+        - comments should not be drawn in large boxes with asterisks :)
+        - block comments /* ..\n ... \n .. */
+            - used to provide description of files, classes and methods
+            - used to provide implementation details
+            - /*-         no formatting applied to the comment
+        - single line comments /* ..... */ \n
+        - trailing comments
+        - EOL comments // ..... \n
+    - declarations
+        - one declaration per line
+        - do not put different declarations on the same line ( int foo, fooArray[] )
+        - tabs can be used to align the names of the fields, and the trailling + EOL comments
+        - declarations at the beginning of the block ONLY
+        - AVOID declarations that are shadowing other variables
+    - initialize the variable right at declaration
+    - each line should contain one statement
+    - braces should be used for all composed statement, even if there is only one statement in the bloc
+    - avoid using more than 3 variables in a for
+    - switch-case:
+           - case should be aligned with switch
+           - add /* falls through */ on each fall through case block
+           - the switch should have a default value
+           - add break statement in default (to prevent fall through problems if another case is added)
+    - use two lines
+        - between sections of a source file
+        - between classes and interfaces
+    - use one line
+        - between methods
+        - between the local variables and the first statement
+        - before a block or a single-line comment
+        - between logical sections to improve readability
+    - a space should come after each keyword
+    - naming conventions
+        - class names should be nouns, mixed case
+    - make the attributes of a class public only if that is a data structure (and you would have used struct
+      instead, if Java would have had one)
+    - use a class name to access a static variable, instead of an instance
+    - use XXX to flag something bogus that works, and FIXME that is bogus and doesn't work
+    
+/*
+ * %W% %E% Firstname Lastname Copyright (c) 1993-1996 Sun Microsystems, Inc. All Rights Reserved.
+ * This software is the confidential and proprietary information of Sun Microsystems, Inc.
+ * ("Confidential Information"). You shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement you entered into with Sun. SUN
+ * MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF THE SOFTWARE, EITHER EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+ * PARTICULAR PURPOSE, OR NON-INFRINGEMENT. SUN SHALL NOT BE LIABLE FOR ANY DAMAGES SUFFERED BY
+ * LICENSEE AS A RESULT OF USING, MODIFYING OR DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
+ */
+package zendo.playground.various;
+
+import java.blah.blahdy.BlahBlah;
+
+/**
+ * Class description goes here.
+ * 
+ * @version 1.10 04 Oct 1996
+ * @author Firstname Lastname
+ */
+public class Blah extends SomeClass {
+    /* A class implementation comment can go here. */
+    /** classVar1 documentation comment */
+    public static int classVar1;
+    /**
+     * classVar2 documentation comment that happens to be more than one line long
+     */
+    private static Object classVar2;
+    /** instanceVar1 documentation comment */
+    public Object instanceVar1;
+    /** instanceVar2 documentation comment */
+    protected int instanceVar2;
+    /** instanceVar3 documentation comment */
+    private Object[] instanceVar3;
+
+    /**
+     * ...method Blah documentation comment...
+     */
+    public Blah() {
+        // ...implementation goes here...
+    }
+
+    /**
+     * ...method doSomething documentation comment...
+     */
+    public void doSomething() {
+        // ...implementation goes here...
+    }
+
+    /**
+     * ...method doSomethingElse documentation comment...
+     * 
+     * @param someParam
+     *            description
+     */
+    public void doSomethingElse( Object someParam ) {
+        // ...implementation goes here...
+    }
+}
+
+        
+        
+        
+        
+        
+        
+        
+        
+          

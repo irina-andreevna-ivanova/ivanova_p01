@@ -1,0 +1,384 @@
+Developing webservices with JAX-WS
+---------------------------------------------------------------------------------------------------------------------
+
+This works for JDK 1.6 Update 10 (tested with JDK 1.6 Update 5, not working, some classes are missing)
+ 
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+1. Write the WSDL file
+
+-> the package name is the reversed namespace (unless other settings apply ??)
+-> you must specify in the WSDL: types, messages, portTypes, bindings, services
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<wsdl:definitions targetNamespace="http://generated.intf.test1.springws.test.com"
+    name="TestService" xmlns:tns="http://generated.intf.test1.springws.test.com"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://generated.intf.test1.springws.test.com"
+            xmlns:tns="http://generated.intf.test1.springws.test.com" xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+            jxb:version="2.0">
+            <xsd:complexType name="GetStockValueRequest">
+                <xsd:sequence>
+                    <xsd:element name="registerId" type="xsd:long" />
+                    <xsd:element name="sectionId" type="xsd:long" />
+                    <xsd:element name="comment" type="xsd:string" />
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="GetStockValueResponse">
+                <xsd:sequence>
+                    <xsd:element name="registerId" type="xsd:long" />
+                    <xsd:element name="sectionId" type="xsd:long" />
+                    <xsd:element name="stockValue" type="xsd:double" />
+                    <xsd:element name="currency" type="xsd:int" />
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="getStockValue">
+        <wsdl:part name="request" type="tns:GetStockValueRequest" />
+    </wsdl:message>
+    <wsdl:message name="getStockValueResponse">
+        <wsdl:part name="response" type="tns:GetStockValueResponse" />
+    </wsdl:message>
+    <wsdl:portType name="TestServiceInterface">
+        <wsdl:operation name="getStockValue">
+            <wsdl:input message="tns:getStockValue" />
+            <wsdl:output message="tns:getStockValueResponse" />
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="TestServiceBinding" type="tns:TestServiceInterface">
+        <soap:binding style="rpc"
+            transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="getStockValue">
+            <soap:operation soapAction="http://generated.intf.test1.springws.test.com/getStockValue" />
+            <wsdl:input>
+                <soap:body use="literal" namespace="http://generated.intf.test1.springws.test.com" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" namespace="http://generated.intf.test1.springws.test.com" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="TestService">
+        <wsdl:port name="TestServicePort" binding="tns:TestServiceBinding">
+            <soap:address location="http://generated.intf.test1.springws.test.com" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+2. Modify pom.xml for the interface project, in order to configure the maven plugins for generating the classes out of the WSDL file
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.test.springws.test1</groupId>
+    <artifactId>test-interface</artifactId>
+    <packaging>jar</packaging>
+    <name>test-interface</name>
+    <url>http://maven.apache.org</url>
+    <parent>
+        <groupId>com.test.springws.test1</groupId>
+        <artifactId>test</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>1.10</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <wsdlDirectory>${project.basedir}/src/main/resources/wsdl</wsdlDirectory>
+                    <xnocompile>true</xnocompile>
+                    <bindingDirectory>${project.basedir}/src/main/resources/wsdl</bindingDirectory>
+                    <xjcArgs>
+                        <xjcArg>-verbose</xjcArg>
+                    </xjcArgs>
+                    <wsdlFiles>
+                        <wsdlFile>TestService.wsdl</wsdlFile>
+                    </wsdlFiles>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.sun.tools.xjc.addon</groupId>
+                        <artifactId>collection-setter-injector</artifactId>
+                        <version>1.0</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>commons-lang</groupId>
+                        <artifactId>commons-lang</artifactId>
+                        <version>2.3</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.sun.xml.ws</groupId>
+                        <artifactId>jaxws-tools</artifactId>
+                        <version>2.1.3</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>javax.xml.ws</groupId>
+                        <artifactId>jaxws-api</artifactId>
+                        <version>2.1</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.sun.xml.ws</groupId>
+                        <artifactId>jaxws-rt</artifactId>
+                        <version>2.1.3</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.sun.xml.bind</groupId>
+                        <artifactId>jaxb-xjc</artifactId>
+                        <version>2.1.7</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <tasks>
+                                <copy todir="${project.basedir}/src/main/java" overwrite="true">
+                                    <fileset dir="${project.build.directory}/jaxws/wsimport/java">
+                                        <include name="**/*.*" />
+                                    </fileset>
+                                </copy>
+                                <delete dir="${project.build.directory}/jaxws" />
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <filters>
+            <filter>../etc/tokens/etc.properties</filter>
+        </filters>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-xjc</artifactId>
+            <version>2.1.7</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-tools</artifactId>
+            <version>2.1.3</version>
+        </dependency>
+    </dependencies>
+</project> 
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+3. Generate classes
+
+Run "mvn clean compile" to make sure that classes are correctly generated.
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+4. Write the service implementation class
+
+package com.test.springws.test1.service;
+
+import javax.jws.WebParam;
+import javax.jws.WebService;
+import com.test.springws.test1.intf.generated.GetStockValueRequest;
+import com.test.springws.test1.intf.generated.GetStockValueResponse;
+import com.test.springws.test1.intf.generated.ObjectFactory;
+import com.test.springws.test1.intf.generated.TestServiceInterface;
+
+@WebService( name = "TestService", 
+             targetNamespace = "http://generated.intf.test1.springws.test.com", 
+             endpointInterface = "com.test.springws.test1.intf.generated.TestServiceInterface", 
+             serviceName = "TestService", 
+             portName = "TestServicePort" )
+public class TestServiceImpl implements TestServiceInterface {
+    public GetStockValueResponse getStockValue( @WebParam(name = "request", partName = "request") GetStockValueRequest request ) {
+        ObjectFactory objectFactory = new ObjectFactory();
+        GetStockValueResponse response = objectFactory.createGetStockValueResponse();
+        response.setRegisterId( request.getRegisterId() );
+        response.setSectionId( request.getSectionId() );
+        response.setCurrency( 1 );
+        response.setStockValue( 2.5 );
+
+        return response;
+    }
+}
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+5. Write the Spring configuration file
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:ws="http://jax-ws.dev.java.net/spring/core"
+       xmlns:wss="http://jax-ws.dev.java.net/spring/servlet"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+          http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+          http://jax-ws.dev.java.net/spring/core https://jax-ws.dev.java.net/spring/core.xsd
+          http://jax-ws.dev.java.net/spring/servlet https://jax-ws.dev.java.net/spring/servlet.xsd">
+
+  <!-- Webservice endpoints -->
+  <wss:bindings id="jax-ws.http">
+    <wss:bindings>
+      <wss:binding url="/services/TestService">
+        <wss:service>
+          <ws:service bean="#testService" serviceName="tns:TestService" portName="tns:TestServicePort" xmlns:tns="http://generated.intf.test1.springws.test.com">
+            <!-- ws:metadata>
+              <value>wsdl/TestService.xsd</value-->
+              <!--TODO: this does not work because of https://jax-ws-commons.dev.java.net/issues/show_bug.cgi?id=12 -->
+              <!--<value>wsdl/NVCommonTypes.xsd</value>-->
+            <!-- /ws:metadata-->
+            <ws:primaryWsdl>
+              <value>wsdl/TestService.wsdl</value>
+            </ws:primaryWsdl>
+          </ws:service>
+        </wss:service>
+      </wss:binding>
+    </wss:bindings>
+  </wss:bindings>
+
+  <bean id="testService" class="com.test.springws.test1.service.TestServiceImpl"/>
+</beans>
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+6. Write the web.xml file
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+    <servlet>
+        <description>JAX-WS endpoint</description>
+        <display-name>WSServlet</display-name>
+        <servlet-name>WSServlet</servlet-name>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSSpringServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WSServlet</servlet-name>
+        <url-pattern>/services/*</url-pattern>
+    </servlet-mapping>
+</web-app>
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+7. Write the pom.xml file for the web (publishing) project
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.test.springws.test1</groupId>
+    <artifactId>test-web</artifactId>
+    <packaging>war</packaging>
+    <name>test-web</name>
+    <url>http://maven.apache.org</url>
+    <parent>
+        <groupId>com.test.springws.test1</groupId>
+        <artifactId>test</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <dependencies>
+        <dependency>
+            <groupId>com.test.springws.test1</groupId>
+            <artifactId>test-service</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>2.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>2.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>2.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>2.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>2.5.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>2.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>2.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>2.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jvnet.jax-ws-commons.spring</groupId>
+            <artifactId>jaxws-spring</artifactId>
+            <version>1.8</version>
+            <scope>runtime</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+</project>

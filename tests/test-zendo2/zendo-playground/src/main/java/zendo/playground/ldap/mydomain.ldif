@@ -1,0 +1,6 @@
+# Root node
+dn: dc=mydomain,dc=com
+objectclass: organization
+objectclass: dcObject
+o: mydomain
+dc: mydomain

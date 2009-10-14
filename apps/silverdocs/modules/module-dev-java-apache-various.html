@@ -1,0 +1,102 @@
+<html>
+<head>
+<script type="text/javascript" src="../common/scripts/sd-modules.js"></script>
+</head>
+<body onLoad="onModuleLoad( 'sd.dev.java.apache.various' )">
+<div id="sd.module.content">
+                <table cellpadding="0px" cellspacing="0px" width="100%">
+                <tr><td style="vertical-align: top;">Ant</td>
+                <td valign="top">
+                    <a href="http://ant.apache.org/">Home</a> | <a href="http://ant.apache.org/bindownload.cgi">Download</a> | <a href="http://ant.apache.org/faq.html">FAQ</a> | <a href="http://ant.apache.org/manual/index.html">Manual</a><br/>
+                    <form method="get" action="">
+                        <table cellpadding="0px" cellspacing="0px" width="100%">
+                        <tr>
+                            <td style="width:1%">Manual&nbsp;</td>
+                            <td style="width:98%">
+                                <input type="text" id="sd.dev.java.apache.various.ant.search" style="width: 100%">
+                            </td>
+                            <td style="width:1%">
+                                <input type="submit" onClick="searchOnGoogleLucky('site:http://ant.apache.org/manual/ ' + document.getElementById( 'sd.dev.java.apache.various.ant.search' ).value);return false;" value="Search"/>
+                            </td>
+                        </tr></table>
+                    </form>
+                    <a href="http://www.sitepoint.com/article/apache-ant-demystified">Article: Apache Ant Demistified</a>
+                </td></tr>
+
+                <tr><td style="vertical-align: top;">Log4j 1.2</td><td valign="top">
+                    <a href="http://logging.apache.org/log4j/">Home</a> | <a href="http://logging.apache.org/log4j/1.2/download.html">Download</a> | <a href="http://repo1.maven.org/maven2/log4j/log4j/">Maven</a><img src="common/images/icon-apache-maven.png"> | <a href="http://logging.apache.org/log4j/1.2/faq.html">FAQ</a><br/>
+                    <a href="http://logging.apache.org/log4j/">Manual 1.2</a> | <a href="http://logging.apache.org/log4j/1.2/apidocs/index.html">API</a> | <a href="http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PatternLayout.html">PatternLayout</a><br/>
+                    <a href="docs/Apache-Log4j-log4j.properties.txt">log4j.properties sample file</a> <img src="common/images/icon-txtdoc.png"><br/>
+                    Log4j Diagnostic Contexts <a href="http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/NDC.html">NDC</a> | <a href="http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html">MDC</a><br/>
+                    Log4j Diagnostic Contexts <a href="http://www.onjava.com/pub/a/onjava/2002/08/07/log4j.html?page=3">About NDC/MDC</a><br/>
+                </td></tr>
+
+                <tr><td valign="top">Velocity</td><td valign="top">
+                    <a href="http://velocity.apache.org/">Home</a> | <a href="http://repo1.maven.org/maven2/org/apache/velocity/velocity/">Maven</a><img src="common/images/icon-apache-maven.png"> | <a href="http://mail-archives.apache.org/mod_mbox/velocity-user/">User mailing list</a><br/>
+					<form action=""><table cellpadding="0" cellspacing="0" width="100%"><tr><td style="white-space: nowrap; width: 1%;">
+					</td><td style="white-space: nowrap;">
+					    <a href="http://velocity.apache.org/engine/devel/apidocs/index.html"><span class="spaceR">API</span></a><input id="sdDevJavaApacheVelocityAPISearch" type="text" value="" onclick="this.value='';" style="width:100%;"/>
+					</td><td style="width:1%;">
+					    <input type="submit" value="Go" onclick="searchOnGoogleLucky(document.getElementById('sdDevJavaApacheVelocityAPISearch').value + ' site:http://velocity.apache.org/engine/devel/apidocs');return false;" />
+					</td></tr></table></form>
+
+                    <table width="100%">
+                    <tr>
+                        <td>Guides</td>
+                        <td><a href="http://velocity.apache.org/engine/devel/user-guide.html">User guide</a> | <a href="http://velocity.apache.org/engine/devel/developer-guide.html">Dev guide</a> | <a href="http://velocity.apache.org/engine/devel/vtl-reference-guide.html">VTL ref</a></td>
+                    </tr>
+                    <tr>
+                        <td>Texen</td>
+                        <td><a href="#" onmouseover="doTip('Texen is a general purpose text generating utility. It is capable of producing almost any sort of text output. Driven by Ant, essentially an Ant Task, Texen uses a control template, an optional set of worker templates, and control context to govern the generated output. Although TexenTask can be used directly, it is usually subclassed to initialize your control context before generating any output.')" onmouseout="undoTip()"><img src="common/images/icon-info.png"></a>
+                            <a href="http://velocity.apache.org/texen/devel/">Home</a> | <a href="http://repo1.maven.org/maven2/org/apache/texen/texen/">Maven</a><img src="common/images/icon-apache-maven.png">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>XmlGen</td>
+                        <td><a href="#" onmouseover="doTip('XmlGen makes XML nodes available to the Velocity template. You can access XML elements by name, get their attributes value, select some nodes with an XPath expression or loop on a sorted element list.')" onmouseout="undoTip()"><img src="common/images/icon-info.png"></a>
+                            <a href="http://xmlgen.sourceforge.net/">Home</a>
+                        </td>
+                    </tr>
+                    </table>
+                </td></tr>
+
+                </table>
+</div>
+</body>
+</html>
+<!--
+<img src="common/images/icon-info.png">
+<img src="common/images/icon-pdf.png">
+<img src="common/images/icon-img.png">
+<img src="common/images/icon-spec.png">
+<img src="common/images/icon-apache-maven.png">
+<img src="common/images/icon-apache-maven-altrepo.png">
+<img src="common/images/icon-txt.png">
+<img src="common/images/icon-txtdoc.png">
+<img src="common/images/icon-book.gif">
+<img src="common/images/rated-1s.jpg">
+<img src="common/images/rated-2s.jpg">
+<img src="common/images/rated-3s.jpg">
+
+<form><input id="sdDevJavaJ2SE15Search" type="text" value="" onclick="this.value='';"/><input type="submit" value="Go" onclick="searchOnGoogleLucky(document.getElementById('sdDevJavaJ2SE15Search').value + ' site:http://java.sun.com/j2se/1.5.0/docs/api/');return false;" /></form><br/>
+<form action=""><table cellpadding="0" cellspacing="0" width="100%"><tr><td style="white-space: nowrap; width: 1%;">
+</td><td>
+    <input id="sdDevJavaJ2EE15Search" type="text" value="" onclick="this.value='';" style="width:100%;"/>
+</td><td style="width:1%;">
+    <input type="submit" value="Go" onclick="searchOnGoogleLucky(document.getElementById('sdDevJavaJ2EE15Search').value + ' site:http://java.sun.com/javaee/5/docs/api/');return false;" />
+</td></tr></table></form>
+
+<form action="http://www.mvnrepository.com/search.html" target="_blank">
+    <table cellpadding="0px" cellspacing="0px" width="100%"><tr><td>
+        <input type="text" value="" name="query" maxlength="40" size="40" id="query" style="width: 100%; background-color: #DDEEFF;" onClick="this.value='';"/>
+    </td><td style="width: 1%">
+        <input type="submit" value="Go"/>
+    </td></tr></table>
+</form>
+
+<html><head><link type="text/css" rel="stylesheet" href="../common/plugins/syntaxhighlighter/SyntaxHighlighter.css"></link><script language="javascript" src="../common/plugins/syntaxhighlighter/shCore.js"></script><script language="javascript" src="../common/plugins/syntaxhighlighter/shBrushSql.js"></script><script language="javascript" src="../common/plugins/syntaxhighlighter/shBrushCss.js"></script><script language="javascript" src="../common/plugins/syntaxhighlighter/shBrushJava.js"></script><script language="javascript" src="../common/plugins/syntaxhighlighter/shBrushXml.js"></script></head><body>
+<pre name="code" class="xml">
+>>>
+</pre><script language="javascript">dp.SyntaxHighlighter.ClipboardSwf = '../common/plugins/syntaxhighlighter/clipboard.swf';dp.SyntaxHighlighter.HighlightAll('code');</script></body></html>
+
+-->

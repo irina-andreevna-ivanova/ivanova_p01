@@ -1,0 +1,65 @@
+XML - XmlBeans - various XML examples
+-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+XmlBeans samples:
+
+---------------------------------------------atom.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<atoms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:noNamespaceSchemaLocation="atom.xsd">
+    <atom value="value1" />
+    <atom value="value2" />
+    <atom value="value3" />
+</atoms>
+
+--------------------------------------------------------------atom.xsd
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="atoms">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="atom" maxOccurs="unbounded"/>
+            </xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="atom">
+		<xs:complexType>
+            <xs:attribute name="value" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
+
+------------------------------------------------------------------------------atom.xsdconfig
+<xb:config xmlns:xb="http://xml.apache.org/xmlbeans/2004/02/xbean/config">
+  <xb:namespace uri="##any">
+    <xb:package>com.test.atom.xmlbeans</xb:package>
+  </xb:namespace>
+</xb:config>
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+build.xml samples:
+
+<project name="atom" basedir="." default="xmlbeans_smt">
+    <property environment="env" />
+    <property name="app.version" value="1.0" />
+    
+    <property name="app.webroot" value="${basedir}/WebRoot" />
+    <property name="app.webinf" value="${app.webroot}/WEB-INF" />
+    <property name="app.lib" value="${app.webinf}/lib" />
+    <property name="app.tmp" value="${basedir}/tmp" />
+
+    <!-- properties required for generating XmlBeans classes -->
+    <property name="xmlbeans.home" value="${app.webinf}" />
+    <property name="xmlbeans.classpath" value="${xmlbeans.home}/lib/xbean.jar:${xmlbeans.home}/lib/jsr173_1.0_api.jar" />
+    
+	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="${xmlbeans.classpath}" />
+
+    <target name="xmlbeans_smt">
+        <echo message="scomp.atom: ${xsd.dirAtom}/atom.xsd*" />
+        <xmlbean classgendir="${app.tmp}" classpath="${xmlbeans.classpath}">
+            <fileset dir="${xsd.dirAtom}" includes="atom.xsd*" />
+        </xmlbean>
+    </target>
+
+</project>

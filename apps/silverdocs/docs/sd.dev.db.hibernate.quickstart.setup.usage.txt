@@ -1,0 +1,286 @@
+Hibernate > Quick Startup
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Manual set up
+
+Properties props = new Properties();
+props.setProperty( "hibernate.dialect", "org.hibernate.dialect.Oracle9Dialect" );
+props.setProperty( "hibernate.connection.url", "jdbc:oracle:thin:@localhost:1521:mydb" );
+props.setProperty( "hibernate.connection.username", "system" );
+props.setProperty( "hibernate.connection.password", "system" );
+props.setProperty( "hibernate.connection.driver_class", "oracle.jdbc.driver.OracleDriver" );
+props.setProperty( "hibernate.hbm2ddl.auto", "update" );
+
+Configuration hibernateConfiguration = new Configuration();
+hibernateConfiguration.setProperties( props );
+
+//hibernateConfiguration.addFile("bin/com/mypack/AccessDTO.hbm.xml" );
+hibernateConfiguration.addResource( "com/mypack/AccessDTO.hbm.xml" );
+hibernateSessionFactory = hibernateConfiguration.buildSessionFactory();
+
+hibernateSessionFactory.close();
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Properties-file-based set up
+
+Hibernate will look for the hibernate.properties file in the root folder of the classpath.
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+XML-based set up
+
+hibernate.cfg.xml
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="dialect">org.hibernate.dialect.Oracle9Dialect</property>
+        <property name="connection.url">jdbc:oracle:thin:@localhost:1521:mydb</property>
+        <property name="connection.username">system</property>
+        <property name="connection.password">system</property>
+        <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+        <!-- check the DB schema on startup, and perform the necessary changes -->
+        <property name="hbm2ddl.auto">update</property>
+        
+or --------------- (Microsoft SQLServer)        
+        <property name="connection.url">jdbc:microsoft:sqlserver://localhost:1433;DatabaseName=TestMyHibernate;SelectMethod=CURSOR</property>
+        <property name="connection.url">jdbc:jtds:sqlserver://localhost:1433;DatabaseName=TestHibernate;SelectMethod=CURSOR</property>
+        <property name="connection.driver_class">com.microsoft.jdbc.sqlserver.SQLServerDriver</property>
+        <property name="dialect">org.hibernate.dialect.SQLServerDialect</property>
+        <property name="connection.username">sa</property>
+        <property name="connection.password">sa</property>
+        <property name="connection.driver_class">net.sourceforge.jtds.jdbc.Driver</property>
+	    <!-- check the DB schema on startup, and perform the necessary changes -->
+        <property name="hbm2ddl.auto">update</property>
+
+        <!-- property name="connection.url">jdbc:microsoft:sqlserver://localhost:1433;DatabaseName=TestMyHibernate;SelectMethod=CURSOR</property-->
+        <!-- property name="connection.driver_class">com.microsoft.jdbc.sqlserver.SQLServerDriver</property-->
+        <property name="connection.url">jdbc:jtds:sqlserver://localhost:1433;DatabaseName=TestHibernate;SelectMethod=CURSOR</property>
+        <property name="dialect">org.hibernate.dialect.SQLServerDialect</property>
+        <property name="connection.username">sa</property>
+        <property name="connection.password">sa</property>
+        <property name="connection.driver_class">net.sourceforge.jtds.jdbc.Driver</property>
+	    <!-- check the DB schema on startup, and perform the necessary changes -->
+        <property name="hbm2ddl.auto">update</property>
+        
+or --------------- (MySQL)        
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/testdb</property>
+        <property name="connection.username">system</property>
+        <property name="connection.password">system</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <!-- check the DB schema on startup, and perform the necessary changes -->
+        <property name="hbm2ddl.auto">update</property>
+        
+        <mapping resource="com/mypack/AccessDTO.hbm.xml" />
+    </session-factory>
+</hibernate-configuration>
+
+MyClass.hbm.xml
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <!-- a SessionFactory instance listed as /jndi/name -->
+    <session-factory name="java:hibernate/SessionFactory">
+
+        <!-- properties -->
+        <property name="connection.datasource">java:/comp/env/jdbc/MyDB</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="show_sql">false</property>
+        <property name="transaction.factory_class">org.hibernate.transaction.JTATransactionFactory</property>
+        <property name="jta.UserTransaction">java:comp/UserTransaction</property>
+
+        <!-- mapping files -->
+        <mapping resource="org/hibernate/auction/Item.hbm.xml"/>
+        <mapping resource="org/hibernate/auction/Bid.hbm.xml"/>
+
+        <!-- cache settings -->
+        <class-cache class="org.hibernate.auction.Item" usage="read-write"/>
+        <class-cache class="org.hibernate.auction.Bid" usage="read-only"/>
+        <collection-cache collection="org.hibernate.auction.Item.bids" usage="read-write"/>
+
+    </session-factory>
+
+</hibernate-configuration>
+
+Hibernate will look for the hibernate.cfg.xml file in the root folder of the classpath.
+
+mapping file
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.mypack.AccessDTO" table="MYTABLE">
+        <id name="id" column="ID">
+            <generator class="native" />
+        </id>
+        <property name="name" column="NAME" length="255" not-null="true" />
+        <property name="value" column="VALUE" length="1024" not-null="true" />
+    </class>
+
+    <class name="com.mypack.RuleDTO" table="MYTABLE2">
+        <id name="id" column="ID">
+            <generator class="native" />
+        </id>
+        <property name="field1" column="COLUMN1" length="32" not-null="true" />
+        <property name="field2" column="COLUMN2" not-null="false" />
+        <property name="field3" column="COLUMN3" not-null="true" />
+        <property name="field4" column="COLUMN4" length="32" not-null="true" />
+        <property name="field5" column="COLUMN5" length="1024" not-null="true" />
+        <property name="field6" column="COLUMN6" not-null="false" />
+    </class>
+</hibernate-mapping>
+
+________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Required jars > Hibernate 3
+
+hibernate3.jar
+antlr-2.1.3.jar
+asm-attrs.jar
+asm.jar
+jaas.jar
+jaxen-1.1-beta-7.jar
+jdbc2_0-stdext.jar
+jta.jar
+dom4j-1.6.1.jar
+commons-collections.jar
+jar(s) for jdbc
+ehcache-1.1.jar
+cglib-2.1.3.jar
+xerces-2.6.2.jar
+xml-apis.jar
+
+_________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Hibernate usage
+
+Query query = hibernateSession.createQuery( "from " + RuleDTO.class.getName() );
+List returnedObjects = query.list();
+
+Query query = getSession().createQuery(
+	"from " + TarifDTO.class.getName() 
+	+ " tbr where tbr.tarif.id = :ksId and "
+	+ " tbr.tarif.minAge <= :mdAge and " 
+	+ " tbr.tarif.maxAge >= :mdAge and " 
+	+ (isX ? " (tbr.tarif.x = :x or tbr.tarif.includedXOption = :inclXOpt) and " : " tbr.tarif.x = :x and ")
+	+ " tbr.yy.id = :pkId and tbr.zz.id = :rbId "
+	+ (param.isWW() ? " and :skValue <= tbr.tarif.ss.maxValue " : " ") 
+	+ " order by tbr.tarif.gg.name asc, tbr.tarif.sg.value asc, tbr.tarif.sg.id asc");
+	            
+	query.setLong("ksId", someId);
+	query.setBoolean("X", isX);
+	if (isX) query.setBoolean("inclXOpt", true);
+	query.setDouble("mdAge", mdAge);
+	query.setLong("pkId", param.getYY().getId().longValue());
+	query.setLong("rbId", param.getZZ().getId().longValue());
+
+_________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Hibernate configuration parameters
+
+Name									Description
+hibernate.dialect 	
+hibernate.order_updates	
+
+JDBC properties -----------------------
+
+hibernate.connection.datasource	
+hibernate.connection.driver_class       jdbc driver class
+hibernate.connection.url                jdbc URL
+hibernate.connection.username           database user
+hibernate.connection.password           database user password
+hibernate.connection.pool_size          Maximum nr of pooled connections
+hibernate.c3p0.min_size	
+hibernate.c3p0.max_size	
+hibernate.c3p0.timeout	
+hibernate.c3p0.max_statements	
+Datasource properties
+hibernate.connection.datasource         datasource JNDI name
+hibernate.jndi.url                      URL of the JNDI provider (optional)
+hibernate.jndi.class                    class of the JNDI InitialContextFactory (optional)
+hibernate.connection.username           database user (optional)
+hibernate.connection.password           database user password (optional)
+	
+Hibernate Configuration Properties-------------------------------
+
+hibernate.dialect                       The classname of a Hibernate Dialect which allows Hibernate to generate SQL optimized for a particular relational database. 
+hibernate.show_sql                      Write all SQL statements to console. This is an alternative to setting the log category org.hibernate.SQL to debug. 
+hibernate.format_sql                    Pretty print the SQL in the log and console. 
+hibernate.default_schema                Qualify unqualified tablenames with the given schema/tablespace in generated SQL. eg. SCHEMA_NAME 
+hibernate.default_catalog               Qualify unqualified tablenames with the given catalog in generated SQL. eg. CATALOG_NAME 
+hibernate.session_factory_name          The SessionFactory will be automatically bound to this name in JNDI after it has been created. eg. jndi/composite/name 
+hibernate.max_fetch_depth               Set a maximum "depth" for the outer join fetch tree for single-ended associations (one-to-one, many-to-one). A 0 disables default outer join fetching. eg. recommended values between 0 and 3 
+hibernate.default_batch_fetch_size      Set a default size for Hibernate batch fetching of associations. eg. recommended values 4, 8, 16 
+hibernate.default_entity_mode           Set a default mode for entity representation for all sessions opened from this SessionFactoryeg. dynamic-map, dom4j, pojo 
+hibernate.order_updates                 Force Hibernate to order SQL updates by the primary key value of the items being updated. This will result in fewer transaction deadlocks in highly concurrent systems. eg. true | false 
+hibernate.generate_statistics           If enabled, Hibernate will collect statistics useful for performance tuning. eg. true | false 
+hibernate.use_identifer_rollback        If enabled, generated identifier properties will be reset to default values when objects are deleted. eg. true | false 
+hibernate.use_sql_comments              If turned on, Hibernate will generate comments inside the SQL, for easier debugging, defaults to false. eg. true | false 
+
+Hibernate JDBC and Connection Properties----------------------------
+
+hibernate.jdbc.fetch_size               A non-zero value determines the JDBC fetch size (calls Statement.setFetchSize()). 
+hibernate.jdbc.batch_size               A non-zero value enables use of JDBC2 batch updates by Hibernate. eg. recommended values between 5 and 30 
+hibernate.jdbc.batch_versioned_data	    Set this property to true if your JDBC driver returns correct row counts from executeBatch() (it is usually safe to turn this option on). Hibernate will then use batched DML for automatically versioned data. Defaults to false. eg. true | false 
+hibernate.jdbc.factory_class            Select a custom Batcher. Most applications will not need this configuration property. eg. classname.of.Batcher 
+hibernate.jdbc.use_scrollable_resultset Enables use of JDBC2 scrollable resultsets by Hibernate. This property is only necessary when using user supplied JDBC connections, Hibernate uses connection metadata otherwise. eg. true | false 
+hibernate.jdbc.use_streams_for_binary   Use streams when writing/reading binary or serializable types to/from JDBC (system-level property). eg. true | false 
+hibernate.jdbc.use_get_generated_keys   Enable use of JDBC3 PreparedStatement.getGeneratedKeys() to retrieve natively generated keys after insert. Requires JDBC3+ driver and JRE1.4+, set to false if your driver has problems with the Hibernate identifier generators. By default, tries to determine the driver capabilites using connection metadata. eg. true|false 
+hibernate.connection.provider_class	    The classname of a custom ConnectionProvider which provides JDBC connections to Hibernate. eg. classname.of.ConnectionProvider 
+hibernate.connection.isolation	        Set the JDBC transaction isolation level. Check java.sql.Connection for meaningful values but note that most databases do not support all isolation levels. eg. 1, 2, 4, 8 
+hibernate.connection.autocommit         Enables autocommit for JDBC pooled connections (not recommended). eg. true | false 
+hibernate.connection.release_mode       Specify when Hibernate should release JDBC connections. By default, a JDBC connection is held until the session is explicitly closed or disconnected. For an application server JTA datasource, you should use after_statement to aggressively release connections after every JDBC call. For a non-JTA connection, it often makes sense to release the connection at the end of each transaction, by using after_transaction. auto will choose after_statement for the JTA and CMT transaction strategies and after_transaction for the JDBC transaction strategy. eg. auto (default) | on_close | after_transaction | after_statement Note that this setting only affects Sessions returned from SessionFactory.openSession. For Sessions obtained through SessionFactory.getCurrentSession, the CurrentSessionContext implementation configured for use controls the connection release mode for those Sessions. 
+hibernate.connection.<propertyName>     Pass the JDBC property propertyName to DriverManager.getConnection(). 
+hibernate.jndi.<propertyName>           Pass the property propertyName to the JNDI InitialContextFactory. 
+
+Hibernate Cache Properties-------------------------
+
+hibernate.cache.provider_class          The classname of a custom CacheProvider. eg. classname.of.CacheProvider 
+hibernate.cache.use_minimal_puts        Optimize second-level cache operation to minimize writes, at the cost of more frequent reads. This setting is most useful for clustered caches and, in Hibernate3, is enabled by default for clustered cache implementations. eg. true|false 
+hibernate.cache.use_query_cache         Enable the query cache, individual queries still have to be set cachable. eg. true|false 
+hibernate.cache.use_second_level_cache  May be used to completely disable the second level cache, which is enabled by default for classes which specify a <cache> mapping. eg. true|false 
+hibernate.cache.query_cache_factory     The classname of a custom QueryCache interface, defaults to the built-in StandardQueryCache. eg. classname.of.QueryCache 
+hibernate.cache.region_prefix           A prefix to use for second-level cache region names. eg. prefix 
+hibernate.cache.use_structured_entries  Forces Hibernate to store data in the second-level cache in a more human-friendly format. eg. true|false 
+
+Hibernate Transaction Properties----------------------------
+
+hibernate.transaction.factory_class	                The classname of a TransactionFactory to use with Hibernate Transaction API (defaults to JDBCTransactionFactory). eg. classname.of.TransactionFactory jta.UserTransaction	A JNDI name used by JTATransactionFactory to obtain the JTA UserTransaction from the application server. eg. jndi/composite/name 
+hibernate.transaction.manager_lookup_class          The classname of a TransactionManagerLookup - required when JVM-level caching is enabled or when using hilo generator in a JTA environment. eg. classname.of.TransactionManagerLookup 
+hibernate.transaction.flush_before_completion       If enabled, the session will be automatically flushed during the before completion phase of the transaction. Built-in and automatic session context management is preferred eg. true | false 
+hibernate.transaction.auto_close_session            If enabled, the session will be automatically closed during the after completion phase of the transaction. Built-in and utomatic session context management is preferred. eg. true | false 
+
+Miscellaneous Properties-------------------------------
+
+hibernate.current_session_context_class	            Supply a (custom) strategy for the scoping of the "current" Session. See Section 2.5, Contextual Sessions for more information about the built-in strategies. eg. jta | thread | managed | custom.Class 
+hibernate.query.factory_class                       Chooses the HQL parser implementation. eg. org.hibernate.hql.ast.ASTQueryTranslatorFactory or org.hibernate.hql.classic.ClassicQueryTranslatorFactory 
+hibernate.query.substitutions                       Mapping from tokens in Hibernate queries to SQL tokens (tokens might be function or literal names, for example). eg. hqlLiteral=SQL_LITERAL, hqlFunction=SQLFUNC 
+hibernate.hbm2ddl.auto                              Automatically validate or export schema DDL to the database when the SessionFactory is created. With create-drop, the database schema will be dropped when the SessionFactory is closed explicitly. eg. validate | update | create | create-drop 
+hibernate.cglib.use_reflection_optimizer            Enables use of CGLIB instead of runtime reflection (System-level property). Reflection can sometimes be useful when troubleshooting, note that Hibernate always requires CGLIB even if you turn off the optimizer. You can not set this property in hibernate.cfg.xml. eg. true | false 
+
+_________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Hibernate Dialects
+
+RDBMS	Dialect
+DB2                       org.hibernate.dialect.DB2Dialect
+DB2 AS/400                org.hibernate.dialect.DB2400Dialect
+DB2 OS390                 org.hibernate.dialect.DB2390Dialect
+PostgreSQL                org.hibernate.dialect.PostgreSQLDialect
+MySQL                     org.hibernate.dialect.MySQLDialect
+MySQL with InnoDB         org.hibernate.dialect.MySQLInnoDBDialect
+MySQL with MyISAM         org.hibernate.dialect.MySQLMyISAMDialect
+Oracle (any version)      org.hibernate.dialect.OracleDialect
+Oracle 9i/10g             org.hibernate.dialect.Oracle9Dialect
+Sybase                    org.hibernate.dialect.SybaseDialect
+Sybase Anywhere           org.hibernate.dialect.SybaseAnywhereDialect
+Microsoft SQL Server      org.hibernate.dialect.SQLServerDialect
+SAP DB                    org.hibernate.dialect.SAPDBDialect
+Informix                  org.hibernate.dialect.InformixDialect
+HypersonicSQL             org.hibernate.dialect.HSQLDialect
+Ingres                    org.hibernate.dialect.IngresDialect
+Progress                  org.hibernate.dialect.ProgressDialect
+Mckoi SQL                 org.hibernate.dialect.MckoiDialect
+Interbase                 org.hibernate.dialect.InterbaseDialect
+Pointbase                 org.hibernate.dialect.PointbaseDialect
+FrontBase                 org.hibernate.dialect.FrontbaseDialect
+Firebird                  org.hibernate.dialect.FirebirdDialect
+_________________________________________________________________________________________________________________

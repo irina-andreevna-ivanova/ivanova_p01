@@ -1,0 +1,38 @@
+Testing
+------------------------------------------------------------------------------------------------------------
+- common objectives of testing
+- the success of testing is influenced by psychological factors
+- contrast the mindset of a tester and of a developer
+- Principles of testing:
+    - P1: Testing shows presence of data: testing show the presence of bugs, but cannot guarantee that no bugs exist in the code. Testing
+      reduces the amount of bugs in the code, but it cannot prove that no bugs are left.
+    - P2: Exhaistive testing is impossible: testing everything is not possible, except for trivial cases. Instead of trying to test everything,
+      risk analysis and priorities should be used to focus the efforts of testing.
+    - P3: Early testing: testing activities should start as early as possible in the software development cycle, and should focus on defined
+      objectives.
+    - P4: Defect clustering: a small number of modules contain the most bugs found during prerelease testing, or are responsible for the most
+      operational failures
+    - P5: Pesticide paradox
+    - P6: Testing is context dependent
+    - P7: Absence-of-errors fallacy: finding and fixing errors do not help if the built system is not useable for the user or does not
+      fulfill user's needs and expectations.
+- confirmation testing: execution of a test that previously failed in order to confirm that it has been fixed
+- regression testing: execution of a test in order to check that no bugs have been introduced in unchanged parts of the code, as a result of
+  fixing a bug. Also, executing a test to check that defect fixing did not uncover other defects.
+- Test process:
+    1. Test planning and control
+    2. Test analysis and design
+    3. Test implementation and execution
+    4. Evaluating exit criteria and reporting
+    5. Test closure activities
+- testware
+- the mindset to be used while testing and reviewing is different to that used while developing the software
+- identifying failures during testing might be perceived as criticism agains developers, architects, etc -> WRONG
+- errors, defects or failures must be communicated in a constructive way, so that bad feelings between the testers and the developers can be
+  avoided
+
+Continuous Testing
+------------------------------------------------------------------------------------------------------------
+- uses excess cycles on a developer's machine in order to continuously run regression tests in the background
+- provides rapid feedback about test failures as source code is edited
+-

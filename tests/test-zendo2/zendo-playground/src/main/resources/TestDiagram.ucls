@@ -1,0 +1,154 @@
+<class-diagram version="0.9.82" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="true" nesting-relationships="true">  
+  <class corner="BOTTOM_RIGHT" language="java" name="zendo.playground.various.Amphibian" project="zendo-playground" 
+    file="/zendo-playground/src/main/java/zendo/playground/various/Amphibian.java" binary="false">    
+    <position x="1635" y="470" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="zendo.playground.various.Frog" project="zendo-playground" 
+    file="/zendo-playground/src/main/java/zendo/playground/various/Frog.java" binary="false">    
+    <position x="1558" y="651" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="zendo.playground.various.Walker" project="zendo-playground" 
+    file="/zendo-playground/src/main/java/zendo/playground/various/Walker.java" binary="false">    
+    <position x="1712" y="627" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <class corner="BOTTOM_RIGHT" language="java" name="zendo.playground.various.Snippet" project="zendo-playground" 
+    file="/zendo-playground/src/main/java/zendo/playground/various/Snippet.java" binary="false">    
+    <position x="1301" y="454" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="zendo.playground.various.TestShiftOperators" 
+    project="zendo-playground" file="/zendo-playground/src/main/java/zendo/playground/various/TestShiftOperators.java" 
+    binary="false">    
+    <position x="351" y="337" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="zendo.playground.various.Class2" project="zendo-playground" 
+    file="/zendo-playground/src/main/java/zendo/playground/various/Class2.java" binary="false">    
+    <position x="988" y="430" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="zendo.playground.various.TestBinary" project="zendo-playground" 
+    file="/zendo-playground/src/main/java/zendo/playground/various/TestBinary.java" binary="false">    
+    <position x="517" y="438" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="zendo.playground.various.TestArrays" project="zendo-playground" 
+    file="/zendo-playground/src/main/java/zendo/playground/various/TestArrays.java" binary="false">    
+    <position x="671" y="430" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="zendo.playground.various.Class001" project="zendo-playground" 
+    file="/zendo-playground/src/main/java/zendo/playground/various/Class001.java" binary="false">    
+    <position x="1142" y="430" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="zendo.playground.various.GenerationUtils" 
+    project="zendo-playground" file="/zendo-playground/src/main/java/zendo/playground/various/GenerationUtils.java" 
+    binary="false">    
+    <position x="829" y="454" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="zendo.playground.various.TestConstructors" 
+    project="zendo-playground" file="/zendo-playground/src/main/java/zendo/playground/various/TestConstructors.java" 
+    binary="false">    
+    <position x="1947" y="430" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="zendo.playground.various.TestBigFloats" project="zendo-playground" 
+    file="/zendo-playground/src/main/java/zendo/playground/various/TestBigFloats.java" binary="false">    
+    <position x="1481" y="430" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="zendo.playground.various.Class2.A" project="zendo-playground" 
+    file="/zendo-playground/src/main/java/zendo/playground/various/Class2.java" binary="false">    
+    <position x="1262" y="635" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="zendo.playground.various.Class2.B" project="zendo-playground" 
+    file="/zendo-playground/src/main/java/zendo/playground/various/Class2.java" binary="false">    
+    <position x="1036" y="790" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="true" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <nesting>    
+    <bendpoint x="940" y="594"/>    
+    <source project="zendo-playground" name="zendo.playground.various.Class2" 
+      file="/zendo-playground/src/main/java/zendo/playground/various/Class2.java" binary="false"/>    
+    <target project="zendo-playground" name="zendo.playground.various.Class2.B" 
+      file="/zendo-playground/src/main/java/zendo/playground/various/Class2.java" binary="false"/>  
+  </nesting>  
+  <generalization>    
+    <source project="zendo-playground" name="zendo.playground.various.Frog" 
+      file="/zendo-playground/src/main/java/zendo/playground/various/Frog.java" binary="false"/>    
+    <target project="zendo-playground" name="zendo.playground.various.Amphibian" 
+      file="/zendo-playground/src/main/java/zendo/playground/various/Amphibian.java" binary="false"/>  
+  </generalization>  
+  <nesting>    
+    <source project="zendo-playground" name="zendo.playground.various.Class2" 
+      file="/zendo-playground/src/main/java/zendo/playground/various/Class2.java" binary="false"/>    
+    <target project="zendo-playground" name="zendo.playground.various.Class2.A" 
+      file="/zendo-playground/src/main/java/zendo/playground/various/Class2.java" binary="false"/>  
+  </nesting>  
+  <realization>    
+    <source project="zendo-playground" name="zendo.playground.various.Amphibian" 
+      file="/zendo-playground/src/main/java/zendo/playground/various/Amphibian.java" binary="false"/>    
+    <target project="zendo-playground" name="zendo.playground.various.Walker" 
+      file="/zendo-playground/src/main/java/zendo/playground/various/Walker.java" binary="false"/>  
+  </realization>  
+  <generalization>    
+    <source project="zendo-playground" name="zendo.playground.various.Class2.B" 
+      file="/zendo-playground/src/main/java/zendo/playground/various/Class2.java" binary="false"/>    
+    <target project="zendo-playground" name="zendo.playground.various.Class2.A" 
+      file="/zendo-playground/src/main/java/zendo/playground/various/Class2.java" binary="false"/>  
+  </generalization>  
+  <classifier-display autosize="true" package="true" initial-value="true" signature="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

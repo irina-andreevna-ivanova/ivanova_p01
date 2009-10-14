@@ -1,0 +1,9 @@
+-showsplash
+org.eclipse.platform
+--launcher.XXMaxPermSize
+256m
+-vmargs
+-Xms128m
+-Xmx512m
+-XX:PermSize=64M
+-XX:MaxPermSize=128M

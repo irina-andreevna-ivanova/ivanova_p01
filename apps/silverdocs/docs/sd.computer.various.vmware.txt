@@ -1,0 +1,65 @@
+VMWare manual settings
+------------------------------------------------------------------------------------------------------------------
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Working with vmx files
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+config.version = "8"
+virtualHW.version = "4"
+scsi0.present = "TRUE"
+scsi0.virtualDev = "lsilogic"
+memsize = "512"
+ide0:0.present = "TRUE"
+ide0:0.fileName = "MyVM FILE.vmdk"
+ide0:0.mode = "independent-persistent"
+ide0:0.redo = ""
+ide0:1.present = "FALSE"
+ide0:1.fileName = "MyVM 4.vmdk"
+ide0:1.mode = "independent-persistent"
+ide0:1.deviceType = "rawDisk"
+ide0:1.redo = ""
+ide1:0.autodetect = "TRUE"
+ide1:0.present = "TRUE"
+ide1:0.fileName = "auto detect"
+ide1:0.deviceType = "cdrom-raw"
+
+floppy0.fileName = "A:"
+floppy0.present = "FALSE"
+Ethernet0.present = "TRUE"
+ethernet0.addressType = "generated"
+ethernet0.generatedAddress = "00:0c:29:10:cd:2e"
+ethernet0.generatedAddressOffset = "0"
+displayName = "MyVM 4 File"
+guestOS = "rhel4"
+priority.grabbed = "normal"
+priority.ungrabbed = "normal"
+
+uuid.location = "56 4d 27 c8 4b b4 8a bf-0f be 5f dd a7 10 cd 2e"
+uuid.bios = "56 4d 27 c8 4b b4 8a bf-0f be 5f dd a7 10 cd 2e"
+tools.syncTime = "FALSE"
+
+extendedConfigFile = "MyVM 4.vmxf"
+virtualHW.productCompatibility = "hosted"
+tools.upgrade.policy = "manual"
+
+isolation.tools.hgfs.disable = "FALSE"
+
+sharedFolder.maxNum = "1"
+sharedFolder.option = "alwaysEnabled"
+sharedFolder0.present = "TRUE"
+sharedFolder0.enabled = "TRUE"
+sharedFolder0.readAccess = "TRUE"
+sharedFolder0.writeAccess = "TRUE"
+sharedFolder0.hostPath = "C:\MyVMs\VMSharedFolder"
+sharedFolder0.guestName = "vmSharedFolder"
+sharedFolder0.expiration = "never"
+
+------------------------------------------------------------------------------------------------------------------
+Disabling time synchronization
+------------------------------------------------------------------------------------------------------------------
+Set to FALSE:
+tools.syncTime
+tools.synchronize.restore
+time.synchronize.resume.disk
+time.synchronize.continue
+time.synchronize.shrink 
+

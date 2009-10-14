@@ -1,0 +1,15 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:webflow="http://www.springframework.org/schema/webflow-config"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                        http://www.springframework.org/schema/webflow-config http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd">
+
+	<webflow:flow-registry id="flowRegistry">
+		<webflow:flow-location path="classpath:/zendo/playground/spring/TestCustomWebFlow-testFlow.xml" 
+		                       id="testFlow"/>
+	</webflow:flow-registry>
+	
+	<webflow:flow-executor id="flowExecutor" />
+	
+	<bean name="cat" class="zendo.playground.spring.CatBean" />
+	
+</beans>

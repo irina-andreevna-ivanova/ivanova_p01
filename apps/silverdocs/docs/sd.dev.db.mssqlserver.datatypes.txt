@@ -1,0 +1,34 @@
+MS SQL Server 2005 datatypes - as they were exported from dbo.systypes
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+
+name                  xtype status xusertype length xprec xscale tdefault    domain      uid    reserved collationid usertype variable allownulls type printfmt    prec   scale collation
+--------------------- ----- ------ --------- ------ ----- ------ ----------- ----------- ------ -------- ----------- -------- -------- ---------- ---- ----------- ------ ----- --------------------------------------------------------------------------------------------------------------------------------
+bigint                127   0      127       8      19    0      0           0           1      0        NULL        0        0        1          63   NULL        19     0     NULL
+binary                173   2      173       8000   0     0      0           0           1      0        NULL        3        0        1          45   NULL        8000   NULL  NULL
+bit                   104   0      104       1      1     0      0           0           1      0        NULL        16       0        1          50   NULL        1      0     NULL
+char                  175   2      175       8000   0     0      0           0           1      0        872468488   1        0        1          47   NULL        8000   NULL  SQL_Latin1_General_CP1_CI_AS
+datetime              61    0      61        8      23    3      0           0           1      0        NULL        12       0        1          61   NULL        23     3     NULL
+decimal               106   0      106       17     38    38     0           0           1      0        NULL        24       0        1          55   NULL        38     38    NULL
+float                 62    0      62        8      53    0      0           0           1      0        NULL        8        0        1          62   NULL        53     NULL  NULL
+image                 34    0      34        16     0     0      0           0           1      0        NULL        20       0        1          34   NULL        NULL   NULL  NULL
+int                   56    0      56        4      10    0      0           0           1      0        NULL        7        0        1          56   NULL        10     0     NULL
+money                 60    0      60        8      19    4      0           0           1      0        NULL        11       0        1          60   NULL        19     4     NULL
+nchar                 239   2      239       8000   0     0      0           0           1      0        872468488   0        0        1          47   NULL        4000   NULL  SQL_Latin1_General_CP1_CI_AS
+ntext                 99    0      99        16     0     0      0           0           1      0        872468488   0        0        1          35   NULL        NULL   NULL  SQL_Latin1_General_CP1_CI_AS
+numeric               108   0      108       17     38    38     0           0           1      0        NULL        10       0        1          63   NULL        38     38    NULL
+nvarchar              231   2      231       8000   0     0      0           0           1      0        872468488   0        1        1          39   NULL        4000   NULL  SQL_Latin1_General_CP1_CI_AS
+real                  59    0      59        4      24    0      0           0           1      0        NULL        23       0        1          59   NULL        24     NULL  NULL
+smalldatetime         58    0      58        4      16    0      0           0           1      0        NULL        22       0        1          58   NULL        16     0     NULL
+smallint              52    0      52        2      5     0      0           0           1      0        NULL        6        0        1          52   NULL        5      0     NULL
+smallmoney            122   0      122       4      10    4      0           0           1      0        NULL        21       0        1          122  NULL        10     4     NULL
+sql_variant           98    0      98        8016   0     0      0           0           1      0        NULL        0        0        1          39   NULL        0      0     NULL
+sysname               231   1      256       256    0     0      0           0           1      0        872468488   18       1        0          39   NULL        128    NULL  SQL_Latin1_General_CP1_CI_AS
+text                  35    0      35        16     0     0      0           0           1      0        872468488   19       0        1          35   NULL        NULL   NULL  SQL_Latin1_General_CP1_CI_AS
+timestamp             189   1      189       8      0     0      0           0           1      0        NULL        80       0        0          45   NULL        8      NULL  NULL
+tinyint               48    0      48        1      3     0      0           0           1      0        NULL        5        0        1          48   NULL        3      0     NULL
+uniqueidentifier      36    0      36        16     0     0      0           0           1      0        NULL        0        0        1          37   NULL        16     NULL  NULL
+varbinary             165   2      165       8000   0     0      0           0           1      0        NULL        4        1        1          37   NULL        8000   NULL  NULL
+varchar               167   2      167       8000   0     0      0           0           1      0        872468488   2        1        1          39   NULL        8000   NULL  SQL_Latin1_General_CP1_CI_AS
+
+(26 row(s) affected)
+

@@ -1,0 +1,193 @@
+Apache Maven - pom.xml samples
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+</project>
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Samples:
+................................................................................................................................................................................................
+	<build>
+		<finalName>shelves-web</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+................................................................................................................................................................................................
+	<properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+................................................................................................................................................................................................
+    <build>
+        <filters>
+            <filter>../etc/tokens/etc.properties</filter>
+        </filters>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+................................................................................................................................................................................................
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.3</version>
+			<scope>provided</scope> <!-- the servlet-api jar must be excluded from the packaged war -->
+		</dependency>
+................................................................................................................................................................................................
+		<dependency>
+			<groupId>myfaces</groupId>
+			<artifactId>myfaces-all</artifactId>
+			<version>1.1.1</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>xml-apis</artifactId>
+					<groupId>xml-apis</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+................................................................................................................................................................................................
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Parent POM in a multiple-module project
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.mycomp.app</groupId>
+    <artifactId>app</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>app</name>
+
+    <modules>
+        <module>app-ear</module>
+        <module>app-ejb</module>
+        ...
+    </modules>
+
+    <repositories>
+        <repository>
+            <id>jboss.org</id>
+            <name>jboss.org</name>
+            <url>http://repository.jboss.org/maven2</url>
+        </repository>
+        <repository>
+            <id>java.net</id>
+            <name>java.net</name>
+            <url>http://download.java.net/maven/2</url>
+        </repository>
+    </repositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <configuration>
+                    <container>
+                        <containerId>jboss4x</containerId>
+                    </container>
+                    <configuration>
+                        <type>existing</type>
+                        <home>E:/Servers/jboss-4.2.2.GA</home>
+                        <deployables>
+                        ...
+                        </deployables>
+                    </configuration>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <tagBase>_tagbase_</tagBase>
+					<developerConnection>_devCon_</developerConnection>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <username>_svnUsername_</username>
+                    <password>_svnPassword_</password>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.0</version>
+                <executions>
+                    <execution>
+                        <phase>deploy</phase>
+                        <inherited>false</inherited>
+                        <goals>
+                            <goal>read-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <files>
+                                <file>prop.properties</file>
+                            </files>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!--scm>
+        <developerConnection>_devCon_</developerConnection>
+    </scm-->
+
+    <distributionManagement>
+        <repository>
+            <id>_repo_</id>
+            <name>_repoName_</name>
+            <url>_repoUrl_</url>
+        </repository>
+    </distributionManagement>
+</project>
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Module POM in a multiple-module project
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.mycomp.app</groupId>
+    <artifactId>app-mod</artifactId>
+    <name>app-mod</name>
+    <url>http://maven.apache.org</url>
+    <!--version>1.0-SNAPSHOT</version> the version is omitted, the module uses the parent's version-->
+
+    <parent>
+        <artifactId>app</artifactId>
+        <groupId>com.mycomp.app</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies/>
+
+    <build>
+        <filters>
+            <filter>../etc/tokens/etc.properties</filter>
+        </filters>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+
+</project>

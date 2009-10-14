@@ -1,0 +1,66 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+    <on-start>
+        <evaluate expression="cat.getMessage()" result="flowScope.catMessage" />
+    </on-start>
+    
+    <action-state id="state1">
+        <evaluate expression="cat.doSmtPhase1()"></evaluate>
+        <transition to="state2"/>
+    </action-state>
+    
+    <action-state id="state2">
+        <evaluate expression="cat.doSmtPhase2()"></evaluate>
+        <transition to="state3"/>
+    </action-state>
+    
+    <action-state id="state3">
+        <evaluate expression="cat.doSmtPhase3()"></evaluate>
+        <transition to="endState"/>
+    </action-state>
+
+    <end-state id="endState" />
+
+    <!-- view-state id="enterBookingDetails">
+        <transition on="submit" to="reviewBooking" />
+    </view-state>
+    <view-state id="reviewBooking">
+        <evaluate expression="entityManager.persist(booking)" />
+        <evaluate expression="bookingService.findHotels(searchCriteria)"
+            result="flowScope.hotels" />
+        <evaluate expression="bookingService.findHotels(searchCriteria)"
+            result="flowScope.hotels" result-type="dataModel" />
+        <transition on="confirm" to="bookingConfirmed" />
+        <transition on="revise" to="enterBookingDetails" />
+        <transition on="cancel" to="bookingCancelled" />
+    </view-state>
+    <end-state id="bookingConfirmed" />
+    <end-state id="bookingCancelled" />
+    <end-state id="bookingConfirmed">
+        <output name="bookingId" />
+        <output name="confirmationNumber" value="booking.confirmationNumber" />
+    </end-state>
+
+    <var name="searchCriteria" class="com.mycompany.myapp.hotels.search.SearchCriteria"/>
+
+    <on-start>
+        <evaluate expression="bookingService.createBooking(hotelId, currentUser.name)"
+            result="flowScope.booking" />
+    </on-start>
+    <view-state id="enterBookingDetails">
+        <transition on="submit" to="reviewBooking" />
+    </view-state>
+    <view-state id="reviewBooking">
+        <transition on="confirm" to="bookingConfirmed" />
+        <transition on="revise" to="enterBookingDetails" />
+        <transition on="cancel" to="bookingCancelled" />
+    </view-state>
+    <end-state id="bookingConfirmed">
+        <output name="bookingId" value="booking.id" />
+    </end-state>
+    <end-state id="bookingCancelled" /-->
+
+</flow>
+

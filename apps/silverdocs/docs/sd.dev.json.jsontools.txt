@@ -1,0 +1,104 @@
+Examples with JSONtools
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+>>> JSON String to Object
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    InputStreamReader reader = new InputStreamReader( new FileInputStream( new File( "json-message.txt" ) ) );
+    JSONParser jsonParser = new JSONParser( reader );
+    JSONValue jsonValue = jsonParser.nextValue();
+    MyDTO myDTO = (MyDTO) JSONMapper.toJava( jsonValue, MyDTO.class );  
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+>>> Object to JSON String
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    LoginMessageDTO myDTO = ....
+    JSONValue jsonValue = JSONMapper.toJSON( myDTO );
+    System.out.println( jsonValue.render( true ) );
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+>>> Validate JSON with JSON schema
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    JSONParser schemaParser = new JSONParser( new InputStreamReader( new FileInputStream( new File( SCHEMA_FILE ) ) ) );
+    JSONParser fragmentParser = new JSONParser( new InputStreamReader( new FileInputStream( new File( FRAGMENT_FILE ) ) ) );
+
+    JSONObject validationJSON = (JSONObject) schemaParser.nextValue();
+    JSONValue fragmentJSON = (JSONObject) fragmentParser.nextValue();
+    
+    Validator validator = new JSONValidator( validationJSON );
+    validator.validate( fragmentJSON );
+
+// schema -------------------------------------------
+{
+  "type": "someTypeHere",
+  "ver":"1.2",
+  "uuid": "1111-1111-2222-3333",
+  "subObject": {
+    "type": "subObject",
+    "ver":"1",
+    "contract": 5555,
+    "clientVersion": 7,
+    "language": "EN",
+    "ccode": 1234567890,
+    "os": "Win32" 
+  }
+}
+
+// fragment to validate ------------------------------
+{ "name": "some body",
+  "type": "properties",
+  "pairs": [
+    { "key": "type",
+      "optional": false,
+      "rule": { "type": "string" }
+    },
+    { "key": "ver",
+      "optional": false,
+      "rule": { "type": "string" }
+    },
+    { "key": "uuid",
+      "optional": false,
+      "rule": { "name": "Custom GUID validator", "type": "custom", "class": "test.GUIDValidator" }
+    },
+    { "key": "subObject",
+      "optional": false,
+      "rule": { 
+        "name": "some client info", 
+        "type": "properties",
+        "pairs": [
+            { "key": "type",
+              "optional": false,
+              "rule": { "type": "string" } 
+            },
+            { "key": "ver",
+              "optional": false,
+              "rule": { "type": "string" } 
+            },
+            { "key": "contract",
+              "optional": false,
+              "rule": { "type": "number" } 
+            },
+            { "key": "clientVersion",
+              "optional": false,
+              "rule": { "type": "int" } 
+            },
+            { "key": "language",
+              "optional": false,
+              "rule": { "type": "string" } 
+            },
+            { "key": "ccode",
+              "optional": false,
+              "rule": { "type": "number" } 
+            },
+            { "key": "os",
+              "optional": false,
+              "rule": { "type": "enum", "values" : ["Win32", "Win64", "OSX"] } 
+            }
+        ]
+      }
+    }
+  ]
+}

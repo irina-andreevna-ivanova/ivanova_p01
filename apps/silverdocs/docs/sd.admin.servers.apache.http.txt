@@ -1,0 +1,13 @@
+Apache HTTP server
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+Making local files accessible in extern:
+---------------------------------------------------------------------------------------------------------------------
+
+Alias /myfold C:/Test/somefold/myfold
+<Directory C:/Test/somefold/myfold>
+    Order allow,deny
+    Allow from all
+</Directory>
+
+Alias doc: http://httpd.apache.org/docs/2.2/mod/mod_alias.html#alias

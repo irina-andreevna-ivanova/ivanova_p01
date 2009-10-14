@@ -1,0 +1,125 @@
+Apache Maven - Various command samples
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Settings
+
+M2_REPO=<dir to repo>   --> !!! you must also set local repository in maven's conf file
+M2_HOME=<dir to maven> 
+MAVEN_OPTS=-DproxySet=true -DproxyHost=100.200.100.200 -DproxyPort=1234   --> settings for proxy
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+New mirror to use (conf/settings.xml):
+
+<mirrors>
+	<mirror>
+		<id>download.java.net</id>
+		<name>java.net Mirror of http://repo1.maven.org/maven2/</name>
+		<url>http://download.java.net/maven/2</url>
+		<mirrorOf>central</mirrorOf>
+	</mirror>
+</mirrors>
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Misc 
+
+mvn --version
+mvn clean
+mvn package
+mvn clean compile package       <-- the goals can be executed in a sequence
+mvn compile
+mvn test-compile                <-- compile the test sources. No tests are runned!
+mvn test
+mvn install                     <-- place the package (jar) in the maven repository
+mvn idea:idea                   <-- generate the descriptors for IntelliJ IDEA projects
+mvn eclipse:eclipse             <-- generate the descriptors for Eclipse projects
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+mvn archetype:create
+
+mvn archetype:create -DgroupId=com.mycompany.app -DartifactId=my-app
+mvn archetype:create -DarchetypeGroupId=org.apache.maven.archetypes -DgroupId=com.mycompany.app -DartifactId=my-app
+mvn archetype:create -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-site -DgroupId=com.mycompany.app -DartifactId=my-app-site
+mvn archetype:create -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-webapp -DgroupId=com.mycompany.app -DartifactId=my-webapp
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+mvn install
+
+mvn install:install-file -DgroupId=javax.transaction -DartifactId=jta -Dversion=1.0.1B -Dpackaging=jar -Dfile=jta-1.0.1B.jar
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Maven directory layouts
+
+my-app
+|-- pom.xml
+`-- src
+    |-- main
+    |   `-- java
+    |       `-- com
+    |           `-- mycompany
+    |               `-- app
+    |                   `-- App.java
+    `-- test
+        `-- java
+            `-- com
+                `-- mycompany
+                    `-- app
+                        `-- AppTest.java
+
+With resources:-----------------------------------------------------------
+
+my-app
+|-- pom.xml
+`-- src
+    |-- main
+    |   |-- java
+    |   |   `-- com
+    |   |       `-- mycompany
+    |   |           `-- app
+    |   |               `-- App.java
+    |   `-- resources
+    |       `-- META-INF
+    |           |-- application.properties
+    `-- test
+        |-- java
+        |   `-- com
+        |       `-- mycompany
+        |           `-- app
+        |               `-- AppTest.java
+        `-- resources
+            `-- test.properties
+            
+Site project:-------------------------------------------------------------
+            
+my-app-site
+|-- pom.xml
+`-- src
+    `-- site
+        |-- apt
+        |   |-- format.apt
+        |   `-- index.apt
+        |-- fml
+        |   `-- faq.fml
+        |-- fr
+        |   |-- apt
+        |   |   |-- format.apt
+        |   |   `-- index.apt
+        |   |-- fml
+        |   |   `-- faq.fml
+        |   `-- xdoc
+        |       `-- xdoc.xml
+        |-- xdoc
+        |   `-- xdoc.xml
+        |-- site.xml
+        `-- site_fr.xml
+        
+        
+Site project with resources:----------------------------------------------
+
++- src/
+   +- site/
+      +- resources/
+         +- css/
+         |  +- site.css
+         |
+         +- images/
+            +- pic1.jpg

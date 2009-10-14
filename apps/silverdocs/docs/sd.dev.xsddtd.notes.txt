@@ -1,0 +1,12 @@
+XSD & DTD notes
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<stylesheet xmlns="http://www.w3.org/1999/XSL/Transform"
+            xmlns:html="http://www.w3.org/1999/xhtml"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://www.w3.org/1999/XSL/Transform
+                                http://www.w3.org/1999/XSL/Transform.xsd
+                                http://www.w3.org/1999/xhtml
+                                http://www.w3.org/1999/xhtml.xsd">
+<stylesheet>
+
