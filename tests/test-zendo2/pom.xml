@@ -99,6 +99,12 @@
                 <scope>compile</scope>
             </dependency>
             <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
                 <groupId>log4j</groupId>
                 <artifactId>log4j</artifactId>
                 <version>${log4j.version}</version>
@@ -159,6 +165,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <commons-logging.version>1.1</commons-logging.version>
+        <commons-io.version>1.4</commons-io.version>
         <log4j.version>1.2.15</log4j.version>
         <mysql-connector.version>5.1.6</mysql-connector.version>
         <ognl.version>2.7.3</ognl.version>

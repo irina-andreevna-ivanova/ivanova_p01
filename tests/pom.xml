@@ -15,6 +15,7 @@
 	
 	<modules>
 		<module>evaluate-junit44</module>
+		<module>test-zendo2</module>
 	</modules>
 	
 </project>
