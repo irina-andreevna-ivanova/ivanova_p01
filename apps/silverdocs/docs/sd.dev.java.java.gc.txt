@@ -1,5 +1,9 @@
 Garbage collection Notes:
 ----------------------------------------------------------------------------------------------------------------
+Experimental options:
+    -XX:+UnlockExperimentalVMOptions 
+    -XX:+UseG1GC
+----------------------------------------------------------------------------------------------------------------
 Garbage Collector Statistics
     -XX:+UseSerialGC                        Serial
     -XX:+UseParallelGC                      Parallel

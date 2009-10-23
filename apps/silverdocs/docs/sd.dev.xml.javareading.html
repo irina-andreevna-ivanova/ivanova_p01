@@ -1,0 +1,203 @@
+<html><head><link type="text/css" rel="stylesheet" href="../common/plugins/syntaxhighlighter/SyntaxHighlighter.css"></link><script language="javascript" src="../common/plugins/syntaxhighlighter/shCore.js"></script><script language="javascript" src="../common/plugins/syntaxhighlighter/shBrushSql.js"></script><script language="javascript" src="../common/plugins/syntaxhighlighter/shBrushCss.js"></script><script language="javascript" src="../common/plugins/syntaxhighlighter/shBrushJava.js"></script><script language="javascript" src="../common/plugins/syntaxhighlighter/shBrushXml.js"></script></head><body>
+<pre name="code" class="java">
+
+// XML - processing in bare Java
+// -----------------------------------------------------------------------------------------------------------------
+
+package test;
+ 
+import java.io.StringWriter;
+ 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+ 
+import org.w3c.dom.CDATASection;
+import org.w3c.dom.DOMConfiguration;
+import org.w3c.dom.DOMStringList;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Text;
+ 
+public class DomTest {
+ 
+   static String version01(final String testInput) throws Exception {
+      final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+      final DocumentBuilder builder = factory.newDocumentBuilder();
+      final Document doc = builder.newDocument();
+ 
+      final DOMConfiguration domConfig = doc.getDomConfig();
+      printDomConfiguration(domConfig);
+ 
+      final Element root = doc.createElement("root-node");
+      root.setAttribute("code", testInput);
+      doc.appendChild(root);
+ 
+      final Element metadataElement = doc.createElement("test-node");
+      metadataElement.setAttribute("key", testInput);
+      metadataElement.setTextContent(testInput);
+      root.appendChild(metadataElement);
+ 
+      final TransformerFactory tranFactory = TransformerFactory.newInstance();
+      final Transformer transformer = tranFactory.newTransformer();
+      transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+      transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+      transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+      final Source src = new DOMSource(doc);
+      final StringWriter stringWriterOutput = new StringWriter();
+      final Result dest = new StreamResult(stringWriterOutput);
+      transformer.transform(src, dest);
+      final String xmlString = stringWriterOutput.toString();
+ 
+      return xmlString;
+   }
+ 
+   static String version02(final String testInput) throws Exception {
+      final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+      final DocumentBuilder builder = factory.newDocumentBuilder();
+      final Document doc = builder.newDocument();
+ 
+      final DOMConfiguration domConfig = doc.getDomConfig();
+      printDomConfiguration(domConfig);
+ 
+      final Element root = doc.createElement("root-node");
+      root.setAttribute("code", testInput);
+      doc.appendChild(root);
+ 
+      final Element metadataElement = doc.createElement("test-node");
+      metadataElement.setAttribute("key", testInput);
+      final CDATASection cdataSection = doc.createCDATASection("test-node");
+      cdataSection.setTextContent(testInput);
+      metadataElement.appendChild(cdataSection);
+      root.appendChild(metadataElement);
+ 
+      final TransformerFactory tranFactory = TransformerFactory.newInstance();
+      final Transformer transformer = tranFactory.newTransformer();
+      transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+      transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+      transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+      transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+ 
+      final Source src = new DOMSource(doc);
+      final StringWriter stringWriterOutput = new StringWriter();
+      final Result dest = new StreamResult(stringWriterOutput);
+      transformer.transform(src, dest);
+      final String xmlString = stringWriterOutput.toString();
+ 
+      return xmlString;
+   }
+ 
+   static String version03(final String testInput) throws Exception {
+      final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+      final DocumentBuilder builder = factory.newDocumentBuilder();
+      final Document doc = builder.newDocument();
+ 
+      final DOMConfiguration domConfig = doc.getDomConfig();
+      printDomConfiguration(domConfig);
+ 
+      final Element root = doc.createElement("root-node");
+      root.setAttribute("code", testInput);
+      doc.appendChild(root);
+ 
+      final Element metadataElement = doc.createElement("test-node");
+      metadataElement.setAttribute("key", testInput);
+      final CDATASection cdataSection = doc.createCDATASection("test-node");
+      cdataSection.setData(testInput);
+      metadataElement.appendChild(cdataSection);
+      root.appendChild(metadataElement);
+ 
+      final TransformerFactory tranFactory = TransformerFactory.newInstance();
+      final Transformer transformer = tranFactory.newTransformer();
+      transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+      transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+      transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+      final Source src = new DOMSource(doc);
+      final StringWriter stringWriterOutput = new StringWriter();
+      final Result dest = new StreamResult(stringWriterOutput);
+      transformer.transform(src, dest);
+      final String xmlString = stringWriterOutput.toString();
+ 
+      return xmlString;
+   }
+ 
+   static String version04(final String testInput) throws Exception {
+      final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+      final DocumentBuilder builder = factory.newDocumentBuilder();
+      final Document doc = builder.newDocument();
+ 
+      final DOMConfiguration domConfig = doc.getDomConfig();
+      domConfig.setParameter("normalize-characters", Boolean.FALSE);
+      printDomConfiguration(domConfig);
+ 
+      final Element root = doc.createElement("root-node");
+      root.setAttribute("code", testInput);
+      doc.appendChild(root);
+ 
+      final Text textNode = doc.createTextNode("test-node");
+      textNode.setTextContent(testInput);
+      root.appendChild(textNode);
+ 
+      final TransformerFactory tranFactory = TransformerFactory.newInstance();
+      final Transformer transformer = tranFactory.newTransformer();
+      transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+      transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+      transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+      final Source src = new DOMSource(doc);
+      final StringWriter stringWriterOutput = new StringWriter();
+      final Result dest = new StreamResult(stringWriterOutput);
+      transformer.transform(src, dest);
+      final String xmlString = stringWriterOutput.toString();
+ 
+      return xmlString;
+   }
+ 
+   private static void printDomConfiguration(final DOMConfiguration domConfig) {
+      // Setting (via Boolean.TRUE & Boolean.FALSE)
+      // canonical-form=true not supported
+      // check-character-normalization=true not supported
+      // element-content-whitespace=false not supported
+      final DOMStringList parameterNames = domConfig.getParameterNames();
+      for (int i = 0; i < parameterNames.getLength(); i++) {
+         final String item = parameterNames.item(i);
+         final Object parameter = domConfig.getParameter(item);
+         System.out.println("\"" + item + "\": \"" + parameter + "\"");
+      }
+   }
+ 
+   /**
+    * @param args
+    */
+   public static void main(String[] args) throws Exception {
+ 
+      final String testString = "\r\nMein Test\r\n\r\nNoch mehr Test und ]]>ein verdreher\n\rUn jetzt?\nWas nun\rDas";
+ 
+      System.out.println("Version 01: Not Correct: \\n becomes \\r\\n");
+      final String version01 = version01(testString);
+      System.out.println(version01);
+      System.out.println("-------------");
+ 
+      System.out.println("Version 02: Not Correct: \\n becomes \\r\\n");
+      final String version02 = version02(testString);
+      System.out.println(version02);
+      System.out.println("-------------");
+ 
+      System.out.println("Version 03: Not Correct: \\n becomes \\r\\n");
+      final String version03 = version03(testString);
+      System.out.println(version03);
+      System.out.println("-------------");
+ 
+      System.out.println("Version 04: Not Correct: \\n becomes \\r\\n");
+      final String version04 = version04(testString);
+      System.out.println(version04);
+      System.out.println("-------------");
+   }
+ 
+}
+
+</pre><script language="javascript">dp.SyntaxHighlighter.ClipboardSwf = '../common/plugins/syntaxhighlighter/clipboard.swf';dp.SyntaxHighlighter.HighlightAll('code');</script></body></html>

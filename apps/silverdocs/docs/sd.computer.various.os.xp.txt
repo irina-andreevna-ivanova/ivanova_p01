@@ -48,3 +48,13 @@ set TIME_STR=%TIME_HH%%TIME_MM%%TIME_SS%%TIME_MLS%
 
 set BACKUP_DIR=backup-%DATE_STR%-%TIME_STR%
 
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Discover the version of Windows, and if it is activated or not
+
+C:\>winver
+C:\>slmgr.vbs -dlv
+
+Add the command console at right click (especially in Windows7 )
+- regedit
+- open the Folder, in the first HKEY
+- command: cmd.exe /k "cd /d %L"
