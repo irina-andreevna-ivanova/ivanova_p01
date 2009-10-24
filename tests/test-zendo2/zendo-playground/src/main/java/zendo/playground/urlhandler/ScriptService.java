@@ -18,25 +18,15 @@
 
 package zendo.playground.urlhandler;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.net.URL;
-import java.net.URLConnection;
-
-import org.apache.commons.io.IOUtils;
-
 /**
+ * 
+ *
  * @author mocanu
  */
-public class TestCustomURLHandler {
-
-    public static void main( String[] args ) throws IOException {
-        URL url = new URL( null, "script://scriptservice/security/login.groovy", new ScriptURLStreamHandler() );
-        URLConnection connection = url.openConnection();
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        IOUtils.copy( connection.getInputStream(), baos );
-
-        System.out.println( baos.toString() );
+public class ScriptService {
+    
+    public Script getScript( String name ) {
+        return new Script( "simple test", 1000 );
     }
 
 }
