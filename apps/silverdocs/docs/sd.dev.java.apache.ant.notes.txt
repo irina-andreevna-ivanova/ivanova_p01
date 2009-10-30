@@ -1,0 +1,28 @@
+Apache Ant - Notes
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Using Maven dependencies in build.xml
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<project .... xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+
+    <property environment="env" />
+    <property name="maven.repository" value="${env.M2_REPO}" />
+    <property name="libs.maven-ant-tasks.version" value="2.0.10" />
+
+    <!-- Define the maven-ant-tasks type, to allow for processing of this module's pom -->
+    <path id="maven-ant-tasks.classpath" path="${maven.repository}/org/apache/maven/maven-ant-tasks/${libs.maven-ant-tasks.version}/maven-ant-tasks-${libs.maven-ant-tasks.version}.jar" />
+    <typedef uri="antlib:org.apache.maven.artifact.ant" resource="org/apache/maven/artifact/ant/antlib.xml" classpathref="maven-ant-tasks.classpath" />
+
+    <!-- Load the dependencies from the current module's pom -->
+    <artifact:pom id="module-pom" file="${module.root}/pom.xml" />
+    <artifact:dependencies filesetId="module-dependencies" pomRefId="module-pom" />
+    <path id="module-classpath">
+        <fileset refid="module-dependencies" />
+        <pathelement location="....."/> <!-- other path elements here -->
+    </path>
+
+    <property resource="templates/velocity-common-settings.properties" classpathref="module-classpath"/>
+    <taskdef name="..." classname="...." classpathref="module-classpath"/>
+</project>
