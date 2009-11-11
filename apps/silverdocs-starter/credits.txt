@@ -1,0 +1,5 @@
+The following resources have been used for silverdocs:
+
+wz-tooltip: JS library for displaying dynamic tooltips (with fadein-fadeout)
+Homepage: http://www.walterzorn.com/tooltip/tooltip_e.htm
+Author: Walter Zorn

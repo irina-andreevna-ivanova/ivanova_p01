@@ -1,0 +1,156 @@
+<html>
+<head>
+<script type="text/javascript" src="../common/scripts/sd-modules.js"></script>
+</head>
+<body onLoad="onModuleLoad( 'sd.general.search' )">
+<div id="sd.module.content">
+                <form method="get" action="http://groups.google.com/groups/search" target="_blank">
+                	<table cellpadding="0px" cellspacing="0px" width="100%"><tr><td>
+	                    <input name="q" value="" type="text" style="width: 100%; background-color: #FFFFEE;" onClick="this.value='';">
+                    </td><td style="width: 1%">
+    	                <input value="Groups" type="submit" style="font-size: 8pt;">
+                    </td></tr></table>
+                </form>
+                <form method="post" action="http://translate.google.com/translate_t" target="_blank">
+                	<table cellpadding="0px" cellspacing="0px" width="100%"><tr><td colspan="2">
+	                    <textarea cols="72" rows="3" name="text" style="font-family: Arial, sans-serif; font-size: 8pt; width: 100%; background-color: #EEFFFF;"  onClick="this.value='';"></textarea>
+                    </td><tr><td>
+	                    <select name="langpair" style="width: 100%; background-color: #EEFFFF;">
+	                        <option value="en|fr">English to French</option><option value="en|de">English to German</option><option value="en|it">English to Italian</option><option value="en|es">English to Spanish</option><option value="fr|en">French to English</option><option value="fr|de">French to German</option><option selected="selected" value="de|en">German to English</option><option value="de|fr">German to French</option><option value="it|en">Italian to English</option><option value="ja|en">Japanese to English BETA</option><option value="ko|en">Korean to English BETA</option><option value="pt|en">Portuguese to English</option><option value="ru|en">Russian to English BETA</option><option value="es|en">Spanish to English</option>
+	                    </select>
+	                    <input type="hidden" value="en" name="hl" />
+	                    <input type="hidden" value="UTF-8" name="ie" />
+	                    <input type="hidden" value="UTF-8" name="oe" />
+                    </td><td style="width: 1%">
+	                    <input type="submit" value="Google Translate" style="width: 100px;"/>
+                    </td></tr></table>
+                </form>
+                <form id="dict" name="dict" action="http://dict.leo.org/ende" method="get" target="_blank">
+                	<table cellpadding="0px" cellspacing="0px" width="100%"><tr><td colspan="2">
+	                    <input name="lp" value="ende" type="hidden">
+	                    <input name="searchLoc" value="0" type="hidden">
+	                    <input name="cmpType" value="relaxed" type="hidden">
+	                    <input name="sectHdr" value="on" type="hidden">
+	                    <input name="spellToler" value="on" type="hidden">
+	                    <input name="search" accesskey="q" maxlength="100" value="" type="text" style="width: 100%; background-color: #FFEEAA;" onClick="this.value='';">
+                    </td></tr><tr><td>
+	                    <select name="lang" style="width: 100%; background-color: #FFEEAA;">
+	                        <option value="de">To English</option>
+	                        <option value="en">To German</option>
+	                    </select>
+                    </td><td style="width: 1%">
+	                    <input value="dict.leo.org" type="submit" style="width:100px;">
+	                </td></tr></table>
+                </form>
+				<form method="get" action="http://www.thefreedictionary.com/_/search.aspx" target="_blank">
+                	<table cellpadding="0px" cellspacing="0px" width="100%"><tr><td>
+						<input type="hidden" name="tab" 	value="1" />
+						<input type="hidden" name="charset" value="iso-8859-1" />
+						<input type="text"   name="Word"    value="" style="width: 100%" onClick="this.value='';"/>
+                    </td><td style="width: 1%">
+						<input type="submit" name="Search" 	value="theFreeDictionary" style="width: 100px"/>
+	                </td></tr></table>
+				</form>
+                <form action="http://www.krugle.org/kse/files" method="get" target="_blank">
+                	<table cellpadding="0px" cellspacing="0px" width="100%"><tr><td>
+						<input type="text" name="query" style="width: 100%; background-color: #B3C8B6; color: #000000;" onClick="this.value='';"/>
+                    </td><td style="width: 1%">
+    	                <input type="submit" value="krugle code search" style="width:100px;"/>
+					</td></tr></table>
+				</form>
+                <form method="get" action="http://images.google.ro/images" target="_blank">
+                    <table cellpadding="0px" cellspacing="0px" width="100%"><tr><td>
+                        <input type="text"   value="" title="Search Images" size="20" name="q" maxlength="2048" style="width: 100%; background-color: #EEEEFF;" onClick="this.value='';"/>
+                    </td><td style="width: 1%">
+                        <input type="submit" value="Images" name="btnG" style="font-size: 8pt;"/>
+                        <input type="hidden" value="en" name="hl" />
+                        <input type="hidden" value="2" name="gbv" id="gbv" />
+                    </td></tr></table>
+                </form>
+                <form method="post" action="http://babelfish.altavista.com/tr" target="_blank">
+                    <table cellpadding="0px" cellspacing="0px" width="100%"><tr><td colspan="2">
+                        <textarea name="trtext" cols="72" rows="3" style="font-family: Arial, sans-serif; font-size: 8pt; width: 100%; background-color: #ebf1f9;"  onClick="this.value='';"></textarea>
+                    </td><tr><td>
+                        <select name="lp" style="width: 100%; background-color: #ebf1f9;">
+                            <option value="">Select from and to languages</option>
+                            <option value="zh_en">Chinese-simp to English</option><option value="zt_en">Chinese-trad to English</option><option value="en_zh">English to Chinese-simp</option><option value="en_zt">English to Chinese-trad</option><option value="en_nl">English to Dutch</option><option value="en_fr">English to French</option><option value="en_de">English to German</option><option value="en_el">English to Greek</option><option value="en_it">English to Italian</option><option value="en_ja">English to Japanese</option><option value="en_ko">English to Korean</option><option value="en_pt">English to Portuguese</option><option value="en_ru">English to Russian</option><option value="en_es">English to Spanish</option><option value="nl_en">Dutch to English</option><option value="nl_fr">Dutch to French</option><option value="fr_en">French to English</option><option value="fr_de">French to German</option><option value="fr_el">French to Greek</option><option value="fr_it">French to Italian</option><option value="fr_pt">French to Portuguese</option><option value="fr_nl">French to Dutch</option><option value="fr_es">French to Spanish</option><option value="de_en" selected="">German to English</option><option value="de_fr">German to French</option><option value="el_en">Greek to English</option><option value="el_fr">Greek to French</option><option value="it_en">Italian to English</option><option value="it_fr">Italian to French</option><option value="ja_en">Japanese to English</option><option value="ko_en">Korean to English</option><option value="pt_en">Portuguese to English</option><option value="pt_fr">Portuguese to French</option><option value="ru_en">Russian to English</option><option value="es_en">Spanish to English</option><option value="es_fr">Spanish to French</option>
+                        </select>
+                    </td><td style="width: 1%">
+                        <input value="Babel Fish" type="submit" style="width:100px;">
+                        <input type="hidden" value="done" name="doit"/>
+                        <input type="hidden" value="1" name="intl"/>
+                        <input type="hidden" value="urltext" name="tt"/>
+                    </td></tr></table>
+                </form>
+                <form action="http://www.youtube.com/results" method="get" target="_blank">
+                    <table cellpadding="0px" cellspacing="0px" width="100%"><tr><td>
+                        <input type="text"   value="" name="search_query" style="width: 100%; background-color: #E0E0E0;" onClick="this.value='';"/>
+                    </td><td style="width: 1%">
+                        <input type="submit" value="youtube" style="width:100px;"/>
+                    </td></tr></table>
+                </form>
+                <form action="http://www.wikipedia.org/search-redirect.php" method="get" target="_blank">
+                    <table cellpadding="0px" cellspacing="0px" width="100%"><tr><td>
+                        <input name="language" value="en" type="hidden">
+                        <input name="search" size="36" type="text" style="width: 100%; background-color: #FFEEEE;" onClick="this.value='';">
+                    </td><td style="width: 1%">
+                        <input name="go" value="Wikipedia" type="submit" style="width: 100px;">
+                    </td></tr></table>
+                </form>
+                <form action="http://www.webopedia.com/SHARED/search_action.asp" method="post" target="_blank">
+                    <table cellpadding="0px" cellspacing="0px" width="100%"><tr><td>
+                        <input name="term" maxlength="512" size="30" type="text" style="width: 100%; background-color: #FFFFEE;" onClick="this.value='';">
+                    </td><td style="width: 1%">
+                        <input name="submit" value="Webopedia" type="submit" style="width:100px;">
+                    </td></tr></table>
+                </form>
+                <form method="get" action="http://www.acronymfinder.com/af-query.asp" target="_blank">
+                    <table cellpadding="0px" cellspacing="0px" width="100%"><tr><td>
+                        <input type="text"   name="Acronym" maxlength="30" size="30" style="width: 100%; background-color: #DDEEFF;" onClick="this.value='';"/>
+                    </td><td style="width: 1%">
+                        <input type="submit" name="Find" value="acronymfinder" style="width:100px;"/>
+                    </td></tr></table>
+                </form>
+                <form class="searchForm" name="frm" action="http://dexonline.ro/search.php" target="_blank">
+                    <table cellpadding="0px" cellspacing="0px" width="100%"><tr><td>
+                        <input type="text"   value="" maxlength="50" size="30" name="cuv" style="width: 100%; background-color: #FFFFFF;" onClick="this.value='';"/>
+                    </td><td style="width: 1%">
+                        <input type="submit" value="dexonline.ro" style="width:100px;"/>
+                    </td></tr></table>
+                </form>
+                <form action="http://www.imdb.com/find" method="get" target="_blank">
+                    <table cellpadding="0px" cellspacing="0px" width="100%"><tr><td>
+                        <input type="text" value="" name="q" style="width: 100%; background-color: #FFFFCC;" onClick="this.value='';"/>
+                        <input type="hidden" name="s" value="tt" />
+                    </td><td style="width: 1%">
+                        <input type="submit" value="IMDb" style="width:100px;"/>
+                    </td></tr></table>
+                </form>
+                <form action="http://www.subs.ro/subtitrari/search.php" method="post" target="_blank">
+                    <table cellpadding="0px" cellspacing="0px" width="100%"><tr><td>
+                        <input type="text" name="keyword" style="width: 100%; background-color: #d1ffcb;" onClick="this.value='';"/>
+                        <input type="hidden" name="Searching" value="true" />
+                        <input type="hidden" name="metode" value="Nume Film" />
+                    </td><td style="width: 1%">
+                        <input type="submit" value="subs.ro" style="width:100px;"/>
+                    </td></tr></table>
+                </form>
+                <form action="http://www.download.com/3120-20_4-0.html" method="get" target="_blank">
+                    <table cellpadding="0px" cellspacing="0px" width="100%"><tr><td>
+                        <input type="text" name="qt" style="width: 100%; background-color: #fddf67;" onClick="this.value='';" />
+                        <input type="hidden" name="tag" value="srch" name="tag"/>
+                        <input type="hidden" name="rb_srch_sel" value="dl-20" />
+                    </td><td style="width: 1%">
+                        <input type="submit" value="download.com" style="width:100px;"/>
+                    </td></tr></table>
+                </form>
+                <form action="http://www.scribd.com/search" method="get" target="_blank">
+                    <table cellpadding="0px" cellspacing="0px" width="100%"><tr><td>
+                        <input type="text" name="query" style="width: 100%; background-color: #FFFEB1;" onClick="this.value='';" />
+                    </td><td style="width: 1%">
+                        <input type="submit" value="scribd.com" style="width:100px;"/>
+                    </td></tr></table>
+                </form>
+</div>
+</body>
+</html>

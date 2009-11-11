@@ -1,0 +1,81 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="common/styles/main.css">
+	<script type="text/javascript" src="common/scripts/cookies.js"></script>
+	<script type="text/javascript" src="common/scripts/utilities.js"></script>
+	<script type="text/javascript" src="common/scripts/sd-application.js"></script>
+	<script type="text/javascript" src="common/scripts/sd-persistence.js"></script>
+	<script type="text/javascript" src="common/scripts/sd-layoutdef.js"></script>
+	<script type="text/javascript" src="common/scripts/sd-moddef.js"></script>
+	<script type="text/javascript" src="common/scripts/sd-content.js"></script>
+</head>
+<body class="main_body" topmargin="0px" leftmargin="0px" rightmargin="0px" bottommargin="0px"
+	  onLoad="onPageLoad();" onUnload="onPageUnload();">
+    <script type="text/javascript" src="common/plugins/wz-tooltip/wz_tooltip.js"></script>
+
+	<table cellpadding="0px" cellspacing="0px" width="100%">
+	   <tr>
+	   	   <td valign="top" width="1%" class="leftbar_cell">
+	   	   		<table class="leftbar_table" cellpadding="0" cellspacing="0">
+					<tr>
+						<td>
+							<table cellpadding="0" cellspacing="0" width="100%">
+								<tr><td align="center">
+									<a href="http://mail.yahoo.com" target="_blank"><img src="common/images/tool32-mail-yahoo.png"></a>
+								</td></tr>
+								<tr><td align="center">
+									<a href="http://gmail.com" target="_blank"><img src="common/images/tool32-mail-google.png"></a>
+								</td></tr>
+                                <tr><td align="center">
+                                    <a title="Web encoder/decoder" href="http://www.paulschou.com/tools/xlate/" target="_blank"><img src="common/images/tool32-encoder.png"></a>
+                                </td></tr>
+                                <tr><td align="center">
+                                    <a title="Brasov Map" href="http://www.hartabrasov.ro"><img src="common/images/tool32-map-brasov.png"></a>
+                                </td></tr>
+                                <tr><td align="center">
+                                    <a title="Lite Grooveshark" href="http://lite.grooveshark.com" target="_blank"><img src="common/images/tool32-grooveshark.png"></a>
+                                </td></tr>
+                                <tr><td align="center">
+                                    <a title="BNR Exchange rates" href="http://www.bnro.ro/Cursul-de-schimb-524.aspx" target="_blank"><img src="common/images/tool32-bnrcurs.png"></a>
+                                </td></tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+	   	   </td>
+	   	   <td style="width: 1px; background-color: rgb(170, 170, 170);">&nbsp;</td>
+	   	   <td valign="top" width="0">
+	   	   	   <div id="sd.bookmarkDiv"></div>
+	   	   </td>
+	       <td valign="top" width="98%">
+    	       <div id="sd.contentDiv" style="width:100%"></div>
+        	</td>
+	       <td valign="top" width="1%">
+		       <div id="sd.indexDiv" style="width:130px;"></div>
+	       </td>
+	   </tr>
+	</table>
+
+    <table width="100%" cellpadding="0px" cellspacing="0px" class="bottombar">
+    <tr>
+    <td align="left" style="width: 1px; padding-right: 5px;">
+    	<iframe id="sd.loadFrame" src="" style="border: 0px; width: 0px; height: 0px;"></iframe>
+        <div class="invisible">
+            <form id="blankPageSubmitForm" action="" target="_blank" method="get"></form>
+        </div>
+    </td>
+    <td align="right">
+    	Created by <a href="http://bogdanmocanu.wordpress.com">Bogdan Mocanu</a>, 2009. Feel free to customize it.
+    </td></tr>
+    </table>
+
+    <div id="hiddenForms" style="display: none;">
+        <form name="hformGoogle" method="get" action="http://www.google.com/search" target="_blank" >
+            <input id="hformGoogleQ" name="q" value="" type="hidden">
+        </form>
+        <form name="hformGoogleLucky" method="get" action="http://www.google.com/search" target="_blank" >
+            <input type="hidden" name="q"    value="" id="hformGoogleQLucky" >
+            <input type="hidden" name="btnI" value="" >
+        </form>
+    </div>
+</body></html>

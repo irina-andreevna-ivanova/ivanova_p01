@@ -1,0 +1,63 @@
+----------------------------------------------------------------------------------------------------------------------------
+J2EE Design Patterns
+----------------------------------------------------------------------------------------------------------------------------
+
+Core development concepts:
+    - Extensibility
+	   - be careful with dependencies
+	   - a too coupled program makes change/refactoring/improvement harder
+	   - techniques
+	       - Decoupling
+	       - Centralizing
+	           - by gathering basic functionalities in central resources, the application becomes easier to manage and change
+	       - Reusing
+	           - by adding too much functionality to a component, this one becomes too specialized
+	           - therefore it cannot be adapted to other case, and code must be duplicated
+	- Scalability
+	   - scalability and performance are related, but not the same thing
+	   - scalability: the ability of an application to maintain the same response time, as the number of requests increases
+	   - linear scalability: the effect of serving a request in a time that increases in a liniar manner with
+	     the number of clients. For 1 client the app needs 1 second, for 10 clients it needs 10 seconds to serve one request.
+	   - scalability limit: the maximum number of clients it can server at the same time
+	       - the application starts with a constant response time, followed by a linear increase in response time,
+	         reaching the maximum scalability level
+	   - there is a trade-off between extensibility and scalability. At a certain point, increasing scalability
+	     requires a lowering of the extensibility level
+	- Reliability
+	   - software performs as expected, all the time
+	   - the same inputs produce the same outputs
+	   - the produced outputs are in accordance with the requirements
+	- Timeliness
+	   - aims the timely deliver of the software product
+	Others:
+	- manageability
+	- usability
+- Refactoring
+    - the process of transforming existing software into better software be revisiting the various design 
+      assumptions and implementation strategies, and implement better versions
+    - 
+Building an applications
+    - requirements gathering
+    - high-level design
+    - low-level design
+    - implementation and unit testing
+    - integration testing
+    - deployment
+UML recap
+    - Use Cases
+        - collection of related activities that work toward a particular goal
+        - used in the requirements gathering process
+        - can be as detailed or as generic as required
+        - use cases: ovals
+        - actors (humans or non-humans): stick figures
+        - use stereotypes to override the default meaning of an UML object. Ex: draw a system not as a stick
+          figure, but as a rectangle. Since a rectangle means a class, use the stereotype <<actor>> to make
+          it mean an actor
+        - generalization: closed-headed (non-filled) continuous arrow
+        - inclusion: use a dashed arrow (open head) with the <<include>> stereotype
+    - Class diagrams
+        - class diagrams, object diagrams, package diagrams
+        - show the relationship between classes of the system
+        - do not necessarily map 1-1 to the final classes of the system
+        - relationships: generalization, association, aggregation, composite aggregation (short composition)
+        -     
