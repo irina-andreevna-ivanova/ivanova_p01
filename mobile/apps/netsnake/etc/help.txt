@@ -1,0 +1,182 @@
+# List of supported devices (as of version JME SDK 3.0)
+device.list: 
+ClamshellCldcPhone1,
+DefaultCdcPbpPhone1,
+DefaultCldcJtwiPhone1,
+DefaultCldcJtwiPhone2,
+DefaultCldcMsaPhone1,
+DefaultCldcMsaPhone2,
+DefaultCldcPhone1,
+DefaultCldcPhone2,
+DefaultFxPhone1,
+DefaultFxTouchPhone1,
+SunVgaAGUIPhone1,
+SunVgaCdcPhone1
+
+uei.version: 1.0.1
+uei.arguments: Xdevice,Xquery,Xdebug,Xrunjdwp
+
+# Properties for device ClamshellCldcPhone1
+ClamshellCldcPhone1.descriptor: Clamshell CLDC emulator
+ClamshellCldcPhone1.version.configuration: CLDC-1.1
+ClamshellCldcPhone1.version.profile: MIDP-2.1
+ClamshellCldcPhone1.screen.width: 240
+ClamshellCldcPhone1.screen.height: 320
+ClamshellCldcPhone1.screen.isColor: true
+ClamshellCldcPhone1.screen.isTouch: false
+ClamshellCldcPhone1.screen.bitDepth: 16
+ClamshellCldcPhone1.security.domains: minimum,maximum,unidentified_third_party,identified_third_party,operator,manufacturer
+ClamshellCldcPhone1.uei.arguments: Xdescriptor,Xjam,Xrunjdwp,Xquery,Xdebug,Xautotest,Xdomain
+ClamshellCldcPhone1.bootclasspath: D:/Applications_Java/JME_3.0/lib/cldc_1.0.jar,D:/Applications_Java/JME_3.0/lib/cldc_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr082_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr120_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr135_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr172_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr177_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr179_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr180_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr184_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr205_2.0.jar,D:/Applications_Java/JME_3.0/lib/jsr211_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr226_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr229_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr234_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr238_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr239_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr256_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr280_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr75_1.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.1.jar
+ClamshellCldcPhone1.apis: D:/Applications_Java/JME_3.0/lib/cldc_1.0.jar,D:/Applications_Java/JME_3.0/lib/cldc_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr082_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr120_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr135_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr172_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr177_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr179_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr180_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr184_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr205_2.0.jar,D:/Applications_Java/JME_3.0/lib/jsr211_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr226_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr229_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr234_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr238_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr239_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr256_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr280_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr75_1.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.1.jar
+
+# Properties for device DefaultCdcPbpPhone1
+DefaultCdcPbpPhone1.descriptor: CDC emulator
+DefaultCdcPbpPhone1.version.configuration: CDC-1.1
+DefaultCdcPbpPhone1.version.profile: PBP-1.1
+DefaultCdcPbpPhone1.screen.width: 240
+DefaultCdcPbpPhone1.screen.height: 320
+DefaultCdcPbpPhone1.screen.isColor: true
+DefaultCdcPbpPhone1.screen.isTouch: true
+DefaultCdcPbpPhone1.screen.bitDepth: 16
+DefaultCdcPbpPhone1.uei.arguments: Xmain,Xdebug,Xrunjdwp,Xquery
+DefaultCdcPbpPhone1.bootclasspath: D:/Applications_Java/JME_3.0/lib/cdc_1.1.jar,D:/Applications_Java/JME_3.0/lib/fp_1.1.jar,D:/Applications_Java/JME_3.0/lib/pbp_1.1.jar,D:/Applications_Java/JME_3.0/lib/secop_1.0.jar
+DefaultCdcPbpPhone1.apis: D:/Applications_Java/JME_3.0/lib/cdc_1.1.jar,D:/Applications_Java/JME_3.0/lib/fp_1.1.jar,D:/Applications_Java/JME_3.0/lib/pbp_1.1.jar,D:/Applications_Java/JME_3.0/lib/secop_1.0.jar
+
+# Properties for device DefaultCldcJtwiPhone1
+DefaultCldcJtwiPhone1.descriptor: JTWI compliant CLDC emulator
+DefaultCldcJtwiPhone1.version.configuration: CLDC-1.1
+DefaultCldcJtwiPhone1.version.profile: MIDP-2.0
+DefaultCldcJtwiPhone1.screen.width: 180
+DefaultCldcJtwiPhone1.screen.height: 208
+DefaultCldcJtwiPhone1.screen.isColor: true
+DefaultCldcJtwiPhone1.screen.isTouch: false
+DefaultCldcJtwiPhone1.screen.bitDepth: 16
+DefaultCldcJtwiPhone1.security.domains: minimum,maximum,trusted,untrusted
+DefaultCldcJtwiPhone1.uei.arguments: Xdescriptor,Xjam,Xrunjdwp,Xquery,Xdebug,Xautotest,Xdomain
+DefaultCldcJtwiPhone1.bootclasspath: D:/Applications_Java/JME_3.0/lib/cldc_1.0.jar,D:/Applications_Java/JME_3.0/lib/cldc_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr120_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr135_1.1.jar,D:/Applications_Java/JME_3.0/lib/midp_1.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.0.jar
+DefaultCldcJtwiPhone1.apis: D:/Applications_Java/JME_3.0/lib/cldc_1.0.jar,D:/Applications_Java/JME_3.0/lib/cldc_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr120_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr135_1.1.jar,D:/Applications_Java/JME_3.0/lib/midp_1.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.0.jar
+
+# Properties for device DefaultCldcJtwiPhone2
+DefaultCldcJtwiPhone2.descriptor: JTWI compliant CLDC emulator
+DefaultCldcJtwiPhone2.version.configuration: CLDC-1.1
+DefaultCldcJtwiPhone2.version.profile: MIDP-2.0
+DefaultCldcJtwiPhone2.screen.width: 180
+DefaultCldcJtwiPhone2.screen.height: 208
+DefaultCldcJtwiPhone2.screen.isColor: true
+DefaultCldcJtwiPhone2.screen.isTouch: false
+DefaultCldcJtwiPhone2.screen.bitDepth: 16
+DefaultCldcJtwiPhone2.security.domains: minimum,maximum,trusted,untrusted
+DefaultCldcJtwiPhone2.uei.arguments: Xdescriptor,Xjam,Xrunjdwp,Xquery,Xdebug,Xautotest,Xdomain
+DefaultCldcJtwiPhone2.bootclasspath: D:/Applications_Java/JME_3.0/lib/cldc_1.0.jar,D:/Applications_Java/JME_3.0/lib/cldc_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr120_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr135_1.1.jar,D:/Applications_Java/JME_3.0/lib/midp_1.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.0.jar
+DefaultCldcJtwiPhone2.apis: D:/Applications_Java/JME_3.0/lib/cldc_1.0.jar,D:/Applications_Java/JME_3.0/lib/cldc_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr120_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr135_1.1.jar,D:/Applications_Java/JME_3.0/lib/midp_1.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.0.jar
+
+# Properties for device DefaultCldcMsaPhone1
+DefaultCldcMsaPhone1.descriptor: MSA compliant CLDC emulator
+DefaultCldcMsaPhone1.version.configuration: CLDC-1.1
+DefaultCldcMsaPhone1.version.profile: MIDP-2.1
+DefaultCldcMsaPhone1.screen.width: 240
+DefaultCldcMsaPhone1.screen.height: 320
+DefaultCldcMsaPhone1.screen.isColor: true
+DefaultCldcMsaPhone1.screen.isTouch: false
+DefaultCldcMsaPhone1.screen.bitDepth: 16
+DefaultCldcMsaPhone1.security.domains: minimum,maximum,unidentified_third_party,identified_third_party,operator,manufacturer
+DefaultCldcMsaPhone1.uei.arguments: Xdescriptor,Xjam,Xrunjdwp,Xquery,Xdebug,Xautotest,Xdomain
+DefaultCldcMsaPhone1.bootclasspath: D:/Applications_Java/JME_3.0/lib/cldc_1.0.jar,D:/Applications_Java/JME_3.0/lib/cldc_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr082_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr120_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr135_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr172_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr177_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr179_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr180_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr184_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr205_2.0.jar,D:/Applications_Java/JME_3.0/lib/jsr211_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr226_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr234_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr238_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr75_1.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.1.jar
+DefaultCldcMsaPhone1.apis: D:/Applications_Java/JME_3.0/lib/cldc_1.0.jar,D:/Applications_Java/JME_3.0/lib/cldc_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr082_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr120_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr135_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr172_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr177_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr179_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr180_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr184_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr205_2.0.jar,D:/Applications_Java/JME_3.0/lib/jsr211_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr226_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr234_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr238_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr75_1.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.1.jar
+
+# Properties for device DefaultCldcMsaPhone2
+DefaultCldcMsaPhone2.descriptor: MSA compliant CLDC emulator
+DefaultCldcMsaPhone2.version.configuration: CLDC-1.1
+DefaultCldcMsaPhone2.version.profile: MIDP-2.1
+DefaultCldcMsaPhone2.screen.width: 240
+DefaultCldcMsaPhone2.screen.height: 320
+DefaultCldcMsaPhone2.screen.isColor: true
+DefaultCldcMsaPhone2.screen.isTouch: false
+DefaultCldcMsaPhone2.screen.bitDepth: 16
+DefaultCldcMsaPhone2.security.domains: minimum,maximum,unidentified_third_party,identified_third_party,operator,manufacturer
+DefaultCldcMsaPhone2.uei.arguments: Xdescriptor,Xjam,Xrunjdwp,Xquery,Xdebug,Xautotest,Xdomain
+DefaultCldcMsaPhone2.bootclasspath: D:/Applications_Java/JME_3.0/lib/cldc_1.0.jar,D:/Applications_Java/JME_3.0/lib/cldc_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr082_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr120_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr135_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr172_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr177_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr179_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr180_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr184_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr205_2.0.jar,D:/Applications_Java/JME_3.0/lib/jsr211_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr226_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr234_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr238_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr75_1.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.1.jar
+DefaultCldcMsaPhone2.apis: D:/Applications_Java/JME_3.0/lib/cldc_1.0.jar,D:/Applications_Java/JME_3.0/lib/cldc_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr082_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr120_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr135_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr172_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr177_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr179_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr180_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr184_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr205_2.0.jar,D:/Applications_Java/JME_3.0/lib/jsr211_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr226_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr234_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr238_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr75_1.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.1.jar
+
+# Properties for device DefaultCldcPhone1
+DefaultCldcPhone1.descriptor: CLDC emulator
+DefaultCldcPhone1.version.configuration: CLDC-1.1
+DefaultCldcPhone1.version.profile: MIDP-2.1
+DefaultCldcPhone1.screen.width: 240
+DefaultCldcPhone1.screen.height: 320
+DefaultCldcPhone1.screen.isColor: true
+DefaultCldcPhone1.screen.isTouch: true
+DefaultCldcPhone1.screen.bitDepth: 16
+DefaultCldcPhone1.security.domains: minimum,maximum,unidentified_third_party,identified_third_party,operator,manufacturer
+DefaultCldcPhone1.uei.arguments: Xdescriptor,Xjam,Xrunjdwp,Xquery,Xdebug,Xautotest,Xdomain
+DefaultCldcPhone1.bootclasspath: D:/Applications_Java/JME_3.0/lib/cldc_1.0.jar,D:/Applications_Java/JME_3.0/lib/cldc_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr082_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr120_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr135_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr172_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr177_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr179_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr180_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr184_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr205_2.0.jar,D:/Applications_Java/JME_3.0/lib/jsr211_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr226_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr229_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr234_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr238_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr239_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr256_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr280_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr75_1.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.1.jar
+DefaultCldcPhone1.apis: D:/Applications_Java/JME_3.0/lib/cldc_1.0.jar,D:/Applications_Java/JME_3.0/lib/cldc_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr082_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr120_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr135_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr172_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr177_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr179_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr180_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr184_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr205_2.0.jar,D:/Applications_Java/JME_3.0/lib/jsr211_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr226_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr229_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr234_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr238_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr239_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr256_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr280_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr75_1.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.1.jar
+
+# Properties for device DefaultCldcPhone2
+DefaultCldcPhone2.descriptor: CLDC emulator
+DefaultCldcPhone2.version.configuration: CLDC-1.1
+DefaultCldcPhone2.version.profile: MIDP-2.1
+DefaultCldcPhone2.screen.width: 240
+DefaultCldcPhone2.screen.height: 320
+DefaultCldcPhone2.screen.isColor: true
+DefaultCldcPhone2.screen.isTouch: true
+DefaultCldcPhone2.screen.bitDepth: 16
+DefaultCldcPhone2.security.domains: minimum,maximum,unidentified_third_party,identified_third_party,operator,manufacturer
+DefaultCldcPhone2.uei.arguments: Xdescriptor,Xjam,Xrunjdwp,Xquery,Xdebug,Xautotest,Xdomain
+DefaultCldcPhone2.bootclasspath: D:/Applications_Java/JME_3.0/lib/cldc_1.0.jar,D:/Applications_Java/JME_3.0/lib/cldc_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr082_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr120_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr135_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr172_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr177_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr179_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr180_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr184_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr205_2.0.jar,D:/Applications_Java/JME_3.0/lib/jsr211_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr226_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr229_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr234_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr238_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr239_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr256_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr280_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr75_1.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.1.jar
+DefaultCldcPhone2.apis: D:/Applications_Java/JME_3.0/lib/cldc_1.0.jar,D:/Applications_Java/JME_3.0/lib/cldc_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr082_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr120_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr135_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr172_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr177_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr179_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr180_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr184_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr205_2.0.jar,D:/Applications_Java/JME_3.0/lib/jsr211_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr226_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr229_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr234_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr238_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr239_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr256_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr280_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr75_1.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.1.jar
+
+# Properties for device DefaultFxPhone1
+DefaultFxPhone1.descriptor: FX Emulator
+DefaultFxPhone1.version.configuration: CLDC-1.1
+DefaultFxPhone1.version.profile: MIDP-2.1
+DefaultFxPhone1.screen.width: 240
+DefaultFxPhone1.screen.height: 320
+DefaultFxPhone1.screen.isColor: true
+DefaultFxPhone1.screen.isTouch: true
+DefaultFxPhone1.screen.bitDepth: 16
+DefaultFxPhone1.security.domains: minimum,maximum,unidentified_third_party,identified_third_party,operator,manufacturer
+DefaultFxPhone1.uei.arguments: Xdescriptor,Xjam,Xrunjdwp,Xquery,Xdebug,Xautotest,Xdomain
+DefaultFxPhone1.bootclasspath: D:/Applications_Java/JME_3.0/lib/cldc_1.0.jar,D:/Applications_Java/JME_3.0/lib/cldc_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr082_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr120_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr135_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr172_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr177_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr179_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr180_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr184_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr205_2.0.jar,D:/Applications_Java/JME_3.0/lib/jsr211_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr226_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr234_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr238_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr256_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr75_1.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.1.jar
+DefaultFxPhone1.apis: D:/Applications_Java/JME_3.0/lib/cldc_1.0.jar,D:/Applications_Java/JME_3.0/lib/cldc_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr082_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr120_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr135_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr172_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr177_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr179_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr180_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr184_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr205_2.0.jar,D:/Applications_Java/JME_3.0/lib/jsr211_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr226_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr234_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr238_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr256_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr75_1.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.1.jar
+
+# Properties for device DefaultFxTouchPhone1
+DefaultFxTouchPhone1.descriptor: FX Emulator
+DefaultFxTouchPhone1.version.configuration: CLDC-1.1
+DefaultFxTouchPhone1.version.profile: MIDP-2.1
+DefaultFxTouchPhone1.screen.width: 240
+DefaultFxTouchPhone1.screen.height: 320
+DefaultFxTouchPhone1.screen.isColor: true
+DefaultFxTouchPhone1.screen.isTouch: true
+DefaultFxTouchPhone1.screen.bitDepth: 16
+DefaultFxTouchPhone1.security.domains: minimum,maximum,unidentified_third_party,identified_third_party,operator,manufacturer
+DefaultFxTouchPhone1.uei.arguments: Xdescriptor,Xjam,Xrunjdwp,Xquery,Xdebug,Xautotest,Xdomain
+DefaultFxTouchPhone1.bootclasspath: D:/Applications_Java/JME_3.0/lib/cldc_1.0.jar,D:/Applications_Java/JME_3.0/lib/cldc_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr082_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr120_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr135_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr172_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr177_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr179_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr180_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr184_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr205_2.0.jar,D:/Applications_Java/JME_3.0/lib/jsr211_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr226_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr234_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr238_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr256_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr75_1.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.1.jar
+DefaultFxTouchPhone1.apis: D:/Applications_Java/JME_3.0/lib/cldc_1.0.jar,D:/Applications_Java/JME_3.0/lib/cldc_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr082_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr120_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr135_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr172_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr177_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr179_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr180_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr184_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr205_2.0.jar,D:/Applications_Java/JME_3.0/lib/jsr211_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr226_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr234_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr238_1.0.jar,D:/Applications_Java/JME_3.0/lib/jsr256_1.1.jar,D:/Applications_Java/JME_3.0/lib/jsr75_1.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.0.jar,D:/Applications_Java/JME_3.0/lib/midp_2.1.jar
+
+# Properties for device SunVgaAGUIPhone1
+SunVgaAGUIPhone1.descriptor: AGUI VGA emulator
+SunVgaAGUIPhone1.version.configuration: CDC-1.1
+SunVgaAGUIPhone1.version.profile: PBP-1.1
+SunVgaAGUIPhone1.screen.width: 640
+SunVgaAGUIPhone1.screen.height: 480
+SunVgaAGUIPhone1.screen.isColor: true
+SunVgaAGUIPhone1.screen.isTouch: true
+SunVgaAGUIPhone1.screen.bitDepth: 16
+SunVgaAGUIPhone1.uei.arguments: Xmain,Xdebug,Xrunjdwp,Xquery
+SunVgaAGUIPhone1.bootclasspath: D:/Applications_Java/JME_3.0/lib/agui_1.0.jar,D:/Applications_Java/JME_3.0/lib/cdc_1.1.jar,D:/Applications_Java/JME_3.0/lib/fp_1.1.jar,D:/Applications_Java/JME_3.0/lib/pbp_1.1.jar,D:/Applications_Java/JME_3.0/lib/secop_1.0.jar
+SunVgaAGUIPhone1.apis: D:/Applications_Java/JME_3.0/lib/agui_1.0.jar,D:/Applications_Java/JME_3.0/lib/cdc_1.1.jar,D:/Applications_Java/JME_3.0/lib/fp_1.1.jar,D:/Applications_Java/JME_3.0/lib/pbp_1.1.jar,D:/Applications_Java/JME_3.0/lib/secop_1.0.jar
+
+# Properties for device SunVgaCdcPhone1
+SunVgaCdcPhone1.descriptor: CDC VGA emulator
+SunVgaCdcPhone1.version.configuration: CDC-1.1
+SunVgaCdcPhone1.version.profile: PBP-1.1
+SunVgaCdcPhone1.screen.width: 640
+SunVgaCdcPhone1.screen.height: 480
+SunVgaCdcPhone1.screen.isColor: true
+SunVgaCdcPhone1.screen.isTouch: true
+SunVgaCdcPhone1.screen.bitDepth: 16
+SunVgaCdcPhone1.uei.arguments: Xmain,Xdebug,Xrunjdwp,Xquery
+SunVgaCdcPhone1.bootclasspath: D:/Applications_Java/JME_3.0/lib/cdc_1.1.jar,D:/Applications_Java/JME_3.0/lib/fp_1.1.jar,D:/Applications_Java/JME_3.0/lib/pbp_1.1.jar,D:/Applications_Java/JME_3.0/lib/secop_1.0.jar
+SunVgaCdcPhone1.apis: D:/Applications_Java/JME_3.0/lib/cdc_1.1.jar,D:/Applications_Java/JME_3.0/lib/fp_1.1.jar,D:/Applications_Java/JME_3.0/lib/pbp_1.1.jar,D:/Applications_Java/JME_3.0/lib/secop_1.0.jar

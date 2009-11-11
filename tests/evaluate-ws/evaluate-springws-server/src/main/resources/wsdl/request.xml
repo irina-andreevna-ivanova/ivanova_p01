@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<product xmlns="http://test.ro/ws/product">
+    <id>100</id>
+    <name>Snickers</name>
+    <description>Some nice desc</description>
+    <received>2006-07-03</received>
+</product>

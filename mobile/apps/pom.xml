@@ -13,5 +13,6 @@
     <packaging>pom</packaging>
   <modules>
     <module>metris</module>
+    <module>netsnake</module>
   </modules>
 </project>

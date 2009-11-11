@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://test.ro/product-schema" 
+    elementFormDefault="qualified"
+    xmlns:schema="http://test.ro/product-schema"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    
+    <xsd:element name="GetProductByIdRequest">
+        <xsd:complexType>
+            <xsd:all>
+                <xsd:element name="productId" type="xsd:long"/>
+            </xsd:all>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:element name="GetProductByIdResponse">
+        <xsd:complexType>
+            <xsd:all>
+                <xsd:element name="product" type="schema:ProductType"/>
+            </xsd:all>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:element name="CalculatePriceRequest">
+        <xsd:complexType>
+            <xsd:all>
+                <xsd:element name="productId" type="xsd:long"/>
+            </xsd:all>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:complexType name="ProductType">
+        <xsd:attribute name="id" type="xsd:long"/>
+        <xsd:attribute name="name" type="xsd:string"/>
+        <xsd:attribute name="description" type="xsd:string"/>
+        <xsd:attribute name="received" type="xsd:date"/>
+    </xsd:complexType>    
+    
+</xsd:schema>  

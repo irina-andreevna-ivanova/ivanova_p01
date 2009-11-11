@@ -117,8 +117,46 @@ What middle management is there for
         - ergo, the need for slack
     - without the slack, the middle management people will only do their functional role, no reinvention
 Where Learning Happens
+	- when people are learning something really important for them, they go through a moment of panic. As soon as they understand that what they are
+	  learning is important for them, they go through a moment of panic, thinking that they now have to learn something new, that they have to give
+	  up on what they know so good and what they are best at
     - teams are very important in the learning process, because they align the goals, they help passing the panic
       for the new things that are learned
     - teams also help team members to pull in the same direction
     - teams provide an ideal environment for learning. A place where coaching and being coached are an integral
       part of each day's work
+	- unfortunately, there is no coach or trainer in the field of management. The managers need to learn everything by trial and error, everything
+	  by themselves
+	- the managers also should work as a team, not just the subordinates
+	- the experience sharing should be something to cherish and promote
+	- THE CHANGE TAKES PLACE IN THE MIDDLE SPOT, not in the top of the hierarchy, and certainly not on the bottom of it
+Danger in the white space (the middle space of the org chart, where changes could actually happen)
+	- competition between managers is always wrong and prone to damage
+	- apart from competition that is created intentionally, it could also appear out of lack (or the feeling of lack of) attention, nourishment at the
+	  peer level
+	- competition happens under authoritarian managers
+	- slackless orgs tend to be authoritarian
+	- TRAINING: practice by doing  a new task much more slowly than an expert would do it
+Change Management
+	- rules are different during change
+		- the Cardinal Rule of Management (I am boss and you are not, so do what I tell you to do) doesn' work
+		- the Reward after Performance rule doesn't work
+	- in times of change the reward must come first
+Risk and Risk Management
+	- risk management is not Plan for Success -> rather, it is Plan for Failure
+	- be prepared for the failure, embrace it and expect it to come
+	- taking ten risks, for example, means that during the process, 1-2-3 of them will actually materialize. You have to be prepared for this, expect 
+	  this to happen and create a reserve of trust+resources to be used for the situations where the risk will materialize
+Uncommon sense
+	- rules about risk management:
+		1. list and count each risk
+		2. have an ongoing process for discovering new risks
+		3. quantify each one as to its potential impact and likelihood
+		4. designate a transition indicator for each one that will tell you (early, hopefully) that the risk is beginning to materialize
+		5. set down in advance what you plan will be to cope with each risk should it begin to materialize
+	- risk mitigation
+		- the plan has to precede materialization
+		- some of the mitigation activities must also precede materialization
+	- prepare to pay the cost of risk mitigation (the rosy scenario is not so rosy, because of the cost, but the dark scenario is also not so dark)
+
+	
