@@ -64,9 +64,10 @@ MVC
     - Front Controller
         - performs various operations, before forwarding the request to a particulat request handler
         - (Struts-like) actions can be used (which are actually Command pattern implementations)
+    - Decorator        
         - Servlet filters can be used, along with Decorators, to provides pluggable services, such as
           logging, security, request params tampering, etc.
         - During the chaining of Filters, the Request + Response can be wrapped 
             - ServletRequestWrapper, ServletResponseWrapper
             - HttpServletRequestWrapper, HttpServletResponseWrapper
-    - 
+            
