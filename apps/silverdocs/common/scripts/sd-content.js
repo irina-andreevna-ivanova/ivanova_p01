@@ -68,13 +68,13 @@ function generatePageContent() {
 
 		if ( colIndex < SDSpots.length - 1 ) {
 			contentStr += '        </td>';
-			contentStr += '<td style="width: 1px; font-size: 2px; background-color: rgb(255, 255, 255);">&nbsp;</td>';
+			contentStr += '<td style="width: 1px; font-size: 2px; background-color: rgb(255, 255, 255);"></td>';
 			contentStr += '        <td style="padding-left: 1px;" valign="top" width="' + columnLength + '%">';
 		}
 	}
 
 	contentStr += '        </td>';
-	contentStr += '<td style="width: 1px; font-size: 2px; background-color: rgb(170, 170, 170);">&nbsp;</td>';
+	contentStr += '<td style="width: 0px; font-size: 2px; background-color: #FFFFFF;">&nbsp;</td>';
 	contentStr += '</tr>';
 	contentStr += '</tbody></table>';
 	contentStr += '</td></tr></table>';
@@ -87,7 +87,7 @@ function generatePageContent() {
 	
 	contentStr = "";
 	contentStr += "<table cellpadding='0px' cellspacing='0px' class='table_indexList'><tr>";
-	contentStr += "<td valign='top'>";
+	contentStr += "<td class='table_indexList_cell'>";
 
 /*
 	contentStr += "<table cellpadding='0px' cellspacing='3px'><tr>";
