@@ -44,7 +44,11 @@ SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Linux";
 
 SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.dev.ide.eclipse";
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Eclipse";
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "IDE: Eclipse";
+
+SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.dev.ide.netbeans";
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "IDE: Netbeans";
 
 SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.design.modelling.uml";

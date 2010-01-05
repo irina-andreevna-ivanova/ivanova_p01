@@ -60,6 +60,13 @@ SDModules[ moduleIndex ][ MODULE_PINNED    ] = false;
 initModule( SDModules[ moduleIndex ] );
 
 SDModules[ ++moduleIndex ] = new Array();
+SDModules[ moduleIndex ][ MODULE_ID        ] = "sd.dev.ide.netbeans";
+SDModules[ moduleIndex ][ MODULE_FILENAME  ] = MODULES_DIRECTORY + "module-dev-ide-netbeans.html";
+SDModules[ moduleIndex ][ MODULE_VISIBLE   ] = false;
+SDModules[ moduleIndex ][ MODULE_PINNED    ] = false;
+initModule( SDModules[ moduleIndex ] );
+
+SDModules[ ++moduleIndex ] = new Array();
 SDModules[ moduleIndex ][ MODULE_ID        ] = "sd.dev.java.caching";
 SDModules[ moduleIndex ][ MODULE_FILENAME  ] = MODULES_DIRECTORY + "module-dev-java-caching.html";
 SDModules[ moduleIndex ][ MODULE_VISIBLE   ] = false;
