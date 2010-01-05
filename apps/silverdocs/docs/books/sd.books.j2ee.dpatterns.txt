@@ -60,14 +60,17 @@ UML recap
         - show the relationship between classes of the system
         - do not necessarily map 1-1 to the final classes of the system
         - relationships: generalization, association, aggregation, composite aggregation (short composition)
-MVC
-    - Front Controller
-        - performs various operations, before forwarding the request to a particulat request handler
-        - (Struts-like) actions can be used (which are actually Command pattern implementations)
-    - Decorator        
-        - Servlet filters can be used, along with Decorators, to provides pluggable services, such as
-          logging, security, request params tampering, etc.
-        - During the chaining of Filters, the Request + Response can be wrapped 
-            - ServletRequestWrapper, ServletResponseWrapper
-            - HttpServletRequestWrapper, HttpServletResponseWrapper
-            
+MVC-Front Controller
+    - performs various operations, before forwarding the request to a particulat request handler
+    - (Struts-like) actions can be used (which are actually Command pattern implementations)
+MVC-Decorator        
+    - Servlet filters can be used, along with Decorators, to provides pluggable services, such as
+      logging, security, request params tampering, etc.
+    - During the chaining of Filters, the Request + Response can be wrapped 
+        - ServletRequestWrapper, ServletResponseWrapper
+        - HttpServletRequestWrapper, HttpServletResponseWrapper
+     
+Service To Worker
+    - similar to FrontController, except that we have a dispatcher, which manages workers and views, 
+      and which is responsible for implementing the links between workers (aka pages)
+    -              

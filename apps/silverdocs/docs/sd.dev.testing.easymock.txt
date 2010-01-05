@@ -1,0 +1,16 @@
+Notes on EasyMock usage
+------------------------------------------------------------------------------------------------------------
+
+myServiceMock = createMock( MyService.class );
+expect( myServiceMock.getString( SomeConst.PREFIX + NAME + "." + OtherConst.PARAM ) )
+      .andReturn( 100 );
+
+expect( myServiceMock.getSomething( eq( "http://host" ), (MyInfo)anyObject() ) )
+      .andThrow( new MyException( "some param" ) );
+
+replay( myServiceMock );
+...
+verify( myServiceMock );
+...
+reset( myServiceMock );
+      
