@@ -88,8 +88,8 @@ SDModules[ moduleIndex ][ MODULE_PINNED    ] = false;
 initModule( SDModules[ moduleIndex ] );
 
 SDModules[ ++moduleIndex ] = new Array();
-SDModules[ moduleIndex ][ MODULE_ID        ] = "sd.computer.http";
-SDModules[ moduleIndex ][ MODULE_FILENAME  ] = MODULES_DIRECTORY + "module-computer-http.html";
+SDModules[ moduleIndex ][ MODULE_ID        ] = "sd.computer.network";
+SDModules[ moduleIndex ][ MODULE_FILENAME  ] = MODULES_DIRECTORY + "module-computer-network.html";
 SDModules[ moduleIndex ][ MODULE_VISIBLE   ] = false;
 SDModules[ moduleIndex ][ MODULE_PINNED    ] = false;
 initModule( SDModules[ moduleIndex ] );

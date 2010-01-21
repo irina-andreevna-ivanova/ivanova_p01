@@ -2,6 +2,40 @@ Apache Ant - Notes
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Running the Java task, with permissions
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+A permissions set implictly contains the following permissions:
+
+    <grant class="java.net.SocketPermission" name="localhost:1024-" actions="listen">
+    <grant class="java.util.PropertyPermission" name="java.version" actions="read">
+    <grant class="java.util.PropertyPermission" name="java.vendor" actions="read">
+    <grant class="java.util.PropertyPermission" name="java.vendor.url" actions="read">
+    <grant class="java.util.PropertyPermission" name="java.class.version" actions="read">
+    <grant class="java.util.PropertyPermission" name="os.name" actions="read">
+    <grant class="java.util.PropertyPermission" name="os.version" actions="read">
+    <grant class="java.util.PropertyPermission" name="os.arch" actions="read">
+    <grant class="java.util.PropertyPermission" name="file.encoding" actions="read">
+    <grant class="java.util.PropertyPermission" name="file.separator" actions="read">
+    <grant class="java.util.PropertyPermission" name="path.separator" actions="read">
+    <grant class="java.util.PropertyPermission" name="line.separator" actions="read">
+    <grant class="java.util.PropertyPermission" name="java.specification.version" actions="read">
+    <grant class="java.util.PropertyPermission" name="java.specification.vendor" actions="read">
+    <grant class="java.util.PropertyPermission" name="java.specification.name" actions="read">
+    <grant class="java.util.PropertyPermission" name="java.vm.specification.version" actions="read">
+    <grant class="java.util.PropertyPermission" name="java.vm.specification.vendor" actions="read">
+    <grant class="java.util.PropertyPermission" name="java.vm.specification.name" actions="read">
+    <grant class="java.util.PropertyPermission" name="java.vm.version" actions="read">
+    <grant class="java.util.PropertyPermission" name="java.vm.vendor" actions="read">
+    <grant class="java.util.PropertyPermission" name="java.vm.name" actions="read">
+
+    <permissions>
+        <grant  class="java.lang.RuntimePermission" name="*"/>
+        <grant class="java.io.FilePermission" name="?????" actions="read,write,delete,execute" />
+        <!--grant class="java.lang.RuntimePermission" name="exitVM" /-->
+    </permissions>
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Using Maven dependencies in build.xml
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

@@ -11,12 +11,12 @@ spotIndex = -1;
 SDSpots[ ++columnIndex ] = new Array();
 
 SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.locallinks";
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Locals";
-
-SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.general.search";
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Search";
+
+SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.locallinks";
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Locals";
 
 SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.general.knowledge";
@@ -119,16 +119,16 @@ SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.dev.web.css";
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "CSS";
 
 SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.computer.http";
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "HTTP";
-
-SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.computer.ascii";
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "ASCII";
 
 SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.dev.soa";
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Service Oriented Arch";
+
+SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.computer.network";
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Network Protocols";
 
 /* *********************************************************************** */
 spotIndex = -1;

@@ -1,0 +1,37 @@
+Network architecture notes
+------------------------------------------------------------------------------------------------------------------------
+Application Layer
+    - the layer closest to the user
+    - interacts with applications that contain a communication module
+    - provides functions for identifying communication partners, determining resources availability, syncronizing communication
+    - implementations: HTTP, FTP, SMTP, etc
+Presentation Layer
+    - provides independence from the various ways to represent the data that is sent and receieved from the network
+    - converts from application to network format
+    - converts the received data to a format that is easily understood by the App Layer
+    - formats, encrypts data before sending it and after receiving it
+    - e.g.: serialization/deserialization of objects to/from bytestream or XML
+Session Layer
+    - takes care of session, starting and gracefully closing the sessions
+    - provides full-duplex, half-duplex, simplex operations 
+    - provides checkpointing, adjournment, termination and restart procedures
+    - used intensively by the remote procedure call modules of applications
+Transport Layer
+    - provides reliable data transfer between parties, through flow control, segmentation/dessegmentation, error control
+    - TL can keep track of segments, and resend those that fail
+    - there are 5 classes of TP: class 0 for networks that are really safe - class 4 for networks really unsafe
+    - visualize the TL as the mail post office, where a mail is reliably sent to other parties, without the protocol to have any knowledge
+      about the content of the mail
+Network Layer
+    - provides services for transferring variable length data from one network to another, while maintaining the QoS requested by the Transport Layer
+    - performs network routing (this is the level where routers work), fragmentation, reassembly
+    - reports delivery errors
+    - Layer 3 protocol: IP (it is not responsible for correct delivery of packets, but only for correct discarding of errored packets)
+    - IP is also responsible for fragmenting the packet into sufficiently small packets, that the medium can accept
+Data Link Layer
+    - used mainly for correcting the transmission errors generated from the Physical Layer
+    - was also used for point-to-point and multi-point protocols, but it is not used so much for this, nowadays
+Physical Layer
+    - implements the physical connection layer between parties
+    - takes care of handshaking, sending bits over the wire, 
+    - conversions between various types of signal transmission (over the UTP cable, the optical fiber, etc) and the bytes send to the next layer
