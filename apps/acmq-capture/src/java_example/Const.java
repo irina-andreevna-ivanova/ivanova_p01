@@ -1,6 +1,6 @@
 package java_example;
 
-import java.awt.geom.Point2D;
+
 
 /** Collection of constants from the game. */
 public class Const {

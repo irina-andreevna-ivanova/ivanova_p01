@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="acmq-capture" default="default" basedir=".">
+<project name="acmq-capture" default="run" basedir=".">
 
+	<property name="project.bin" value="${basedir}/bin" />
+	
 	<property name="acmq.game.classname" value="icpc.challenge.main.Game" />
+	
 	<property name="acmq.player.mine.qualifier" value="java" />
-	<property name="acmq.player.mine.classname" value="Eight" />
+	<property name="acmq.player.mine.classname" value="java_example.Eight" />
 	<property name="acmq.player.enemy.qualifier" value="builtin" />
 	<property name="acmq.player.enemy.classname" value="RandomPlayer" />
 
 	<path id="build.path">
-		<pathelement location="${basedir}/lib/capture.jar" />
 		<pathelement location="${basedir}/bin/" />
+		<pathelement location="${basedir}/lib/capture.jar" />
 	</path>
 
 	<!-- ================================= 
           target: default              
          ================================= -->
-	<target name="default" description="description">
-		<java classname="${acmq.game.classname}" classpathref="build.path">
+	<target name="run">
+		<java dir="${project.bin}" classname="${acmq.game.classname}" classpathref="build.path" fork="true">
 			<arg value="-player" />
 			<arg value="${acmq.player.mine.qualifier}" />
 			<arg value="${acmq.player.mine.classname}" />
