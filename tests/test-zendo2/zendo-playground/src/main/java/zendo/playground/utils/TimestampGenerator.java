@@ -24,6 +24,14 @@ public class TimestampGenerator {
         long timestampSource = 1248186224492L;
         now = new Date( timestampSource );
         System.out.println( now );
+        
+        System.out.println( "Misc tests-----------" );
+        
+        System.out.println( new SimpleDateFormat( "dd.MM.yyyy" ).parse( "8.03.2008" ).getTime() );
+        System.out.println( new SimpleDateFormat( "dd.MM.yyyy" ).parse( "10.03.2008" ).getTime() );
+        System.out.println( new SimpleDateFormat( "dd.MM.yyyy" ).parse( "12.03.2008" ).getTime() );
+        System.out.println( new SimpleDateFormat( "dd.MM.yyyy" ).parse( "10.05.2008" ).getTime() );
+        
     }
 
 }

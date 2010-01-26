@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:reportSession
+    xmlns:ns2="http://sessionreporting.api.masterdataserver.netviewer.com/">
+    <sessionGUID>39723117-b928-4db2-a806-2f4644ccdba6</sessionGUID>
+    <sessionNo>262251309</sessionNo>
+    <contractId>10001</contractId>
+    <exitState>2</exitState>
+    <participantSessions>
+        <displayName>Homer Simpson</displayName>
+        <participantGUID>5e4af964-819a-4534-9d8e-6a2d9e5af867
+        </participantGUID>
+        <subSessions>
+            <endDate>0</endDate>
+            <role>0</role>
+            <startDate>1263208815711</startDate>
+        </subSessions>
+    </participantSessions>
+</ns2:reportSession>
+    
