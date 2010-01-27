@@ -16,15 +16,13 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-
-
 /**
+ * 
+ *
  * @author mocanu
  */
-public class Bumper {
-
-    public RealPoint coord = new RealPoint();
-
-    public RealPoint velocity = new RealPoint();
+public class GameConstants {
+    
+    public static final int TRAIL_LIMIT = 600;
 
 }

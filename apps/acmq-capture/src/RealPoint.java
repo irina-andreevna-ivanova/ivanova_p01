@@ -16,15 +16,16 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-
-
 /**
+ * Simple structure class that joins 2 double coordinates in a single object. Used for representing
+ * two-dimensional characteristics of objects.
+ * 
  * @author mocanu
  */
-public class Bumper {
-
-    public RealPoint coord = new RealPoint();
-
-    public RealPoint velocity = new RealPoint();
+public class RealPoint {
+    
+    public double x;
+    
+    public double y;
 
 }

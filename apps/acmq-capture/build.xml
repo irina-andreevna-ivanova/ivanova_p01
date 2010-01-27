@@ -6,7 +6,7 @@
 	<property name="acmq.game.classname" value="icpc.challenge.main.Game" />
 	
 	<property name="acmq.player.mine.qualifier" value="java" />
-	<property name="acmq.player.mine.classname" value="java_example.Eight" />
+	<property name="acmq.player.mine.classname" value="DiegoPlayer" />
 	<property name="acmq.player.enemy.qualifier" value="builtin" />
 	<property name="acmq.player.enemy.classname" value="RandomPlayer" />
 

@@ -16,21 +16,26 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-
-
 /**
- * 
- *
  * @author mocanu
  */
 public class Sled {
-    
-    public double coordX;
-    
-    public double coordY;
-    
+
+    public RealPoint coord = new RealPoint();
+
     public double direction;
-    
-    public TailPoint[] tail;
+
+    public int trailLength;
+    public TailPoint[] trail;
+
+    /**
+     * 
+     */
+    public Sled() {
+        trail = new TailPoint[GameConstants.TRAIL_LIMIT];
+        for ( int trailPointIndex = 0; trailPointIndex < GameConstants.TRAIL_LIMIT; trailPointIndex++ ) {
+            trail[trailPointIndex] = new TailPoint();
+        }
+    }
 
 }

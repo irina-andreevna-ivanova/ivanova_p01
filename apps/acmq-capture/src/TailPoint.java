@@ -18,13 +18,11 @@
 
 /**
  * One point from a sled's tail.
- *
+ * 
  * @author mocanu
  */
 public class TailPoint {
-    
-    public double coordX;
-    
-    public double coordY;
+
+    public RealPoint coord = new RealPoint();
 
 }

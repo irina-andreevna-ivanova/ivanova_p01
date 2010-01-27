@@ -16,15 +16,22 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-
-
 /**
+ * Main class of the Diego player.
+ *
  * @author mocanu
  */
-public class Bumper {
-
-    public RealPoint coord = new RealPoint();
-
-    public RealPoint velocity = new RealPoint();
+public class DiegoPlayer {
+    
+    public static void main( String[] args ) {
+        StateManager stateManager = new StateManager();
+        stateManager.readState();
+        
+        while( stateManager.turnNumber >= 0 ) {
+            stateManager.readState();
+        }
+        
+        System.out.println( "DONE!" );
+    }
 
 }

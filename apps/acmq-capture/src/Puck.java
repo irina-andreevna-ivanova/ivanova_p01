@@ -27,13 +27,9 @@ public class Puck {
     public static final int ENEMY = 1;
     public static final int GRAY = 2;
 
-    public double coordX;
+    public RealPoint coord = new RealPoint();
 
-    public double coordY;
-
-    public double velocityX;
-
-    public double velocityY;
+    public RealPoint velocity = new RealPoint();
 
     public PuckType type;
 
