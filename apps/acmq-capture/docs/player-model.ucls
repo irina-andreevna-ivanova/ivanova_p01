@@ -1,0 +1,191 @@
+<class-diagram version="0.9.86" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="true" nesting-relationships="true">  
+  <class corner="BOTTOM_RIGHT" language="java" name="RealPoint" project="acmq-capture" 
+    file="/acmq-capture/src/RealPoint.java" binary="false">    
+    <position x="84" y="191" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="Puck" project="acmq-capture" file="/acmq-capture/src/Puck.java" 
+    binary="false">    
+    <position x="314" y="68" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <enumeration corner="BOTTOM_RIGHT" language="java" name="PuckType" project="acmq-capture" 
+    file="/acmq-capture/src/PuckType.java" binary="false">    
+    <position x="580" y="65" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </enumeration>  
+  <class corner="BOTTOM_RIGHT" language="java" name="Bumper" project="acmq-capture" file="/acmq-capture/src/Bumper.java" 
+    binary="false">    
+    <position x="271" y="409" width="84" height="112"/>    
+    <display autosize="false" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="Sled" project="acmq-capture" file="/acmq-capture/src/Sled.java" 
+    binary="false">    
+    <position x="317" y="270" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="StateManager" project="acmq-capture" 
+    file="/acmq-capture/src/StateManager.java" binary="false">    
+    <position x="650" y="310" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="ResponseManager" project="acmq-capture" 
+    file="/acmq-capture/src/ResponseManager.java" binary="false">    
+    <position x="107" y="570" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="DiegoPlayer" project="acmq-capture" 
+    file="/acmq-capture/src/DiegoPlayer.java" binary="false">    
+    <position x="472" y="661" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <association>    
+    <source project="acmq-capture" name="Bumper" file="/acmq-capture/src/Bumper.java" binary="false" navigable="false">      
+      <attribute name="coord"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="acmq-capture" name="RealPoint" file="/acmq-capture/src/RealPoint.java" binary="false" 
+      navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association>    
+    <source project="acmq-capture" name="Puck" file="/acmq-capture/src/Puck.java" binary="false" navigable="false">      
+      <attribute name="coord"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="acmq-capture" name="RealPoint" file="/acmq-capture/src/RealPoint.java" binary="false" 
+      navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association>    
+    <source project="acmq-capture" name="Puck" file="/acmq-capture/src/Puck.java" binary="false" navigable="false">      
+      <attribute name="type"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="acmq-capture" name="PuckType" file="/acmq-capture/src/PuckType.java" binary="false" 
+      navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association>    
+    <source project="acmq-capture" name="Sled" file="/acmq-capture/src/Sled.java" binary="false" navigable="false">      
+      <attribute name="coord"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="acmq-capture" name="RealPoint" file="/acmq-capture/src/RealPoint.java" binary="false" 
+      navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency>    
+    <source project="acmq-capture" name="DiegoPlayer" file="/acmq-capture/src/DiegoPlayer.java" binary="false"/>    
+    <target project="acmq-capture" name="StateManager" file="/acmq-capture/src/StateManager.java" binary="false"/>  
+  </dependency>  
+  <association>    
+    <source project="acmq-capture" name="Puck" file="/acmq-capture/src/Puck.java" binary="false" navigable="false">      
+      <attribute name="velocity"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="acmq-capture" name="RealPoint" file="/acmq-capture/src/RealPoint.java" binary="false" 
+      navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association>    
+    <source project="acmq-capture" name="StateManager" file="/acmq-capture/src/StateManager.java" binary="false" 
+      navigable="false">      
+      <attribute name="friendSled"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="acmq-capture" name="Sled" file="/acmq-capture/src/Sled.java" binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association>    
+    <source project="acmq-capture" name="StateManager" file="/acmq-capture/src/StateManager.java" binary="false" 
+      navigable="false">      
+      <attribute name="enemyBumpers"/>      
+      <multiplicity minimum="0" maximum="2147483647"/>    
+    </source>    
+    <target project="acmq-capture" name="Bumper" file="/acmq-capture/src/Bumper.java" binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association>    
+    <source project="acmq-capture" name="Bumper" file="/acmq-capture/src/Bumper.java" binary="false" navigable="false">      
+      <attribute name="velocity"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="acmq-capture" name="RealPoint" file="/acmq-capture/src/RealPoint.java" binary="false" 
+      navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association>    
+    <source project="acmq-capture" name="StateManager" file="/acmq-capture/src/StateManager.java" binary="false" 
+      navigable="false">      
+      <attribute name="enemySled">        
+        <position x="419" y="299" width="59" height="14"/>      
+      </attribute>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="acmq-capture" name="Sled" file="/acmq-capture/src/Sled.java" binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association>    
+    <source project="acmq-capture" name="StateManager" file="/acmq-capture/src/StateManager.java" binary="false" 
+      navigable="false">      
+      <attribute name="friendBumpers"/>      
+      <multiplicity minimum="0" maximum="2147483647"/>    
+    </source>    
+    <target project="acmq-capture" name="Bumper" file="/acmq-capture/src/Bumper.java" binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency>    
+    <source project="acmq-capture" name="DiegoPlayer" file="/acmq-capture/src/DiegoPlayer.java" binary="false"/>    
+    <target project="acmq-capture" name="ResponseManager" file="/acmq-capture/src/ResponseManager.java" binary="false"/>  
+  </dependency>  
+  <association>    
+    <source project="acmq-capture" name="StateManager" file="/acmq-capture/src/StateManager.java" binary="false" 
+      navigable="false">      
+      <attribute name="pucks"/>      
+      <multiplicity minimum="0" maximum="2147483647"/>    
+    </source>    
+    <target project="acmq-capture" name="Puck" file="/acmq-capture/src/Puck.java" binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association>    
+    <source project="acmq-capture" name="ResponseManager" file="/acmq-capture/src/ResponseManager.java" binary="false" 
+      navigable="false">      
+      <attribute name="bumperAccelerations"/>      
+      <multiplicity minimum="0" maximum="2147483647"/>    
+    </source>    
+    <target project="acmq-capture" name="RealPoint" file="/acmq-capture/src/RealPoint.java" binary="false" 
+      navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" package="true" initial-value="false" signature="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
