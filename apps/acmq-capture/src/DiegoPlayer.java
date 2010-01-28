@@ -25,13 +25,14 @@ public class DiegoPlayer {
     
     public static void main( String[] args ) {
         StateManager stateManager = new StateManager();
+        ResponseManager responseManager = new ResponseManager();
+        
         stateManager.readState();
         
         while( stateManager.turnNumber >= 0 ) {
+            responseManager.sendResponse();
             stateManager.readState();
         }
-        
-        System.out.println( "DONE!" );
     }
 
 }

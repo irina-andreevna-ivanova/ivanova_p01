@@ -24,5 +24,8 @@
 public class GameConstants {
     
     public static final int TRAIL_LIMIT = 600;
+    
+    /** Maximum turn angle for a sled. */
+    public static final double SLED_TURN_LIMIT = 0.5;
 
 }
