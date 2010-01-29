@@ -23,9 +23,18 @@
  */
 public class DiegoPlayer {
     
+    public static StateManager stateManager;
+    public static ResponseManager responseManager;
+    
+    // ------------------------------------------------------------------------------------------------------
+    
     public static void main( String[] args ) {
-        StateManager stateManager = new StateManager();
-        ResponseManager responseManager = new ResponseManager();
+        stateManager = new StateManager();
+        responseManager = new ResponseManager();
+        
+        AlphaAlgorithm algorithm = new AlphaAlgorithm();
+        algorithm.stateManager = stateManager;
+        algorithm.responseManager = responseManager; 
         
         stateManager.readState();
         
