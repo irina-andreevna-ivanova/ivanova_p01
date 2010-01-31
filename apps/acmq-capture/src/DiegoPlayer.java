@@ -32,13 +32,14 @@ public class DiegoPlayer {
         stateManager = new StateManager();
         responseManager = new ResponseManager();
         
-        AlphaAlgorithm algorithm = new AlphaAlgorithm();
+        AbstractAlgorithm algorithm = new AlphaAlgorithm();
         algorithm.stateManager = stateManager;
         algorithm.responseManager = responseManager; 
         
         stateManager.readState();
         
         while( stateManager.turnNumber >= 0 ) {
+            algorithm.execute();
             responseManager.sendResponse();
             stateManager.readState();
         }
