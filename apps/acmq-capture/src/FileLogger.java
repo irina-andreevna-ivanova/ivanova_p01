@@ -53,5 +53,9 @@ public class FileLogger {
         
         return 0;
     }
+    
+    public void logException( Throwable throwable ) {
+        throwable.printStackTrace( writer );
+    }
 
 }

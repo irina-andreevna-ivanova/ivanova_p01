@@ -38,9 +38,19 @@ public class StateManager {
     public Sled friendSled = new Sled();
     public Sled enemySled = new Sled();
 
+    // Calculated fields
+    // -------------------------------------------------------------------------------
+
+    public int friendPucks;
+    public int enemyPucks;
+
     // -------------------------------------------------------------------------------------------------
 
     public void readState() {
+        // 0. reset the calculated fields
+        friendPucks = 0;
+        enemyPucks = 0;
+
         // 1. read the turn number. If < 0, game is over ------------------------------
         turnNumber = stateScanner.nextInt();
         if ( turnNumber < 0 ) {
@@ -85,6 +95,17 @@ public class StateManager {
         currentPuck.velocity.x = stateScanner.nextDouble();
         currentPuck.velocity.y = stateScanner.nextDouble();
         currentPuck.type = PuckType.values()[stateScanner.nextInt()];
+
+        switch ( currentPuck.type ) {
+            case FRIEND: {
+                friendPucks++;
+                break;
+            }
+            case ENEMY: {
+                enemyPucks++;
+                break;
+            }
+        }
     }
 
     private void readBumperState( Bumper currentBumper ) {
@@ -107,7 +128,7 @@ public class StateManager {
             currentSled.trail[trailPointIndex].coord.y = stateScanner.nextDouble();
         }
     }
-    
+
     // -------------------------------------------------------------------------------------------------
 
 }

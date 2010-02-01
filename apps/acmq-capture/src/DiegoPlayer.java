@@ -45,13 +45,19 @@ public class DiegoPlayer {
         algorithm.responseManager = responseManager;
         algorithm.log = logger;
 
-        stateManager.readState();
-
-        // 3. start the main loop -------------------------------------------------------
-        while ( stateManager.turnNumber >= 0 ) {
-            algorithm.execute();
-            responseManager.sendResponse();
+        try {
             stateManager.readState();
+
+            // 3. start the main loop -------------------------------------------------------
+            while ( stateManager.turnNumber >= 0 ) {
+                algorithm.execute();
+                responseManager.sendResponse();
+                stateManager.readState();
+            }
+        } catch ( Throwable exception ) {
+            if ( Const.DEBUG_ANY ) {
+                logger.logException( exception );
+            }
         }
 
         // 4. cleanup the resources ------------------------------------------------------

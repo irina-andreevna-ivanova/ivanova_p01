@@ -9,6 +9,8 @@
 	<property name="acmq.player.mine.classname" value="DiegoPlayer" />
 	<property name="acmq.player.enemy.qualifier" value="builtin" />
 	<property name="acmq.player.enemy.classname" value="RandomPlayer" />
+    <!--property name="acmq.player.enemy.qualifier" value="java" />
+    <property name="acmq.player.enemy.classname" value="DiegoPlayer" /-->
 
 	<path id="build.path">
 		<pathelement location="${basedir}/bin/" />

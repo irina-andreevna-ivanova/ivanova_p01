@@ -12,11 +12,7 @@ public class ResponseManager {
     
     public double sledDirectionDelta = Const.SLED_TURN_LIMIT;
     
-    public double lastSledDirectionDelta = 0;
-    
     public void sendResponse() {
-        lastSledDirectionDelta = sledDirectionDelta;
-        
         Object responseArgs[] = new Object[] { bumperAccelerations[ 0 ].x, bumperAccelerations[ 0 ].y, bumperAccelerations[ 1 ].x, bumperAccelerations[ 1 ].y, sledDirectionDelta };
         System.out.printf( RESPONSE_FORMAT, responseArgs );
     }

@@ -17,23 +17,14 @@
  */
 
 /**
- * 
+ * The possible strategies that the Alpha algorithm can take during the game.
  *
  * @author mocanu
  */
-public class Const {
+public enum AlphaStrategy {
     
-    public static final boolean DEBUG_SLED = false;
-    public static final boolean DEBUG_ANY = DEBUG_SLED;
+    DEFENSE,
     
-    public static final int TRAIL_LIMIT = 600;
-    
-    /** Maximum turn angle for a sled. */
-    public static final double SLED_TURN_LIMIT = 0.5;
-    public static final double SLED_SPEED = 15;
+    OFFENSE;
 
-    public static int PARAM_TRAIL_SAFE_LIMIT = 598;
-    public static int PARAM_TRAIL_RESET_LIMIT = 20;
-    public static int PARAM_FPUCK_TO_BORDER_DISTANCE_LIMIT = 3;
-    public static int PARAM_EPUCK_TO_BORDER_DISTANCE_LIMIT = 3;
 }
