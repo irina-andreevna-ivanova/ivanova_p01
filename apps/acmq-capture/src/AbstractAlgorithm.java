@@ -5,6 +5,7 @@
  */
 public abstract class AbstractAlgorithm {
 
+    public FileLogger log;
     public StateManager stateManager;
     public ResponseManager responseManager;
     

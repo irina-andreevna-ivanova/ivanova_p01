@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 /*- 
  * Copyright Bogdan Mocanu, 2009
  *
@@ -18,30 +20,43 @@
 
 /**
  * Main class of the Diego player.
- *
+ * 
  * @author mocanu
  */
 public class DiegoPlayer {
-    
-    public static StateManager stateManager;
-    public static ResponseManager responseManager;
-    
-    // ------------------------------------------------------------------------------------------------------
-    
+
     public static void main( String[] args ) {
-        stateManager = new StateManager();
-        responseManager = new ResponseManager();
-        
+        // 1. crate the main components of the player -------------------------------
+        StateManager stateManager = new StateManager();
+        ResponseManager responseManager = new ResponseManager();
+
+        FileLogger logger = new FileLogger();
+        if ( Const.DEBUG_ANY ) {
+            try {
+                logger.init();
+            } catch ( IOException exception ) {
+                exception.printStackTrace();
+            }
+        }
+
+        // 2. inject the dependencies -------------------------------------------------
         AbstractAlgorithm algorithm = new AlphaAlgorithm();
         algorithm.stateManager = stateManager;
-        algorithm.responseManager = responseManager; 
-        
+        algorithm.responseManager = responseManager;
+        algorithm.log = logger;
+
         stateManager.readState();
-        
-        while( stateManager.turnNumber >= 0 ) {
+
+        // 3. start the main loop -------------------------------------------------------
+        while ( stateManager.turnNumber >= 0 ) {
             algorithm.execute();
             responseManager.sendResponse();
             stateManager.readState();
+        }
+
+        // 4. cleanup the resources ------------------------------------------------------
+        if ( Const.DEBUG_ANY ) {
+            logger.close();
         }
     }
 

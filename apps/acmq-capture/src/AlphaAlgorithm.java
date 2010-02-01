@@ -22,29 +22,30 @@ public class AlphaAlgorithm extends AbstractAlgorithm {
      * direction.
      */
     private double findRadarCircleRadius() {
-        double maxRadius = GameConstants.TRAIL_LIMIT_SAFE / ( PI );
+        double maxRadius = Const.TRAIL_LIMIT_SAFE / (PI);
         double radiusStep = 50;
         double currentRadius = radiusStep;
-        double reducedSledAngle = stateManager.friendSled.direction - floor( stateManager.friendSled.direction / TWO_PI );
+        double reducedSledAngle = stateManager.friendSled.direction
+                - floor( stateManager.friendSled.direction / TWO_PI );
         RealPoint circleCenter = new RealPoint();
         double bestChoiceRadius = 0;
         int bestChoiceGrays = 0;
-        
-        while( currentRadius <= maxRadius ) {
+
+        while ( currentRadius <= maxRadius ) {
             double coordDifX = cos( PI - reducedSledAngle ) * currentRadius;
             double coordDifY = sin( PI - reducedSledAngle ) * currentRadius;
-            
+
             circleCenter.x = stateManager.friendSled.coord.x - coordDifX;
             circleCenter.y = stateManager.friendSled.coord.y - coordDifY;
-            
+
             // compute the situation of pucks inside the circle
             int grayPucks = 0;
             int friendPucks = 0;
             int enemyPucks = 0;
-            
-            for( Puck puck : stateManager.pucks ) {
+
+            for ( Puck puck : stateManager.pucks ) {
                 if ( distance( puck.coord, circleCenter ) < currentRadius ) {
-                    switch( puck.type ) {
+                    switch ( puck.type ) {
                         case GRAY: {
                             grayPucks++;
                             break;
@@ -60,15 +61,15 @@ public class AlphaAlgorithm extends AbstractAlgorithm {
                     }
                 }
             }
-            
+
             if ( enemyPucks == 0 && grayPucks > bestChoiceGrays && friendPucks >= 1 ) {
                 bestChoiceGrays = grayPucks;
                 bestChoiceRadius = currentRadius;
             }
-            
-            currentRadius += radiusStep;            
+
+            currentRadius += radiusStep;
         }
-        
+
         return bestChoiceRadius;
     }
 
@@ -77,13 +78,17 @@ public class AlphaAlgorithm extends AbstractAlgorithm {
      */
     @Override
     public void execute() {
+        if ( Const.DEBUG_SLED ) {
+            log.info( "sled", "Position", stateManager.friendSled.coord.x, stateManager.friendSled.coord.y );
+        }
+
         double radarCircleRadius = findRadarCircleRadius();
         if ( radarCircleRadius != 0 ) {
-            double sledDelta = upperBound( ( TWO_PI * GameConstants.SLED_SPEED ) / radarCircleRadius, GameConstants.SLED_TURN_LIMIT );
-            responseManager.sledDirectionDelta = GameConstants.SLED_TURN_LIMIT;
+            double sledDelta = upperBound( (TWO_PI * Const.SLED_SPEED) / radarCircleRadius, Const.SLED_TURN_LIMIT );
+            responseManager.sledDirectionDelta = Const.SLED_TURN_LIMIT;
         } else {
             responseManager.sledDirectionDelta = 0;
         }
     }
-    
+
 }

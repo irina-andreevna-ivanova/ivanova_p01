@@ -10,7 +10,7 @@ public class ResponseManager {
     
     public RealPoint bumperAccelerations[] = { new RealPoint(), new RealPoint() };
     
-    public double sledDirectionDelta = GameConstants.SLED_TURN_LIMIT;
+    public double sledDirectionDelta = Const.SLED_TURN_LIMIT;
     
     public void sendResponse() {
         Object responseArgs[] = new Object[] { bumperAccelerations[ 0 ].x, bumperAccelerations[ 0 ].y, bumperAccelerations[ 1 ].x, bumperAccelerations[ 1 ].y, sledDirectionDelta };

@@ -32,8 +32,8 @@ public class Sled {
      * 
      */
     public Sled() {
-        trail = new TailPoint[GameConstants.TRAIL_LIMIT];
-        for ( int trailPointIndex = 0; trailPointIndex < GameConstants.TRAIL_LIMIT; trailPointIndex++ ) {
+        trail = new TailPoint[Const.TRAIL_LIMIT];
+        for ( int trailPointIndex = 0; trailPointIndex < Const.TRAIL_LIMIT; trailPointIndex++ ) {
             trail[trailPointIndex] = new TailPoint();
         }
     }
