@@ -1,6 +1,3 @@
-import static java.lang.Math.PI;
-import static java.lang.Math.sin;
-import static java.lang.Math.cos;
 import static java.lang.Math.floor;
 
 /**
@@ -9,6 +6,14 @@ import static java.lang.Math.floor;
  * @author mocanu
  */
 public class AlphaAlgorithm extends AbstractAlgorithm {
+    
+    private double currentPlan_delta = 0;
+    private int currentPlan_grays = 0;
+    
+    private int newPlan_grays = 0;
+    private double newPlan_radius = 0;
+    
+    // ------------------------------------------------------------------------------------------------------
 
     /**
      * Finds the radar circle that the sled can describe, in order to get the best combination of
@@ -21,56 +26,62 @@ public class AlphaAlgorithm extends AbstractAlgorithm {
      * direction (counter clockwise) and negative means on the &quot;right&quot; side of the sled's
      * direction.
      */
-    private double findRadarCircleRadius() {
-        double maxRadius = Const.TRAIL_LIMIT_SAFE / (PI);
-        double radiusStep = 50;
-        double currentRadius = radiusStep;
-        double reducedSledAngle = stateManager.friendSled.direction
-                - floor( stateManager.friendSled.direction / TWO_PI );
+    private void findRadarCircleRadius() {
+        Sled sled = stateManager.friendSled;
+        double maxRadius = Const.TRAIL_LIMIT_SAFE / TWO_PI;
+        double radiusStep = 10;
+        double reducedSledAngle = sled.direction - floor( sled.direction / TWO_PI ) * TWO_PI;
         RealPoint circleCenter = new RealPoint();
         double bestChoiceRadius = 0;
         int bestChoiceGrays = 0;
+        int[] sidesForRadar = new int[] { 1, -1 };
 
-        while ( currentRadius <= maxRadius ) {
-            double coordDifX = cos( PI - reducedSledAngle ) * currentRadius;
-            double coordDifY = sin( PI - reducedSledAngle ) * currentRadius;
+        for ( int sideIndex = 0; sideIndex < sidesForRadar.length; sideIndex++ ) {
+            double currentRadius = radiusStep;
+            while ( currentRadius <= maxRadius ) {
+                movePointAt90degreesAndDistance( circleCenter, sled.coord, reducedSledAngle, currentRadius, sidesForRadar[ sideIndex ] );
 
-            circleCenter.x = stateManager.friendSled.coord.x - coordDifX;
-            circleCenter.y = stateManager.friendSled.coord.y - coordDifY;
+                if ( Const.DEBUG_SLED ) {
+                    log.info( "sled", "ReducedSledAngle", reducedSledAngle );
+                    log.info( "sled", "Position", sled.coord.x, sled.coord.y, sled.direction );
+                    log.info( "sled", "CircleX", circleCenter.x, "CircleY", circleCenter.y );
+                }
 
-            // compute the situation of pucks inside the circle
-            int grayPucks = 0;
-            int friendPucks = 0;
-            int enemyPucks = 0;
+                // compute the situation of pucks inside the circle
+                int grayPucks = 0;
+                int friendPucks = 0;
+                int enemyPucks = 0;
 
-            for ( Puck puck : stateManager.pucks ) {
-                if ( distance( puck.coord, circleCenter ) < currentRadius ) {
-                    switch ( puck.type ) {
-                        case GRAY: {
-                            grayPucks++;
-                            break;
-                        }
-                        case FRIEND: {
-                            friendPucks++;
-                            break;
-                        }
-                        case ENEMY: {
-                            enemyPucks++;
-                            break;
+                for ( Puck puck : stateManager.pucks ) {
+                    if ( distance( puck.coord, circleCenter ) < currentRadius - 5 ) {
+                        switch ( puck.type ) {
+                            case GRAY: {
+                                grayPucks++;
+                                break;
+                            }
+                            case FRIEND: {
+                                friendPucks++;
+                                break;
+                            }
+                            case ENEMY: {
+                                enemyPucks++;
+                                break;
+                            }
                         }
                     }
                 }
-            }
 
-            if ( enemyPucks == 0 && grayPucks > bestChoiceGrays && friendPucks >= 1 ) {
-                bestChoiceGrays = grayPucks;
-                bestChoiceRadius = currentRadius;
-            }
+                if ( enemyPucks == 0 && grayPucks >= bestChoiceGrays && friendPucks >= 1 ) {
+                    bestChoiceGrays = grayPucks;
+                    bestChoiceRadius = currentRadius * sidesForRadar[ sideIndex ];
+                }
 
-            currentRadius += radiusStep;
+                currentRadius += radiusStep;
+            }
         }
 
-        return bestChoiceRadius;
+        newPlan_radius = bestChoiceRadius;
+        newPlan_grays = bestChoiceGrays;
     }
 
     /**
@@ -79,15 +90,21 @@ public class AlphaAlgorithm extends AbstractAlgorithm {
     @Override
     public void execute() {
         if ( Const.DEBUG_SLED ) {
-            log.info( "sled", "Position", stateManager.friendSled.coord.x, stateManager.friendSled.coord.y );
+            log.info( "sled", "-------------------------------------------------" );
         }
 
-        double radarCircleRadius = findRadarCircleRadius();
-        if ( radarCircleRadius != 0 ) {
-            double sledDelta = upperBound( (TWO_PI * Const.SLED_SPEED) / radarCircleRadius, Const.SLED_TURN_LIMIT );
-            responseManager.sledDirectionDelta = Const.SLED_TURN_LIMIT;
+        findRadarCircleRadius();
+        if ( newPlan_radius != 0 && newPlan_grays > currentPlan_grays ) {
+            double sledDelta = upperBound( Const.SLED_SPEED / newPlan_radius, Const.SLED_TURN_LIMIT );
+            if ( Const.DEBUG_SLED ) {
+                log.info( "sled", "DELTA", sledDelta );
+            }
+            responseManager.sledDirectionDelta = sledDelta;
+            currentPlan_delta = sledDelta;
+            currentPlan_grays = newPlan_grays;
         } else {
-            responseManager.sledDirectionDelta = 0;
+            responseManager.sledDirectionDelta = currentPlan_delta;
+            currentPlan_grays = 0;
         }
     }
 
