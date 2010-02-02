@@ -20,13 +20,13 @@ import java.io.IOException;
 
 /**
  * Main class of the Diego player.
- * 
- * @author mocanu
+ * @author     mocanu
+ * @uml.dependency   supplier="ResponseManager"
  */
 public class DiegoPlayer {
 
     public static void main( String[] args ) {
-        // 1. crate the main components of the player -------------------------------
+        // 1. create the main components of the player -------------------------------
         StateManager stateManager = new StateManager();
         ResponseManager responseManager = new ResponseManager();
 

@@ -1,0 +1,5 @@
+Ideas:
+    - move from SVN to a more private repo 
+    - limit the number of open circles started by the sled
+    - improve wandering (make the sled go towards the "best" red puck)
+    - implement bordering (border-less table)

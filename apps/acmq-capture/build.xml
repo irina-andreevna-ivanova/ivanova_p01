@@ -1,33 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="acmq-capture" default="run" basedir=".">
+<project name="acmq-capture" default="Diego vs. RandomPlayer" basedir=".">
 
 	<property name="project.bin" value="${basedir}/bin" />
-	
+	<property name="project.partners" value="${basedir}/partners" />
+
 	<property name="acmq.game.classname" value="icpc.challenge.main.Game" />
+
+	<property name="acmq.player.diego.qualifier" value="java" />
+	<property name="acmq.player.diego.classname" value="DiegoPlayer" />
 	
-	<property name="acmq.player.mine.qualifier" value="java" />
-	<property name="acmq.player.mine.classname" value="DiegoPlayer" />
-	<property name="acmq.player.enemy.qualifier" value="builtin" />
-	<property name="acmq.player.enemy.classname" value="RandomPlayer" />
-    <!--property name="acmq.player.enemy.qualifier" value="java" />
-    <property name="acmq.player.enemy.classname" value="DiegoPlayer" /-->
+	<property name="acmq.player.peter.qualifier" value="java" />
+	<property name="acmq.player.peter.classname" value="java_example.Killer" />
+
+	<property name="acmq.player.random.qualifier" value="builtin" />
+    <property name="acmq.player.random.classname" value="RandomPlayer" />
+
+	<!-- _________________________________________________________________________________________ -->
+    <!-- Path for Java /////////////////////////////////////////////////////////////////////////// -->
 
 	<path id="build.path">
 		<pathelement location="${basedir}/bin/" />
 		<pathelement location="${basedir}/lib/capture.jar" />
 	</path>
 
-	<!-- ================================= 
-          target: default              
-         ================================= -->
-	<target name="run">
+	<!-- _________________________________________________________________________________________ -->
+	<!-- Generic target definition /////////////////////////////////////////////////////////////// -->
+
+	<target name="Diego vs. RandomPlayer">
+        <java dir="${project.bin}" classname="${acmq.game.classname}" classpathref="build.path" fork="true">
+            <arg value="-player" />
+            <arg value="${acmq.player.diego.qualifier}" />
+            <arg value="${acmq.player.diego.classname}" />
+            <arg value="-player" />
+            <arg value="${acmq.player.random.qualifier}" />
+            <arg value="${acmq.player.random.classname}" />
+        </java>
+    </target>
+
+	<target name="Diego vs. Peter">
+		<antcall target="generic-run-partner">
+			<param name="param.partner.name" value="peter" />
+		</antcall>
+		<antcall target="generic-run">
+			<param name="param.player.friend.qualifier" value="${acmq.player.diego.qualifier}" />
+			<param name="param.player.friend.classname" value="${acmq.player.diego.classname}" />
+			<param name="param.player.enemy.qualifier" value="${acmq.player.peter.qualifier}" />
+			<param name="param.player.enemy.classname" value="${acmq.player.peter.classname}" />
+		</antcall>
+	</target>
+
+	<!-- _________________________________________________________________________________________ -->
+	<!-- Generic target definition /////////////////////////////////////////////////////////////// -->
+
+	<target name="generic-run-partner">
+		<copy todir="${project.bin}" overwrite="true">
+			<fileset dir="${project.partners}/${param.partner.name}">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="generic-run">
 		<java dir="${project.bin}" classname="${acmq.game.classname}" classpathref="build.path" fork="true">
 			<arg value="-player" />
-			<arg value="${acmq.player.mine.qualifier}" />
-			<arg value="${acmq.player.mine.classname}" />
+			<arg value="${param.player.friend.qualifier}" />
+			<arg value="${param.player.friend.classname}" />
 			<arg value="-player" />
-			<arg value="${acmq.player.enemy.qualifier}" />
-			<arg value="${acmq.player.enemy.classname}" />
+			<arg value="${param.player.enemy.qualifier}" />
+			<arg value="${param.player.enemy.classname}" />
 		</java>
 	</target>
 
