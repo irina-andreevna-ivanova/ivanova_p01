@@ -55,7 +55,7 @@ public class DiegoPlayer {
                 stateManager.readState();
             }
         } catch ( Throwable exception ) {
-            if ( Const.DEBUG_ANY ) {
+            if ( Const.DEBUG_EXCEPTIONS ) {
                 logger.logException( exception );
             }
         }

@@ -17,23 +17,24 @@
  */
 
 /**
- * 
- *
  * @author mocanu
  */
 public class Const {
-    
+
+    public static final int TABLE_SIZE = 800;
+
+    public static final boolean DEBUG_EXCEPTIONS = false;
     public static final boolean DEBUG_SLED = false;
-    public static final boolean DEBUG_ANY = DEBUG_SLED;
-    
+    public static final boolean DEBUG_ANY = DEBUG_EXCEPTIONS || DEBUG_SLED;
+
     public static final int TRAIL_LIMIT = 600;
-    
+
     /** Maximum turn angle for a sled. */
     public static final double SLED_TURN_LIMIT = 0.5;
     public static final double SLED_SPEED = 15;
 
     public static int PARAM_TRAIL_SAFE_LIMIT = 598;
-    public static int PARAM_TRAIL_RESET_LIMIT = 20;
     public static int PARAM_FPUCK_TO_BORDER_DISTANCE_LIMIT = 3;
     public static int PARAM_EPUCK_TO_BORDER_DISTANCE_LIMIT = 3;
+    public static int PARAM_RADAR_CIRCLE_ABANDON_LIMIT = 2;
 }

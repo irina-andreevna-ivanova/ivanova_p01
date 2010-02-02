@@ -1,7 +1,5 @@
 import static java.lang.Math.floor;
 
-import java.util.Random;
-
 /**
  * A first version of the algorithm for the Diego player.
  * 
@@ -9,16 +7,21 @@ import java.util.Random;
  */
 public class AlphaAlgorithm extends AbstractAlgorithm {
 
-    private Random randomNumberGenerator = new Random();
+    private static final int STRATEGY_SWITCH_DIFFERENCE = 7;
+
+    //private Random randomNumberGenerator = new Random();
+
+    private int planAbandonCount = -1;
 
     private double currentPlan_delta = 0;
     private int currentPlan_grays = 0;
     private double currentPlan_radius = 0;
+    private RealPoint currentPlan_startCoord = new RealPoint( Integer.MAX_VALUE, Integer.MAX_VALUE );
 
     private int newPlan_grays = 0;
     private double newPlan_radius = 0;
 
-    private AlphaStrategy strategy = AlphaStrategy.DEFENSE;
+    private AlphaStrategy strategy = AlphaStrategy.OFFENSE;
 
     // -------------------------------------------------------------------------------------------------
 
@@ -35,7 +38,11 @@ public class AlphaAlgorithm extends AbstractAlgorithm {
         applyNextStrategy();
         findRadarCircleRadius();
 
-        if ( stateManager.friendSled.trailLength < Const.PARAM_TRAIL_RESET_LIMIT ) {
+        if ( distance( currentPlan_startCoord, stateManager.friendSled.coord ) < 5 ) {
+            // we created a closed area
+            if ( Const.DEBUG_SLED ) {
+                log.info( "sled", "BOOM! Closed area!" );
+            }
             resetCurrentPlan();
         }
 
@@ -44,7 +51,7 @@ public class AlphaAlgorithm extends AbstractAlgorithm {
             log.info( "sled", "NewPlan", "grays", newPlan_grays, "rad", newPlan_radius );
         }
 
-        if ( newPlan_radius != 0 ) {
+        if ( newPlan_radius != 0 && planAbandonCount < Const.PARAM_RADAR_CIRCLE_ABANDON_LIMIT ) {
             // ok, we have a possible new plan
             // -------------------------------------------------------------------------------------------------
             if ( strategy == AlphaStrategy.OFFENSE ) {
@@ -77,11 +84,11 @@ public class AlphaAlgorithm extends AbstractAlgorithm {
                 }
             }
             // -------------------------------------------------------------------------------------------------
-        } else {
-            // no new plan; stick to the old one
-            // well, if the trail is that short, just keep wandering on the table
-            currentPlan_delta = (Const.SLED_TURN_LIMIT / 2) * (randomNumberGenerator.nextInt( 50 ) > 25 ? 1 : -1);
+        } else if ( newPlan_radius == 0 ) {
+            // well, if we don't have a plan, just keep wandering on the table
+            computeWanderingTarget();
             currentPlan_grays = 0;
+            planAbandonCount = -1;
         }
 
         responseManager.sledDirectionDelta = currentPlan_delta;
@@ -92,7 +99,7 @@ public class AlphaAlgorithm extends AbstractAlgorithm {
     private void analyzeNextStrategy() {
         if ( stateManager.enemyPucks == 0 ) {
             strategy = AlphaStrategy.OFFENSE;
-        } else if ( ((double) stateManager.friendPucks) / stateManager.enemyPucks < 1.5 ) {
+        } else if ( stateManager.friendPucks - stateManager.enemyPucks < STRATEGY_SWITCH_DIFFERENCE ) {
             // from half points on, we switch to DEFENSE
             if ( Const.DEBUG_SLED && strategy != AlphaStrategy.DEFENSE ) {
                 log.info( "sled", "Switching to DEFENSE" );
@@ -109,14 +116,14 @@ public class AlphaAlgorithm extends AbstractAlgorithm {
     private void applyNextStrategy() {
         if ( strategy == AlphaStrategy.DEFENSE ) {
             Const.PARAM_TRAIL_SAFE_LIMIT = 570;
-            Const.PARAM_TRAIL_RESET_LIMIT = 5;
             Const.PARAM_FPUCK_TO_BORDER_DISTANCE_LIMIT = 7;
             Const.PARAM_EPUCK_TO_BORDER_DISTANCE_LIMIT = 1;
+            Const.PARAM_RADAR_CIRCLE_ABANDON_LIMIT = 1;
         } else {
             Const.PARAM_TRAIL_SAFE_LIMIT = 599;
-            Const.PARAM_TRAIL_RESET_LIMIT = 10;
             Const.PARAM_FPUCK_TO_BORDER_DISTANCE_LIMIT = 3;
             Const.PARAM_EPUCK_TO_BORDER_DISTANCE_LIMIT = 3;
+            Const.PARAM_RADAR_CIRCLE_ABANDON_LIMIT = 2;
         }
     }
 
@@ -176,12 +183,10 @@ public class AlphaAlgorithm extends AbstractAlgorithm {
                         }
                     }
                 }
-
                 if ( enemyPucks == 0 && grayPucks >= bestChoiceGrays && friendPucks >= 1 ) {
                     bestChoiceGrays = grayPucks;
                     bestChoiceRadius = currentRadius * sidesForRadar[sideIndex];
                 }
-
                 currentRadius += radiusStep;
             }
         }
@@ -191,11 +196,15 @@ public class AlphaAlgorithm extends AbstractAlgorithm {
     }
 
     private void adoptNewPlan() {
+        planAbandonCount++;
+
         double sledDelta = upperBound( Const.SLED_SPEED / newPlan_radius, Const.SLED_TURN_LIMIT );
         if ( Const.DEBUG_SLED ) {
             log.info( "sled", "DELTA", sledDelta );
         }
 
+        currentPlan_startCoord.x = stateManager.friendSled.coord.x;
+        currentPlan_startCoord.y = stateManager.friendSled.coord.y;
         currentPlan_delta = sledDelta;
         currentPlan_radius = newPlan_radius;
         currentPlan_grays = newPlan_grays;
@@ -206,6 +215,7 @@ public class AlphaAlgorithm extends AbstractAlgorithm {
             log.info( "sled", "Reset current plan" );
         }
 
+        planAbandonCount = -1;
         currentPlan_delta = 0;
         currentPlan_grays = 0;
         currentPlan_radius = 0;
@@ -213,6 +223,37 @@ public class AlphaAlgorithm extends AbstractAlgorithm {
 
     private boolean newPlanHasBiggerRadius() {
         return Math.abs( newPlan_radius ) > Math.abs( currentPlan_radius );
+    }
+
+    private void computeWanderingTarget() {
+        // get the most distanced friend puck
+        double maxDistance = 0;
+        Puck maxPuck = null;
+
+        for ( int index = 0; index < stateManager.pucksNr; index++ ) {
+            Puck currentPuck = stateManager.pucks[index];
+            if ( currentPuck.type == PuckType.FRIEND ) {
+                double currentDistance = distance( currentPuck.coord, stateManager.friendSled.coord );
+                if ( currentDistance > maxDistance ) {
+                    maxDistance = currentDistance;
+                    maxPuck = currentPuck;
+                }
+            }
+        }
+        
+        if ( maxPuck != null ) {
+            // get the angle needed to get there
+            double targetAngle = angleOf( maxPuck.coord, stateManager.friendSled.coord );
+            double reducedSledAngle = stateManager.friendSled.direction - floor( stateManager.friendSled.direction / TWO_PI ) * TWO_PI;
+            
+            if ( targetAngle < reducedSledAngle ) {
+                responseManager.sledDirectionDelta = -upperBound( reducedSledAngle - targetAngle, Const.SLED_TURN_LIMIT );
+            } else {
+                responseManager.sledDirectionDelta = upperBound( targetAngle - reducedSledAngle, Const.SLED_TURN_LIMIT );
+            }
+        } else {
+            // TODO then what?
+        }
     }
 
 }

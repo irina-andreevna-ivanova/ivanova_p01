@@ -27,5 +27,16 @@ public class RealPoint {
     public double x;
     
     public double y;
+    
+    // -------------------------------------------------------------------------------------------------
+
+    public RealPoint() {
+    }
+
+    public RealPoint(double x, double y) {
+        super();
+        this.x = x;
+        this.y = y;
+    }
 
 }

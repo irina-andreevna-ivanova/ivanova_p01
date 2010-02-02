@@ -30,6 +30,7 @@ public class StateManager {
 
     public int turnNumber;
 
+    public int pucksNr;
     public Puck[] pucks;
 
     public Bumper[] friendBumpers = { new Bumper(), new Bumper() };
@@ -60,16 +61,17 @@ public class StateManager {
 
         // 2. read the pucks -----------------------------------------------------------
         int puckIndex = 0;
-        int nrOfPucks = stateScanner.nextInt();
+        pucksNr = stateScanner.nextInt();
         if ( pucks == null ) {
-            pucks = new Puck[nrOfPucks];
-            for ( puckIndex = 0; puckIndex < nrOfPucks; puckIndex++ ) {
+            pucks = new Puck[pucksNr * 5]; // also count for bordering
+            for ( puckIndex = 0; puckIndex < pucks.length; puckIndex++ ) {
                 pucks[puckIndex] = new Puck();
             }
         }
 
-        for ( puckIndex = 0; puckIndex < nrOfPucks; puckIndex++ ) {
+        for ( puckIndex = 0; puckIndex < pucksNr; puckIndex++ ) {
             readPuckState( pucks[puckIndex] );
+            applyBordering( puckIndex );
         }
 
         // 3. read the bumpers ----------------------------------------------------------
@@ -87,6 +89,38 @@ public class StateManager {
         stateScanner.nextInt(); // nrOfSleds - always 2
         readSledState( friendSled );
         readSledState( enemySled );
+    }
+
+    /**
+     * @param pucks2
+     * @param puckIndex
+     */
+    private void applyBordering( int puckIndex ) {
+        Puck currentPuck = pucks[puckIndex];
+
+        pucks[pucksNr * 1 + puckIndex].coord.x = currentPuck.coord.x + Const.TABLE_SIZE;
+        pucks[pucksNr * 1 + puckIndex].coord.y = currentPuck.coord.y;
+        pucks[pucksNr * 1 + puckIndex].type = currentPuck.type;
+        pucks[pucksNr * 1 + puckIndex].velocity.x = currentPuck.velocity.x;
+        pucks[pucksNr * 1 + puckIndex].velocity.y = currentPuck.velocity.y;
+
+        pucks[pucksNr * 2 + puckIndex].coord.x = currentPuck.coord.x;
+        pucks[pucksNr * 2 + puckIndex].coord.y = currentPuck.coord.y - Const.TABLE_SIZE;
+        pucks[pucksNr * 2 + puckIndex].type = currentPuck.type;
+        pucks[pucksNr * 2 + puckIndex].velocity.x = currentPuck.velocity.x;
+        pucks[pucksNr * 2 + puckIndex].velocity.y = currentPuck.velocity.y;
+
+        pucks[pucksNr * 3 + puckIndex].coord.x = currentPuck.coord.x - Const.TABLE_SIZE;
+        pucks[pucksNr * 3 + puckIndex].coord.y = currentPuck.coord.y;
+        pucks[pucksNr * 3 + puckIndex].type = currentPuck.type;
+        pucks[pucksNr * 3 + puckIndex].velocity.x = currentPuck.velocity.x;
+        pucks[pucksNr * 3 + puckIndex].velocity.y = currentPuck.velocity.y;
+
+        pucks[pucksNr * 4 + puckIndex].coord.x = currentPuck.coord.x;
+        pucks[pucksNr * 4 + puckIndex].coord.y = currentPuck.coord.y + Const.TABLE_SIZE;
+        pucks[pucksNr * 4 + puckIndex].type = currentPuck.type;
+        pucks[pucksNr * 4 + puckIndex].velocity.x = currentPuck.velocity.x;
+        pucks[pucksNr * 4 + puckIndex].velocity.y = currentPuck.velocity.y;
     }
 
     private void readPuckState( Puck currentPuck ) {

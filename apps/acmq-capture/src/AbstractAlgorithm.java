@@ -25,20 +25,83 @@ public abstract class AbstractAlgorithm {
     }
 
     /**
-     * @param directionAngle the angle, in radians, of the current direction
-     * @param distance the distance where the point should reside
-     * @param rotation the rotation to be performed (counterclockwise=1, clockwise=-1)
+     * @param directionAngle
+     *            the angle, in radians, of the current direction
+     * @param distance
+     *            the distance where the point should reside
+     * @param rotation
+     *            the rotation to be performed (counterclockwise=1, clockwise=-1)
      */
     public static final void movePointAt90degreesAndDistance( RealPoint point, RealPoint center, double directionAngle, double distance, int rotation ) {
         double finalAngle = directionAngle + PI_PER_2 * rotation;
-        point.x = center.x + cos( finalAngle ) * distance; 
-        point.y = center.y + sin( finalAngle ) * distance; 
+        point.x = center.x + cos( finalAngle ) * distance;
+        point.y = center.y + sin( finalAngle ) * distance;
     }
 
     public static final double upperBound( double value, double maxLimit ) {
         return (value < maxLimit) ? value : maxLimit;
     }
 
+    public static final double angleOf( RealPoint p1, RealPoint p2 ) {
+        if ( p1.x == p2.x && p1.y > p2.y ) {
+            return PI_PER_2;
+        }
+        if ( p1.x == p2.x && p1.y < p2.y ) {
+            return 3 * PI_PER_2;
+        }
+        if ( p1.x <= p2.x && p1.y == p2.y ) {
+            return 0;
+        }
+        if ( p1.x > p2.x && p1.y == p2.y ) {
+            return PI;
+        }
+        if ( p1.x < p2.x && p1.y > p2.y ) {
+            // Quarter 1
+            return Math.atan( (p1.y - p2.y) / (p2.x - p1.x) );
+        }
+        if ( p1.x > p2.x && p1.y > p2.y ) {
+            // Quarter 2
+            return Math.atan( (p1.x - p2.x) / (p1.y - p2.y) ) + PI_PER_2;
+        }
+        if ( p1.x > p2.x && p1.y < p2.y ) {
+            // Quarter 3
+            return Math.atan( (p2.y - p1.y) / (p1.x - p2.x) ) + PI;
+        }
+        if ( p1.x < p2.x && p1.y < p2.y ) {
+            // Quarter 4
+            return Math.atan( (p2.x - p1.x) / (p2.y - p1.y) ) + 3 * PI_PER_2;
+        }
+        return 0;
+    }
+
     // -------------------------------------------------------------------------------------------------
+
+    // public static void main( String[] args ) {
+    // RealPoint p1 = new RealPoint( 100, 100 );
+    // RealPoint p2 = new RealPoint( 150, 100 );
+    //
+    // int bigIndex = 0;
+    //
+    // for ( int index = 0; index < 50; index++ ) {
+    // p2.y = p2.y - 1;
+    // System.out.println( (bigIndex++) + " # " + angleOf( p1, p2 ) );
+    // }
+    // for ( int index = 0; index < 100; index++ ) {
+    // p2.x = p2.x - 1;
+    // System.out.println( (bigIndex++) + " # " + angleOf( p1, p2 ) );
+    // }
+    // for ( int index = 0; index < 100; index++ ) {
+    // p2.y = p2.y + 1;
+    // System.out.println( (bigIndex++) + " # " + angleOf( p1, p2 ) );
+    // }
+    // for ( int index = 0; index < 100; index++ ) {
+    // p2.x = p2.x + 1;
+    // System.out.println( (bigIndex++) + " # " + angleOf( p1, p2 ) );
+    // }
+    // for ( int index = 0; index < 50; index++ ) {
+    // p2.y = p2.y - 1;
+    // System.out.println( (bigIndex++) + " # " + angleOf( p1, p2 ) );
+    // }
+    // }
 
 }

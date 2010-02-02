@@ -1,5 +1,11 @@
 Ideas:
     - move from SVN to a more private repo 
-    - limit the number of open circles started by the sled
+    - continuosly analyze the current plan, abandon the plan if something goes wrong (like a blue puck in the circle) 
+
+Version 0.02
     - improve wandering (make the sled go towards the "best" red puck)
     - implement bordering (border-less table)
+    - limit the number of open circles started by the sled
+
+Version 0.01
+    - first version of a playable AI
