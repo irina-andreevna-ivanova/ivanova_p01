@@ -3,8 +3,10 @@
 
 	<property name="project.bin" value="${basedir}/bin" />
 	<property name="project.partners" value="${basedir}/partners" />
+	<property name="project.traces" value="${basedir}/target/traces" />
 
 	<property name="acmq.game.classname" value="icpc.challenge.main.Game" />
+	<property name="acmq.trace-player.classname" value="icpc.challenge.view.TurnPlayer" />
 
 	<property name="acmq.player.diego.qualifier" value="java" />
 	<property name="acmq.player.diego.classname" value="DiegoPlayer" />
@@ -49,6 +51,12 @@
 		</antcall>
 	</target>
 
+    <target name="trace-replay">
+        <antcall target="generic-trace-replay">
+            <param name="param.trace.file" value="2010-02-02_Request_1.txt" />
+        </antcall>
+    </target>
+
 	<!-- _________________________________________________________________________________________ -->
 	<!-- Generic target definition /////////////////////////////////////////////////////////////// -->
 
@@ -70,5 +78,12 @@
 			<arg value="${param.player.enemy.classname}" />
 		</java>
 	</target>
+
+    <target name="generic-trace-replay">
+        <java dir="${project.bin}" classname="${acmq.trace-player.classname}" classpathref="build.path" fork="true">
+            <arg value="-turns" />
+            <arg value="${param.trace.file}" />
+        </java>
+    </target>
 
 </project>
