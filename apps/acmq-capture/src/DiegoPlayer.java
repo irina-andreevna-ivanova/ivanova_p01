@@ -1,5 +1,3 @@
-import java.io.IOException;
-
 /*- 
  * Copyright Bogdan Mocanu, 2009
  *
@@ -18,15 +16,20 @@ import java.io.IOException;
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
+import java.io.IOException;
+import java.util.Random;
+
 /**
  * Main class of the Diego player.
- * @author     mocanu
- * @uml.dependency   supplier="ResponseManager"
+ * 
+ * @author mocanu
+ * @uml.dependency supplier="ResponseManager"
  */
 public class DiegoPlayer {
 
     public static void main( String[] args ) {
         // 1. create the main components of the player -------------------------------
+        Random randomNumberGenerator = new Random();
         StateManager stateManager = new StateManager();
         ResponseManager responseManager = new ResponseManager();
 
@@ -41,9 +44,12 @@ public class DiegoPlayer {
 
         // 2. inject the dependencies -------------------------------------------------
         AbstractAlgorithm algorithm = new AlphaAlgorithm();
+        algorithm.randomNumberGenerator = randomNumberGenerator;
         algorithm.stateManager = stateManager;
         algorithm.responseManager = responseManager;
         algorithm.log = logger;
+
+        algorithm.init();
 
         try {
             stateManager.readState();

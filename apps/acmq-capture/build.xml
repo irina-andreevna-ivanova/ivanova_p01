@@ -39,6 +39,17 @@
         </java>
     </target>
 
+    <target name="Diego vs. Diego">
+        <java dir="${project.bin}" classname="${acmq.game.classname}" classpathref="build.path" fork="true">
+            <arg value="-player" />
+            <arg value="${acmq.player.diego.qualifier}" />
+            <arg value="${acmq.player.diego.classname}" />
+            <arg value="-player" />
+            <arg value="${acmq.player.diego.qualifier}" />
+            <arg value="${acmq.player.diego.classname}" />
+        </java>
+    </target>
+
 	<target name="Diego vs. Peter">
 		<antcall target="generic-run-partner">
 			<param name="param.partner.name" value="peter" />

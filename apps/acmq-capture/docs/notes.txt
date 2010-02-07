@@ -1,6 +1,14 @@
 Ideas:
     - move from SVN to a more private repo 
-    - continuosly analyze the current plan, abandon the plan if something goes wrong (like a blue puck in the circle) 
+    - continuosly analyze the current plan, abandon the plan if something goes wrong (like a blue puck in the circle)
+    - move bumpers -> based on strategy
+        - attack enemy pucks
+        - disperse clustered friendly pucks
+        - move friendly pucks in the way of the sled (when in wandering mode, or always) 
+
+Version 0.03
+    - better implementation of the wandering phase (now the target is "locked on", and no random movement appears
+      (except for some really exceptional cases))
 
 Version 0.02
     - improve wandering (make the sled go towards the "best" red puck)

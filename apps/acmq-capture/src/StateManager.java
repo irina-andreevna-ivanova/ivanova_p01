@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 /*- 
  * Copyright Bogdan Mocanu, 2009
  *
@@ -17,6 +15,8 @@ import java.util.Scanner;
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
+
+import java.util.Scanner;
 
 /**
  * Class responsible with keeping the current state of the game, as reported by the Capture game
@@ -42,15 +42,15 @@ public class StateManager {
     // Calculated fields
     // -------------------------------------------------------------------------------
 
-    public int friendPucks;
-    public int enemyPucks;
+    public int friendPucksNr;
+    public int enemyPucksNr;
 
     // -------------------------------------------------------------------------------------------------
 
     public void readState() {
         // 0. reset the calculated fields
-        friendPucks = 0;
-        enemyPucks = 0;
+        friendPucksNr = 0;
+        enemyPucksNr = 0;
 
         // 1. read the turn number. If < 0, game is over ------------------------------
         turnNumber = stateScanner.nextInt();
@@ -132,11 +132,11 @@ public class StateManager {
 
         switch ( currentPuck.type ) {
             case FRIEND: {
-                friendPucks++;
+                friendPucksNr++;
                 break;
             }
             case ENEMY: {
-                enemyPucks++;
+                enemyPucksNr++;
                 break;
             }
         }

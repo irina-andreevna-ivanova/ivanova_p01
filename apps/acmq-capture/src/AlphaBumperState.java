@@ -17,31 +17,16 @@
  */
 
 /**
- * Simple structure class that joins 2 double coordinates in a single object. Used for representing
- * two-dimensional characteristics of objects.
  * 
+ *
  * @author mocanu
  */
-public class RealPoint {
-
-    public double x;
-
-    public double y;
-
-    // -------------------------------------------------------------------------------------------------
-
-    public RealPoint() {
-    }
-
-    public RealPoint(double x, double y) {
-        super();
-        this.x = x;
-        this.y = y;
-    }
+public enum AlphaBumperState {
     
-    public void copyFrom( RealPoint other ) {
-        this.x = other.x;
-        this.y = other.y;
-    }
+    READY,
+    
+    LOCKED_ON,
+    
+    STOPPING;
 
 }

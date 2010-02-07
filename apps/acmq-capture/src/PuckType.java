@@ -17,16 +17,14 @@
  */
 
 /**
- * 
- *
  * @author mocanu
  */
 public enum PuckType {
-    
+
     FRIEND,
-    
+
     ENEMY,
-    
+
     GRAY;
 
 }

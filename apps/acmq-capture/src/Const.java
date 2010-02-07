@@ -25,16 +25,26 @@ public class Const {
 
     public static final boolean DEBUG_EXCEPTIONS = false;
     public static final boolean DEBUG_SLED = false;
-    public static final boolean DEBUG_ANY = DEBUG_EXCEPTIONS || DEBUG_SLED;
+    public static final boolean DEBUG_BUMPER = false;
+    public static final boolean DEBUG_ANY = DEBUG_EXCEPTIONS || DEBUG_SLED || DEBUG_BUMPER;
 
     public static final int TRAIL_LIMIT = 600;
+    public static final double TRAIL_LIMIT_CIRCLE_RADIUS = 600 / ( 2 * Math.PI );
 
     /** Maximum turn angle for a sled. */
     public static final double SLED_TURN_LIMIT = 0.5;
     public static final double SLED_SPEED = 15;
+    
+    public static final int BUMPER_NR = 2;
+    public static final double BUMPER_ACCELLERATION_LIMIT = 8;
+    public static final int BUMPER_MAX_STOP_SEQUENCE = 10;
 
     public static int PARAM_TRAIL_SAFE_LIMIT = 598;
     public static int PARAM_FPUCK_TO_BORDER_DISTANCE_LIMIT = 3;
     public static int PARAM_EPUCK_TO_BORDER_DISTANCE_LIMIT = 3;
     public static int PARAM_RADAR_CIRCLE_ABANDON_LIMIT = 2;
+
+    public static int PARAM_BUMPER_CLUSTERING_DISTANCE_LIMIT = 50;
+    public static int PARAM_BUMPER_CLUSTERING_MINIMUM_NR = 4;
+    public static double PARAM_BUMPER_ENEMY_PLAN_TARGET_PUCK_DISTANCE_LIMIT = TRAIL_LIMIT / Math.PI;
 }

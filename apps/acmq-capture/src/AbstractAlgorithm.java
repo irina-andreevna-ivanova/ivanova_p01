@@ -1,4 +1,24 @@
+/*- 
+ * Copyright Bogdan Mocanu, 2009
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
+
 import static java.lang.Math.*;
+
+import java.util.Random;
 
 /**
  * Base class for the Diego algorithm implementation.
@@ -7,11 +27,10 @@ import static java.lang.Math.*;
  */
 public abstract class AbstractAlgorithm {
 
+    public Random randomNumberGenerator;
     public FileLogger log;
     public StateManager stateManager;
     public ResponseManager responseManager;
-
-    public abstract void execute();
 
     // -------------------------------------------------------------------------------------------------
 
@@ -38,8 +57,20 @@ public abstract class AbstractAlgorithm {
         point.y = center.y + sin( finalAngle ) * distance;
     }
 
+    // public static final double triangleArea( )
+
     public static final double upperBound( double value, double maxLimit ) {
         return (value < maxLimit) ? value : maxLimit;
+    }
+
+    public static final double limit( double value, double minLimit, double maxLimit ) {
+        if ( value < minLimit ) {
+            return minLimit;
+        } else if ( value > maxLimit ) {
+            return maxLimit;
+        } else {
+            return value;
+        }
     }
 
     public static final double angleOf( RealPoint p1, RealPoint p2 ) {
@@ -74,6 +105,11 @@ public abstract class AbstractAlgorithm {
         return 0;
     }
 
+    public static void middleOf( RealPoint p1, RealPoint p2, RealPoint middle ) {
+        middle.x = (p1.x + p2.x) / 2;
+        middle.y = (p1.y + p2.y) / 2;
+    }
+
     // -------------------------------------------------------------------------------------------------
 
     // public static void main( String[] args ) {
@@ -103,5 +139,12 @@ public abstract class AbstractAlgorithm {
     // System.out.println( (bigIndex++) + " # " + angleOf( p1, p2 ) );
     // }
     // }
+
+    // -------------------------------------------------------------------------------------------------
+
+    public void init() {
+    }
+
+    public abstract void execute();
 
 }
