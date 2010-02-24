@@ -1,0 +1,45 @@
+Daily report for coding day 2010-02-02: 3-0, 1-2
+
+    * You participated in 3 randomly-selected matches:
+          o Random Match 1
+                + Bogdan Mocanu 60 points (37904 pts X turns)
+                + Random Opponent 22 points (14980 pts X turns)
+                + Winner: Bogdan Mocanu 
+          o Random Match 2
+                + Bogdan Mocanu 60 points (37904 pts X turns)
+                + Random Opponent 22 points (14980 pts X turns)
+                + Winner: Bogdan Mocanu 
+          o Random Match 3
+                + Bogdan Mocanu 74 points (33852 pts X turns)
+                + Random Opponent 16 points (9598 pts X turns)
+                + Winner: Bogdan Mocanu 
+    * You participated in 3 requested matches:
+          o Requested Match 1
+                + Bogdan Mocanu 43 points (19212 pts X turns)
+                + Craig Peterson 4 points (3600 pts X turns)
+                + Winner: Bogdan Mocanu 
+          o Requested Match 2
+                + Bogdan Mocanu 10 points (10641 pts X turns)
+                + Kamran Bavar 70 points (39055 pts X turns)
+                + Winner: Kamran Bavar 
+          o Requested Match 3
+                + Bogdan Mocanu 16 points (12386 pts X turns)
+                + Robert Monnet 58 points (25397 pts X turns)
+                + Winner: Robert Monnet 
+
+Daily report for coding day 2010-02-01: 2-1, 0-0
+
+    * You participated in 3 randomly-selected matches:
+          o Random Match 1
+                + Bogdan Mocanu 38 points (24279 pts X turns)
+                + Random Opponent 35 points (19701 pts X turns)
+                + Winner: Bogdan Mocanu 
+          o Random Match 2
+                + Bogdan Mocanu 15 points (10670 pts X turns)
+                + Random Opponent 20 points (15112 pts X turns)
+                + Winner: Random Opponent 
+          o Random Match 3
+                + Bogdan Mocanu 54 points (26602 pts X turns)
+                + Random Opponent 4 points (3600 pts X turns)
+                + Winner: Bogdan Mocanu 
+                
