@@ -3,3 +3,13 @@ The following resources have been used for silverdocs:
 wz-tooltip: JS library for displaying dynamic tooltips (with fadein-fadeout)
 Homepage: http://www.walterzorn.com/tooltip/tooltip_e.htm
 Author: Walter Zorn
+
+plus.exp background image
+http://ph0on.deviantart.com/art/plus-exp-15531460
+Author: ph0on
+
+expand icon
+Wikipedia http://www.wikipedia.org
+
+servers icon
+Icon Archive: http://www.iconarchive.com/show/solid-icons-by-fasticon/applications-icon.html

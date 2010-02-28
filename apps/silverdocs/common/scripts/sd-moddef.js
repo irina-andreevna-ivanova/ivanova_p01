@@ -10,9 +10,14 @@ var MODULE_PINNED    = 4;
 var MODULE_TIMESTAMP = 5;
 
 var SDBookmarks = new Array();
-SDBookmarks[ MODULE_ID       ] = "sd.bookmarks";
-SDBookmarks[ MODULE_FILENAME ] = MODULES_DIRECTORY + "module-bookmarks.html";
+SDBookmarks[ MODULE_ID       ] = "sd.panel.bookmarks";
+SDBookmarks[ MODULE_FILENAME ] = MODULES_DIRECTORY + "module-panel-bookmarks.html";
 SDBookmarks[ MODULE_VISIBLE  ] = false;
+
+var SDApplications = new Array();
+SDApplications[ MODULE_ID       ] = "sd.panel.applications";
+SDApplications[ MODULE_FILENAME ] = MODULES_DIRECTORY + "module-panel-applications.html";
+SDApplications[ MODULE_VISIBLE  ] = false;
 
 var SDModules = new Array();
 var moduleIndex = -1;
@@ -29,6 +34,13 @@ SDModules[ moduleIndex ][ MODULE_ID        ] = "sd.general.search";
 SDModules[ moduleIndex ][ MODULE_FILENAME  ] = MODULES_DIRECTORY + "module-general-search.html";
 SDModules[ moduleIndex ][ MODULE_VISIBLE   ] = true;
 SDModules[ moduleIndex ][ MODULE_PINNED    ] = true;
+initModule( SDModules[ moduleIndex ] );
+
+SDModules[ ++moduleIndex ] = new Array();
+SDModules[ moduleIndex ][ MODULE_ID        ] = "sd.shortcuts";
+SDModules[ moduleIndex ][ MODULE_FILENAME  ] = MODULES_DIRECTORY + "module-shortcuts.html";
+SDModules[ moduleIndex ][ MODULE_VISIBLE   ] = false;
+SDModules[ moduleIndex ][ MODULE_PINNED    ] = false;
 initModule( SDModules[ moduleIndex ] );
 
 SDModules[ ++moduleIndex ] = new Array();

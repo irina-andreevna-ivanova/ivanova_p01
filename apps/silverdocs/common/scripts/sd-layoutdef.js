@@ -66,6 +66,10 @@ SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.books.notes";
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Book notes";
 
+SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.shortcuts";
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Shortcuts";
+
 /* *********************************************************************** */
 spotIndex = -1;
 SDSpots[ ++columnIndex ] = new Array();

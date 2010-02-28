@@ -1,6 +1,7 @@
 /* *********************************************************************** */
 var CONTENT_MODULE_CONTENTDIV = "sd.module.content";
-var BOOKMARKS_MODULE_ID = "sd.bookmarks";
+var BOOKMARKS_MODULE_ID = "sd.panel.bookmarks";
+var APPLICATIONS_MODULE_ID = "sd.panel.applications";
 /* *********************************************************************** */
 function onModuleLoad(spotname) {
 	var moduleContent = document.getElementById(CONTENT_MODULE_CONTENTDIV).innerHTML;
@@ -9,7 +10,13 @@ function onModuleLoad(spotname) {
 		if (parent.processBookmarksContent) {
 			parent.processBookmarksContent(moduleContent);
 		} else {
-			alert("Error loading bookmarks!");
+			alert("Error loading bookmarks panel!");
+		}
+	} else if (spotname == APPLICATIONS_MODULE_ID) {
+		if (parent.processApplicationsContent) {
+			parent.processApplicationsContent(moduleContent);
+		} else {
+			alert("Error loading applications panel!");
 		}
 	} else {
 		if (parent.processModuleContent) {
@@ -19,4 +26,3 @@ function onModuleLoad(spotname) {
 		}
 	}
 }
-

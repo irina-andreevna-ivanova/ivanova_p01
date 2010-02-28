@@ -3,6 +3,7 @@ var CONTENT_LOADFRAME   = "sd.loadFrame";
 var CONTENT_CONTENTDIV  = "sd.contentDiv";
 var CONTENT_INDEXDIV    = "sd.indexDiv";
 var CONTENT_BOOKMARKDIV = "sd.bookmarkDiv"; 
+var CONTENT_APPLICATIONSDIV = "sd.applicationsDiv"; 
 var CONTENT_INDEXITEMS  = 3;
 var CONTENT_SPOTDIVS_PREFIX = "spot.";
 var CONTENT_SPOTHEADERPINICON_PREFIX = "spot.header.icon.pin.";
@@ -67,9 +68,9 @@ function generatePageContent() {
 		} 
 
 		if ( colIndex < SDSpots.length - 1 ) {
-			contentStr += '        </td>';
-			contentStr += '<td style="width: 1px; font-size: 2px; background-color: rgb(255, 255, 255);"></td>';
-			contentStr += '        <td style="padding-left: 1px;" valign="top" width="' + columnLength + '%">';
+			contentStr += '</td>';
+			contentStr += '<td style="width: 1px; font-size: 2px;"></td>';
+			contentStr += '<td style="padding-left: 1px;" valign="top" width="' + columnLength + '%">';
 		}
 	}
 
@@ -126,6 +127,22 @@ function onBookmarkBarClick() {
 
 		var loadFrame = document.getElementById( CONTENT_LOADFRAME );
 		loadFrame.src = SDBookmarks[ MODULE_FILENAME ];
+	} 
+}
+function onApplicationsBarClick() {
+	var applicationsDiv = document.getElementById( CONTENT_APPLICATIONSDIV );
+
+	if ( SDApplications[ MODULE_VISIBLE ] ) {
+		SDApplications[ MODULE_VISIBLE ] = false;
+		applicationsDiv.innerHTML = "";
+		applicationsDiv.className = "applicationsDiv_notVisible";
+	} else {
+		SDApplications[ MODULE_VISIBLE ] = true;
+		applicationsDiv.innerHTML = CONTENT_SPOT_LOADING;
+		applicationsDiv.className = "applicationsDiv_visible";
+
+		var loadFrame = document.getElementById( CONTENT_LOADFRAME );
+		loadFrame.src = SDApplications[ MODULE_FILENAME ];
 	} 
 }
 function onSpotHeaderClick( moduleID ) {
@@ -198,6 +215,10 @@ function processModuleContent( moduleID, content ) {
 function processBookmarksContent( content ) {
 	var bookmarkDiv = document.getElementById( CONTENT_BOOKMARKDIV );
 	bookmarkDiv.innerHTML = content;
+}
+function processApplicationsContent( content ) {
+	var applicationsDiv = document.getElementById( CONTENT_APPLICATIONSDIV );
+	applicationsDiv.innerHTML = content;
 }
 function closeAllModulesUnpinnedOnTheColumn( activeModuleID ) {
 	var colIndex = -1;
