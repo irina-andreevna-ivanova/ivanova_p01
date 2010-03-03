@@ -15,6 +15,7 @@
 	
 	<modules>
 		<module>evaluate-junit44</module>
+		<module>evaluate-junit48</module>
 		<module>evaluate-ws</module>
 		<module>test-zendo2</module>
 	</modules>

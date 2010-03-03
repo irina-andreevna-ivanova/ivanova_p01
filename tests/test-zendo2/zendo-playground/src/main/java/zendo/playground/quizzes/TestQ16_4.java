@@ -9,7 +9,7 @@ package zendo.playground.quizzes;
  *
  * @author mocanu
  */
-public class TestQ16 implements Runnable {
+public class TestQ16_4 implements Runnable {
 
     public void run() {
         try {
@@ -22,7 +22,7 @@ public class TestQ16 implements Runnable {
     }
 
     public static void main( String[] args ) {
-        new Thread( new TestQ16() ).start();
+        new Thread( new TestQ16_4() ).start();
     }
 
 }

@@ -1,0 +1,16 @@
+body {
+	font-family: Arial, sans-serif;
+	font-size: 12pt;
+}
+
+.list_common {
+	width: 500px;
+	background-color: #F5F5F5;
+	border-collapse: collapse;
+}
+
+.list_common th {
+    text-align: left;
+    color: #FFFFFF;
+    background-color: #000040;
+}
