@@ -23,7 +23,7 @@ public class TimestampGenerator {
 
         System.out.println( new SimpleDateFormat( "dd.MM.yyyy" ).parse( "22.05.2015" ).getTime() );
 
-        long timestampSource = 1265706555269L;
+        long timestampSource = 1266106476400L;
         displayTimestamp( timestampSource );
         
         System.out.println( "Misc tests-----------" );
@@ -47,10 +47,10 @@ public class TimestampGenerator {
         calendarHere.setTimeZone( TimeZone.getTimeZone( "UTC" ) );
         calendarHere.setTime( date );
         
-        SimpleDateFormat dateFormatUTC = new SimpleDateFormat();
+        SimpleDateFormat dateFormatUTC = new SimpleDateFormat( "EEE, d MMM yyyy HH:mm:ss Z" );
         dateFormatUTC.setTimeZone( TimeZone.getTimeZone( "UTC" ) );
         
-        SimpleDateFormat dateFormatHere = new SimpleDateFormat();
+        SimpleDateFormat dateFormatHere = new SimpleDateFormat( "EEE, d MMM yyyy HH:mm:ss Z" );
         // dateFormatHere.setTimeZone( TimeZone.getTimeZone( "UTC" ) );
         
         System.out.println( "+--------------------------------------------" );

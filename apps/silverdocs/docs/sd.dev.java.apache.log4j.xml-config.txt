@@ -1,0 +1,79 @@
+Log4J XML config sample
+------------------------------------------------------------------------------------------------------
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="FILE" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="${catalina.home}/logs/cscscs.log"/>
+        <param name="Threshold" value="DEBUG"/>
+        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{ABSOLUTE} %-5p [%c{1}] %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="FILE_HIBERNATE" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="${catalina.home}/logs/csrrrrr_hib.log"/>
+        <param name="Threshold" value="DEBUG"/>
+        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{ABSOLUTE} %-5p [%c{1}] %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="FILE_NV" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="${catalina.home}/logs/csr_sr.log"/>
+        <param name="Threshold" value="DEBUG"/>
+        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{ABSOLUTE} %-5p [%c{1}] (%t): %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="FILE_PLACEORDER" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="${catalina.home}/logs/csrrr.log"/>
+        <param name="Threshold" value="DEBUG"/>
+        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{ABSOLUTE} %-5p [%c{1}] (%t): %m%n"/>
+        </layout>
+    </appender>
+
+    <!--Netviewer SyslogAppender -->
+    <appender name="SR_SYSLOG" class="org.apache.log4j.net.SyslogAppender">
+        <errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler"/>
+        <param name="Facility" value="LOCAL7"/>
+        <param name="FacilityPrinting" value="true"/>
+        <param name="SyslogHost" value="localhost"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[cmng %d{ABSOLUTE},%c{1}] %m%n"/>
+        </layout>
+    </appender>
+
+
+    <logger name="com.srr" additivity="false">
+        <level value="DEBUG"/>
+        <appender-ref ref="FILE_SR"/>
+        <appender-ref ref="SR_SYSLOG"/>
+    </logger>
+
+    <logger name="org.hibernate" additivity="false">
+        <level value="DEBUG"/>
+        <appender-ref ref="FILE_HIBERNATE"/>    
+    </logger>
+
+    <logger name="test.SomeTaskExecutor" additivity="false">
+        <level value="DEBUG"/>
+        <appender-ref ref="FILE_PLACEORDER"/>
+        <appender-ref ref="SR_SYSLOG"/>
+    </logger>
+
+    <root>
+        <priority value="INFO"/>
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="SR_SYSLOG"/>
+    </root>
+
+</log4j:configuration>

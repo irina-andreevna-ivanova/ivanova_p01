@@ -1,0 +1,40 @@
+JRebel configuration
+
+------------------------------------------------------------------------------------------------------
+Server config: startup_jrebel.bat
+------------------------------------------------------------------------------------------------------
+
+@echo off
+set JAVA_OPTS=-noverify -javaagent:C:\Applications_Java\jrebel\jrebel.jar %JAVA_OPTS%
+call %~dp0\startup.bat %*
+
+!!WARNING!!: make sure it doesn't overlap with the settings for remote debugging (JDWP)
+
+------------------------------------------------------------------------------------------------------
+App config: WAR, rebel.xml
+------------------------------------------------------------------------------------------------------
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+ XML file used in conjunction with the JRebel (http://www.zeroturnaround.com/jrebel/) hot deployment tool
+-->
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.zeroturnaround.com" xsi:schemaLocation="http://www.zeroturnaround.com/alderaan/rebel-2_0.xsd">
+    <classpath>
+        <dir name="${myserver.sourcedir}/server/myserver/myserver-webapp/target/classes"/>
+        <dir name="${myserver.sourcedir}/libs/common/common-module/target/classes"/>
+        .....
+    </classpath>
+    <web>
+        <link target="/">
+            <dir name="${myserver.sourcedir}/server/myserver/myserver-webapp/target/myserver/">
+                <include name="WEB-INF/myserver-file1.xml" />
+                <include name="WEB-INF/myserver-file2.xml" />
+                <include name="WEB-INF/web.xml" />
+            </dir>
+        </link>
+        <link target="/">
+            <dir name="${myserver.sourcedir}/server/myserver/myserver-webapp/src/main/webapp">
+            </dir>
+        </link>
+    </web>
+</application>

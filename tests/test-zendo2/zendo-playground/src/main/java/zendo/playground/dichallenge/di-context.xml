@@ -1,0 +1,13 @@
+<beans>
+
+    <bean name="cmClient" class="CMClientRestImpl">
+        <property name="endpointUrl" value="http://endpoint" />
+        <property name="endpointUsername" value="gica" />
+        <property name="endpointPassword" value="pass" />
+    </bean>
+    
+    <bean name="orderProcessor" class="OrderProcessor">
+        <property name="cmClient" ref="cmClient" />
+    </bean>
+
+</beans>

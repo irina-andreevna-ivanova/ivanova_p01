@@ -366,3 +366,11 @@ table tbody th {
 .text_orange {
 	color: #FF8000;
 }
+
+.a_txtdoc, .a_maven {
+	padding-right: 16px;
+	background-repeat: no-repeat;
+	background-position: top right;
+}
+.a_txtdoc { background-image: url("../images/icon-txtdoc.png" ); }
+.a_maven { background-image: url("../images/icon-apache-maven.png" ); }
