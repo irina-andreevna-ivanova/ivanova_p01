@@ -7,6 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.JMSException;
+import javax.jms.Session;
 
 /**
  * Created by IntelliJ IDEA.
@@ -24,6 +25,9 @@ public class Launcher {
         ((AbstractApplicationContext) applicationContext).registerShutdownHook();
         ConnectionFactory factory = (ConnectionFactory) applicationContext.getBean("connectionFactory");
         Connection con = factory.createConnection();
+        Session session = con.createSession( false, Session.AUTO_ACKNOWLEDGE );
+
+        con.close();
     }
 
 }
