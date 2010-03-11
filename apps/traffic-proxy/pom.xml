@@ -7,6 +7,27 @@
     <version>1.0</version>
     <name>traffic-proxy</name>
     <url>http://maven.apache.org</url>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <configuration>
+                            <tasks>
+                                <mkdir dir="${project.dist}"/>
+                                <copy file="${project.build.directory}/${project.build.finalName}.jar" todir="${project.dist}" />
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -29,5 +50,6 @@
         <lib.log4j>1.2.15</lib.log4j>
         <lib.junit>4.8.1</lib.junit>
         <lib.commons-lang>2.5</lib.commons-lang>
+        <project.dist>${project.basedir}/target/dist</project.dist>
     </properties>
 </project>

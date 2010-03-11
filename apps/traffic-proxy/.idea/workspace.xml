@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager" verified="true">
-    <list default="true" readonly="true" id="8eee1cd0-a494-486b-9027-49cc4524c66c" name="Default" comment="" />
+    <list default="true" readonly="true" id="8eee1cd0-a494-486b-9027-49cc4524c66c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ro/bmocanu/trafficproxy/Launcher.java" afterPath="$PROJECT_DIR$/src/main/java/ro/bmocanu/trafficproxy/Launcher.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/traffic-proxy.iml" afterPath="$PROJECT_DIR$/traffic-proxy.iml" />
+    </list>
     <ignored path="traffic-proxy.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -63,7 +70,7 @@
       <file leaf-file-name="Launcher.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ro/bmocanu/trafficproxy/Launcher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="62" selection-start="319" selection-end="319" vertical-scroll-proportion="0.0">
+            <state line="19" column="18" selection-start="563" selection-end="563" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -71,10 +78,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="notes.txt" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="49" selection-start="763" selection-end="763" vertical-scroll-proportion="0.4315961">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="notes.txt" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/notes.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="69" selection-end="69" vertical-scroll-proportion="0.054054055">
+            <state line="2" column="0" selection-start="69" selection-end="69" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -83,7 +99,7 @@
       <file leaf-file-name="traffic-proxy.properties" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/traffic-proxy.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="17" selection-start="496" selection-end="496" vertical-scroll-proportion="0.0">
+            <state line="12" column="19" selection-start="464" selection-end="464" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -111,14 +127,14 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/ro/bmocanu/trafficproxy/MainFrame.form" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/traffic-proxy.log4j.properties" />
         <option value="$PROJECT_DIR$/src/main/java/ro/bmocanu/trafficproxy/Configuration.java" />
         <option value="$PROJECT_DIR$/src/main/java/ro/bmocanu/trafficproxy/Constants.java" />
         <option value="$PROJECT_DIR$/src/main/java/ro/bmocanu/trafficproxy/PeerCommunicationServer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ro/bmocanu/trafficproxy/Launcher.java" />
         <option value="$PROJECT_DIR$/src/main/resources/traffic-proxy.properties" />
         <option value="$PROJECT_DIR$/docs/notes.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/ro/bmocanu/trafficproxy/Launcher.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -278,6 +294,53 @@
     <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RunManager" selected="Application.traffic-proxy">
+    <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings">
+          <MavenGeneralSettings>
+            <option name="checksumPolicy" value="FAIL" />
+            <option name="failureBehavior" value="FAST" />
+            <option name="localRepository" value="E:\Repositories\Maven" />
+            <option name="mavenHome" value="D:\Applications_Java\apache-maven-2.2.1" />
+            <option name="mavenSettingsFile" value="D:\Applications_Java\apache-maven-2.2.1\conf\user-settings.xml" />
+            <option name="nonRecursive" value="false" />
+            <option name="pluginUpdatePolicy" value="DO_NOT_UPDATE" />
+            <option name="printErrorStackTraces" value="false" />
+            <option name="snapshotUpdatePolicy" value="ALWAYS_UPDATE" />
+            <option name="usePluginRegistry" value="false" />
+            <option name="workOffline" value="false" />
+          </MavenGeneralSettings>
+        </option>
+        <option name="myRunnerSettings">
+          <MavenRunnerSettings>
+            <option name="jreName" value="#JAVA_INTERNAL" />
+            <option name="mavenProperties">
+              <map />
+            </option>
+            <option name="runMavenInBackground" value="true" />
+            <option name="skipTests" value="false" />
+            <option name="vmOptions" value="" />
+          </MavenRunnerSettings>
+        </option>
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="goals">
+              <list />
+            </option>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="workingDirPath" value="" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="false" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -432,6 +495,24 @@
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
     <supportedVersion>125</supportedVersion>
   </component>
+  <component name="SvnFileUrlMappingImpl">
+    <option name="myMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="G:\Projects\bogdanmocanu.googlecode.svn.trunk\apps\traffic-proxy" />
+          <option name="myCopyRoot" value="G:\Projects\bogdanmocanu.googlecode.svn.trunk\apps\traffic-proxy" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+    <option name="myMoreRealMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="G:\Projects\bogdanmocanu.googlecode.svn.trunk\apps\traffic-proxy" />
+          <option name="myCopyRoot" value="G:\Projects\bogdanmocanu.googlecode.svn.trunk\apps\traffic-proxy" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <created>1268339499570</created>
@@ -443,25 +524,25 @@
     <frame x="-8" y="-8" width="1296" height="786" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928804" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928804" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1723301" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1723301" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977098" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977098" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.65954196" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17718446" sideWeight="0.65954196" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.65954196" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977098" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
@@ -497,13 +578,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="27" selection-start="572" selection-end="572" vertical-scroll-proportion="0.2972973">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://E:/Repositories/Maven/commons-lang/commons-lang/2.5/commons-lang-2.5.jar!/org/apache/commons/lang/StringUtils.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="321" column="81" selection-start="17262" selection-end="17270" vertical-scroll-proportion="0.33224756">
@@ -541,6 +615,82 @@
         </state>
       </provider>
     </entry>
+    <entry file="uml://MODULES/mdl-traffic-proxy">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>MODULES</ID>
+          <OriginalElement>mdl-traffic-proxy</OriginalElement>
+          <nodes>
+            <node x="942.5" y="98.0">mdl-traffic-proxy</node>
+            <node x="0.0" y="0.0">lib-Maven: commons-lang:commons-lang:2.5</node>
+            <node x="990.0" y="0.0">lib-Maven: com.sun.jdmk:jmxtools:1.2.1</node>
+            <node x="572.9809108262887" y="-161.77911098991007">lib-Maven: com.sun.jmx:jmxri:1.2.1</node>
+            <node x="289.0" y="0.0">lib-Maven: javax.activation:activation:1.1</node>
+            <node x="1637.0" y="0.0">lib-Maven: log4j:log4j:1.2.15</node>
+            <node x="1250.0" y="0.0">lib-Maven: javax.mail:mail:1.4</node>
+            <node x="879.8800109080993" y="-130.82137987455684">lib-Maven: javax.jms:jms:1.1</node>
+            <node x="1454.0" y="0.0">lib-Maven: junit:junit:4.8.1</node>
+          </nodes>
+          <edges>
+            <edge source="mdl-traffic-proxy" target="lib-Maven: javax.jms:jms:1.1">
+              <point x="-6.625" y="-14.0" />
+              <point x="988.875" y="48.0" />
+              <point x="881.0" y="48.0" />
+              <point x="0.0" y="14.0" />
+            </edge>
+            <edge source="mdl-traffic-proxy" target="lib-Maven: javax.mail:mail:1.4">
+              <point x="19.875" y="-14.0" />
+              <point x="1015.375" y="58.0" />
+              <point x="1342.0" y="58.0" />
+              <point x="0.0" y="14.0" />
+            </edge>
+            <edge source="mdl-traffic-proxy" target="lib-Maven: commons-lang:commons-lang:2.5">
+              <point x="-46.375" y="-14.0" />
+              <point x="949.125" y="78.0" />
+              <point x="134.5" y="78.0" />
+              <point x="0.0" y="14.0" />
+            </edge>
+            <edge source="mdl-traffic-proxy" target="lib-Maven: javax.activation:activation:1.1">
+              <point x="-33.125" y="-14.0" />
+              <point x="962.375" y="68.0" />
+              <point x="414.0" y="68.0" />
+              <point x="0.0" y="14.0" />
+            </edge>
+            <edge source="mdl-traffic-proxy" target="lib-Maven: com.sun.jdmk:jmxtools:1.2.1">
+              <point x="6.625" y="-14.0" />
+              <point x="1002.125" y="48.0" />
+              <point x="1110.0" y="48.0" />
+              <point x="0.0" y="14.0" />
+            </edge>
+            <edge source="mdl-traffic-proxy" target="lib-Maven: com.sun.jmx:jmxri:1.2.1">
+              <point x="-19.875" y="-14.0" />
+              <point x="975.625" y="58.0" />
+              <point x="665.5" y="58.0" />
+              <point x="0.0" y="14.0" />
+            </edge>
+            <edge source="mdl-traffic-proxy" target="lib-Maven: junit:junit:4.8.1">
+              <point x="33.125" y="-14.0" />
+              <point x="1028.625" y="68.0" />
+              <point x="1535.5" y="68.0" />
+              <point x="0.0" y="14.0" />
+            </edge>
+            <edge source="mdl-traffic-proxy" target="lib-Maven: log4j:log4j:1.2.15">
+              <point x="46.375" y="-14.0" />
+              <point x="1041.875" y="78.0" />
+              <point x="1724.0" y="78.0" />
+              <point x="0.0" y="14.0" />
+            </edge>
+          </edges>
+          <settings isCamel="false" isColorManagerEnabled="true" isShowDependencies="false" isVcsFilterEnabled="false" layout="Hierarchic Group" zoom="1.0013653741125068" x="448.374147804745" y="62.99999999999994" />
+          <SelectedNodes>
+            <node>lib-Maven: javax.jms:jms:1.1</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Libraries</Category>
+          </Categories>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ro/bmocanu/trafficproxy/PeerCommunicationServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="46" column="47" selection-start="1479" selection-end="1479" vertical-scroll-proportion="0.0">
@@ -552,23 +702,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/traffic-proxy.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="17" selection-start="496" selection-end="496" vertical-scroll-proportion="0.0">
+        <state line="12" column="19" selection-start="464" selection-end="464" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/notes.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="69" selection-end="69" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ro/bmocanu/trafficproxy/Launcher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="62" selection-start="319" selection-end="319" vertical-scroll-proportion="0.0">
+        <state line="19" column="18" selection-start="563" selection-end="563" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/notes.txt">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="69" selection-end="69" vertical-scroll-proportion="0.054054055">
+        <state line="17" column="49" selection-start="763" selection-end="763" vertical-scroll-proportion="0.4315961">
           <folding />
         </state>
       </provider>

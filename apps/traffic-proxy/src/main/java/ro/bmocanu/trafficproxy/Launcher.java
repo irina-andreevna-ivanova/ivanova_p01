@@ -9,7 +9,7 @@ import org.apache.log4j.PropertyConfigurator;
 public class Launcher extends Thread {
     private static final Logger LOG = Logger.getLogger( Launcher.class );
 
-    private PeerCommunicationServer commServer; 
+    private PeerCommunicationServer commServer;  
 
     public static void main(String[] args) {
         Launcher launcher = new Launcher();
@@ -24,7 +24,7 @@ public class Launcher extends Thread {
         // intercept the JVM shutdown
         Runtime.getRuntime().addShutdownHook( launcher );
 
-        // carry on with the application startup
+        // carry on with the application start up
         launcher.startApplication();
     }
 
