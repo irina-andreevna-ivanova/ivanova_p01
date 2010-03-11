@@ -1,0 +1,3 @@
+Client ---- 80 ----- Server
+443    ---- 80 ----- Server ---- ip:port
+50500  ---- 80 ----- Server ---- ip:port
