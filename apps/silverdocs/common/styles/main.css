@@ -265,10 +265,6 @@ img {
     background-repeat: repeat-y;
     background-color: #FFFFFF;
 }
-.leftbar_quickarrows_input {
-    width: 32px;
-    background-image: url("../images/tool32-quick-arrows.png");
-}
 .bottombar {
     text-align: center;
     padding: 5px;
@@ -367,11 +363,18 @@ table tbody th {
 	color: #FF8000;
 }
 
-.a_txtdoc, .a_maven {
-	padding-right: 16px;
+.a_txtdoc, .a_spec, .a_img, .a_maven, .a_maven_altrepo, .a_pdf, .a_book, .a_rated1, .a_rated2, .a_rated3 {
+	padding-right: 18px;
 	background-repeat: no-repeat;
 	background-position: top right;
 }
 .a_txtdoc { background-image: url("../images/icon-txtdoc.png" ); }
+.a_img { background-image: url("../images/icon-img.png" ); }
+.a_spec { background-image: url("../images/icon-spec.png" ); }
 .a_pdf { background-image: url("../images/icon-pdf.png" ); }
 .a_maven { background-image: url("../images/icon-apache-maven.png" ); }
+.a_maven_altrepo { background-image: url("../images/icon-apache-maven-altrepo.png" ); }
+.a_book { background-image: url("../images/icon-book.gif" ); }
+.a_rated1 { background-image: url("../images/icon-rated1.png" ); }
+.a_rated2 { background-image: url("../images/icon-rated2.png" ); padding-right: 34px; }
+.a_rated3 { background-image: url("../images/icon-rated3.png" ); padding-right: 50px; }
