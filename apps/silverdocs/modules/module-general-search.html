@@ -126,13 +126,40 @@
                         <input type="submit" value="IMDb" style="width:100px;"/>
                     </td></tr></table>
                 </form>
-                <form action="http://www.subs.ro/subtitrari/search.php" method="post" target="_blank">
+                <form action="http://www.subs.ro/search.php" method="get" target="_parent">
                     <table cellpadding="0px" cellspacing="0px" width="100%"><tr><td>
-                        <input type="text" name="keyword" style="width: 100%; background-color: #d1ffcb;" onClick="this.value='';"/>
+                        <input type="text" id="search_by_name" name="search" style="width: 100%; background-color: #d1ffcb;" onClick="this.value='';"/>
                         <input type="hidden" name="Searching" value="true" />
                         <input type="hidden" name="metode" value="Nume Film" />
                     </td><td style="width: 1%">
                         <input type="submit" value="subs.ro" style="width:100px;"/>
+                    </td></tr></table>
+                </form>
+                <form action="http://niftyteam.ro/titrari.php" method="get" target="_parent">
+                    <table cellpadding="0px" cellspacing="0px" width="100%"><tr><td>
+                        <input type="hidden" name="action" value="cauta"/>
+                        <input type="text" id="cauta_box" name="titlu" style="width: 100%; background-color: #d1ffcb;" onClick="this.value='';"/>
+                    </td><td style="width: 1%">
+                        <input type="submit" value="niftyteam.ro" style="width:100px;"/>
+                    </td></tr></table>
+                </form>
+                <form action="http://www.subtitrari-noi.ro/index.php" method="get" target="_parent">
+                    <table cellpadding="0px" cellspacing="0px" width="100%"><tr><td>
+                        <input type="hidden" name="action" value="caut"/>
+                        <input type="hidden" name="tip" value="Nume Film"/>
+                        <input type="hidden" name="Cautare" value="Cautare"/>
+                        <input type="text" name="titlu" style="width: 100%; background-color: #d1ffcb;" onClick="this.value='';"/>
+                    </td><td style="width: 1%">
+                        <input type="submit" value="subtitrari-noi.ro" style="width:100px;"/>
+                    </td></tr></table>
+                </form>
+                <form action="http://subtitrari.regielive.ro/search.html" method="get" target="_parent">
+                    <table cellpadding="0px" cellspacing="0px" width="100%"><tr><td>
+                        <input type="hidden" name="Go.x" value="0"/>
+                        <input type="hidden" name="Go.y" value="0"/>
+                        <input type="text" name="s" style="width: 100%; background-color: #d1ffcb;" onClick="this.value='';"/>
+                    </td><td style="width: 1%">
+                        <input type="submit" value="subtitrari.regielive.ro" style="width:100px;"/>
                     </td></tr></table>
                 </form>
                 <form action="http://www.download.com/3120-20_4-0.html" method="get" target="_blank">

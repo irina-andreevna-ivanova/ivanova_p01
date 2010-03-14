@@ -373,4 +373,5 @@ table tbody th {
 	background-position: top right;
 }
 .a_txtdoc { background-image: url("../images/icon-txtdoc.png" ); }
+.a_pdf { background-image: url("../images/icon-pdf.png" ); }
 .a_maven { background-image: url("../images/icon-apache-maven.png" ); }
