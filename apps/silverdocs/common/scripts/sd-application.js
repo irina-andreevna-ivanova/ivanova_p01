@@ -148,3 +148,7 @@ function doTip( tip ) {
 function undoTip() {
 	UnTip();
 }
+
+function openWindow( url, title, width, height ) {
+    window.open(url, title, 'width=' + width + 'px,height=' + height + 'px,left=' + ((screen.width-width)/2) + 'px,top=' + ((screen.height-height)/2) + 'px');
+}
