@@ -4,6 +4,7 @@ var CONTENT_CONTENTDIV  = "sd.contentDiv";
 var CONTENT_INDEXDIV    = "sd.indexDiv";
 var CONTENT_BOOKMARKDIV = "sd.bookmarkDiv"; 
 var CONTENT_APPLICATIONSDIV = "sd.applicationsDiv"; 
+var CONTENT_SEARCHDIV = "sd.searchDiv"; 
 var CONTENT_INDEXITEMS  = 3;
 var CONTENT_SPOTDIVS_PREFIX = "spot.";
 var CONTENT_SPOTHEADERPINICON_PREFIX = "spot.header.icon.pin.";
@@ -132,18 +133,34 @@ function onBookmarkBarClick() {
 function onApplicationsBarClick() {
 	var applicationsDiv = document.getElementById( CONTENT_APPLICATIONSDIV );
 
-	if ( SDApplications[ MODULE_VISIBLE ] ) {
-		SDApplications[ MODULE_VISIBLE ] = false;
-		applicationsDiv.innerHTML = "";
-		applicationsDiv.className = "applicationsDiv_notVisible";
-	} else {
-		SDApplications[ MODULE_VISIBLE ] = true;
-		applicationsDiv.innerHTML = CONTENT_SPOT_LOADING;
-		applicationsDiv.className = "applicationsDiv_visible";
+    if ( SDApplications[ MODULE_VISIBLE ] ) {
+        SDApplications[ MODULE_VISIBLE ] = false;
+        applicationsDiv.innerHTML = "";
+        applicationsDiv.className = "applicationsDiv_notVisible";
+    } else {
+        SDApplications[ MODULE_VISIBLE ] = true;
+        applicationsDiv.innerHTML = CONTENT_SPOT_LOADING;
+        applicationsDiv.className = "applicationsDiv_visible";
 
-		var loadFrame = document.getElementById( CONTENT_LOADFRAME );
-		loadFrame.src = SDApplications[ MODULE_FILENAME ];
-	} 
+        var loadFrame = document.getElementById( CONTENT_LOADFRAME );
+        loadFrame.src = SDApplications[ MODULE_FILENAME ];
+    }
+}
+function onSearchBarClick() {
+	var searchDiv = document.getElementById( CONTENT_SEARCHDIV );
+
+    if ( SDSearch[ MODULE_VISIBLE ] ) {
+        SDSearch[ MODULE_VISIBLE ] = false;
+        searchDiv.innerHTML = "";
+        searchDiv.className = "searchDiv_notVisible";
+    } else {
+        SDSearch[ MODULE_VISIBLE ] = true;
+        searchDiv.innerHTML = CONTENT_SPOT_LOADING;
+        searchDiv.className = "searchDiv_visible";
+
+        var loadFrame = document.getElementById( CONTENT_LOADFRAME );
+        loadFrame.src = SDSearch[ MODULE_FILENAME ];
+    }
 }
 function onSpotHeaderClick( moduleID ) {
 	var module = getModuleByID( moduleID );
@@ -219,6 +236,10 @@ function processBookmarksContent( content ) {
 function processApplicationsContent( content ) {
 	var applicationsDiv = document.getElementById( CONTENT_APPLICATIONSDIV );
 	applicationsDiv.innerHTML = content;
+}
+function processSearchContent( content ) {
+	var searchDiv = document.getElementById( CONTENT_SEARCHDIV );
+	searchDiv.innerHTML = content;
 }
 function closeAllModulesUnpinnedOnTheColumn( activeModuleID ) {
 	var colIndex = -1;

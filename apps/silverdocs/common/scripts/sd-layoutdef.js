@@ -11,10 +11,6 @@ spotIndex = -1;
 SDSpots[ ++columnIndex ] = new Array();
 
 SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.general.search";
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Search";
-
-SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.locallinks";
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Locals";
 

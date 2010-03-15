@@ -19,6 +19,11 @@ SDApplications[ MODULE_ID       ] = "sd.panel.applications";
 SDApplications[ MODULE_FILENAME ] = MODULES_DIRECTORY + "module-panel-applications.html";
 SDApplications[ MODULE_VISIBLE  ] = false;
 
+var SDSearch = new Array();
+SDSearch[ MODULE_ID       ] = "sd.panel.search";
+SDSearch[ MODULE_FILENAME ] = MODULES_DIRECTORY + "module-panel-search.html";
+SDSearch[ MODULE_VISIBLE  ] = false;
+
 var SDModules = new Array();
 var moduleIndex = -1;
 var stopLoadingModules = false;
@@ -29,13 +34,6 @@ function initModule( module ) {
 }
 
 /* *********************************************************************************** */
-SDModules[ ++moduleIndex ] = new Array();
-SDModules[ moduleIndex ][ MODULE_ID        ] = "sd.general.search";
-SDModules[ moduleIndex ][ MODULE_FILENAME  ] = MODULES_DIRECTORY + "module-general-search.html";
-SDModules[ moduleIndex ][ MODULE_VISIBLE   ] = true;
-SDModules[ moduleIndex ][ MODULE_PINNED    ] = true;
-initModule( SDModules[ moduleIndex ] );
-
 SDModules[ ++moduleIndex ] = new Array();
 SDModules[ moduleIndex ][ MODULE_ID        ] = "sd.shortcuts";
 SDModules[ moduleIndex ][ MODULE_FILENAME  ] = MODULES_DIRECTORY + "module-shortcuts.html";

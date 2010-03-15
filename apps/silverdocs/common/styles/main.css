@@ -144,6 +144,14 @@ img {
 .spot_part_odd {
     background-color: #FFFFFF;
 }
+/* search bar ----------------------------------------------------------------------- */
+.searchDiv_visible {
+    width: 300px;
+    display: block;
+}
+.searchDiv_notVisible {
+    width: 0px;
+}
 /* applications bar ----------------------------------------------------------------------- */
 .applicationsDiv_visible {
     width: 300px;
