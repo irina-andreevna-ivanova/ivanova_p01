@@ -377,12 +377,13 @@ table tbody th {
     color: #FFFFFF;
 }
 
-.a_txtdoc, .a_spec, .a_img, .a_maven, .a_maven_altrepo, .a_pdf, .a_book, .a_rated1, .a_rated2, .a_rated3 {
+.a_txtdoc, .a_plugin, .a_spec, .a_img, .a_maven, .a_maven_altrepo, .a_pdf, .a_book, .a_rated1, .a_rated2, .a_rated3 {
 	padding-right: 18px;
 	background-repeat: no-repeat;
 	background-position: top right;
 }
 .a_txtdoc { background-image: url("../images/icon-txtdoc.png" ); }
+.a_plugin { background-image: url("../images/icon-plugin.png" ); }
 .a_img { background-image: url("../images/icon-img.png" ); }
 .a_spec { background-image: url("../images/icon-spec.png" ); }
 .a_pdf { background-image: url("../images/icon-pdf.png" ); }

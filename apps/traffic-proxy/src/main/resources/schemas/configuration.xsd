@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0"
+           targetNamespace="http://bmocanu.ro/trafficproxy/config"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+           xmlns="http://bmocanu.ro/trafficproxy/config"
+           jaxb:version="2.0">
+
+    <xs:element name="traffic-proxy" type="TrafficProxyType" />
+
+    <!-- config types ////////////////////////////////////////////////////////////////////////////////////// -->
+
+    <xs:complexType name="TrafficProxyType">
+        <xs:sequence>
+            <xs:element name="peer" type="PeerType" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="connectors" type="ConnectorsType" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PeerType">
+        <xs:sequence>
+            <xs:element name="connectTo" type="BaseLocationType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="listenTo" type="BaseLocationType" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+        <xs:attribute name="type" type="PeerTypeEnum" use="required"/>
+    </xs:complexType>
+    
+    <xs:complexType name="ConnectorsType">
+        <xs:sequence>
+            <xs:element name="connector" type="ConnectorType" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="ConnectorType">
+        <xs:complexContent>
+            <xs:extension base="BaseLocationType">
+                <xs:attribute name="id" type="xs:int" use="required" />
+                <xs:attribute name="type" type="ConnectorTypeEnum" use="required" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- base types ////////////////////////////////////////////////////////////////////////////////////// -->
+
+    <xs:complexType name="BaseLocationType">
+        <xs:attribute name="address" type="xs:string" use="required"/>
+        <xs:attribute name="port" type="xs:int" use="required"/>
+    </xs:complexType>
+
+    <xs:simpleType name="PeerTypeEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="server"/>
+            <xs:enumeration value="client"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="ConnectorTypeEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="input"/>
+            <xs:enumeration value="output"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

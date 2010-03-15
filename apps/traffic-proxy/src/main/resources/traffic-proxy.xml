@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<traffic-proxy xmlns="http://bmocanu.ro/trafficproxy/config"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://bmocanu.ro/trafficproxy/config schemas/configuration.xsd">
+
+    <!-- inter-peer config
+         types available: server | client
+         server: configure listenTo
+         client: configure connectTo
+    -->
+    <peer type="server">
+        <connectTo address="localhost" port="80"/>
+        <listenTo address="localhost" port="80"/>
+    </peer>
+
+    <!-- connectors config -->
+    <connectors>
+        <connector id="1" type="input" address="localhost" port="10000"/>
+        <connector id="2" type="input" address="localhost" port="10000"/>
+        <connector id="3" type="output" address="localhost" port="10000"/>
+    </connectors>
+
+</traffic-proxy>
