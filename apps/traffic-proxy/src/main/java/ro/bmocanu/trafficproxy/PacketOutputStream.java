@@ -6,6 +6,8 @@ package ro.bmocanu.trafficproxy;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import ro.bmocanu.trafficproxy.connectors.InputConnector;
+
 /**
  * 
  *
@@ -13,17 +15,18 @@ import java.io.OutputStream;
  */
 public class PacketOutputStream extends OutputStream {
     
-    private PacketDispatcher dispatcher;
-    
-    private byte[] buffer;
-    private int bufferIndex;
+    private InputConnector connector;
+    private OutputStream decoratedOutputStream;
+    private int byteIndex;
 
     /**
-     * @param dispatcher
+     * @param connector
+     * @param decoratedOutputStream
      */
-    private PacketOutputStream(PacketDispatcher dispatcher) {
+    private PacketOutputStream(InputConnector connector, OutputStream decoratedOutputStream) {
         super();
-        this.dispatcher = dispatcher;
+        this.connector = connector;
+        this.decoratedOutputStream = decoratedOutputStream;
     }
 
     /**
