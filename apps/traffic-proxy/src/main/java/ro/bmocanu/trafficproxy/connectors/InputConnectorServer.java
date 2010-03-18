@@ -1,11 +1,17 @@
 /**
  * 
  */
-package ro.bmocanu.trafficproxy.input;
+package ro.bmocanu.trafficproxy.connectors;
+
 
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.SocketTimeoutException;
 
+import org.apache.log4j.Logger;
+
+import ro.bmocanu.trafficproxy.Constants;
 import ro.bmocanu.trafficproxy.base.ManageableThread;
 
 /**
@@ -14,9 +20,9 @@ import ro.bmocanu.trafficproxy.base.ManageableThread;
  * @author mocanu
  */
 public class InputConnectorServer extends ManageableThread {
+    private static final Logger LOG = Logger.getLogger( InputConnectorServer.class );
     
     private InputConnector connector;
-    
     private ServerSocket serverSocket;
 
     /**
@@ -34,6 +40,7 @@ public class InputConnectorServer extends ManageableThread {
     @Override
     public void init() throws IOException {
        serverSocket = new ServerSocket( connector.getPort() );
+       serverSocket.setSoTimeout( Constants.INPUT_CONNECTOR_SOCKET_TIMEOUT );
     }
 
     /**
@@ -41,6 +48,16 @@ public class InputConnectorServer extends ManageableThread {
      */
     @Override
     protected void internalRun() {
+        try {
+            Socket clientSocket = serverSocket.accept();
+            InputConnectorWorker newWorker = new InputConnectorWorker( clientSocket );
+            startWorker( newWorker );
+            
+        } catch ( SocketTimeoutException exception ) {
+            // this is ok, it is expected
+        } catch ( IOException exception ) {
+            LOG.error( exception );
+        }
     }
 
     /**

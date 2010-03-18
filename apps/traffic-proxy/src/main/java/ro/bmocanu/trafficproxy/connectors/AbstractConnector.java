@@ -1,18 +1,27 @@
 /**
  * 
  */
-package ro.bmocanu.trafficproxy.input;
+package ro.bmocanu.trafficproxy.connectors;
 
 /**
  * 
  * 
  * @author mocanu
  */
-public class InputConnector {
+public class AbstractConnector implements Connector {
 
     private String id;
-
     private int port;
+
+    /**
+     * @param id
+     * @param port
+     */
+    public AbstractConnector(String id, int port) {
+        super();
+        this.id = id;
+        this.port = port;
+    }
 
     /**
      * Returns the id

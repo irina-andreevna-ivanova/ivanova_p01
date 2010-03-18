@@ -26,7 +26,7 @@ public class PeerCommunicationServer extends Thread {
         try {
             ServerSocket server = new ServerSocket(Configuration.corePeerPort);
             Socket clientSocket = null;
-            server.setSoTimeout(Constants.SOCKET_PEER_TIMEOUT);
+            server.setSoTimeout(Constants.PEER_SOCKET_TIMEOUT);
 
             while (keepRunning) {
                 try {
