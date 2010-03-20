@@ -1,7 +1,7 @@
 /**
  * 
  */
-package ro.bmocanu.trafficproxy.connectors;
+package ro.bmocanu.trafficproxy.base;
 
 /**
  * 
@@ -10,7 +10,7 @@ package ro.bmocanu.trafficproxy.connectors;
  */
 public interface Connector {
     
-    String getId();
+    byte getId();
     
     int getPort();
 

@@ -6,7 +6,7 @@ package ro.bmocanu.trafficproxy;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import ro.bmocanu.trafficproxy.connectors.InputConnector;
+import ro.bmocanu.trafficproxy.input.InputConnector;
 
 /**
  * 

@@ -1,7 +1,9 @@
 /**
  * 
  */
-package ro.bmocanu.trafficproxy.connectors;
+package ro.bmocanu.trafficproxy.output;
+
+import ro.bmocanu.trafficproxy.base.AbstractConnector;
 
 /**
  * 
@@ -17,7 +19,7 @@ public class OutputConnector extends AbstractConnector {
      * @param port
      * @param address
      */
-    public OutputConnector(String id, int port, String address) {
+    public OutputConnector(byte id, int port, String address) {
         super( id, port );
         this.address = address;
     }

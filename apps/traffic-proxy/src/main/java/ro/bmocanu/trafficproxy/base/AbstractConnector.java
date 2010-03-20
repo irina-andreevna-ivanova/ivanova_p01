@@ -1,7 +1,8 @@
 /**
  * 
  */
-package ro.bmocanu.trafficproxy.connectors;
+package ro.bmocanu.trafficproxy.base;
+
 
 /**
  * 
@@ -10,14 +11,14 @@ package ro.bmocanu.trafficproxy.connectors;
  */
 public class AbstractConnector implements Connector {
 
-    private String id;
+    private byte id;
     private int port;
 
     /**
      * @param id
      * @param port
      */
-    public AbstractConnector(String id, int port) {
+    public AbstractConnector(byte id, int port) {
         super();
         this.id = id;
         this.port = port;
@@ -28,7 +29,7 @@ public class AbstractConnector implements Connector {
      * 
      * @return the id
      */
-    public String getId() {
+    public byte getId() {
         return id;
     }
 
@@ -38,7 +39,7 @@ public class AbstractConnector implements Connector {
      * @param id
      *            the id to set
      */
-    public void setId( String id ) {
+    public void setId( byte id ) {
         this.id = id;
     }
 
