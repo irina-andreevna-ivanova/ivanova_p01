@@ -18,6 +18,13 @@
 
 package ro.bmocanu.trafficproxy;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import ro.bmocanu.trafficproxy.base.ConnectorWorker;
+import ro.bmocanu.trafficproxy.base.ManageableComposite;
+import ro.bmocanu.trafficproxy.input.PacketSender;
+
 /**
  * Central class of the <code>traffic-proxy</code>. It is responsible for assembling the connectors
  * and packet senders, as well as to make sure that the proper combinations are used so that each
@@ -27,19 +34,69 @@ package ro.bmocanu.trafficproxy;
  * 
  * @author mocanu
  */
-public final class ProxyKernel {
+public final class ProxyKernel extends ManageableComposite {
 
     /**
      * The one and only instance of this class.
      */
     private static final ProxyKernel SINGLE_INSTANCE = new ProxyKernel();
-    
+
     public static ProxyKernel getInstance() {
         return SINGLE_INSTANCE;
     }
-    
+
     // -------------------------------------------------------------------------------------------------
-    
-    
+
+    /**
+     * The map that keeps all the connector output streams under the keys composed of the connector
+     * and the worker IDs. This map is used when an outgoing packet is received from the other
+     * party, and needs to be dispatched to the correct output stream.
+     */
+    private Map<String, ConnectorWorker> workersMap = new HashMap<String, ConnectorWorker>();
+
+    /**
+     * The object responsible with sending the packets to the other party.
+     */
+    private PacketSender packetSender;
+
+    // -------------------------------------------------------------------------------------------------
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void managedStart() {
+        super.managedStart();
+
+        packetSender = new PacketSender( null );
+        addManageable( packetSender );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void managedStop() {
+        super.managedStop();
+    }
+
+    public void registerConnectorWorker( int connectorId, int workerId, ConnectorWorker worker ) {
+        workersMap.put( buildUnifiedID( connectorId, workerId ), worker );
+    }
+
+    // -------------------------------------------------------------------------------------------------
+
+    private String buildUnifiedID( int connectorId, int workerId ) {
+        return connectorId + "-|-" + workerId;
+    }
+
+    /**
+     * Returns the packetSender
+     * 
+     * @return the packetSender
+     */
+    public PacketSender getPacketSender() {
+        return packetSender;
+    }
 
 }

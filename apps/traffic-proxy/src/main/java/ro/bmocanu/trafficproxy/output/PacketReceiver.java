@@ -18,39 +18,23 @@
 
 package ro.bmocanu.trafficproxy.output;
 
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-
 import ro.bmocanu.trafficproxy.base.ManageableThread;
 
 /**
- * The thread responsible with reading data from the peer channel stream, converting it to packets
- * and distributing the packets to the corresponding connectors.
+ * The thread responsible for reading packets from the peer channel stream, converting them in
+ * packets, and sending them to the {@link PacketDispatcher} for being sent to the corresponding
+ * clients.
  * 
  * @author mocanu
  */
-public class PacketDispatcher extends ManageableThread {
-
-    private List<OutputConnectorWrapper> outputConnectorWrappers;
-    private InputStream packetInputStream;
-
-    /**
-     * 
-     */
-    public PacketDispatcher(InputStream packetInputStream, List<OutputConnector> outputConnectors) {
-        this.packetInputStream = packetInputStream;
-        outputConnectorWrappers = new ArrayList<OutputConnectorWrapper>();
-        for ( OutputConnector connector : outputConnectors ) {
-            outputConnectorWrappers.add( new OutputConnectorWrapper( connector ) );
-        }
-    }
+public class PacketReceiver extends ManageableThread {
 
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void internalRun() {
+    protected void internalRun() throws Exception {
+        
     }
 
 }

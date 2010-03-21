@@ -4,42 +4,43 @@
 package ro.bmocanu.trafficproxy;
 
 /**
+ * The commands that one peer (the master one) can send to the other peer (the slave). The roles
+ * between the peers can change depending on the input/output connectors.
  * 
- *
  * @author mocanu
  */
 public enum PeerCommand {
-    
-    CONNECT( (byte)10 ),
-    
-    DATA_TRANSFER( (byte)20 ),
-    
-    DATA_DROP( (byte)30 ),
-    
-    DISCONNECT( (byte)99 ) 
-    ;
-    
-    byte code;
-    
+
+    CONNECT(10),
+
+    DATA_TRANSFER(20),
+
+    DATA_DROP(30),
+
+    END_OF_FILE(88),
+
+    DISCONNECT((byte) 99);
+
+    int code;
+
     /**
      * @param code
      */
-    private PeerCommand(byte code) {
+    private PeerCommand(int code) {
         this.code = code;
     }
 
-
     /**
      * Returns the code
-     *
+     * 
      * @return the code
      */
-    public byte getCode() {
+    public int getCode() {
         return code;
     }
-    
-    public static PeerCommand fromCode( byte code ) {
-        for( PeerCommand command : PeerCommand.values() ) {
+
+    public static PeerCommand fromCode( int code ) {
+        for ( PeerCommand command : PeerCommand.values() ) {
             if ( command.getCode() == code ) {
                 return command;
             }

@@ -6,8 +6,6 @@ package ro.bmocanu.trafficproxy.output;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
-import java.net.URL;
-import java.net.URLConnection;
 import java.net.UnknownHostException;
 
 /**

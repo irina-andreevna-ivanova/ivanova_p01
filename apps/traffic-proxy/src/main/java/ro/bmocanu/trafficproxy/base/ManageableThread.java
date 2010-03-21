@@ -3,30 +3,22 @@
  */
 package ro.bmocanu.trafficproxy.base;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.ReentrantLock;
 
 import org.apache.log4j.Logger;
 
 import ro.bmocanu.trafficproxy.Constants;
 
 /**
- * 
- * 
  * @author mocanu
  */
-public abstract class ManageableThread implements Initializable, Disposable, Manageable, Runnable {
+public abstract class ManageableThread extends ManageableComposite implements Initializable, Disposable, Manageable,
+        Runnable {
     private static final Logger LOG = Logger.getLogger( ManageableThread.class );
 
     private final Thread internalThread;
     private boolean threadShouldStop = false;
-    private String name;
-    
-    private ReentrantLock workersLock;
-    private List<Manageable> workers;
-    
+
     // ------------------------------------------------------------------------------------------------------
 
     /**
@@ -34,8 +26,6 @@ public abstract class ManageableThread implements Initializable, Disposable, Man
      */
     public ManageableThread() {
         internalThread = new Thread( this );
-        workers = new ArrayList<Manageable>();
-        workersLock = new ReentrantLock();
     }
 
     /**
@@ -57,8 +47,8 @@ public abstract class ManageableThread implements Initializable, Disposable, Man
     /**
      * 
      */
-    protected abstract void internalRun();
-    
+    protected abstract void internalRun() throws Exception;
+
     // ------------------------------------------------------------------------------------------------------
 
     /**
@@ -76,17 +66,19 @@ public abstract class ManageableThread implements Initializable, Disposable, Man
             LOG.error( name + " failed to initialize", exception );
             threadShouldStop = true;
         }
-        
+
         while ( !threadShouldStop ) {
-            internalRun();
             try {
+                internalRun();
                 TimeUnit.MILLISECONDS.sleep( Constants.CORE_THREAD_IDLE_TIMEOUT_MLS );
             } catch ( InterruptedException exception ) {
                 LOG.error( name + " failed during execution", exception );
                 threadShouldStop = true;
+            } catch ( Exception exception ) {
+                LOG.error( name + " failed. Execution will continue", exception );
             }
         }
-        
+
         try {
             LOG.info( name + " is shutting down" );
             dispose();
@@ -110,18 +102,11 @@ public abstract class ManageableThread implements Initializable, Disposable, Man
     @Override
     public void managedStop() {
         LOG.debug( name + " is assisted in shutting down" );
-        
-        // 1. shut down all the workers
-        workersLock.lock();
-        try {
-            for( Manageable worker : workers ) {
-                worker.managedStop();
-            }
-        } finally {
-            workersLock.unlock();
-        }
 
-        // 2. now shut down the parent too
+        // allow the workers to stop
+        super.managedStop();
+
+        // now shut down the parent
         threadShouldStop = true;
         try {
             internalThread.join();
@@ -130,28 +115,14 @@ public abstract class ManageableThread implements Initializable, Disposable, Man
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void setEntityName( String name ) {
-        this.name = name;
-    }
-    
     public void startWorker( Manageable worker ) {
         if ( threadShouldStop ) {
             // thread is closing down, so cancel this
             return;
         }
-        
-        workersLock.lock();
-        try {
-            workers.add( worker );
-        } finally {
-            workersLock.unlock();
-        }
-        
+
+        addManageable( worker );
         worker.managedStart();
     }
-    
+
 }
