@@ -31,7 +31,7 @@ public class Launcher {
         request.setOperation( Operation.ADDITION );
     
         LOG.info( "Sending calculation request: " + request );
-        template.convertAndSend( request );
+        template.convertAndSend( "topic.calculationRequest", request );
     }
     
 
