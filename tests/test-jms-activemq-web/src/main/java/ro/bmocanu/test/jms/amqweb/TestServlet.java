@@ -33,7 +33,7 @@ public class TestServlet extends HttpServlet {
             exc.printStackTrace();
         }
 
-        resp.getWriter().write("OKaaass");
+        resp.getWriter().write("OK");
     }
 
     @Override

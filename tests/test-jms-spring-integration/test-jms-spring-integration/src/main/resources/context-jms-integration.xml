@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:int="http://www.springframework.org/schema/integration" xmlns:int-jms="http://www.springframework.org/schema/integration/jms"
+    xmlns:jms="http://www.springframework.org/schema/jms" xmlns:util="http://www.springframework.org/schema/util" xmlns:context="http://www.springframework.org/schema/context" xmlns:amq="http://activemq.apache.org/schema/core"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration-2.0.xsd
+		http://www.springframework.org/schema/integration/jms http://www.springframework.org/schema/integration/jms/spring-integration-jms-2.0.xsd
+        http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core-5.3.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+		http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+    <import resource="classpath:context-common.xml" />
+    <context:component-scan base-package="ro.bmocanu.test.jms.spring"/>
+    <int:annotation-config />
+
+    <!--
+        configuration for topic and the topic listener 
+    -->
+    <amq:topic id="calculationRequestTopic" physicalName="${jms.topic.calculationRequest}" />
+    <int-jms:message-driven-channel-adapter id="calculationRequestAdapter" destination="calculationRequestTopic" channel="calculationRequest" message-converter="jsonMessageConverter" />
+    <int:channel id="calculationRequest" />
+    
+    <!--
+        configuration for the outgoing queue; dispatcher and listener
+    -->
+    <amq:queue id="calculationResponseQueue" physicalName="${jms.queue.calculationResponse}"/>
+    <int-jms:outbound-channel-adapter id="calculationResponseAdapter" channel="calculationResponse" destination="calculationResponseQueue" message-converter="jsonMessageConverter"/>
+    <int:channel id="calculationResponse"/>
+    <int:gateway id="calculationResponseGateway" service-interface="ro.bmocanu.test.jms.spring.ServiceGateway"/>
+    
+
+</beans>
