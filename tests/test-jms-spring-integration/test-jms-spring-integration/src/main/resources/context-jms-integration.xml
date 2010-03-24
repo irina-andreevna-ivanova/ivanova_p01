@@ -28,5 +28,10 @@
     <int:channel id="calculationResponse"/>
     <int:gateway id="calculationResponseGateway" service-interface="ro.bmocanu.test.jms.spring.ServiceGateway"/>
     
+    <!--
+        configuration for the response queue listener
+    -->
+    <int-jms:message-driven-channel-adapter id="testCalculationResponseAdapter" channel="testCalculationResponse" destination="calculationResponseQueue" message-converter="jsonMessageConverter"/>
+    <int:channel id="testCalculationResponse" />
 
 </beans>
