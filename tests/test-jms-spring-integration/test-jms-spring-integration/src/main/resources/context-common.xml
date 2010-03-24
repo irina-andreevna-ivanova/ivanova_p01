@@ -20,7 +20,6 @@
 		http://www.springframework.org/schema/web-services http://www.springframework.org/schema/web-services/web-services-1.5.xsd">
 
     <context:property-placeholder location="config.properties" />
-    <context:annotation-config />
 
     <bean id="connectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
         <property name="targetConnectionFactory">
@@ -33,11 +32,5 @@
     </bean>
 
     <bean id="jsonMessageConverter" class="ro.bmocanu.test.jms.utils.JsonMessageConverter" />
-
-    <bean id="testJmsTemplate" class="org.springframework.jms.core.JmsTemplate">
-        <qualifier value="presence" />
-        <property name="connectionFactory" ref="connectionFactory" />
-        <property name="messageConverter" ref="jsonMessageConverter" />
-    </bean>
 
 </beans>

@@ -3,7 +3,6 @@
  */
 package ro.bmocanu.test.jms;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Configuration {
 
-    @Value( "#{jms.topic.calculationRequest}" )
+    //@Value( "#{jms.topic.calculationRequest}" )
     private String calculationRequestTopic;
 
     /**

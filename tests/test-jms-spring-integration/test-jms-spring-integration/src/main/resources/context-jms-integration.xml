@@ -11,7 +11,19 @@
 
     <import resource="classpath:context-common.xml" />
     <context:component-scan base-package="ro.bmocanu.test.jms.spring"/>
+    <context:annotation-config />
     <int:annotation-config />
+
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory" />
+        <property name="messageConverter" ref="jsonMessageConverter" />
+    </bean>
+
+    <bean id="queueJmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory" />
+        <property name="messageConverter" ref="jsonMessageConverter" />
+        <property name="defaultDestination" ref="calculationResponseQueue"/>
+    </bean>
 
     <!--
         configuration for topic and the topic listener 
@@ -24,7 +36,7 @@
         configuration for the outgoing queue; dispatcher and listener
     -->
     <amq:queue id="calculationResponseQueue" physicalName="${jms.queue.calculationResponse}"/>
-    <int-jms:outbound-channel-adapter id="calculationResponseAdapter" channel="calculationResponse" destination="calculationResponseQueue" message-converter="jsonMessageConverter"/>
+    <int-jms:outbound-channel-adapter id="calculationResponseAdapter" channel="calculationResponse" jms-template="queueJmsTemplate"/>
     <int:channel id="calculationResponse"/>
     <int:gateway id="calculationResponseGateway" service-interface="ro.bmocanu.test.jms.spring.ServiceGateway"/>
     

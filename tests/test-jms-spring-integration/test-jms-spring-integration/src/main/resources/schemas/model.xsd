@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0"
+           targetNamespace="http://bmocanu.ro/trafficproxy/config"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+           xmlns="http://bmocanu.ro/trafficproxy/config"
+           jaxb:version="2.0">
+
+    <xs:complexType name="CalculationRequest">
+        <xs:attribute name="numberA" type="xs:int"/>
+        <xs:attribute name="numberB" type="xs:int"/>
+        <xs:attribute name="operation" type="Operation" />
+    </xs:complexType>
+
+    <xs:complexType name="CalculationResponse">
+        <xs:attribute name="result" type="xs:int"/>
+    </xs:complexType>
+
+    <xs:simpleType name="Operation">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="addition"/>
+            <xs:enumeration value="substraction"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

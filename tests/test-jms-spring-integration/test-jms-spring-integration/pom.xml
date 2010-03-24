@@ -7,6 +7,57 @@
     <version>0.1-SNAPSHOT</version>
     <name>test-jms-spring-integration</name>
     <url>http://maven.apache.org</url>
+    <repositories>
+        <repository>
+            <id>jboss.org</id>
+            <name>jboss.org</name>
+            <url>http://repository.jboss.org/maven2</url>
+        </repository>
+        <repository>
+            <id>mirrors.ibiblio.org</id>
+            <name>mirrors.ibiblio.org</name>
+            <url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
+        </repository>
+        <repository>
+            <id>java.net/maven/1</id>
+            <name>java.net repository for Maven 1</name>
+            <url>http://download.java.net/maven/1</url>
+            <layout>legacy</layout>
+        </repository>
+        <repository>
+            <id>java.net/maven/2</id>
+            <name>java.net repository for Maven 2</name>
+            <url>http://download.java.net/maven/2</url>
+        </repository>
+        <repository>
+            <id>smile.mit.edu</id>
+            <name>smile.mid.edu</name>
+            <url>http://simile.mit.edu/maven</url>
+        </repository>
+        <repository>
+            <id>codehaus.org</id>
+            <name>codehaus.org</name>
+            <url>http://repository.codehaus.org</url>
+        </repository>
+        <repository>
+            <id>snapshots.codehaus.org</id>
+            <name>snapshotscodehaus.org</name>
+            <url>http://snapshots.repository.codehaus.org</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>maven.atlassian.com</id>
+            <name>maven.atlassian.com</name>
+            <url>http://maven.atlassian.com/repository/public/</url>
+        </repository>
+        <repository>
+            <id>java.net2</id>
+            <name>java net maven 2 repository</name>
+            <url>http://maven.glassfish.org/content/groups/glassfish</url>
+        </repository>
+    </repositories>
     <build>
         <plugins>
             <plugin>
@@ -15,6 +66,50 @@
                     <source>1.6</source>
                     <target>1.6</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <version>0.7.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <removeOldOutput>true</removeOldOutput>
+                            <forceRegenerate>false</forceRegenerate>
+                            <extension>true</extension>
+                            <schemaDirectory>${project.basedir}/src/main/resources/schemas
+                            </schemaDirectory>
+                            <bindingIncludes>
+                                <bindingInclude>bindings.xml</bindingInclude>
+                            </bindingIncludes>
+                            <args>
+                                <arg>-Xcollection-setter-injector</arg>
+                                <arg>-Xcommons-lang</arg>
+                                <arg>-Xcommons-lang:ToStringStyle=SHORT_PREFIX_STYLE</arg>
+                            </args>
+                            <plugins>
+                                <plugin>
+                                    <groupId>com.sun.tools.xjc.addon</groupId>
+                                    <artifactId>collection-setter-injector</artifactId>
+                                    <version>1.0</version>
+                                </plugin>
+                                <plugin>
+                                    <groupId>net.java.dev.jaxb2-commons</groupId>
+                                    <artifactId>jaxb-commons-lang-plugin</artifactId>
+                                    <version>2.2</version>
+                                </plugin>
+                                <plugin>
+                                    <groupId>commons-lang</groupId>
+                                    <artifactId>commons-lang</artifactId>
+                                    <version>${commons-lang.version}</version>
+                                </plugin>
+                            </plugins>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
@@ -75,5 +170,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>3.0.1.RELEASE</spring.version>
+        <commons-lang.version>2.5</commons-lang.version>
     </properties>
 </project>
