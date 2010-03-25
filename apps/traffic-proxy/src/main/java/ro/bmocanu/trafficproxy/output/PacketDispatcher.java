@@ -1,5 +1,5 @@
 /*- 
- * Copyright Bogdan Mocanu, 2009
+ * Copyright Bogdan Mocanu, 2010
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -18,39 +18,19 @@
 
 package ro.bmocanu.trafficproxy.output;
 
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
 
-import ro.bmocanu.trafficproxy.base.ManageableThread;
+import ro.bmocanu.trafficproxy.base.Manageable;
+import ro.bmocanu.trafficproxy.peers.Packet;
 
 /**
- * The thread responsible with reading data from the peer channel stream, converting it to packets
- * and distributing the packets to the corresponding connectors.
+ * The component responsible with accumulating the packets in some internal buffer, and then
+ * dispatching them one by one to the corresponding connectors for sending through the wires.
  * 
  * @author mocanu
  */
-public class PacketDispatcher extends ManageableThread {
+public interface PacketDispatcher extends Manageable {
 
-    private List<OutputConnectorWrapper> outputConnectorWrappers;
-    private InputStream packetInputStream;
-
-    /**
-     * 
-     */
-    public PacketDispatcher(InputStream packetInputStream, List<OutputConnector> outputConnectors) {
-        this.packetInputStream = packetInputStream;
-        outputConnectorWrappers = new ArrayList<OutputConnectorWrapper>();
-        for ( OutputConnector connector : outputConnectors ) {
-            outputConnectorWrappers.add( new OutputConnectorWrapper( connector ) );
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void internalRun() {
-    }
+    void dispatch( Packet packet ) throws IOException;
 
 }

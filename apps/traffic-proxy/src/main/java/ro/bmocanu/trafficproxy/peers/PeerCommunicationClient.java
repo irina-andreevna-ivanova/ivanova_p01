@@ -1,5 +1,5 @@
 /*- 
- * Copyright Bogdan Mocanu, 2009
+ * Copyright Bogdan Mocanu, 2010
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -16,25 +16,36 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package ro.bmocanu.trafficproxy.output;
+package ro.bmocanu.trafficproxy.peers;
+
+import java.net.Socket;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import ro.bmocanu.trafficproxy.base.ManageableThread;
 
 /**
- * The thread responsible for reading packets from the peer channel stream, converting them in
- * packets, and sending them to the {@link PacketDispatcher} for being sent to the corresponding
- * clients.
+ * The client part of the peer communication. Is responsible with connecting to the peer
+ * communication server from the other side, in order to establish a peer channel.
  * 
  * @author mocanu
  */
-public class PacketReceiver extends ManageableThread {
+@Component
+public class PeerCommunicationClient extends ManageableThread {
+
+    @Autowired
+    private PeerChannel peerChannel;
+
+    private Socket clientSocket;
+
+    // -------------------------------------------------------------------------------------------------
 
     /**
      * {@inheritDoc}
      */
     @Override
     protected void internalRun() throws Exception {
-        
     }
 
 }

@@ -15,11 +15,15 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package ro.bmocanu.trafficproxy;
+package ro.bmocanu.trafficproxy.utils;
 
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
+import ro.bmocanu.trafficproxy.Constants;
+import ro.bmocanu.trafficproxy.peers.Packet;
+import ro.bmocanu.trafficproxy.peers.PeerCommand;
 
 /**
  * Converter methods from the bytes provided by an input stream and the traffic proxy internal data
@@ -77,17 +81,16 @@ public final class StreamPackagingUtils {
      * @throws IOException
      *             if an exception is encountered during the packet creation
      */
-    public static Packet packageFromPeerSource( InputStream source ) throws IOException {
-        DataInputStream dataEnabledSource = new DataInputStream( source );
-        int connectorId = dataEnabledSource.readInt();
-        int workerId = dataEnabledSource.readInt();
-        PeerCommand command = PeerCommand.fromCode( dataEnabledSource.readInt() );
-        int contentLength = dataEnabledSource.readInt();
+    public static Packet packageFromPeerSource( DataInputStream source ) throws IOException {
+        int connectorId = source.readInt();
+        int workerId = source.readInt();
+        PeerCommand command = PeerCommand.fromCode( source.readInt() );
+        int contentLength = source.readInt();
 
         byte[] content = new byte[contentLength];
         if ( contentLength > 0 && command != PeerCommand.END_OF_FILE ) {
             for ( int index = 0; index < contentLength; index++ ) {
-                content[index] = (byte) dataEnabledSource.read();
+                content[index] = (byte) source.read();
             }
         }
 

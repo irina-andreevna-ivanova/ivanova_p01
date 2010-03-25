@@ -15,48 +15,35 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package ro.bmocanu.trafficproxy.input;
+package ro.bmocanu.trafficproxy.peers;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import ro.bmocanu.trafficproxy.Packet;
 import ro.bmocanu.trafficproxy.base.ManageableThread;
 
 /**
- * The thread responsible with accumulating the packets to send, and sending them one by one,
- * through the peer channel, to the other party. The class provides an asynchronous mechanism for
- * receiving the packets and sending them one by one.
+ * Default implementation for {@link PacketSender}.
  * 
  * @author mocanu
+ * @see PacketSender
  */
-public class PacketSender extends ManageableThread {
+@Component
+public class PacketSenderImpl extends ManageableThread implements PacketSender {
     private static final Logger LOG = Logger.getLogger( PacketSender.class );
+
+    @Autowired
+    private PeerChannel peerChannel;
 
     /**
      * The queue used for storing the packets before being sent.
      */
-    private LinkedBlockingQueue<Packet> packetQueue;
-
-    /**
-     * The stream on which the packets should be sent.
-     */
-    private DataOutputStream targetOutputStream;
-
-    // -------------------------------------------------------------------------------------------------
-
-    /**
-     * @param packetQueue
-     * @param targetOutputStream
-     */
-    public PacketSender(OutputStream targetOutputStream) {
-        this.packetQueue = new LinkedBlockingQueue<Packet>();
-        this.targetOutputStream = new DataOutputStream( targetOutputStream );
-    }
+    private LinkedBlockingQueue<Packet> packetQueue = new LinkedBlockingQueue<Packet>();
 
     // -------------------------------------------------------------------------------------------------
 
@@ -75,6 +62,8 @@ public class PacketSender extends ManageableThread {
      */
     @Override
     protected void internalRun() {
+        DataOutputStream targetOutputStream = peerChannel.getOutputStream();
+
         Packet packet = packetQueue.poll();
         if ( packet != null ) {
             try {

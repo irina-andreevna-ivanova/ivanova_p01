@@ -1,5 +1,5 @@
 /*- 
- * Copyright Bogdan Mocanu, 2009
+ * Copyright Bogdan Mocanu, 2010
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -16,19 +16,20 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-package ro.bmocanu.trafficproxy.base;
+package ro.bmocanu.trafficproxy;
 
-import ro.bmocanu.trafficproxy.peers.Packet;
+import ro.bmocanu.trafficproxy.output.PacketDispatcher;
+import ro.bmocanu.trafficproxy.peers.PacketSender;
 
 /**
- * Interface for the workers spawned for the configured workers. A worker is both used for input
- * connectors as well as the output connectors. This interface defines the common methods for both
- * parts.
+ * Interface for the bean able to provide access to various service components of the application.
  * 
  * @author mocanu
  */
-public interface ConnectorWorker {
-    
-    public void processPacket( Packet packet );
+public interface ServiceProvider {
+
+    PacketDispatcher getPacketDispatcher();
+
+    PacketSender getPacketSender();
 
 }

@@ -3,6 +3,8 @@ package ro.bmocanu.trafficproxy;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
+import ro.bmocanu.trafficproxy.peers.PeerCommunicationServer;
+
 /**
  * Main class of the traffic-proxy.
  */

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package ro.bmocanu.trafficproxy;
+package ro.bmocanu.trafficproxy.peers;
 
 /**
  * The commands that one peer (the master one) can send to the other peer (the slave). The roles

@@ -15,7 +15,9 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package ro.bmocanu.trafficproxy;
+package ro.bmocanu.trafficproxy.peers;
+
+import ro.bmocanu.trafficproxy.Constants;
 
 /**
  * A packet is a single unit of data sent from an input connector worker to the peer channel. The

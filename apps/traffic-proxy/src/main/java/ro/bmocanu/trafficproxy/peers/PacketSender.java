@@ -1,5 +1,5 @@
 /*- 
- * Copyright Bogdan Mocanu, 2009
+ * Copyright Bogdan Mocanu, 2010
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -15,20 +15,21 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
+package ro.bmocanu.trafficproxy.peers;
 
-package ro.bmocanu.trafficproxy.base;
+import java.io.IOException;
 
-import ro.bmocanu.trafficproxy.peers.Packet;
+import ro.bmocanu.trafficproxy.base.Manageable;
 
 /**
- * Interface for the workers spawned for the configured workers. A worker is both used for input
- * connectors as well as the output connectors. This interface defines the common methods for both
- * parts.
+ * The component responsible with accumulating the packets to send in some internal buffer, and
+ * sending them one by one, through the peer channel, to the other party. The class provides an
+ * asynchronous mechanism for receiving the packets and sending them one by one.
  * 
  * @author mocanu
  */
-public interface ConnectorWorker {
-    
-    public void processPacket( Packet packet );
+public interface PacketSender extends Manageable {
+
+    void send( Packet packet ) throws IOException;
 
 }

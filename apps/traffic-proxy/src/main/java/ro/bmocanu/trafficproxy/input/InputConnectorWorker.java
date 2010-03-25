@@ -24,11 +24,11 @@ import java.net.Socket;
 
 import org.apache.log4j.Logger;
 
-import ro.bmocanu.trafficproxy.Packet;
 import ro.bmocanu.trafficproxy.ProxyKernel;
-import ro.bmocanu.trafficproxy.StreamPackagingUtils;
 import ro.bmocanu.trafficproxy.base.ConnectorWorker;
 import ro.bmocanu.trafficproxy.base.ManageableThread;
+import ro.bmocanu.trafficproxy.peers.Packet;
+import ro.bmocanu.trafficproxy.utils.StreamPackagingUtils;
 
 /**
  * The object that handles the work of an input connector. It receives the socket on which the

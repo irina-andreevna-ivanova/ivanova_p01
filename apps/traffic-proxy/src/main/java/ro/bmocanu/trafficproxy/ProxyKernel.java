@@ -18,46 +18,41 @@
 
 package ro.bmocanu.trafficproxy;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import ro.bmocanu.trafficproxy.base.ConnectorWorker;
 import ro.bmocanu.trafficproxy.base.ManageableComposite;
-import ro.bmocanu.trafficproxy.input.PacketSender;
+import ro.bmocanu.trafficproxy.output.PacketDispatcher;
+import ro.bmocanu.trafficproxy.peers.PacketReceiver;
+import ro.bmocanu.trafficproxy.peers.PacketSender;
+import ro.bmocanu.trafficproxy.peers.PeerChannel;
+import ro.bmocanu.trafficproxy.peers.PeerCommunicationServer;
 
 /**
  * Central class of the <code>traffic-proxy</code>. It is responsible for assembling the connectors
  * and packet senders, as well as to make sure that the proper combinations are used so that each
  * communication between two connectors (INPUT and OUTPUT) is performed in full duplex mode.
- * <p>
- * This class works as a singleton, and is therefore accessible to any other class of the project.
  * 
  * @author mocanu
  */
-public final class ProxyKernel extends ManageableComposite {
+@Component
+public class ProxyKernel extends ManageableComposite implements ServiceProvider {
 
-    /**
-     * The one and only instance of this class.
-     */
-    private static final ProxyKernel SINGLE_INSTANCE = new ProxyKernel();
+    @Autowired
+    private PeerChannel peerChannel;
 
-    public static ProxyKernel getInstance() {
-        return SINGLE_INSTANCE;
-    }
+    @Autowired
+    private PacketReceiver packetReceiver;
 
-    // -------------------------------------------------------------------------------------------------
-
-    /**
-     * The map that keeps all the connector output streams under the keys composed of the connector
-     * and the worker IDs. This map is used when an outgoing packet is received from the other
-     * party, and needs to be dispatched to the correct output stream.
-     */
-    private Map<String, ConnectorWorker> workersMap = new HashMap<String, ConnectorWorker>();
-
-    /**
-     * The object responsible with sending the packets to the other party.
-     */
+    @Autowired
     private PacketSender packetSender;
+
+    @Autowired
+    private PacketDispatcher packetDispatcher;
+
+    @Autowired
+    private PeerCommunicationServer peerServer;
 
     // -------------------------------------------------------------------------------------------------
 
@@ -68,8 +63,20 @@ public final class ProxyKernel extends ManageableComposite {
     public void managedStart() {
         super.managedStart();
 
-        packetSender = new PacketSender( null );
+        peerChannel.setConnectionUp( false );
+
+        addManageable( packetReceiver );
+        packetReceiver.managedStart();
+
         addManageable( packetSender );
+        packetSender.managedStart();
+
+        addManageable( packetDispatcher );
+        packetDispatcher.managedStart();
+
+        // here server or client
+        addManageable( peerServer );
+        peerServer.managedStart();
     }
 
     /**
@@ -95,8 +102,17 @@ public final class ProxyKernel extends ManageableComposite {
      * 
      * @return the packetSender
      */
+    @Override
     public PacketSender getPacketSender() {
         return packetSender;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public PacketDispatcher getPacketDispatcher() {
+        return packetDispatcher;
     }
 
 }
