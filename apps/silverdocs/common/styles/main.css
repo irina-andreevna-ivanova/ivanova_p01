@@ -246,7 +246,7 @@ img {
 	table-layout: auto;
 	border-collapse: collapse;
 	border-spacing: 0;
-	background-color: #D0D0D0;
+	background-color: #EAEAEA;
     width: 100%;
 }
 
@@ -374,7 +374,7 @@ table tbody th {
 .shortcuts_container {
 }
 .shortcuts_container a {
-    color: #FFFFFF;
+    color: #000000;
 }
 
 .a_txtdoc, .a_plugin, .a_spec, .a_img, .a_maven, .a_maven_altrepo, .a_pdf, .a_book, .a_rated1, .a_rated2, .a_rated3 {
