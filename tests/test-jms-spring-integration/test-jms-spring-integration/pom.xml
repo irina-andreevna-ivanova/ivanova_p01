@@ -77,34 +77,21 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
+                            <extension>true</extension>
                             <removeOldOutput>true</removeOldOutput>
                             <forceRegenerate>false</forceRegenerate>
-                            <extension>true</extension>
-                            <schemaDirectory>${project.basedir}/src/main/resources/schemas
-                            </schemaDirectory>
+                            <schemaDirectory>${project.basedir}/src/main/resources/schemas</schemaDirectory>
                             <bindingIncludes>
                                 <bindingInclude>bindings.xml</bindingInclude>
                             </bindingIncludes>
                             <args>
                                 <arg>-Xcollection-setter-injector</arg>
-                                <arg>-Xcommons-lang</arg>
-                                <arg>-Xcommons-lang:ToStringStyle=SHORT_PREFIX_STYLE</arg>
                             </args>
                             <plugins>
                                 <plugin>
                                     <groupId>com.sun.tools.xjc.addon</groupId>
                                     <artifactId>collection-setter-injector</artifactId>
                                     <version>1.0</version>
-                                </plugin>
-                                <plugin>
-                                    <groupId>net.java.dev.jaxb2-commons</groupId>
-                                    <artifactId>jaxb-commons-lang-plugin</artifactId>
-                                    <version>2.2</version>
-                                </plugin>
-                                <plugin>
-                                    <groupId>commons-lang</groupId>
-                                    <artifactId>commons-lang</artifactId>
-                                    <version>${commons-lang.version}</version>
                                 </plugin>
                             </plugins>
                         </configuration>
