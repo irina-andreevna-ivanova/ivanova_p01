@@ -92,7 +92,7 @@ public class InputConnectorWorker extends ManageableThread implements ConnectorW
             return;
         }
 
-        ProxyKernel.getInstance().getPacketSender().send( packet );
+        //ProxyKernel.getInstance().getPacketSender().send( packet );
     }
 
     /**

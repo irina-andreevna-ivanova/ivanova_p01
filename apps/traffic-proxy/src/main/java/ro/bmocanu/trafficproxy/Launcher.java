@@ -14,28 +14,28 @@ public class Launcher extends Thread {
     private PeerCommunicationServer commServer;  
 
     public static void main(String[] args) {
-        Launcher launcher = new Launcher();
-
-        // log4j configuration
-        PropertyConfigurator.configure( Constants.LOG4J_FILE );
-        LOG.info( "Starting traffic-proxy, ver. 1.0" );
-
-        // application configuration
-        Configuration.loadConfiguration();
-
-        // intercept the JVM shutdown
-        Runtime.getRuntime().addShutdownHook( launcher );
-
-        // carry on with the application start up
-        launcher.startApplication();
+//        Launcher launcher = new Launcher();
+//
+//        // log4j configuration
+//        PropertyConfigurator.configure( Constants.LOG4J_FILE );
+//        LOG.info( "Starting traffic-proxy, ver. 1.0" );
+//
+//        // application configuration
+//        Configuration.loadConfiguration();
+//
+//        // intercept the JVM shutdown
+//        Runtime.getRuntime().addShutdownHook( launcher );
+//
+//        // carry on with the application start up
+//        launcher.startApplication();
     }
 
     private void startApplication() {
-        if ( Configuration.MODE_SERVER.equals( Configuration.corePeerMode ) ) {
-            LOG.info( "Peer works as SERVER" );
-            commServer = new PeerCommunicationServer();
-            commServer.start();
-        }
+//        if ( Configuration.MODE_SERVER.equals( Configuration.corePeerMode ) ) {
+//            LOG.info( "Peer works as SERVER" );
+//            commServer = new PeerCommunicationServer();
+//            commServer.start();
+//        }
     }
 
     /**
@@ -43,16 +43,16 @@ public class Launcher extends Thread {
      */
     @Override
     public void run() {
-        LOG.info( "Preparing application shutdown" );
-        if ( commServer != null && commServer.isAlive() ) {
-            commServer.dispose();
-            try {
-                commServer.join();
-            } catch (InterruptedException e) {
-                LOG.error( e );
-            }
-        }
-
-        LOG.info( "Application is now closed" );
+//        LOG.info( "Preparing application shutdown" );
+//        if ( commServer != null && commServer.isAlive() ) {
+//            commServer.dispose();
+//            try {
+//                commServer.join();
+//            } catch (InterruptedException e) {
+//                LOG.error( e );
+//            }
+//        }
+//
+//        LOG.info( "Application is now closed" );
     }
 }

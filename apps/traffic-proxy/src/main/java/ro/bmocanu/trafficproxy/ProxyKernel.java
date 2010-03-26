@@ -88,7 +88,7 @@ public class ProxyKernel extends ManageableComposite implements ServiceProvider 
     }
 
     public void registerConnectorWorker( int connectorId, int workerId, ConnectorWorker worker ) {
-        workersMap.put( buildUnifiedID( connectorId, workerId ), worker );
+        //workersMap.put( buildUnifiedID( connectorId, workerId ), worker );
     }
 
     // -------------------------------------------------------------------------------------------------

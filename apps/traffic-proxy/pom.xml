@@ -1,10 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>ro.bmocanu.trafficproxy</groupId>
     <artifactId>traffic-proxy</artifactId>
     <packaging>jar</packaging>
-    <version>1.0</version>
+    <version>1.0.0</version>
     <name>traffic-proxy</name>
     <url>http://maven.apache.org</url>
     <repositories>
@@ -60,17 +59,16 @@
             <url>http://download.java.net/maven/2</url>
         </pluginRepository>
     </pluginRepositories>
-
     <build>
         <plugins>
-		<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
                     <encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
+                </configuration>
+            </plugin>
 
             <plugin>
                 <artifactId>maven-antrun-plugin</artifactId>
@@ -79,9 +77,45 @@
                         <phase>install</phase>
                         <configuration>
                             <tasks>
-                                <mkdir dir="${project.dist}"/>
-                                <copy file="${project.build.directory}/${project.build.finalName}.jar"
-                                      todir="${project.dist}"/>
+                                <delete dir="${project.dist}" />
+                                <mkdir dir="${project.dist}" />
+
+                                <!-- bin folder ................................................ -->
+                                <mkdir dir="${project.dist.bin}" />
+                                <copy todir="${project.dist.bin}">
+                                    <fileset dir="${project.misc}/dist/bin">
+                                        <include name="*.*" />
+                                    </fileset>
+                                </copy>
+
+                                <!-- conf folder ................................................ -->
+                                <mkdir dir="${project.dist.conf}" />
+                                <copy todir="${project.dist.conf}">
+                                    <fileset dir="${project.misc}/dist/conf">
+                                        <include name="*.*" />
+                                    </fileset>
+                                </copy>
+
+                                <!-- docs folder ................................................ -->
+                                <mkdir dir="${project.dist.docs}" />
+                                <copy todir="${project.dist.docs}">
+                                    <fileset dir="${project.misc}/dist/docs">
+                                        <include name="*.*" />
+                                    </fileset>
+                                </copy>
+
+                                <!-- lib folder ................................................ -->
+                                <mkdir dir="${project.dist.lib}" />
+                                <copy todir="${project.dist.lib}">
+                                    <fileset dir="${project.build.directory}/dependency">
+                                        <include name="*.jar" />
+                                    </fileset>
+                                </copy>
+                                <copy file="${project.build.directory}/${project.build.finalName}.jar" todir="${project.dist.lib}" />
+
+                                <!-- dist-packages ................................................ -->
+                                <mkdir dir="${project.dist-packages}" />
+                                <zip basedir="${project.dist}" destfile="${project.dist-packages}/${project.build.finalName}.zip" />
                             </tasks>
                         </configuration>
                         <goals>
@@ -128,6 +162,22 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <!-- configure the plugin here -->
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
     <dependencies>
@@ -159,11 +209,21 @@
         </dependency>
     </dependencies>
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- library versions ........................................................ -->
         <lib.log4j>1.2.15</lib.log4j>
         <lib.junit>4.8.1</lib.junit>
         <lib.commons-lang>2.5</lib.commons-lang>
         <lib.spring>3.0.1.RELEASE</lib.spring>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- project structure ....................................................... -->
+        <project.misc>${project.basedir}/misc</project.misc>
         <project.dist>${project.basedir}/target/dist</project.dist>
+        <project.dist.bin>${project.dist}/bin</project.dist.bin>
+        <project.dist.conf>${project.dist}/conf</project.dist.conf>
+        <project.dist.lib>${project.dist}/lib</project.dist.lib>
+        <project.dist.docs>${project.dist}/docs</project.dist.docs>
+        <project.dist-packages>${project.basedir}/target/dist-packages</project.dist-packages>
     </properties>
 </project>

@@ -91,7 +91,7 @@ public class InputConnectorServer extends ManageableThread {
         try {
             Socket clientSocket = serverSocket.accept();
             InputConnectorWorker newWorker = new InputConnectorWorker( connector, generateWorkerId(), clientSocket );
-            ProxyKernel.getInstance().registerConnectorWorker( connector.getId(), newWorker.getWorkerId(), newWorker );
+            //ProxyKernel.getInstance().registerConnectorWorker( connector.getId(), newWorker.getWorkerId(), newWorker );
             startWorker( newWorker );
 
         } catch ( SocketTimeoutException exception ) {
