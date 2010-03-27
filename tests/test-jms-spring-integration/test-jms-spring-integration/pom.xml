@@ -85,6 +85,8 @@
                                 <bindingInclude>bindings.xml</bindingInclude>
                             </bindingIncludes>
                             <args>
+                                <arg>-Xcommons-lang</arg>
+                                <arg>-Xcommons-lang:ToStringStyle=DEFAULT_STYLE</arg>
                                 <arg>-Xcollection-setter-injector</arg>
                             </args>
                             <plugins>
@@ -92,6 +94,11 @@
                                     <groupId>com.sun.tools.xjc.addon</groupId>
                                     <artifactId>collection-setter-injector</artifactId>
                                     <version>1.0</version>
+                                </plugin>
+                                <plugin>
+                                    <groupId>net.java.dev.jaxb2-commons</groupId>
+                                    <artifactId>jaxb-commons-lang-plugin</artifactId>
+                                    <version>2.2</version>
                                 </plugin>
                             </plugins>
                         </configuration>
@@ -152,6 +159,11 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
             <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${commons-lang.version}</version>
         </dependency>
     </dependencies>
     <properties>

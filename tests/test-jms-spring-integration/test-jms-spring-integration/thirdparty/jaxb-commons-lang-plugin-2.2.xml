@@ -1,0 +1,54 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>net.java.dev.jaxb2-commons</groupId>
+  <artifactId>jaxb-commons-lang-plugin</artifactId>
+  <packaging>jar</packaging>
+  <version>2.2</version>
+  <name>Jaxb RI 2.2 jakarta-commons-lang Plugin</name>
+  <url>https://jaxb2-commons.dev.java.net/commons-lang-plugin</url>
+  <description>
+	  Causes JAXB RI 2.2 XJC to automatically generate methods 
+	  for toString(), equals() and hashCode() using
+	  jakarta-commons-lang.
+
+	  The code that uses this plugin can still run with any JAXB2 implementation.
+  </description>
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <scm>
+    <url>https://jaxb2-commons.dev.java.net/source/browse/jaxb2-commons/commons-lang-plugin/</url>
+  </scm>
+  <dependencies>
+    <dependency>  
+      <groupId>com.sun.xml.bind</groupId>
+      <artifactId>jaxb-xjc</artifactId>
+      <version>2.2</version>
+    </dependency>  
+    <dependency>  
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>2.1</version>
+    </dependency>  
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

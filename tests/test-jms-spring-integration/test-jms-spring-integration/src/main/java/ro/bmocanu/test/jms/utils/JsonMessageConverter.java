@@ -10,6 +10,7 @@ import javax.jms.Message;
 import javax.jms.Session;
 import javax.jms.TextMessage;
 
+import org.apache.log4j.Logger;
 import org.springframework.jms.support.converter.MessageConversionException;
 import org.springframework.jms.support.converter.MessageConverter;
 
@@ -25,6 +26,7 @@ import com.sdicons.json.serializer.marshall.MarshallValue;
  * @author mocanu
  */
 public class JsonMessageConverter implements MessageConverter {
+    private static final Logger LOG = Logger.getLogger( JsonMessageConverter.class );
 
     private JSONMarshall jsonMarshaller = new JSONMarshall();
 
@@ -33,7 +35,9 @@ public class JsonMessageConverter implements MessageConverter {
      */
     public Message toMessage( Object object, Session session ) throws JMSException, MessageConversionException {
         try {
-            return session.createTextMessage( jsonMarshaller.marshall( object ).render( false ) );
+            String message = jsonMarshaller.marshall( object ).render( false );
+            LOG.info( "JAVA -> JSON: " + message );
+            return session.createTextMessage( message );
         } catch ( MarshallException exception ) {
             throw new MessageConversionException( "Unable to convert the given object to JSON", exception );
         }
@@ -47,6 +51,7 @@ public class JsonMessageConverter implements MessageConverter {
         if ( message instanceof TextMessage ) {
             TextMessage textMessage = (TextMessage) message;
             String textMessagePayload = textMessage.getText();
+            LOG.info( "JSON -> JAVA: " + textMessage.getText() );
             try {
                 JSONObject jsonObject = (JSONObject) new JSONParser( new StringReader( textMessagePayload ) ).nextValue();
                 MarshallValue marshallValue = jsonMarshaller.unmarshall( jsonObject );
