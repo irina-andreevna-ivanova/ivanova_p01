@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:int="http://www.springframework.org/schema/integration" xmlns:int-jms="http://www.springframework.org/schema/integration/jms"
+    xmlns:jms="http://www.springframework.org/schema/jms" xmlns:util="http://www.springframework.org/schema/util" xmlns:context="http://www.springframework.org/schema/context" xmlns:amq="http://activemq.apache.org/schema/core"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration-2.0.xsd
+		http://www.springframework.org/schema/integration/jms http://www.springframework.org/schema/integration/jms/spring-integration-jms-2.0.xsd
+        http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core-5.3.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+		http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+    <import resource="classpath:context-common.xml" />
+    <context:component-scan base-package="ro.bmocanu.test.jms.springint" />
+    <context:annotation-config />
+    <int:annotation-config />
+
+    <!--
+        configuration for the Spring Integration test
+    -->
+    <int:gateway id="testMessageGateway" service-interface="ro.bmocanu.test.jms.springint.TestMessageGateway" />
+
+    <int:channel id="testChannel">
+        <int:dispatcher task-executor="threadPool" />
+    </int:channel>
+
+    <int:thread-pool-task-executor id="threadPool" core-size="4" keep-alive-seconds="60" queue-capacity="10" max-size="40" />
+
+</beans>
