@@ -31,6 +31,61 @@ Collection - Set   - SortedSet
            - Queue
 Map        - SortedMap
 
+
+
+
+
+
+
+---------------
+
+Generators:
+- problem with collections: you need to implement your own generators, since Collections.fill(), Collections.nCopies() populates the list with the SAME instance
+- use Abstract classes in order to implement your own custom Collections or Maps
+- one good idea is to use Flyweight for creating generation-collections or maps: fake the actual list content, storing the index instead of the actual element in the list, or compute
+  the item to return only when the item is requested
+
+- optional operations and unsupported operations (such as operations on fixed-size lists)
+- Collections.unmodifiableList()  
+- Collections.unmodifiableSet()  
+- Collections.unmodifiableMap()  
+- Collections.unmodifiableSortedSet()  
+- Collections.unmodifiableSortedMap()  
+
+List
+    - LinkedList.listIterator()
+    
+Set
+        - objects added to Set must at least implement equals()
+        - HashSet: optimized for fast lookup. Object must implement hashCode(). Does not guarantee any order.
+        - TreeSet: guarantees a particular order, ascending. The objects must implement Comparable, or a Comparator needs to be provided
+        - LinkedHashSet: guarantees the insertion order. Uses internally a linked list to keep the insertion order. Objects should implement hashCode()
+        - equals() and hashCode() should be overidded in group
+    - SortedSet
+        - methods: first(), last(), subSet(), headSet(), tailSet()
+        
+Queue
+    - PriorityQueue
+    - LinkedList
+     
+Dequeue
+        - double-ended queue
+        - add and remove elements from either end
+        - putFirst, putLast, offerFirst, offerLast, ....
+    - LinkedList
+    
+Map
+        - the keys must implement equals(), hashCode(), Comparable (depending on the selected Map implementation)
+    - HashMap
+    - TreeMap
+    - LinkedHashMap
+    - WeakHashMap
+    - ConcurrentHashMap
+    - IdentityHashMap
+
+
+
+
 ___________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 Using java.net Authenticator
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
