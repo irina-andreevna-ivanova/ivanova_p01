@@ -26,14 +26,70 @@ ________________________________________________________________________________
 Collections
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Collection - Set   - SortedSet
+Collection (a sequence of individual elements, enforced with some specific rules)
+    - Abstract Collection
+           - Set (stores only distinctive items, no duplications)
+                    o CHILDREN
+                        - HashSet: uses hashCode() for storing, very fast for retrieval, no keeping of insertion order
+                        - LinkedHashSet: uses hashCode(), keeps the objects in the order of insertion (apparently)
+                        - TreeSet
+                            o keeps the objects in ascending comparison order (needs Comparator / Comparable items)
+                            o uses red-black trees
+                        - SortedSet
            - List
+                    o CHILDREN
+                        - ArrayList: simple non-sync impl of List, uses internally an array to store the objects. Good for random access, bad for multiple inserts and removals
+                        - LinkedList: simple non-sync impl of List, uses internally a linked list. Bad for random access, good for multiple inserts and removals
+                            o provides more methods than ArrayList, some of them being just diplicates of existing method, but with names more appropriate for the various usage contexts
+                        - Stack (can be modeled with LinkedList) 
+                    o list behaviour changes according to the equals() method
+                    o col.set()
+                    o col.retainAll()
+                    o col.removeAll()
+                    o col.subList()
+                    o col.toArray()
+                    o col.iterator() => Iterators
+                    o list.listIterator(): creates list iterators (ListIterator), that can move bidirectional (it.next(), it.previous(), it.set())
+                    o String.CASE_INSENSITIVE_ORDER (Comparator)
            - Queue
-Map        - SortedMap
+                    o CHILDREN
+                        - LinkedList (implements the Queue interface)
+                        - PriorityQueue: implementation of apriority queue
+                        - BlockingQueue
+                    o queue.offer()
+                    o queue.peek() (returns null, if no elem) - no removal
+                    o queue.element() (throws NoSuchElementException, if no elem) - no removal
+                    o queue.poll() (returns null, if no elem) - removal
+                    o queue.remove() (throws NoSuchElementException, if no elem) - removal
+Map (a group of key-value pairs, that allows you to look up an object by a given key (another object))
+           - CHILDREN
+                - HashMap: very fast, uses hashCode() for storage, no order kept
+                - LinkedHashMap: very fast, uses hashCode(), keeps the order of insertion
+                - TreeMap: keeps an ascending comparison order (needs Comparator / Comparable items)
+                - SortedMap
+                - ConcurrentMap
+                    - ConcurrentHashMap
+           - map.containsKey()
+           - map.containsValue()
+           - map.putAll()
+           - map produces set of keys, collection of values and set of key-value pairs
+           
+- Arrays.toString() (for arrays; the containers print themselves just fine)
+- Arrays.asList ([]) (a,b,c,...) -> unmodifiable list
+- Arrays.<Snow>asList( .... )
+- Collections.addAll() (preferred approach, instead of new XCollection(Arrays.asList(...))
+- Collections.sort()
+- Collections.shuffle()           
+- Collections.REVERSE_ORDER (same as Collections.reverseOrder())
+- Collections.fill() (just duplicates a reference for the entire list)
+- Collections.nCopies() (just duplicates a reference N times)
+- Iterable (to use in foreach)
+- RandomAccess (single implementation: ArrayList)
 
-
-
-
+Deprecated classes (do not use them):
+    - Vector
+    - Stack
+    - Hashtable
 
 
 
@@ -82,8 +138,6 @@ Map
     - WeakHashMap
     - ConcurrentHashMap
     - IdentityHashMap
-
-
 
 
 ___________________________________________________________________________________________________________________________________________________________________________________________________________________________________
