@@ -1,0 +1,88 @@
+<incalendar>
+  <dateEvents>
+    <dateEvent name="Birthday Iulian" description="" iconIndex="0" startDate="38754,5091858217" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Birthday Mariana" description="" iconIndex="0" startDate="38938,5091858217" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Birthday IQuest Piscu Marius" description="" iconIndex="0" startDate="38934,5091858217" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="RA Sf Maria Mare" description="Adormirea Maicii Domnului" iconIndex="0" startDate="38944,5091858217" useColor="False" foreColor="65535" backColor="128" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Birthday Anca" description="" iconIndex="0" startDate="38846,5091858217" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="RA Nasterea Maicii Domnului" description="" iconIndex="0" startDate="38968,5091858217" useColor="False" foreColor="65535" backColor="128" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="RA Inaltarea Sfintei Cruci" description="" iconIndex="0" startDate="38974,5091858217" useColor="False" foreColor="65535" backColor="128" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="RA Schimbarea la fata" description="" iconIndex="0" startDate="38935" useColor="False" foreColor="65535" backColor="128" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="RA Taierea Capului Sf Ioan Botezatorul" description="" iconIndex="0" startDate="38958" useColor="False" foreColor="65535" backColor="128" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="RA Intrarea in biserica a Maicii Domnului" description="" iconIndex="0" startDate="39042" useColor="False" foreColor="65535" backColor="128" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="RA Sf Apostol Andrei" description="" iconIndex="0" startDate="39051" useColor="False" foreColor="65535" backColor="128" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="RA Sf Nicolae" description="" iconIndex="0" startDate="39057,5091858217" useColor="False" foreColor="65535" backColor="128" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="RA Soborul Maicii Domnului" description="" iconIndex="0" startDate="39077" useColor="False" foreColor="65535" backColor="128" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="RA Sf Apostol Stefan" description="Sf Apostol Intaiul Mucenic si Arhidiacon Stefan" iconIndex="0" startDate="39078" useColor="False" foreColor="65535" backColor="128" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="RA Sf Vasile" description="" iconIndex="0" startDate="38718,5091858217" useColor="False" foreColor="65535" backColor="128" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="RA Botezul Domnului" description="" iconIndex="0" startDate="38723" useColor="False" foreColor="65535" backColor="128" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="RA Sf Trei Ierarhi" description="Sf Trei Ierarhi Vasile, Grigore si Ioan" iconIndex="0" startDate="38747" useColor="False" foreColor="65535" backColor="128" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Birthday Vlad" description="" iconIndex="0" startDate="38925,5091858217" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Birthday Mamaia Ene" description="" iconIndex="0" startDate="39011" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Cal Ora de Iarna (ultima dum din Oct)" description="Trecerea la ora de iarna: -1 ora (ora 4:00 devine ora 3:00)" iconIndex="0" startDate="39018,5091858217" useColor="True" foreColor="16777215" backColor="32768" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="RA Sf Constantin si Elena" description="" iconIndex="0" startDate="39223,5091858217" useColor="True" foreColor="0" backColor="12632256" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Birthday Ion Holostencu" description="" iconIndex="0" startDate="39219,5091858217" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Birthday Carmen Holostencu" description="" iconIndex="0" startDate="39225" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Ev Nastere Mihai Eminescu" description="(15 ianuarie 1850 - 15 iunie 1889)" iconIndex="0" startDate="39462,5091858217" useColor="True" foreColor="0" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Ev Valentine's Day" description="" iconIndex="0" startDate="39492" useColor="True" foreColor="0" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Ev Solstitiul de Vara" description="Ziua cea mai lunga din an" iconIndex="0" startDate="39620,5091858217" useColor="False" foreColor="0" backColor="12632256" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Ev Solstitiul de Iarna" description="Ziua cea mai scurta din an" iconIndex="0" startDate="39803,5091858217" useColor="False" foreColor="0" backColor="12632256" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Ev Echinoxul de primavara" description="" iconIndex="0" startDate="39528" useColor="False" foreColor="65535" backColor="128" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Ev Echinoctiul de toamna" description="" iconIndex="0" startDate="39714,5091858217" useColor="False" foreColor="65535" backColor="128" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Cal Ora de Vara (ultima dum din Martie)" description="Trecerea la ora de vara: +1 (ora 3:00 devine ora 4:00)" iconIndex="0" startDate="39537,5091858217" useColor="False" foreColor="65535" backColor="128" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Ev Aniversare casatorie parinti" description="" iconIndex="0" startDate="39674,5091858217" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Birthday Maria Tarara (Anca's maie)" description="" iconIndex="0" startDate="39590" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Birthday Mamaia Mocanu" description="" iconIndex="0" startDate="39596,5091858217" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Birthday Tataia Mocanu" description="" iconIndex="0" startDate="39676,5091858217" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Birthday Roxana Verdes" description="" iconIndex="0" startDate="39719" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Birthday Letca Maria" description="" iconIndex="0" startDate="39720" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Birthday IQuest Stanisor Daniel" description="" iconIndex="0" startDate="39671,5091858217" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Birthday IQuest Viseroiu Radu" description="" iconIndex="0" startDate="39666,5091858217" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Ev Halloween" description="" iconIndex="0" startDate="39752,5091858217" useColor="True" foreColor="65535" backColor="0" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Party Siemens la ARO Palace" description="" iconIndex="1" startDate="39794" useColor="True" foreColor="0" backColor="65535" occurrence="0" occurrenceNr="0"/>
+    <dateEvent name="RA Sf Mihail si Gavril" description="" iconIndex="0" startDate="39760,5091858217" useColor="True" foreColor="65535" backColor="128" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Birthday Tataia Ene (80 in 2008)" description="" iconIndex="0" startDate="39770" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Party iQuest la Cluj + QM 4 2008" description="" iconIndex="1" startDate="39801" useColor="True" foreColor="0" backColor="65535" occurrence="0" occurrenceNr="0"/>
+    <dateEvent name="Birthday Netviewer Albrecht Beyle" description="" iconIndex="0" startDate="39786,7798858102" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Birthday Ionut Bita" description="" iconIndex="0" startDate="39786,7798858102" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Birthday IQuest Diana Tigau" description="" iconIndex="0" startDate="39793" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Expirare Pasaport" description="" iconIndex="1" startDate="40309" useColor="True" foreColor="0" backColor="65535" occurrence="0" occurrenceNr="0"/>
+    <dateEvent name="Expirare Pasaport - O luna pana la expirare (11 mai 2010)" description="" iconIndex="1" startDate="40279" useColor="True" foreColor="0" backColor="65535" occurrence="0" occurrenceNr="0"/>
+    <dateEvent name="Nunta Raluca+Cosmin  +  Mona+Smbd" description="" iconIndex="1" startDate="40020,5091858217" useColor="True" foreColor="0" backColor="65535" occurrence="0" occurrenceNr="0"/>
+    <dateEvent name="Nunta Maria + George (+/- 2-3 zile)" description="" iconIndex="1" startDate="40061" useColor="True" foreColor="0" backColor="65535" occurrence="0" occurrenceNr="0"/>
+    <dateEvent name="RA Sf Ion (-&gt; Ion Holostencu)" description="" iconIndex="0" startDate="39820,8171597801" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="1 Martie (Martisorul)" description="" iconIndex="0" startDate="39873" useColor="False" foreColor="65535" backColor="128" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="8 Martie (Ziua Femeii)" description="" iconIndex="0" startDate="39880" useColor="False" foreColor="65535" backColor="128" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Ridicat masina de la showroom" description="" iconIndex="1" startDate="39876" useColor="True" foreColor="0" backColor="65535" occurrence="0" occurrenceNr="0"/>
+    <dateEvent name="Ev EarthHour (se stinge lumina o ora, de la 20:30 - 21:30)" description="" iconIndex="0" startDate="39900" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="RA Sf Gheorghe (-&gt; Gheorghita Mocanu)" description="" iconIndex="0" startDate="39926,5091858217" useColor="True" foreColor="0" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Luna viitoare expira card RON UnicreditTiriac VISA Electron" description="" iconIndex="1" startDate="40436,5091858217" useColor="True" foreColor="0" backColor="65535" occurrence="0" occurrenceNr="0"/>
+    <dateEvent name="Luna viitoare expira cardul EURO Unicredit Tiriac Maestro" description="" iconIndex="1" startDate="40038,5091858217" useColor="True" foreColor="0" backColor="65535" occurrence="0" occurrenceNr="0"/>
+    <dateEvent name="Peste 2 luni expira Permis de Conducere (eliberat in 2005)" description="" iconIndex="1" startDate="42223" useColor="True" foreColor="0" backColor="65535" occurrence="0" occurrenceNr="0"/>
+    <dateEvent name="Peste 2 luni expira Carte de Identitate (eliberata in 2007)" description="" iconIndex="1" startDate="41670" useColor="True" foreColor="0" backColor="65535" occurrence="0" occurrenceNr="0"/>
+    <dateEvent name="Birthday IQuest Alexandru Ardelean" description="" iconIndex="0" startDate="39962,8338468866" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Ev Vizita Anca la medic" description="" iconIndex="1" startDate="40156" useColor="True" foreColor="0" backColor="65535" occurrence="0" occurrenceNr="0"/>
+    <dateEvent name="Ev Ziua Gradinilor Zoologice din Luma" description="" iconIndex="0" startDate="40034,4370380093" useColor="False" foreColor="65535" backColor="128" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Birthday Raluca Banciu" description="" iconIndex="0" startDate="40043,5091858217" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Birthday IQuest Bogdan Secarea" description="" iconIndex="0" startDate="40056" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Birthday IQuest Mihai Tisu" description="" iconIndex="0" startDate="40055" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Ev Aniversare casatorie Raluca+Cosmin" description="" iconIndex="0" startDate="40020" useColor="False" foreColor="65535" backColor="128" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Ev Data cerere in casatorie Ank" description="" iconIndex="0" startDate="39980" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Birthday IQuest Vadim Tofan" description="" iconIndex="0" startDate="40150" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Birthday Netviewer Matthias Moeller (1975)" description="" iconIndex="0" startDate="39921" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Ev Ziua Brasovului (prima atestare in 1235 - 775 in 2010)" description="" iconIndex="0" startDate="40191" useColor="False" foreColor="65535" backColor="128" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Ev Programare la dr Camelia Scarneciu" description="Analiza rezultate interne, Gastropatie" iconIndex="1" startDate="40221" useColor="True" foreColor="0" backColor="65535" occurrence="0" occurrenceNr="0"/>
+    <dateEvent name="Ev Programare dr Mihaela Jian, dermatolog" description="Fotografiere alunite" iconIndex="1" startDate="40219" useColor="True" foreColor="0" backColor="65535" occurrence="0" occurrenceNr="0"/>
+    <dateEvent name="Ev Consultatie dermatolog Mihaela Jian, revenire" description="Status alunita din fata" iconIndex="1" startDate="40247" useColor="True" foreColor="0" backColor="65535" occurrence="0" occurrenceNr="0"/>
+    <dateEvent name="Ev Consultatie dermatolog Mihaela Jian" description="Status alunite" iconIndex="1" startDate="40308" useColor="True" foreColor="0" backColor="65535" occurrence="0" occurrenceNr="0"/>
+    <dateEvent name="Ev Consultatie internolog Camelia Scarneciu" description="Refacere analize contra Helycobacter pylori (Gastropatie)" iconIndex="1" startDate="40310,5091858217" useColor="True" foreColor="0" backColor="65535" occurrence="0" occurrenceNr="0"/>
+    <dateEvent name="Ev Consultatie gastroenterolog Felicia Coman 15:00" description="Prezentare analize, obtinere tratament" iconIndex="1" startDate="40246,5091858217" useColor="True" foreColor="0" backColor="65535" occurrence="0" occurrenceNr="0"/>
+    <dateEvent name="Birthday IQuest dna Cristina" description="" iconIndex="0" startDate="40240,5091858217" useColor="False" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Ev O luna si jumatate de la consultatia gastroenterolog Felicia Coman" description="" iconIndex="1" startDate="40294" useColor="True" foreColor="0" backColor="65535" occurrence="0" occurrenceNr="0"/>
+    <dateEvent name="Birthday IQuest Robert Szabo" description="" iconIndex="0" startDate="40260,3720153009" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Birthday IQuest Roxana Gambeschi" description="" iconIndex="0" startDate="40257" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Ev Expira 6 luni de hosting bmocanu.ro (factura noua?)" description="" iconIndex="1" startDate="40448" useColor="True" foreColor="0" backColor="65535" occurrence="0" occurrenceNr="0"/>
+    <dateEvent name="Birthday Vasile (Lica) Verdes" description="" iconIndex="0" startDate="40273" useColor="True" foreColor="65535" backColor="8421504" occurrence="1" occurrenceNr="0"/>
+    <dateEvent name="Ev Efectuare ITP la masina (12.06.2011)" description="" iconIndex="1" startDate="40706" useColor="True" foreColor="0" backColor="65535" occurrence="0" occurrenceNr="0"/>
+  </dateEvents>
+</incalendar>
