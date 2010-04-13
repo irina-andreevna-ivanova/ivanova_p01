@@ -23,9 +23,10 @@ import java.net.Socket;
 import java.net.SocketTimeoutException;
 
 import org.apache.log4j.Logger;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import ro.bmocanu.trafficproxy.Constants;
-import ro.bmocanu.trafficproxy.ProxyKernel;
 import ro.bmocanu.trafficproxy.base.Manageable;
 import ro.bmocanu.trafficproxy.base.ManageableThread;
 
@@ -38,6 +39,8 @@ import ro.bmocanu.trafficproxy.base.ManageableThread;
  * @see InputConnectorWorker
  * @see ManageableThread
  */
+@Component
+@Scope( Constants.PROTOTYPE )
 public class InputConnectorServer extends ManageableThread {
     private static final Logger LOG = Logger.getLogger( InputConnectorServer.class );
 

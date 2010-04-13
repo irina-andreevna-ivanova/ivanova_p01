@@ -14,6 +14,7 @@ public class Constants {
     public static final int PEER_PACKET_SIZE = 64 * 1024;
     public static final int INPUT_CONNECTOR_SOCKET_TIMEOUT = 2000;
     
-    public static final int CORE_THREAD_IDLE_TIMEOUT_MLS = 50; 
+    public static final int CORE_THREAD_IDLE_TIMEOUT_MLS = 50;
+    public static final String PROTOTYPE = "prototype";
 
 }

@@ -23,11 +23,15 @@ import java.io.OutputStream;
 import java.net.Socket;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
-import ro.bmocanu.trafficproxy.ProxyKernel;
+import ro.bmocanu.trafficproxy.Constants;
 import ro.bmocanu.trafficproxy.base.ConnectorWorker;
 import ro.bmocanu.trafficproxy.base.ManageableThread;
 import ro.bmocanu.trafficproxy.peers.Packet;
+import ro.bmocanu.trafficproxy.peers.PacketSender;
 import ro.bmocanu.trafficproxy.utils.StreamPackagingUtils;
 
 /**
@@ -36,8 +40,13 @@ import ro.bmocanu.trafficproxy.utils.StreamPackagingUtils;
  * 
  * @author mocanu
  */
+@Component
+@Scope( Constants.PROTOTYPE )
 public class InputConnectorWorker extends ManageableThread implements ConnectorWorker {
     private static final Logger LOG = Logger.getLogger( InputConnectorWorker.class );
+    
+    @Autowired
+    private PacketSender packetSender;
 
     /**
      * The connector information, on whose behalf this worker is doing the job.
@@ -68,6 +77,8 @@ public class InputConnectorWorker extends ManageableThread implements ConnectorW
         this.connector = connector;
         this.workerId = workerId;
         this.clientSocket = clientSocket;
+        
+        LOG.debug( "New input connector worker has been created" );
     }
 
     /**
@@ -91,8 +102,7 @@ public class InputConnectorWorker extends ManageableThread implements ConnectorW
             // no data to send yet
             return;
         }
-
-        //ProxyKernel.getInstance().getPacketSender().send( packet );
+        packetSender.send( packet );
     }
 
     /**
