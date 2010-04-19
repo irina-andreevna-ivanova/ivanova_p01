@@ -1,0 +1,148 @@
+<class-diagram version="0.9.86" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <interface corner="BOTTOM_RIGHT" language="java" name="ro.bmocanu.tests.exchand.Repository" 
+    project="test-exception-handling" 
+    file="/test-exception-handling/src/main/java/ro/bmocanu/tests/exchand/Repository.java" binary="false">    
+    <position x="707" y="58" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="ro.bmocanu.tests.exchand.UserRepository" 
+    project="test-exception-handling" 
+    file="/test-exception-handling/src/main/java/ro/bmocanu/tests/exchand/UserRepository.java" binary="false">    
+    <position x="707" y="195" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="ro.bmocanu.tests.exchand.UserService" 
+    project="test-exception-handling" 
+    file="/test-exception-handling/src/main/java/ro/bmocanu/tests/exchand/UserService.java" binary="false">    
+    <position x="424" y="203" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <class corner="BOTTOM_RIGHT" language="java" name="ro.bmocanu.tests.exchand.ViewController" 
+    project="test-exception-handling" 
+    file="/test-exception-handling/src/main/java/ro/bmocanu/tests/exchand/ViewController.java" binary="false">    
+    <position x="170" y="345" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="ro.bmocanu.tests.exchand.impl.UserRepositoryImpl" 
+    project="test-exception-handling" 
+    file="/test-exception-handling/src/main/java/ro/bmocanu/tests/exchand/impl/UserRepositoryImpl.java" binary="false">    
+    <position x="706" y="367" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="ro.bmocanu.tests.exchand.impl.UserServiceImpl" 
+    project="test-exception-handling" 
+    file="/test-exception-handling/src/main/java/ro/bmocanu/tests/exchand/impl/UserServiceImpl.java" binary="false">    
+    <position x="426" y="335" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="java.lang.RuntimeException" project="test-exception-handling" 
+    file="D:/Applications_Java/JDK-1.6.18/jre/lib/rt.jar" binary="true">    
+    <position x="144" y="531" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="ro.bmocanu.tests.exchand.exceptions.ServiceException" 
+    project="test-exception-handling" 
+    file="/test-exception-handling/src/main/java/ro/bmocanu/tests/exchand/exceptions/ServiceException.java" 
+    binary="false">    
+    <position x="430" y="532" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="ro.bmocanu.tests.exchand.exceptions.DataAccessException" 
+    project="test-exception-handling" 
+    file="/test-exception-handling/src/main/java/ro/bmocanu/tests/exchand/exceptions/DataAccessException.java" 
+    binary="false">    
+    <position x="708" y="531" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <realization>    
+    <source project="test-exception-handling" name="ro.bmocanu.tests.exchand.impl.UserRepositoryImpl" 
+      file="/test-exception-handling/src/main/java/ro/bmocanu/tests/exchand/impl/UserRepositoryImpl.java" 
+      binary="false"/>    
+    <target project="test-exception-handling" name="ro.bmocanu.tests.exchand.UserRepository" 
+      file="/test-exception-handling/src/main/java/ro/bmocanu/tests/exchand/UserRepository.java" binary="false"/>  
+  </realization>  
+  <generalization>    
+    <source project="test-exception-handling" name="ro.bmocanu.tests.exchand.exceptions.DataAccessException" 
+      file="/test-exception-handling/src/main/java/ro/bmocanu/tests/exchand/exceptions/DataAccessException.java" 
+      binary="false"/>    
+    <target project="test-exception-handling" name="ro.bmocanu.tests.exchand.exceptions.ServiceException" 
+      file="/test-exception-handling/src/main/java/ro/bmocanu/tests/exchand/exceptions/ServiceException.java" 
+      binary="false"/>  
+  </generalization>  
+  <generalization>    
+    <source project="test-exception-handling" name="ro.bmocanu.tests.exchand.UserRepository" 
+      file="/test-exception-handling/src/main/java/ro/bmocanu/tests/exchand/UserRepository.java" binary="false"/>    
+    <target project="test-exception-handling" name="ro.bmocanu.tests.exchand.Repository" 
+      file="/test-exception-handling/src/main/java/ro/bmocanu/tests/exchand/Repository.java" binary="false"/>  
+  </generalization>  
+  <association>    
+    <source project="test-exception-handling" name="ro.bmocanu.tests.exchand.ViewController" 
+      file="/test-exception-handling/src/main/java/ro/bmocanu/tests/exchand/ViewController.java" binary="false" 
+      navigable="false">      
+      <attribute name="userService"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="test-exception-handling" name="ro.bmocanu.tests.exchand.UserService" 
+      file="/test-exception-handling/src/main/java/ro/bmocanu/tests/exchand/UserService.java" binary="false" 
+      navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association>    
+    <source project="test-exception-handling" name="ro.bmocanu.tests.exchand.impl.UserServiceImpl" 
+      file="/test-exception-handling/src/main/java/ro/bmocanu/tests/exchand/impl/UserServiceImpl.java" binary="false" 
+      navigable="false">      
+      <attribute name="userRepo"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="test-exception-handling" name="ro.bmocanu.tests.exchand.UserRepository" 
+      file="/test-exception-handling/src/main/java/ro/bmocanu/tests/exchand/UserRepository.java" binary="false" 
+      navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization>    
+    <source project="test-exception-handling" name="ro.bmocanu.tests.exchand.impl.UserServiceImpl" 
+      file="/test-exception-handling/src/main/java/ro/bmocanu/tests/exchand/impl/UserServiceImpl.java" binary="false"/>    
+    <target project="test-exception-handling" name="ro.bmocanu.tests.exchand.UserService" 
+      file="/test-exception-handling/src/main/java/ro/bmocanu/tests/exchand/UserService.java" binary="false"/>  
+  </realization>  
+  <generalization>    
+    <source project="test-exception-handling" name="ro.bmocanu.tests.exchand.exceptions.ServiceException" 
+      file="/test-exception-handling/src/main/java/ro/bmocanu/tests/exchand/exceptions/ServiceException.java" 
+      binary="false"/>    
+    <target project="test-exception-handling" name="java.lang.RuntimeException" 
+      file="D:/Applications_Java/JDK-1.6.18/jre/lib/rt.jar" binary="true"/>  
+  </generalization>  
+  <classifier-display autosize="true" package="true" initial-value="false" signature="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
