@@ -140,6 +140,7 @@ img {
 
 .spot_part_even {
     background-color: #F8F8F8;
+    border: solid 1px #E0E0E0;
 }
 .spot_part_odd {
     background-color: #FFFFFF;

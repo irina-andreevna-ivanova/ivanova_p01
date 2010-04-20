@@ -1,6 +1,7 @@
 Apache HTTP server
 __________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
+---------------------------------------------------------------------------------------------------------------------
 Making local files accessible in extern:
 ---------------------------------------------------------------------------------------------------------------------
 
@@ -11,3 +12,35 @@ Alias /myfold C:/Test/somefold/myfold
 </Directory>
 
 Alias doc: http://httpd.apache.org/docs/2.2/mod/mod_alias.html#alias
+
+---------------------------------------------------------------------------------------------------------------------
+Apache with port forwarding
+---------------------------------------------------------------------------------------------------------------------
+ProxyPass /foo http://other:8080/
+ProxyPassReverse /foo  http://other:8080/
+
+ProxyPass /bar http://another:7001/
+ProxyPassReverse /bar  http://another:7001/
+
+Another option will be to define different virtual hosts and proxy each at the root directory. 
+You have only one real IP address and one domain, but can probably create sub-domains. 
+Your setup will look like this:
+
+   NameVirtualHost *
+
+    <VirtualHost *>
+    ServerName www.mydomain.com
+    DocumentRoot /www/domain
+    </VirtualHost>
+
+    <VirtualHost *>
+    ServerName other.mydomain.com
+    ProxyPass / http://other:8080/
+    ProxyPassReverse /  http://other:8080/
+    </VirtualHost>
+
+    <VirtualHost *>
+    ServerName another.mydomain.com
+    ProxyPass / http://another:7001/
+    ProxyPassReverse /  http://another:7001/
+    </VirtualHost>

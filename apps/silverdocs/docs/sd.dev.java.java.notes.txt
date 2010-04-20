@@ -133,12 +133,40 @@ Dequeue
 Map
         - the keys must implement equals(), hashCode(), Comparable (depending on the selected Map implementation)
     - HashMap
-    - TreeMap
+        - very fast; uses the hash code to get a "relatively unique" integer for an object
+    - SortedMap        
+        - TreeMap
+            - provides custom sorting for keys
+            - new methods: firstKey(), lastKey(), subMap(), headMap(), tailMap()
     - LinkedHashMap
+        - same speed as HashMap, but also keeps the oder of insertion
+        - based on parameter in constructor, LinkedHashMap can use a LRU (least recently used) algorithm,
+          therefore placing the least used keys at the beginning of the map, since these are the keys most
+          likely to be removed in the future 
     - WeakHashMap
     - ConcurrentHashMap
     - IdentityHashMap
+        - uses == instead of obj.equals() for comparing objects; use it only in very special cases, when
+          identity comparison makes sense and represents a requirement
+          
+        - any key that is used in a map must have equals() properly implemented
+        - any key that is used in a hash map must implement hashCode()
+        - any key that is used in a TreeMap must implement Comparable
 
+Implementing hashCode() and equals()
+    - equals() must satisfy the following conditions:
+        - reflexive : x.equals(x) should return TRUE
+        - symetric  : x.equals(y) must be the same as y.equals(x)
+        - transitive: x.equals(y), y.equals(z) then x.equals(z)
+        - consistent: x.equals(y) invoked repeatedly should provide the same result, regardless of the number 
+          of invocations, and provided that no information used in the equals operation is changed
+        - null      : x.equals(null) should give false
+    - hashing
+        - searching by the key information (not the key itself)
+        - collisions: keys that produce the same hash number
+        - perfect hashing junction: the case when no collisions happen (such a case is implemented in EnumMap
+          and EnumSet, since the Enums define a fixed number of instances)
+        -     
 
 ___________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 Using java.net Authenticator
