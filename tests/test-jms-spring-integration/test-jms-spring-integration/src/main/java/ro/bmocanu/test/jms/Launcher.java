@@ -26,7 +26,7 @@ public class Launcher {
 
     // ------------------------------------------------------------------------------------------------------
 
-    public static void main2( String... args ) {
+    public static void main( String... args ) {
         String CONTEXT_CONFIGURATION = "context-jms-integration.xml";
 
         CalculationRequest request = new CalculationRequest();
@@ -45,7 +45,7 @@ public class Launcher {
 
     // ------------------------------------------------------------------------------------------------------
 
-    public static void main( String... args ) {
+    public static void main2( String... args ) {
         String CONTEXT_CONFIGURATION = "context-springint.xml";
 
         TestMessage msg = new TestMessage();
