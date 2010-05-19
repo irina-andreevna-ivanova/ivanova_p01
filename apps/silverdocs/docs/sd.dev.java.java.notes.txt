@@ -166,7 +166,27 @@ Implementing hashCode() and equals()
         - collisions: keys that produce the same hash number
         - perfect hashing junction: the case when no collisions happen (such a case is implemented in EnumMap
           and EnumSet, since the Enums define a fixed number of instances)
-        -     
+        - the hashCode() must produce the same value each time it is called. If the object is mutable, the user
+          must be made aware of this (otherwise an object placed in a map with put() might not be able to be 
+          retrieved later)
+        - the hashCode doesn't have to be unique; prefer performance over uniqueness
+        -    
+        
+        1.  Store some constant nonzero value, say 17, in an int variable called result.  
+        2.  For each significant field fin your object (that is, each field taken into account by the 
+            equals( ) method), calculate an int hash code c for the field:  
+                boolean                         c = ( f ? 0 : 1) 
+                byte, char, short, or int       c = (int)f 
+                long                            c = (int)(f ^ (f>>>32)) 
+                float                           c = Float.floatToIntBits(f); 
+                double                          long l = Double.doubleToLongBits(f); 
+                                                c = (int)(1 ^ (l>>>32)) 
+                Object                          c = f.hashCode( ) 
+                Array                           Apply above rules to each element 
+        3.  Combine the hash code(s) computed above: result = 37 * result + c;  
+        4.  Return result.  
+        5.  Look at the resulting hashCode( ) and make sure that equal instances have equal hash codes.          
+        
 
 ___________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 Using java.net Authenticator
