@@ -22,6 +22,8 @@
       <user name="paul" password="paul" authorities="ROLE_USER" />
     </user-service>
   </authentication-provider>
+  
+  <beans:bean name="dummyAuthenticationHandler" class="ro.bmocanu.test.spring.security.oauth.DummyOAuthAuthenticationHandler"/>
 
   <oauth:provider consumer-details-service-ref="dummyConsumerDetailsService"
                   token-services-ref="tokenServices"
@@ -30,7 +32,8 @@
                   authentication-failed-url="/oauth/confirm_access"
                   access-granted-url="/request_token_authorized.jsp"
                   access-token-url="/oauth/access_token"
-                  require10a="false"/>
+                  require10a="false"
+                  auth-handler-ref="dummyAuthenticationHandler"/>
 
   <!-- oauth:consumer-details-service id="consumerDetails">
     <oauth:consumer name="consumer-n1" key="consumer-k1" secret="consumer-secret1" resourceName="Your Photos" resourceDescription="Your photos that you have uploaded to sparklr.com."/>
@@ -41,13 +44,13 @@
 
   <oauth:token-services id="tokenServices"/>
   
-  <authentication-manager alias="authenticationManager"/>
+  <!-- authentication-manager alias="authenticationManager"/>
 
   <beans:bean id="authenticationProcessingFilter" class="org.springframework.security.ui.webapp.AuthenticationProcessingFilter">
       <beans:property name="authenticationManager" ref="authenticationManager" />
       <beans:property name="authenticationFailureUrl" value="/login.jsp?login_error=1" />
       <beans:property name="defaultTargetUrl" value="/" />
       <beans:property name="filterProcessesUrl" value="/oauth/authorize" />
-  </beans:bean>
+  </beans:bean-->
 
 </beans:beans>
