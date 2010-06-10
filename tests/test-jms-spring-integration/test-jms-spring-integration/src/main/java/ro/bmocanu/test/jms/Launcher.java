@@ -44,7 +44,7 @@ public class Launcher {
     }
 
     // ------------------------------------------------------------------------------------------------------
-
+    
     public static void main2( String... args ) {
         String CONTEXT_CONFIGURATION = "context-springint.xml";
 

@@ -69,7 +69,7 @@ public class StandaloneLauncher {
 
             Destination requestTopic = session.createTopic( "jms.topic.calculationRequest" );
             MessageConsumer topicConsumer = session.createConsumer( requestTopic );
-            topicConsumer.setMessageListener( new TopicMessageListener( session, queueProducer ) );
+            //topicConsumer.setMessageListener( new TopicMessageListener( session, queueProducer ) );
 
             // now produce a message, in order to test the result
             CalculationRequest request = new CalculationRequest();
