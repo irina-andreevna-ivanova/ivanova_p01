@@ -25,7 +25,7 @@ public class TestQ11 {
         buffer.append( 'D' );
         buffer.append( 'E' );
         
-        Systems.out.println( buffer.toString() );
+//        Systems.out.println( buffer.toString() );
     }
 
 }

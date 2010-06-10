@@ -1,6 +1,7 @@
 package zendo;
 
 
+
 /**
  * @author bogdan.mocanu
  */
@@ -15,6 +16,8 @@ public class TestWeirdSendMail {
 
     public static void main( String[] args ) throws Exception {
         sendMail( "package.properties" );
+        //Set<String> s = null;
+        //s.toArray( new String[ s.size() ] ); 
     }
 
 }
