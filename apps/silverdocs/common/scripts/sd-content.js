@@ -64,7 +64,7 @@ function generatePageContent() {
 
 		for( rowIndex = 0; rowIndex < spotColumn.length; rowIndex++ ) {
 			spot = spotColumn[ rowIndex ];
-			contentStr += '            <table class="spot_header" style="width:100%;"><tbody><tr><td class="spot_header_icon_unpinned" id="spot.header.icon.pin.' + spot[ SPOT_MODULEID ] + '" onClick="onSpotHeaderPinIconClick(\'' + spot[ SPOT_MODULEID ] + '\');"></td><td onClick="onSpotHeaderClick(\'' + spot[ SPOT_MODULEID ] + '\');">' + spot[ SPOT_NAME ] + '</td></tr></tbody></table>';
+			contentStr += '            <table class="spot_header ' + spot[ SPOT_COLOR ] + '" style="width:100%;"><tbody><tr><td class="spot_header_icon_unpinned" id="spot.header.icon.pin.' + spot[ SPOT_MODULEID ] + '" onClick="onSpotHeaderPinIconClick(\'' + spot[ SPOT_MODULEID ] + '\');"></td><td onClick="onSpotHeaderClick(\'' + spot[ SPOT_MODULEID ] + '\');">' + spot[ SPOT_NAME ] + '</td></tr></tbody></table>';
 			contentStr += '            <div id="spot.' + spot[ SPOT_MODULEID ] + '" class="spot_div"></div>';
 		} 
 

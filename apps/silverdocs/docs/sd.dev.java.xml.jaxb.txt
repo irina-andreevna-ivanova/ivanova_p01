@@ -1,0 +1,93 @@
+JAXB mapping ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------
+Maven config:
+------------------------------------------------------------------------------------------------------
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <bindingIncludes>
+                        <include>jaxb.xml</include>
+                    </bindingIncludes>
+                    <schemaDirectory>${project.basedir}/src/main/resources/schemas</schemaDirectory>
+                    <extension>true</extension>
+                    <args>
+                        <arg>-Xcommons-lang</arg>
+                        <arg>-Xcommons-lang:ToStringStyle=SHORT_PREFIX_STYLE</arg>
+                        <arg>-Xcollection-setter-injector</arg>
+                    </args>
+                    <plugins>
+                        <!-- plugin>
+                            <groupId>apps.libs</groupId>
+                            <artifactId>apps-jaxb-plugin</artifactId>
+                            <version>2.3</version>
+                        </plugin -->
+                        <plugin>
+                            <groupId>org.jvnet.jaxb2-commons</groupId>
+                            <artifactId>collection-setter-injector</artifactId>
+                            <version>1.0</version>
+                        </plugin>
+                    </plugins>
+                </configuration>
+                <dependencies>
+                    <!--dependency>
+                        <groupId>apps.libs</groupId>
+                        <artifactId>apps-jaxb-plugin</artifactId>
+                        <version>2.3</version>
+                    </dependency-->
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
+------------------------------------------------------------------------------------------------------
+jaxb.xml (bindings file)
+------------------------------------------------------------------------------------------------------
+    
+<?xml version="1.0" encoding="UTF-8"?>
+<jxb:bindings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+              xmlns:jxb="http://java.sun.com/xml/ns/jaxb" 
+              xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+              xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+              version="2.0"> 
+
+    <jxb:bindings schemaLocation="CommonType.xsd" node="/xs:schema" >
+        <jxb:schemaBindings>
+            <jxb:package name="test.app.commontypes" />
+        </jxb:schemaBindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="NonCommonTypes.xsd" node="/xs:schema" >
+        <jxb:schemaBindings>
+            <jxb:package name="test.app.noncommontypes" />
+        </jxb:schemaBindings>
+    </jxb:bindings>
+
+</jxb:bindings>
+
+------------------------------------------------------------------------------------------------------
+Schema file
+------------------------------------------------------------------------------------------------------
+
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://app.com/app/ns"
+    elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="http://app.com/app/ns"
+    xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+    xmlns:commontypes="http://app.com/app/common-types" jaxb:version="2.0" >
+    
+    ....
+    
+</schema>

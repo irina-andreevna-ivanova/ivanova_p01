@@ -238,6 +238,13 @@ SDModules[ moduleIndex ][ MODULE_PINNED    ] = false;
 initModule( SDModules[ moduleIndex ] );
 
 SDModules[ ++moduleIndex ] = new Array();
+SDModules[ moduleIndex ][ MODULE_ID        ] = "sd.dev.java.various";
+SDModules[ moduleIndex ][ MODULE_FILENAME  ] = MODULES_DIRECTORY + "module-dev-java-various.html";
+SDModules[ moduleIndex ][ MODULE_VISIBLE   ] = false;
+SDModules[ moduleIndex ][ MODULE_PINNED    ] = false;
+initModule( SDModules[ moduleIndex ] );
+
+SDModules[ ++moduleIndex ] = new Array();
 SDModules[ moduleIndex ][ MODULE_ID        ] = "sd.dev.web.css";
 SDModules[ moduleIndex ][ MODULE_FILENAME  ] = MODULES_DIRECTORY + "module-dev-web-css.html";
 SDModules[ moduleIndex ][ MODULE_VISIBLE   ] = false;
