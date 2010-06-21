@@ -125,6 +125,10 @@ img {
     background: -moz-linear-gradient( center bottom, rgb(230,238,255) 0%, rgb(240,248,255) 99% ) ;
     background: -webkit-gradient( linear, left bottom, left top, color-stop(0, rgb(230,238,255)), color-stop(0.99, rgb(240,248,255)) );
 }
+.back_gr_red {
+    background: -moz-linear-gradient( center bottom, rgb(255,238,230) 0%, rgb(255,248,240) 99% ) ;
+    background: -webkit-gradient( linear, left bottom, left top, color-stop(0, rgb(255,238,230)), color-stop(0.99, rgb(255,248,240)) );
+}
 
 .spot_div {
     width: 100%;

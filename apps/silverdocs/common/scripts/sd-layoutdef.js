@@ -177,7 +177,7 @@ SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_gray";
 SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.dev.java.j2se";
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "J2SE";
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_gray";
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_red";
 
 SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.dev.java.j2me";
