@@ -121,6 +121,10 @@ img {
     background: -moz-linear-gradient( center bottom, rgb(225,225,225) 0%, rgb(240,240,240) 99% ) ;
     background: -webkit-gradient( linear, left bottom, left top, color-stop(0, rgb(225,225,225)), color-stop(0.99, rgb(240,240,240)) );
 }
+.back_gr_green {
+    background: -moz-linear-gradient( center bottom, rgb(238,255,230) 0%, rgb(248,255,240) 99% ) ;
+    background: -webkit-gradient( linear, left bottom, left top, color-stop(0, rgb(238,255,230)), color-stop(0.99, rgb(248,255,240)) );
+}
 .back_gr_blue {
     background: -moz-linear-gradient( center bottom, rgb(230,238,255) 0%, rgb(240,248,255) 99% ) ;
     background: -webkit-gradient( linear, left bottom, left top, color-stop(0, rgb(230,238,255)), color-stop(0.99, rgb(240,248,255)) );

@@ -227,7 +227,7 @@ SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_gray";
 SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.dev.java.spring";
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Spring";
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_gray";
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_green";
 
 SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.dev.testing";
