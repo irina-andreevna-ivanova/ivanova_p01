@@ -9,8 +9,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
-import org.apache.commons.lang.StringUtils;
-
 /**
  * 
  * 
@@ -23,7 +21,8 @@ public class TimestampGenerator {
         System.out.println( "Date     : " + now );
         System.out.println( "Timestamp: " + now.getTime() );
 
-        System.out.println( new SimpleDateFormat( "dd.MM.yyyy" ).parse( "22.05.2015" ).getTime() );
+        String date = "22.10.1980";
+        System.out.println( date + " = " + new SimpleDateFormat( "dd.MM.yyyy" ).parse( date ).getTime() );
 
         long timestampSource = 1268044845388L;
         displayTimestamp( timestampSource );

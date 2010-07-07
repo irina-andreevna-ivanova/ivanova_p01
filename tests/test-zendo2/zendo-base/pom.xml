@@ -30,10 +30,26 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
-        <!-- Capability: Spring_LDAPTemplate -->
+        <!-- Capability: Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-ldap</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
         </dependency>
     </dependencies>
 
