@@ -1,6 +1,73 @@
 --------------------------------------------------------------------------------------------------------
 Serialization
 --------------------------------------------------------------------------------------------------------
+- class must implement Serializable, or inherit it from superclasses
+- persist objects with ObjectOutputStream.writeObject(). 
+  This is a filter stream(it is built around another stream, called the node stream)
+  Retrieve the objects with ObjectInputStream.readObject().
+  The constructor is NOT called upon deserialization. Only when the instance is created
+- only the object state is persisted, not the object class. The class MUST be available on the target system (the system where the object is deserialized)
+- non-persistent fields are marked with transient
+- Customization of the mechanism
+    1. Customize the default process:
+            private void writeObject(ObjectOutputStream out) throws IOException;
+            private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException;
+
+            public class PersistentAnimation implements Serializable, Runnable {
+                transient private Thread animator;
+                private int animationSpeed;
+                public PersistentAnimation(int animationSpeed) {
+                    this.animationSpeed = animationSpeed;
+                    startAnimation();
+                }
+                public void run() {
+                    while ( true ) {
+                        // do animation here
+                    }
+                }
+                private void writeObject( ObjectOutputStream out ) throws IOException {
+                    out.defaultWriteObject();
+                }
+                private void readObject( ObjectInputStream in ) throws IOException, ClassNotFoundException {
+                    // our "pseudo-constructor"
+                    in.defaultReadObject();
+                    // now we are a "live" object again, so let's run rebuild and start
+                    startAnimation();
+                }
+                private void startAnimation() {
+                    animator = new Thread( this );
+                    animator.start();
+                }
+            }
+       
+       Stop the serialization of a class:
+            private void writeObject(ObjectOutputStream out) throws IOException {
+                throw new NotSerializableException("Not today!");
+            }
+            private void readObject(ObjectInputStream in) throws IOException{
+                throw new NotSerializableException("Not today!");
+            }
+    2. Implement the Externalizable interface
+            public void writeExternal(ObjectOutput out) throws IOException;
+            public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException;
+- release cache of objects hold by ObjectOutputStream -> OOS.reset()
+- use serialVersionUID to control the versioning of classes
+    - use [serialver] tool for generating serial numbers
+    - the serial version UID of a class that does not implement Serializable is 0L
+    - the computed value is a 64-bit hash of the class name, interface class names, methods, and fields.
+    
+- Note - It is strongly recommended that all serializable classes explicitly declare serialVersionUID values, 
+         since the default serialVersionUID computation is highly sensitive to class details that may vary 
+         depending on compiler implementations, and can thus result in unexpected serialVersionUID conflicts 
+         during deserialization, causing deserialization to fail.     
+    
+GOTCHAS
+    - caching of objects (-> use OOS.reset() )
+    - versioning of classes (provide serialVersionUID, take care when making changes in the persisted class)
+    - performance is low when serializing
+    - since objects are cached, it is possible that the GC will not be able to collect the objects until the 
+      stream is closed or resetted
+       
 - steps in serialization
     1. write magic data
     2. write description of classes, bottom-up
@@ -44,11 +111,16 @@ Serial Version UID
         - change field from transient to non-transient
         - add classes to object tree
     - incompatible changes
-        - delete fields
-        - change class hierarchy
-        - change non-static to static
-        - change non-transient to transient
-        - change type of a primitive field
+        * Deleting fields - If a field is deleted in a class, the stream written will not contain its value. When the stream is read by an earlier class, the value of the field will be set to the default value because no value is available in the stream. However, this default value may adversely impair the ability of the earlier version to fulfill its contract.
+        * Moving classes up or down the hierarchy - This cannot be allowed since the data in the stream appears in the wrong sequence.
+        * Changing a nonstatic field to static or a nontransient field to transient - When relying on default serialization, this change is equivalent to deleting a field from the class. This version of the class will not write that data to the stream, so it will not be available to be read by earlier versions of the class. As when deleting a field, the field of the earlier version will be initialized to the default value, which can cause the class to fail in unexpected ways.
+        * Changing the declared type of a primitive field - Each version of the class writes the data with its declared type. Earlier versions of the class attempting to read the field will fail because the type of the data in the stream does not match the type of the field.
+        * Changing the writeObject or readObject method so that it no longer writes or reads the default field data or changing it so that it attempts to write it or read it when the previous version did not. The default field data must consistently either appear or not appear in the stream.
+        * Changing a class from Serializable to Externalizable or vice versa is an incompatible change since the stream will contain data that is incompatible with the implementation of the available class.
+        * Changing a class from a non-enum type to an enum type or vice versa since the stream will contain data that is incompatible with the implementation of the available class.
+        * Removing either Serializable or Externalizable is an incompatible change since when written it will no longer supply the fields needed by older versions of the class.
+        * Adding the writeReplace or readResolve method to a class is incompatible if the behavior would produce an object that is incompatible with any older version of the class.
+
 - alternatives to implementing Serializable:
     - implement Externalizable, and make you own serialization of objects
     - serialize your objects using XML and an XML parser
