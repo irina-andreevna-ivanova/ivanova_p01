@@ -82,6 +82,37 @@ GOTCHAS
         2. write data of Derived Class 3
     4. write description of contained objects
     5. write data of contained objects
+    
+- general guidelines
+    - serialization is discouraged for inner classes (non-static member classes, local and anonymous classes)
+    - to protect from serialization, implement writeObject(), readObject() and throw NotSerializableException
+    
+- serializable fields
+    - all fields non-static and non-transient
+    - define special class field:
+      private static final ObjectStreamField[] serialPersistentFields = {new ObjectStreamField("next", List.class)};
+    - the special serialPersistentFields field does not work for inner classes (but it works for static member classes)
+- documenting
+    - use @serial <field-description> for each serial field
+    - use @serialField for each member of the serialPersistentFields array 
+    - use @serialData <data-description> to document the additional data written by the writeObject or by the Externalizable.writeExternal
+- customization
+    - Serializable
+        - writeObject()
+        - writeReplace() (nominate a different object to be written to the stream)
+        - readObject()
+        - readResolve() (nominate a replacement object for the one just read from the stream)
+        - objectOutputStream.defaultWriteObject();
+        - objectInputStream.defaultReadObject();
+    - Externalizable
+        - writeExternal( ObjectOutput )
+        - readExternal( ObjectInput )
+        - optional writeReplace()
+        - optional readReplace()
+- serialization of special types
+    - enums - serializes the name of the element (as returned by name()). Des. by sending the name to valueOf()
+    
+            
 
 --------------------------------------------------------------------------------------------------------
 Serial Version UID
