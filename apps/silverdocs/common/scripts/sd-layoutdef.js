@@ -23,11 +23,6 @@ SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_gray";
 
 SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.general.various";
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Various resources";
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_gray";
-
-SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.computer.various";
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Misc";
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_gray";
 
@@ -44,6 +39,16 @@ SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_gray";
 SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.dev.linux";
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Linux";
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_gray";
+
+SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.dev.algorithms";
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Algorithms";
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_gray";
+
+SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.books.notes";
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Book notes";
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_gray";
 
 SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
@@ -67,13 +72,13 @@ SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Patterns, Refactoring, X
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_gray";
 
 SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.dev.algorithms";
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Algorithms";
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.computer.network";
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Network Protocols";
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_gray";
 
 SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.books.notes";
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Book notes";
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.dev.security";
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Security";
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_gray";
 
 SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
@@ -156,8 +161,8 @@ SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Service Oriented Arch";
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_gray";
 
 SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.computer.network";
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Network Protocols";
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.dev.webservices";
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Web Services";
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_gray";
 
 /* *********************************************************************** */
@@ -237,16 +242,6 @@ SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_gray";
 SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.dev.versioncontrol";
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Version Control Systems";
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_gray";
-
-SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.dev.security";
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Security";
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_gray";
-
-SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.dev.webservices";
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Web Services";
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_gray";
 
 /* *********************************************************************** */

@@ -10,17 +10,36 @@ Stack - the place where method names, local variables, intermediate computations
       - member variables
       - each thread has its own stack instance
       - stack is thread safe
-      
+
       -Xss512k -> control the size of the stack
-      
+
 Heap  - the place where the instance variables and the object data are kept. To allocate the memory for
         the heap, use -Xmn, -Xms, -Xmx
       - local variables
       - all threads share the same heap
       - heap is not thread safe
-      
-Setting Java heap for various apps: 
+
+Setting Java heap for various apps:
 http://javahowto.blogspot.com/2006/06/6-common-errors-in-setting-java-heap.html
+
+___________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Class Loading Mechanism
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+When a class is not found, it is searched in the following locations:
+   1. Bootstrap classes:
+                the runtime classes in rt.jar, internationalization classes in i18n.jar, and others.
+   2. Installed extensions:
+                classes in JAR files in the lib/ext directory of the JRE, and in the system-wide, platform-specific extension directory (such as /usr/jdk/packages/lib/ext on the SolarisTM Operating System, but note that use of this directory applies only to JavaTM 6 and later).
+   3. The class path:
+                classes, including classes in JAR files, on paths specified by the system property java.class.path. If a JAR file on the class path has a manifest with the Class-Path attribute, JAR files specified by the Class-Path attribute will be searched also. By default, the java.class.path property's value is ., the current directory. You can change the value by using the -classpath or -cp command-line options, or setting the CLASSPATH environment variable. The command-line options override the setting of the CLASSPATH environment variable.
+
+The JarURLConnection class and JAR URLs
+    The getMainClassName method uses the JAR URL format specified by the java.net.JarURLConnection class. The syntax for the URL
+    of a JAR file is as in this example:
+            jar:http://www.xxx.yyy/jarfile.jar!/
+    The terminating !/ separator indicates that the URL refers to an entire JAR file. Anything following the separator refers to specific
+    JAR-file contents, as in this example:
+            jar:http://www.xxx.yyy/jarfile.jar!/mypackage/myclass.class
 
 ___________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 Collections
@@ -41,7 +60,7 @@ Collection (a sequence of individual elements, enforced with some specific rules
                         - ArrayList: simple non-sync impl of List, uses internally an array to store the objects. Good for random access, bad for multiple inserts and removals
                         - LinkedList: simple non-sync impl of List, uses internally a linked list. Bad for random access, good for multiple inserts and removals
                             o provides more methods than ArrayList, some of them being just diplicates of existing method, but with names more appropriate for the various usage contexts
-                        - Stack (can be modeled with LinkedList) 
+                        - Stack (can be modeled with LinkedList)
                     o list behaviour changes according to the equals() method
                     o col.set()
                     o col.retainAll()
@@ -73,13 +92,13 @@ Map (a group of key-value pairs, that allows you to look up an object by a given
            - map.containsValue()
            - map.putAll()
            - map produces set of keys, collection of values and set of key-value pairs
-           
+
 - Arrays.toString() (for arrays; the containers print themselves just fine)
 - Arrays.asList ([]) (a,b,c,...) -> unmodifiable list
 - Arrays.<Snow>asList( .... )
 - Collections.addAll() (preferred approach, instead of new XCollection(Arrays.asList(...))
 - Collections.sort()
-- Collections.shuffle()           
+- Collections.shuffle()
 - Collections.REVERSE_ORDER (same as Collections.reverseOrder())
 - Collections.fill() (just duplicates a reference for the entire list)
 - Collections.nCopies() (just duplicates a reference N times)
@@ -102,15 +121,15 @@ Generators:
   the item to return only when the item is requested
 
 - optional operations and unsupported operations (such as operations on fixed-size lists)
-- Collections.unmodifiableList()  
-- Collections.unmodifiableSet()  
-- Collections.unmodifiableMap()  
-- Collections.unmodifiableSortedSet()  
-- Collections.unmodifiableSortedMap()  
+- Collections.unmodifiableList()
+- Collections.unmodifiableSet()
+- Collections.unmodifiableMap()
+- Collections.unmodifiableSortedSet()
+- Collections.unmodifiableSortedMap()
 
 List
     - LinkedList.listIterator()
-    
+
 Set
         - objects added to Set must at least implement equals()
         - HashSet: optimized for fast lookup. Object must implement hashCode(). Does not guarantee any order.
@@ -119,22 +138,22 @@ Set
         - equals() and hashCode() should be overidded in group
     - SortedSet
         - methods: first(), last(), subSet(), headSet(), tailSet()
-        
+
 Queue
     - PriorityQueue
     - LinkedList
-     
+
 Dequeue
         - double-ended queue
         - add and remove elements from either end
         - putFirst, putLast, offerFirst, offerLast, ....
     - LinkedList
-    
+
 Map
         - the keys must implement equals(), hashCode(), Comparable (depending on the selected Map implementation)
     - HashMap
         - very fast; uses the hash code to get a "relatively unique" integer for an object
-    - SortedMap        
+    - SortedMap
         - TreeMap
             - provides custom sorting for keys
             - new methods: firstKey(), lastKey(), subMap(), headMap(), tailMap()
@@ -142,13 +161,13 @@ Map
         - same speed as HashMap, but also keeps the oder of insertion
         - based on parameter in constructor, LinkedHashMap can use a LRU (least recently used) algorithm,
           therefore placing the least used keys at the beginning of the map, since these are the keys most
-          likely to be removed in the future 
+          likely to be removed in the future
     - WeakHashMap
     - ConcurrentHashMap
     - IdentityHashMap
         - uses == instead of obj.equals() for comparing objects; use it only in very special cases, when
           identity comparison makes sense and represents a requirement
-          
+
         - any key that is used in a map must have equals() properly implemented
         - any key that is used in a hash map must implement hashCode()
         - any key that is used in a TreeMap must implement Comparable
@@ -158,7 +177,7 @@ Implementing hashCode() and equals()
         - reflexive : x.equals(x) should return TRUE
         - symetric  : x.equals(y) must be the same as y.equals(x)
         - transitive: x.equals(y), y.equals(z) then x.equals(z)
-        - consistent: x.equals(y) invoked repeatedly should provide the same result, regardless of the number 
+        - consistent: x.equals(y) invoked repeatedly should provide the same result, regardless of the number
           of invocations, and provided that no information used in the equals operation is changed
         - null      : x.equals(null) should give false
     - hashing
@@ -167,26 +186,26 @@ Implementing hashCode() and equals()
         - perfect hashing junction: the case when no collisions happen (such a case is implemented in EnumMap
           and EnumSet, since the Enums define a fixed number of instances)
         - the hashCode() must produce the same value each time it is called. If the object is mutable, the user
-          must be made aware of this (otherwise an object placed in a map with put() might not be able to be 
+          must be made aware of this (otherwise an object placed in a map with put() might not be able to be
           retrieved later)
         - the hashCode doesn't have to be unique; prefer performance over uniqueness
-        -    
-        
-        1.  Store some constant nonzero value, say 17, in an int variable called result.  
-        2.  For each significant field fin your object (that is, each field taken into account by the 
-            equals( ) method), calculate an int hash code c for the field:  
-                boolean                         c = ( f ? 0 : 1) 
-                byte, char, short, or int       c = (int)f 
-                long                            c = (int)(f ^ (f>>>32)) 
-                float                           c = Float.floatToIntBits(f); 
-                double                          long l = Double.doubleToLongBits(f); 
-                                                c = (int)(1 ^ (l>>>32)) 
-                Object                          c = f.hashCode( ) 
-                Array                           Apply above rules to each element 
-        3.  Combine the hash code(s) computed above: result = 37 * result + c;  
-        4.  Return result.  
-        5.  Look at the resulting hashCode( ) and make sure that equal instances have equal hash codes.          
-        
+        -
+
+        1.  Store some constant nonzero value, say 17, in an int variable called result.
+        2.  For each significant field fin your object (that is, each field taken into account by the
+            equals( ) method), calculate an int hash code c for the field:
+                boolean                         c = ( f ? 0 : 1)
+                byte, char, short, or int       c = (int)f
+                long                            c = (int)(f ^ (f>>>32))
+                float                           c = Float.floatToIntBits(f);
+                double                          long l = Double.doubleToLongBits(f);
+                                                c = (int)(1 ^ (l>>>32))
+                Object                          c = f.hashCode( )
+                Array                           Apply above rules to each element
+        3.  Combine the hash code(s) computed above: result = 37 * result + c;
+        4.  Return result.
+        5.  Look at the resulting hashCode( ) and make sure that equal instances have equal hash codes.
+
 
 ___________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 Using java.net Authenticator
@@ -209,3 +228,26 @@ class MyAuthenticator extends Authenticator {
       return new PasswordAuthentication(username, password.toCharArray());
   }
 }
+
+------------------------------------------------------------------------------------------------------
+Using Java Preferences API
+------------------------------------------------------------------------------------------------------
+- allows apps to store and retrieve general public data
+- two types of preference nodes
+    - user
+    - system
+- storing is implemented independently, in a custom backing-store; no concern for the client application
+- a node has:
+    - node name (not unique)
+    - absolute path name (unique)
+    - relative path name
+- root node has an absolute path of "/"
+- children have absolute path names of <parent_abs_path>/node_name
+- all abs paths begin with "/"
+- except for root, no node path ends with /
+- a PreferencesFactory class is used for getting the actual instance of Preferences
+- Sun's JRE computes the PrefFactory by:
+    - system property: java.util.prefs.PreferencesFactory
+    - service loader (Java standard):
+        - file: META-INF/services/java.util.prefs.PreferencesFactory
+    - system-wide PreferencesFactory implementation is used

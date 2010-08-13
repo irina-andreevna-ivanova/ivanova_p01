@@ -112,13 +112,6 @@ SDModules[ moduleIndex ][ MODULE_PINNED    ] = false;
 initModule( SDModules[ moduleIndex ] );
 
 SDModules[ ++moduleIndex ] = new Array();
-SDModules[ moduleIndex ][ MODULE_ID        ] = "sd.computer.various";
-SDModules[ moduleIndex ][ MODULE_FILENAME  ] = MODULES_DIRECTORY + "module-computer-various.html";
-SDModules[ moduleIndex ][ MODULE_VISIBLE   ] = false;
-SDModules[ moduleIndex ][ MODULE_PINNED    ] = false;
-initModule( SDModules[ moduleIndex ] );
-
-SDModules[ ++moduleIndex ] = new Array();
 SDModules[ moduleIndex ][ MODULE_ID        ] = "sd.design.patterns";
 SDModules[ moduleIndex ][ MODULE_FILENAME  ] = MODULES_DIRECTORY + "module-design-patterns.html";
 SDModules[ moduleIndex ][ MODULE_VISIBLE   ] = false;

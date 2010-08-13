@@ -1,0 +1,55 @@
+SQL Notes
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+JOINS
+!! - NULL never matches anything, not event other NULLS
+!! - use IS NULL or IS NOT NULL
+
+Cross-Join
+    - cartesian product
+    - all rows from A   X   all rows from B
+
+Inner Join
+    - basically a filtering of the Cross Join on a particular condition
+    - explicit notation: SELECT * FROM A a INNER JOIN B b ON b.AID = a.ID
+    - implicit notation: SELECT * FROM A a, B b WHERE  b.AID = a.ID
+
+Equi Join
+    - a INNER join where the condition is based solely on EQUALITY
+    - any other condition disqualifies the JOIN as an Equi Join
+    - explicit notation above: => equi join
+    - other notation: SELECT FROM A a INNER JOIN B b USING (SomeID)
+
+Natural Join
+    - similar to Equi Join, but compares all the columns that have the same name in both tables
+    - notation: SELECT * FROM A NATURAL JOIN B
+
+Cross Join
+    - cartesian product; foundation for all the other JOINS
+    - notation: SELECT * FROM A CROSS JOIN B
+    - notation: SELECT * FROM A a, B b
+
+Outer Join
+    - does not require that all records in the joined tables to have a matching record in order to be included in the result
+    - no implicit notation
+    - Left Outer Join
+        - all elements from the left table are included, even though no matching records exist in the right table
+        - all columns from the right table that have no match get a NULL
+        - SELECT * FROM   employee  LEFT OUTER JOIN department ON employee.DepartmentID = department.DepartmentID;
+    - Right Outer Join
+        - all elements from the right table are included, even though no matching records exist in the left table
+        - all columns from the left table that have no match get a NULL
+        - SELECT * FROM   employee RIGHT OUTER JOIN department ON employee.DepartmentID = department.DepartmentID;
+    - Full Outer Join
+        - combination of Left and Right, with Union
+        - SELECT * FROM employee FULL OUTER JOIN department ON employee.DepartmentID = department.DepartmentID;
+
+    !!! Alternative:
+        - the effect of outer joins can be obtained by correlated subqueries:
+                SELECT employee.LastName, employee.DepartmentID,
+                  (SELECT department.DepartmentName
+                    FROM department
+                   WHERE employee.DepartmentID = department.DepartmentID ) AS DepartmentName
+                FROM   employee;
+
+Self Join
+    - joining a table with itself
