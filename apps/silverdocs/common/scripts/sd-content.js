@@ -2,9 +2,9 @@
 var CONTENT_LOADFRAME   = "sd.loadFrame";
 var CONTENT_CONTENTDIV  = "sd.contentDiv";
 var CONTENT_INDEXDIV    = "sd.indexDiv";
-var CONTENT_BOOKMARKDIV = "sd.bookmarkDiv"; 
-var CONTENT_APPLICATIONSDIV = "sd.applicationsDiv"; 
-var CONTENT_SEARCHDIV = "sd.searchDiv"; 
+var CONTENT_BOOKMARKDIV = "sd.bookmarkDiv";
+var CONTENT_APPLICATIONSDIV = "sd.applicationsDiv";
+var CONTENT_SEARCHDIV = "sd.searchDiv";
 var CONTENT_INDEXITEMS  = 3;
 var CONTENT_SPOTDIVS_PREFIX = "spot.";
 var CONTENT_SPOTHEADERPINICON_PREFIX = "spot.header.icon.pin.";
@@ -29,16 +29,16 @@ function onPageLoad() {
 
 	// 2. process all modules, and load those that are marked as visible
 	processAllModules();
-	
+
 	// 3. update app state
 	updateApplicationState();
-	
+
 	// 3. add hover events for all tables with class="spot_header"
 	/*
 	var elems = document.getElementsByTagName( "table" );
 	for( index = 0; index < elems.length; index++ ) {
 		elem = elems[ index ];
-		
+
 		if ( elems[ index ].className == "spot_header" ) {
 			tdelem = elem.getElementsByTagName( "tr" )[ 0 ].getElementsByTagName( "td" )[ 1 ];
 			tdelem.onmouseover = onSpotHeaderMouseOver;
@@ -52,21 +52,21 @@ function generatePageContent() {
 	// 1. generate the big table with modules
 	var contentDiv = document.getElementById( CONTENT_CONTENTDIV );
 	columnLength = Math.floor( 100 / SDSpots.length );
-	
+
 	var contentStr = "";
 	contentStr += '<table cellpadding="0px" cellspacing="0px" width="100%" style="padding-left: 1px; padding-right: 5px;"><tr><td>';
 	contentStr += '<table cellpadding="0" cellspacing="0" width="100%">';
 	contentStr += '    <tbody><tr>';
 	contentStr += '        <td valign="top" width="' + columnLength + '%">';
-	
+
 	for( colIndex = 0; colIndex < SDSpots.length; colIndex++ ) {
 		spotColumn = SDSpots[ colIndex ];
 
 		for( rowIndex = 0; rowIndex < spotColumn.length; rowIndex++ ) {
 			spot = spotColumn[ rowIndex ];
-			contentStr += '            <table class="spot_header ' + spot[ SPOT_COLOR ] + '" style="width:100%;"><tbody><tr><td class="spot_header_icon_unpinned" id="spot.header.icon.pin.' + spot[ SPOT_MODULEID ] + '" onClick="onSpotHeaderPinIconClick(\'' + spot[ SPOT_MODULEID ] + '\');"></td><td onClick="onSpotHeaderClick(\'' + spot[ SPOT_MODULEID ] + '\');">' + spot[ SPOT_NAME ] + '</td></tr></tbody></table>';
+			contentStr += '            <table class="spot_header ' + spot[ SPOT_COLOR ] + '" style="width:100%;" title="' + spot[ SPOT_MODULEID ] + '"><tbody><tr><td class="spot_header_icon_unpinned" id="spot.header.icon.pin.' + spot[ SPOT_MODULEID ] + '" onClick="onSpotHeaderPinIconClick(\'' + spot[ SPOT_MODULEID ] + '\');"></td><td onClick="onSpotHeaderClick(\'' + spot[ SPOT_MODULEID ] + '\');">' + spot[ SPOT_NAME ] + '</td></tr></tbody></table>';
 			contentStr += '            <div id="spot.' + spot[ SPOT_MODULEID ] + '" class="spot_div"></div>';
-		} 
+		}
 
 		if ( colIndex < SDSpots.length - 1 ) {
 			contentStr += '</td>';
@@ -80,13 +80,13 @@ function generatePageContent() {
 	contentStr += '</tr>';
 	contentStr += '</tbody></table>';
 	contentStr += '</td></tr></table>';
-	
+
 	contentDiv.innerHTML = contentStr;
-	
+
 	// 2. generate the index list
 	var indexDiv = document.getElementById( CONTENT_INDEXDIV );
 	var spotsList = getSpotsListOrderedByName();
-	
+
 	contentStr = "";
 	contentStr += "<table cellpadding='0px' cellspacing='0px' class='table_indexList'><tr>";
 	contentStr += "<td class='table_indexList_cell'>";
@@ -96,10 +96,10 @@ function generatePageContent() {
 	contentStr += "<td valign='top'>";
 	for( spotIndex = 0; spotIndex < spotsList.length; spotIndex++ ) {
 		contentStr += "<a href='' onClick='onSpotHeaderClick(\"" + spotsList[ spotIndex ][ SPOT_MODULEID ] + "\");return false;'>" + spotsList[ spotIndex ][ SPOT_NAME ] + "</a><br/>";
-		
+
 		if ( ( spotIndex + 1 ) % CONTENT_INDEXITEMS == 0 ) {
 			contentStr += "</td><td style='width:1px; background-color: #A0A0A0;'></td><td valign='top'>";
-		}	
+		}
 	}
 	contentStr += "</td></tr></table>";
 */
@@ -107,8 +107,8 @@ function generatePageContent() {
 		contentStr += "<a id='spotIndexRef_" + spotsList[ spotIndex ][ SPOT_MODULEID ] + "' href='' onClick='onSpotHeaderClick(\"" + spotsList[ spotIndex ][ SPOT_MODULEID ] + "\");return false;' >" + spotsList[ spotIndex ][ SPOT_NAME ] + "</a><br/>";
 	}
 	contentStr += "</td></tr></table>";
-	
-	indexDiv.innerHTML = contentStr; 
+
+	indexDiv.innerHTML = contentStr;
 }
 
 function onPageUnload() {
@@ -128,7 +128,7 @@ function onBookmarkBarClick() {
 
 		var loadFrame = document.getElementById( CONTENT_LOADFRAME );
 		loadFrame.src = SDBookmarks[ MODULE_FILENAME ];
-	} 
+	}
 }
 function onApplicationsBarClick() {
 	var applicationsDiv = document.getElementById( CONTENT_APPLICATIONSDIV );
@@ -164,7 +164,7 @@ function onSearchBarClick() {
 }
 function onSpotHeaderClick( moduleID ) {
 	var module = getModuleByID( moduleID );
-	
+
 	if ( module[ MODULE_VISIBLE ] ) {
 		module[ MODULE_VISIBLE ] = false;
 	} else {
@@ -172,7 +172,7 @@ function onSpotHeaderClick( moduleID ) {
 		module[ MODULE_VISIBLE ] = true;
 	}
 	module[ MODULE_PROCESSED ] = false;
-	processAllModules();	
+	processAllModules();
 }
 function onSpotHeaderPinIconClick( moduleID ) {
 	var module = getModuleByID( moduleID );
@@ -186,20 +186,20 @@ function processAllModules() {
 			processModule( SDModules[ index ] );
 			break;
 		}
-	} 
+	}
 }
 
 function processModule( module ) {
 	var spotDiv = getSpotDivByModuleID( module[ MODULE_ID ] );
 	var spotHeaderPinIconTD = getSpotHeaderPinIconByModuleID( module[ MODULE_ID ] );
 
-	if ( !module[ MODULE_PROCESSED ] ) { 
+	if ( !module[ MODULE_PROCESSED ] ) {
 		if ( module[ MODULE_VISIBLE ] ) {
             //document.getElementById( "spotIndexRef_" + module[ MODULE_ID ] ).className = "a_index_opened";
 			spotDiv.innerHTML = CONTENT_SPOT_LOADING;
             var loadFrame = document.getElementById( CONTENT_LOADFRAME );
 			loadFrame.src = module[ MODULE_FILENAME ];
-		} else { 
+		} else {
             //document.getElementById( "spotIndexRef_" + module[ MODULE_ID ] ).className = "a_index_closed";
 			spotDiv.innerHTML = CONTENT_SPOT_INVISIBLE;
 			module[ MODULE_VISIBLE ] = false;
@@ -207,7 +207,7 @@ function processModule( module ) {
 			processAllModules();
 		}
 	}
-	
+
 	if ( module[ MODULE_PINNED ] ) {
 		spotHeaderPinIconTD.className = "spot_header_icon_pinned";
 	} else {
@@ -218,12 +218,12 @@ function processModule( module ) {
 function processModuleContent( moduleID, content ) {
 	var module = getModuleByID( moduleID );
 	getSpotDivByModuleID( moduleID ).innerHTML = content;
-	
+
 	// this is really bad since it hardcodes the module ID here as well as the module itself...
 	//if ( moduleID == "sd.general.search" ) {
-		//document.getElementById( "sd.general.search.google.search.input" ).focus();		
+		//document.getElementById( "sd.general.search.google.search.input" ).focus();
 	//}
-	
+
 	module[ MODULE_VISIBLE   ] = true;
 	module[ MODULE_PROCESSED ] = true;
 	module[ MODULE_TIMESTAMP ] = new Date().getTime();
@@ -244,7 +244,7 @@ function processSearchContent( content ) {
 function closeAllModulesUnpinnedOnTheColumn( activeModuleID ) {
 	var colIndex = -1;
 	var rowIndex = -1;
-	
+
 	// 1. first search for the module in the spot array
 	for( cIndex = 0; cIndex < SDSpots.length && colIndex == -1; cIndex++ ) {
 		for( rIndex = 0; rIndex < SDSpots[ cIndex ].length; rIndex++ ) {
@@ -253,16 +253,16 @@ function closeAllModulesUnpinnedOnTheColumn( activeModuleID ) {
 				rowIndex = rIndex;
 				break;
 			}
-		}  
+		}
 	}
-	
+
 	// 2. close all modules from the same column, so that only the most
 	// MODULES_MAXVISIBLEPERCOLUMN recent opened modules remain opened
 	while ( true ) {
 		modulesCount = 0;
 		minTimestamp = new Date().getTime();// any other time will be lower than current time
 		minModule = null;
-		
+
 		for( rIndex = 0; rIndex < SDSpots[ colIndex ].length; rIndex++ ) {
 			if ( rIndex != rowIndex ) {
 				module = getModuleByID( SDSpots[ colIndex ][ rIndex ][ SPOT_MODULEID ] );
@@ -271,11 +271,11 @@ function closeAllModulesUnpinnedOnTheColumn( activeModuleID ) {
 					if ( minTimestamp >= module[ MODULE_TIMESTAMP ] ) {
 						minTimestamp = module[ MODULE_TIMESTAMP ];
 						minModule = module;
-					} 
+					}
 				}
 			}
 		}
-		
+
 		if ( modulesCount > MODULES_MAXVISIBLEPERCOLUMN - 1 ) {
 			minModule[ MODULE_VISIBLE   ] = false;
 			minModule[ MODULE_PROCESSED ] = false;
@@ -293,8 +293,8 @@ function setAllModulesStates( state ) {
 			module[ MODULE_PROCESSED ] = false;
 		}
 	}
-	
-	processAllModules();	
+
+	processAllModules();
 }
 
 function setAllModulesVisible() {

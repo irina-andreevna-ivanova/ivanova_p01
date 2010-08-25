@@ -25,13 +25,49 @@ http://javahowto.blogspot.com/2006/06/6-common-errors-in-setting-java-heap.html
 ___________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 Class Loading Mechanism
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    - class type = package + class name
+    - class = defined by its class type and its class loader = package + class name + effective class loader
+    - a class is loaded once in a class loader, and then cached, to make sure the byte code doesn't change
+    - initiating CL: the CL that initiates the process of loading a class
+    - effective CL: the CL that did the actual class loading (not the one that started it, that is the initiating CL)
+    - Bootstrap CL: the one that loads the JDK, and the extension classes
+    - System CL: the one that loads the classes found in the class path of the application (CLASSPATH env, -classpath, -cp, java.class.path)
+    - all class loaders have a parent, except for the Bootstrap one. If no parent class loader is provided, the default system class loader is set
 When a class is not found, it is searched in the following locations:
    1. Bootstrap classes:
-                the runtime classes in rt.jar, internationalization classes in i18n.jar, and others.
+            - loaded by the bootstrap class loader
+            - the runtime classes in rt.jar, internationalization classes in i18n.jar, and others.
+            - we cannot ge the class loader of the system classes (String.class.getClassLoader() returns null)
    2. Installed extensions:
-                classes in JAR files in the lib/ext directory of the JRE, and in the system-wide, platform-specific extension directory (such as /usr/jdk/packages/lib/ext on the SolarisTM Operating System, but note that use of this directory applies only to JavaTM 6 and later).
+            - loaded by the Java class extension class loader, ExtClassLoader
+            - loaded from the location provided by system property: "java.ext.dirs"
+            - classes in JAR files in the lib/ext directory of the JRE, and in the system-wide, platform-specific extension directory (such as /usr/jdk/packages/lib/ext on the SolarisTM Operating System, but note that use of this directory applies only to JavaTM 6 and later).
    3. The class path:
-                classes, including classes in JAR files, on paths specified by the system property java.class.path. If a JAR file on the class path has a manifest with the Class-Path attribute, JAR files specified by the Class-Path attribute will be searched also. By default, the java.class.path property's value is ., the current directory. You can change the value by using the -classpath or -cp command-line options, or setting the CLASSPATH environment variable. The command-line options override the setting of the CLASSPATH environment variable.
+            - loaded by the AppClassLoader
+            - classes, including classes in JAR files, on paths specified by the system property java.class.path. If a JAR file on the class path has a manifest with the Class-Path attribute, JAR files specified by the Class-Path attribute will be searched also. By default, the java.class.path property's value is ., the current directory. You can change the value by using the -classpath or -cp command-line options, or setting the CLASSPATH environment variable. The command-line options override the setting of the CLASSPATH environment variable.
+
+    - classes loaded by a CL can only see classes loaded by the same CL or by any parent of the loading CL. They do NOT see the
+      classes loaded by the descendants of the CL that loaded the class
+
+Sample of Class Loader strategies for various application servers
+    - Weblogic 6.1 with SP2
+        - one CL as parent of the system class loader, for loading the EAR; responsible for loading all EJB jar files and all Manifest Class-Path: entries for JAR and WAR files
+        - one CL for each WAR file
+        - advantage: all classes from the EJB jars are available for the WAR classes
+        - deploying JAR + WAR files separately means that classes from the WARs will not have access to classes from EJB, since they
+          are loaded by different + not-related CLs
+    - WebSphere 4.0
+        - the model chosen by WS is based on "isolation modes"; there are 4 isolation modes defined by WS:
+            - Module: WS creates one CL for each module defined in an EAR: EJB jar, simple JAR or WAR. The logical hierarchy is formed
+              based on the references specified in the Manifest Class-Path entries.
+            - Application: allows all CLs associated with a given application .ear to have access to all the other class loaders. It is like having
+              one CL for the entire application (one that loads
+            - Compatibility: provided for compatibility with older versions of WS. Similar to Weblogic (all WAR CLs see the CLs of the EJB jar modules)
+        - in order to provide sharing of class packs between class loaders, WS is using class loader grouping
+        - the recommended way is: use Module isolation with Manifest Class-Path entries for specifying the dependencies
+
+
+
 
 The JarURLConnection class and JAR URLs
     The getMainClassName method uses the JAR URL format specified by the java.net.JarURLConnection class. The syntax for the URL

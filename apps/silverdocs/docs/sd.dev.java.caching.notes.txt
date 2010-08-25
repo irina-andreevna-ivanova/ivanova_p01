@@ -1,0 +1,30 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Caching in Java
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[ehcache.xml] configuration for distributed cache + manual discovery
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ehcache.xsd" updateCheck="true" monitoring="autodetect">
+
+    <cacheManagerPeerProviderFactory class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory" properties="peerDiscovery=manual,rmiUrls=//localhost:30001/cache1|//localhost:30001/cache2"/>
+    <cacheManagerPeerListenerFactory class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory" properties="port=30005,socketTimeoutMillis=120000" propertySeparator="," />
+
+    <defaultCache maxElementsInMemory="100000" eternal="false" timeToIdleSeconds="300" timeToLiveSeconds="500" memoryStoreEvictionPolicy="LRU" />
+
+    <!-- CACHE 1 -->
+    <cache name="cache1" maxElementsInMemory="5000000" eternal="false" timeToLiveSeconds="3600" overflowToDisk="false" memoryStoreEvictionPolicy="LRU">
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" properties="replicateAsynchronously=false, replicatePuts=true, replicatePutsViaCopy=true, replicateUpdates=true, replicateUpdatesViaCopy=true, replicateRemovals=true" propertySeparator="," />
+        <bootstrapCacheLoaderFactory class="net.sf.ehcache.distribution.RMIBootstrapCacheLoaderFactory" properties="bootstrapAsynchronously=false, maximumChunkSizeBytes=5000000" propertySeparator="," />
+    </cache>
+
+    <!-- CACHE 2 -->
+    <cache name="cache2" maxElementsInMemory="5000000" eternal="false" timeToLiveSeconds="3600" overflowToDisk="false" memoryStoreEvictionPolicy="LRU">
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" properties="replicateAsynchronously=false, replicatePuts=true, replicatePutsViaCopy=true, replicateUpdates=true, replicateUpdatesViaCopy=true, replicateRemovals=true" propertySeparator="," />
+        <bootstrapCacheLoaderFactory class="net.sf.ehcache.distribution.RMIBootstrapCacheLoaderFactory" properties="bootstrapAsynchronously=false, maximumChunkSizeBytes=5000000" propertySeparator="," />
+    </cache>
+
+</ehcache>
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
