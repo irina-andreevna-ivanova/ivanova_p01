@@ -39,13 +39,14 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-all</artifactId>
         </dependency>
         <dependency>
-        	<groupId>commons-io</groupId>
+        	<groupId>commons-io</groupId>              
         	<artifactId>commons-io</artifactId>
         </dependency>
         <dependency>
@@ -55,6 +56,11 @@
         <dependency>
         	<groupId>commons-lang</groupId>
         	<artifactId>commons-lang</artifactId>
+        </dependency>
+        <dependency>
+        	<groupId>org.json</groupId>
+        	<artifactId>json</artifactId>
+            <version>20090211</version>
         </dependency>
     </dependencies>
 

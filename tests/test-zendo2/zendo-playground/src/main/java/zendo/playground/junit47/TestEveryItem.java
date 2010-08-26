@@ -3,10 +3,10 @@
  */
 package zendo.playground.junit47;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import org.junit.Test;
 
 /**
  * @author mocanu

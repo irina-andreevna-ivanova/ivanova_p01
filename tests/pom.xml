@@ -18,6 +18,7 @@
 		<module>evaluate-junit48</module>
 		<module>evaluate-ws</module>
 		<module>test-zendo2</module>
-	</modules>
+        <module>test-spring3-desktop</module>
+    </modules>
 	
 </project>
