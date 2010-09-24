@@ -1,0 +1,53 @@
+Notes on Agile methodology
+------------------------------------------------------------------------------------------------------
+
+Agile manifesto:
+                            We value:
+~ Individuals and interactions over processes and tools ~
+            - building the team is more important than building the environment. First work on having a good glued team, and then let the team
+              configure the env as they need it
+            - start small, use small free tools until you can prove that you have overgrown them. Then go for bigger tools
+            - a team of average programmers that work good as a team si much better than a team of superstars that can't work together
+~ Working software over comprehensive documentation ~
+            - software without documentation is bad; generally the code is not very good at trasmitting the rationale behind the implementation
+            - however, having a large documentation that takes time to write and more time to keep in sync is worse than having no documentation
+            - start with a small document, keep it in sync with the code, detail only the very large structure of the code and the large entities; sync with
+              the code once a month
+            - the best documentation to give to the new members is the code and the team; there is no faster way to make the new members
+              learn the system than to work closely to them and help them understand the system
+            - Produce no document unless its need is immediate and significant.
+~ Customer collaboration over contract negotiation ~
+            - software cannot be seen as a commodity; you cannot write the requirements for the software, leave the team a few months for dev
+              and then expect them to return with the working product
+            - a contract that specifies the requirements, the schedule and the cost of the project is fundamentally flawed
+            - a contract should specify the way the dev team and the customer will work together
+            - The key to the success of the project X was the intense collaboration with the customer; and a contract that governed that
+              collaboration rather than trying to specify the details of scope and schedule for a fixed cost.
+~ Responding to change over following a plan ~
+            - it is the ability to respond to change that most of the times decides whether a project will fail or not
+            - the proper project management strategy is not to plan everything right from the beginning, stick to the wall, and try to work on it
+            - rather, create a detailed plan for the tasks of the next weeks, a partially detailed/fixed plan for the next months, and only a vague
+              plan for the evolution of the system for the next year
+            - this means that we commit for the next period of a few weeks, and not for the entire period of the project. This provides flexibility
+              and allows the plan to be changed and adapted to the new requirements
+
+The 12 principles of Agile:
+            - Our highest priority is to satisfy the customer through early and continuous delivery of valuable software.
+            - Welcome changing requirements, even late in development. Agile processes harness change for the customer's competitive advantage.
+            - Deliver working software frequently, from a couple of weeks to a couple of months, with a preference to the shorter time scale.
+            - Business people and developers must work together daily throughout the project.
+            - Build projects around motivated individuals. Give them the environment and support they need, and trust them to get the job done.
+            - The most efficient and effective method of conveying information to and within a development team is face-to-face conversation.
+            - Working software is the primary measure of progress.
+            - Agile processes promote sustainable development. The sponsors, developers, and users should be able to maintain a constant pace indefinitely.
+            - Continuous attention to technical excellence and good design enhances agility.
+            - Simplicity--the art of maximizing the amount of work not done--is essential.
+            - The best architectures, requirements, and designs emerge from self-organizing teams.
+            - At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly.
+
+Existing Agile processes, as of 2001:
+            - SCRUM:                                                       www.controlchaos.com
+            - Crystal:                                                         crystalmethodologies.org
+            - Feature Driven Development                       Java Modeling In Color With UML: Enterprise Components and Process, Peter Coad, Eric Lefebvre, and Jeff De Luca, Prentice Hall, 1999
+            - Adaptive Software Development (ADP)       Adaptive Software Development: A Collaborative Approach to Managing Complex Systems, James A. Highsmith, Dorset House, 2000
+            - Extreme Programming                                 Extreme Programming Explained: Embracing Change, Kent Beck, Addison Wesley, 1999.
