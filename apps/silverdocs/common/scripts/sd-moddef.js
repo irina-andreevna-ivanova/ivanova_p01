@@ -49,6 +49,13 @@ SDModules[ moduleIndex ][ MODULE_PINNED    ] = false;
 initModule( SDModules[ moduleIndex ] );
 
 SDModules[ ++moduleIndex ] = new Array();
+SDModules[ moduleIndex ][ MODULE_ID        ] = "sd.general.techbag";
+SDModules[ moduleIndex ][ MODULE_FILENAME  ] = MODULES_DIRECTORY + "module-general-techbag.html";
+SDModules[ moduleIndex ][ MODULE_VISIBLE   ] = false;
+SDModules[ moduleIndex ][ MODULE_PINNED    ] = false;
+initModule( SDModules[ moduleIndex ] );
+
+SDModules[ ++moduleIndex ] = new Array();
 SDModules[ moduleIndex ][ MODULE_ID        ] = "sd.books.notes";
 SDModules[ moduleIndex ][ MODULE_FILENAME  ] = MODULES_DIRECTORY + "module-books-notes.html";
 SDModules[ moduleIndex ][ MODULE_VISIBLE   ] = false;
