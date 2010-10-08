@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Window" x="24" y="16" width="601" height="305" text="Welcome screen" measuredWidth="601" measuredHeight="305"/>
+  <widgets xsi:type="model:Label" x="170" y="80" text="Your orders" measuredWidth="61" measuredHeight="21">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" x="186" y="100" width="343" text="DALV" measuredWidth="343" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" x="170" y="131" text="Other active orders" measuredWidth="99" measuredHeight="21">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" x="186" y="151" width="343" text="PIZZA HOT" measuredWidth="343" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" x="186" y="179" width="343" text="COVACI SRL" measuredWidth="343" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" x="170" y="211" text="Manage" measuredWidth="43" measuredHeight="21">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" x="186" y="231" width="343" text="CREATE ORDER" measuredWidth="343" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Panel" x="24" y="35" width="137" height="286" measuredWidth="137" measuredHeight="286"/>
+  <widgets xsi:type="model:Panel" x="160" y="35" width="465" height="30" measuredWidth="465" measuredHeight="30"/>
+  <widgets xsi:type="model:Label" x="168" y="39" text="WELCOME" measuredWidth="55" measuredHeight="21">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" x="488" y="39" text="MIERCURI  |  10.05.2010" measuredWidth="127" measuredHeight="21">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Image" x="458" y="294"/>
+  <hRuler/>
+  <vRuler/>
+  <font/>
+</model:Screen>
