@@ -1,0 +1,48 @@
+Notes on HTTP
+------------------------------------------------------------------------------------------------------------------------
+Methods:
+    - OPTIONS:
+        - idempotent and safe method
+        - used for querying the properties and requirements of a resouce, identified by the Resource-URI
+        - if the response inclused an entity body, the Content-Type header must appear
+        - if the Request-URI is "*" then the request applies to the server in general. Otherwise it applies strictly to the indicated resource
+        - the Max-Forwards field may be used to limit the number of hops for proxies along the path of the request. A Max-Forwards value of
+          0 forces the proxy to respond with its own options
+
+    - GET
+        - idempotent and safe method
+        - retrieve any information (in the form of an entity) is identified by the Resource-URI
+        - conditional GET: when using any of the If-Modified-Since, If-Unmodified-Since, If-Match, If-None-Match, or If-Range header fields
+        - partial GET: when using the Range header
+
+    - HEAD
+        - idempotent and safe method
+        - identical to GET, except for the entity body. The headers should be similiar with the ones returned for GET
+        - the Content-Length, Content-MD5, ETag or Last-Modified can indicate that a change has occurred on the requested entity (and
+          therefore the cache (if any) should consider the cache entry as stale)
+
+    - POST
+        - NOT idempotent, UNSAFE
+        - the server must accept the entity as a subordinate of the resource identified by the Resource-URI
+        - Return codes: 200 (OK), 201 (Created), 204 (No Content), 303 (See Other) (this last one is for cacheable resources, where the
+          client is instructed to see the Location, where a cacheable resource can be obtained)
+        - for POST, the Request-URI identifies the resource that is responsible for handling the given entity, making it a subordinate of itself
+
+    - PUT
+        - idempotent, UNSAFE
+        - creates/updates the resource identified by the Resource-URI
+        - for PUT, the Request-URI is the actual identifier of the given entity. The server should either create the resource at the given URI
+          or return a 301 (Moved Permanently). The client can then act accordingly, deciding if it should redirect the request or not
+
+    - DELETE
+        - the sever is asked to delete the resource identified by the Resource-URI from the server, or move it to an unaccessbile location
+        - the server should return 200 (OK) if the response contains the status of the request, 202 (Accepted) if the entitty is scheduled for
+          deletion, or 204 (No Content) if the action has been performed but no response content is available
+
+    - TRACE
+        - idempotent, NOT safe
+        - invoke a remote application-layer loopback of the request message. The server is asked to response with an entity body that contains
+          the entire request message. The Content-Type should be "message/http". Headers of interest: Max-Forwards, Via
+
+    - CONNECT
+        - reserved for use with a proxy that can dynamically switch to being a tunnel (SSL tunneling)
