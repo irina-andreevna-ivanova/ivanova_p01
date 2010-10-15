@@ -7,6 +7,7 @@ var CONTENT_APPLICATIONSDIV = "sd.applicationsDiv";
 var CONTENT_SEARCHDIV = "sd.searchDiv";
 var CONTENT_INDEXITEMS  = 3;
 var CONTENT_SPOTDIVS_PREFIX = "spot.";
+var CONTENT_SPOTHEADER_PREFIX = "spot.header.";
 var CONTENT_SPOTHEADERPINICON_PREFIX = "spot.header.icon.pin.";
 
 var CONTENT_SPOT_INVISIBLE = "<table class='spot_div_invisible_table' cellpadding='0px' cellspacing='0px'><tr><td></td></tr></table>";
@@ -15,6 +16,9 @@ var CONTENT_SPOT_LOADING = "<table class='spot_div_loading_table' cellpadding='0
 /* *********************************************************************** */
 function getSpotDivByModuleID( moduleID ) {
 	return document.getElementById( CONTENT_SPOTDIVS_PREFIX + moduleID );
+}
+function getSpotHeaderByModuleID( moduleID ) {
+	return document.getElementById( CONTENT_SPOTHEADER_PREFIX + moduleID );
 }
 function getSpotHeaderPinIconByModuleID( moduleID ) {
 	return document.getElementById( CONTENT_SPOTHEADERPINICON_PREFIX + moduleID );
@@ -64,7 +68,7 @@ function generatePageContent() {
 
 		for( rowIndex = 0; rowIndex < spotColumn.length; rowIndex++ ) {
 			spot = spotColumn[ rowIndex ];
-			contentStr += '            <table class="spot_header ' + spot[ SPOT_COLOR ] + '" style="width:100%;" title="' + spot[ SPOT_MODULEID ] + '"><tbody><tr><td class="spot_header_icon_unpinned" id="spot.header.icon.pin.' + spot[ SPOT_MODULEID ] + '" onClick="onSpotHeaderPinIconClick(\'' + spot[ SPOT_MODULEID ] + '\');"></td><td onClick="onSpotHeaderClick(\'' + spot[ SPOT_MODULEID ] + '\');">' + spot[ SPOT_NAME ] + '</td></tr></tbody></table>';
+			contentStr += '            <table id="spot.header.' + spot[ SPOT_MODULEID ] + '" class="spot_header ' + spot[ SPOT_COLOR ] + '" style="width:100%;" title="' + spot[ SPOT_MODULEID ] + '"><tbody><tr><td class="spot_header_icon_unpinned" id="spot.header.icon.pin.' + spot[ SPOT_MODULEID ] + '" onClick="onSpotHeaderPinIconClick(\'' + spot[ SPOT_MODULEID ] + '\');"></td><td onClick="onSpotHeaderClick(\'' + spot[ SPOT_MODULEID ] + '\');">' + spot[ SPOT_NAME ] + '</td></tr></tbody></table>';
 			contentStr += '            <div id="spot.' + spot[ SPOT_MODULEID ] + '" class="spot_div"></div>';
 		}
 
@@ -190,17 +194,21 @@ function processAllModules() {
 }
 
 function processModule( module ) {
+	var spot = getSpotByModuleId( module[ MODULE_ID ] );
 	var spotDiv = getSpotDivByModuleID( module[ MODULE_ID ] );
+	var spotHeader = getSpotHeaderByModuleID( module[ MODULE_ID ] );
 	var spotHeaderPinIconTD = getSpotHeaderPinIconByModuleID( module[ MODULE_ID ] );
 
 	if ( !module[ MODULE_PROCESSED ] ) {
 		if ( module[ MODULE_VISIBLE ] ) {
             //document.getElementById( "spotIndexRef_" + module[ MODULE_ID ] ).className = "a_index_opened";
+			spotHeader.className = "spot_header spot_header_opened";
 			spotDiv.innerHTML = CONTENT_SPOT_LOADING;
             var loadFrame = document.getElementById( CONTENT_LOADFRAME );
 			loadFrame.src = module[ MODULE_FILENAME ];
 		} else {
             //document.getElementById( "spotIndexRef_" + module[ MODULE_ID ] ).className = "a_index_closed";
+			spotHeader.className = "spot_header " + spot[ SPOT_COLOR ];
 			spotDiv.innerHTML = CONTENT_SPOT_INVISIBLE;
 			module[ MODULE_VISIBLE ] = false;
 			module[ MODULE_PROCESSED ] = true;

@@ -254,6 +254,19 @@ function spotSortFunction( spot1, spot2 ) {
 	return ( spot1[ SPOT_NAME ] < spot2[ SPOT_NAME ] ) ? -1 : 1;
 }
 
+function getSpotByModuleId( moduleId ) {
+	for( columnIndex = 0; columnIndex < SDSpots.length; columnIndex++ ) {
+		for( rowIndex = 0; rowIndex < SDSpots[ columnIndex ].length; rowIndex++ ) {
+			if ( SDSpots[ columnIndex ][ rowIndex ][ SPOT_MODULEID ] == moduleId ) {
+				return SDSpots[ columnIndex ][ rowIndex ];
+			}
+		}
+	}
+
+	alert( "Cannot find the SPOT for module ID: " + moduleId );
+	return null;
+}
+
 function getSpotsListOrderedByName() {
 	var unifiedArray = new Array();
 	for( columnIndex = 0; columnIndex < SDSpots.length; columnIndex++ ) {

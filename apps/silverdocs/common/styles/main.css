@@ -66,10 +66,12 @@ input[type="button"], input[type="submit"] {
     background: -webkit-gradient( linear, left bottom, left top, color-stop(0, rgb(100,100,100)), color-stop(0.99, rgb(150,150,150)) );
     color: #FFF;
     font-size: 8pt;
+    height: 18px;
     padding-top: 0;
     margin-left: 5px;
     margin-right: 2px;
     -moz-border-radius: 3px 3px;
+    padding-bottom: 3px;
 }
 table {
     font-family: Verdana, sans-serif;
@@ -115,6 +117,12 @@ img {
 }
 .spot_header td {
     vertical-align: middle;
+}
+.spot_header_opened {
+	color: #FFFFFF;
+    background: -moz-linear-gradient( center bottom, rgb(180,180,180) 0%, rgb(200,200,200) 99% ) ;
+    background: -webkit-gradient( linear, left bottom, left top, color-stop(0, rgb(180,180,180)), color-stop(0.99, rgb(200,200,200)) );
+    -moz-border-radius: 3px 3px 0px 0px;
 }
 .spot_header_icon_pinned {
     width: 16px;
