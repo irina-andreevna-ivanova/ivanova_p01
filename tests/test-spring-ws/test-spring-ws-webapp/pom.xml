@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>ro.bmocanu.tests</groupId>
+        <artifactId>test-spring-ws</artifactId>
+        <version>0.1</version>
+    </parent>
+
+    <groupId>ro.bmocanu.tests</groupId>
+    <artifactId>test-spring-ws-webapp</artifactId>
+    <packaging>war</packaging>
+    <version>0.1</version>
+    <name>test-spring-ws-webapp</name>
+
+    <build>
+        <finalName>test-spring-ws</finalName>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>ro.bmocanu.tests</groupId>
+            <artifactId>test-spring-ws-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.ws</groupId>
+            <artifactId>spring-ws-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jdom</groupId>
+            <artifactId>jdom</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
+</project>

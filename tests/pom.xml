@@ -19,6 +19,7 @@
 		<module>evaluate-ws</module>
 		<module>test-zendo2</module>
         <module>test-spring3-desktop</module>
+        <module>test-spring-ws</module>
     </modules>
 	
 </project>

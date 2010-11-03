@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://tests.bmocanu.ro/test-spring-ws/common"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified">
+
+    <xs:complexType name="Contact">
+        <xs:sequence>
+            <xs:element name="firstName" type="xs:string"/>
+            <xs:element name="lastName" type="xs:string"/>
+            <xs:element name="phoneNumber" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

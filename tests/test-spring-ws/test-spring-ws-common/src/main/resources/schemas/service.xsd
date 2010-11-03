@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://tests.bmocanu.ro/test-spring-ws/service"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            xmlns:common="http://tests.bmocanu.ro/test-spring-ws/common"
+            elementFormDefault="qualified">
+
+    <xs:import namespace="http://tests.bmocanu.ro/test-spring-ws/common" schemaLocation="common.xsd" />
+
+    <xs:element name="AddContactRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="contact" type="common:Contact" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="AddContactResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="contacts" type="common:Contact" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
