@@ -249,6 +249,11 @@ SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.dev.versioncontrol";
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Version Control Systems";
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_gray";
 
+SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.samples";
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "Samples";
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_gray";
+
 /* *********************************************************************** */
 function spotSortFunction( spot1, spot2 ) {
 	return ( spot1[ SPOT_NAME ] < spot2[ SPOT_NAME ] ) ? -1 : 1;

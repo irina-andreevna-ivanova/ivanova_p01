@@ -17,12 +17,6 @@ Apache Maven repositories
             <url>http://download.java.net/maven/2</url>
         </repository>
         <repository>
-            <id>java.net/maven/1</id>
-            <name>java.net repository for Maven 1</name>
-            <url>http://download.java.net/maven/1</url>
-            <layout>legacy</layout>
-        </repository>
-        <repository>
             <id>smile.mit.edu</id>
             <name>smile.mid.edu</name>
             <url>http://simile.mit.edu/maven</url>
@@ -44,5 +38,30 @@ Apache Maven repositories
             <id>maven.atlassian.com</id>
             <name>maven.atlassian.com</name>
             <url>http://maven.atlassian.com/repository/public/</url>
+        </repository>
+        <repository>
+            <id>com.springsource.repository.bundles.release</id>
+            <name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</name>
+            <url>http://repository.springsource.com/maven/bundles/release</url>
+        </repository>
+        <repository>
+            <id>com.springsource.repository.bundles.external</id>
+            <name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
+            <url>http://repository.springsource.com/maven/bundles/external</url>
+        </repository>
+        <repository>
+            <id>forge.repository.sonatype.org</id>
+            <name>sonatype forge</name>
+            <url>https://repository.sonatype.org/content/groups/forge/</url>
+        </repository>
+        <repository>
+            <id>central.repository.sonatype.org</id>
+            <name>sonatype central</name>
+            <url>https://repository.sonatype.org/content/repositories/central/</url>
+        </repository>
+        <repository>
+            <id>centralm1.repository.sonatype.org</id>
+            <name>sonatype central M1</name>
+            <url>https://repository.sonatype.org/content/shadows/centralm1/</url>
         </repository>
     </repositories>

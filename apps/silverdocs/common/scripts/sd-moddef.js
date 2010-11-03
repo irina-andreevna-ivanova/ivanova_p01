@@ -42,6 +42,13 @@ SDModules[ moduleIndex ][ MODULE_PINNED    ] = false;
 initModule( SDModules[ moduleIndex ] );
 
 SDModules[ ++moduleIndex ] = new Array();
+SDModules[ moduleIndex ][ MODULE_ID        ] = "sd.samples";
+SDModules[ moduleIndex ][ MODULE_FILENAME  ] = MODULES_DIRECTORY + "module-samples.html";
+SDModules[ moduleIndex ][ MODULE_VISIBLE   ] = false;
+SDModules[ moduleIndex ][ MODULE_PINNED    ] = false;
+initModule( SDModules[ moduleIndex ] );
+
+SDModules[ ++moduleIndex ] = new Array();
 SDModules[ moduleIndex ][ MODULE_ID        ] = "sd.general.knowledge";
 SDModules[ moduleIndex ][ MODULE_FILENAME  ] = MODULES_DIRECTORY + "module-general-knowledge.html";
 SDModules[ moduleIndex ][ MODULE_VISIBLE   ] = false;
