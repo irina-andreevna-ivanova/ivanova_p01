@@ -1,7 +1,6 @@
-package ro.bmocanu.tests.springws.web;
+package ro.bmocanu.tests.springws.web.jdom;
 
 import org.jdom.Element;
-import org.jdom.xpath.XPath;
 import org.springframework.ws.server.endpoint.AbstractJDomPayloadEndpoint;
 
 
@@ -11,10 +10,6 @@ import org.springframework.ws.server.endpoint.AbstractJDomPayloadEndpoint;
  * @author bogdan.mocanu
  */
 public class AddressBookServiceJDomPayloadEndpoint extends AbstractJDomPayloadEndpoint {
-
-    private XPath firstNameExpression;
-    private XPath lastNameExpression;
-    private XPath phoneNumberExpression;
 
     /**
      *
@@ -26,8 +21,8 @@ public class AddressBookServiceJDomPayloadEndpoint extends AbstractJDomPayloadEn
      * {@inheritDoc}
      */
     @Override
-    protected Element invokeInternal( Element arg0 ) throws Exception {
-        // TODO Auto-generated method stub
+    protected Element invokeInternal( Element requestElement ) throws Exception {
+        System.out.println( ">>> Received: " + requestElement.toString() );
         return null;
     }
 

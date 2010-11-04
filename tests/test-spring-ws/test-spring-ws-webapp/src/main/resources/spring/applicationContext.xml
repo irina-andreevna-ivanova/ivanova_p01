@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="endpoint" class="ro.bmocanu.tests.springws.web.jdom.AddressBookServiceJDomPayloadEndpoint" />
+
+    <bean class="org.springframework.ws.server.endpoint.mapping.PayloadRootQNameEndpointMapping">
+        <property name="mappings">
+            <props>
+                <prop key="{http://tests.bmocanu.ro/test-spring-ws/service}AddContactRequest">endpoint</prop>
+            </props>
+        </property>
+        <property name="interceptors">
+            <bean class="org.springframework.ws.server.endpoint.interceptor.PayloadLoggingInterceptor" />
+        </property>
+    </bean>
+
+    <bean id="addressBookServiceDefinition" class="org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition">
+        <property name="schemaCollection" ref="schema" />
+        <property name="portTypeName" value="HumanResource" />
+        <property name="locationUri" value="/addressBook/" />
+        <property name="targetNamespace" value="http://tests.bmocanu.ro/test-spring-ws/service" />
+    </bean>
+
+    <bean id="simpleSchema" class="org.springframework.xml.xsd.SimpleXsdSchema">
+        <property name="xsd" value="classpath:/schemas/service.xsd" />
+    </bean>
+
+    <bean id="schema" class="org.springframework.xml.xsd.commons.CommonsXsdSchemaCollection" >
+        <property name="inline" value="true"/>
+        <property name="xsds">
+            <list>
+                <value>classpath:/schemas/service.xsd</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>
