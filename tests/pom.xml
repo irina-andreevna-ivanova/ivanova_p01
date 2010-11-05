@@ -2,12 +2,12 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<parent>
 		<groupId>ro.bmocanu</groupId>
-		<artifactId>root</artifactId>
+		<artifactId>root-root</artifactId>
 		<version>0.1</version>
 	</parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>ro.bmocanu.tests</groupId>
-    <artifactId>root</artifactId>
+    <artifactId>tests-root</artifactId>
     <packaging>pom</packaging>
     <version>0.1</version>
     <name>tests-root</name>
@@ -20,6 +20,7 @@
 		<module>test-zendo2</module>
         <module>test-spring3-desktop</module>
         <module>test-spring-ws</module>
+        <module>test-xml-processing</module>
     </modules>
 	
 </project>

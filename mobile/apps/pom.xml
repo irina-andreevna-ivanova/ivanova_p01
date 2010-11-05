@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>ro.bmocanu.mobile</groupId>
-        <artifactId>root</artifactId>
+        <artifactId>mobile-root</artifactId>
         <version>0.1</version>
     </parent>
     <groupId>ro.bmocanu.mobile</groupId>
@@ -12,7 +12,5 @@
     <name>mobile-apps</name>
     <packaging>pom</packaging>
   <modules>
-    <module>metris</module>
-    <module>netsnake</module>
   </modules>
 </project>

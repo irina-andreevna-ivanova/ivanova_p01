@@ -19,6 +19,5 @@
   </distributionManagement>
   <modules>
     <module>commons-mobile</module>
-    <module>lilliput</module>
   </modules>
 </project>

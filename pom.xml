@@ -2,23 +2,11 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>ro.bmocanu</groupId>
-    <artifactId>root</artifactId>
+    <artifactId>root-root</artifactId>
     <packaging>pom</packaging>
     <version>0.1</version>
-    <name>root</name>
+    <name>root-root</name>
     <url>http://maven.apache.org</url>
-
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
     <modules>
         <module>apps</module>

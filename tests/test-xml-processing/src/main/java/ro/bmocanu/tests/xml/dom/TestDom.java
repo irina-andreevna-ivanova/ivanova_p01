@@ -1,0 +1,85 @@
+package ro.bmocanu.tests.xml.dom;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.IOException;
+import java.io.StringWriter;
+
+/**
+ * Created by IntelliJ IDEA.
+ * User: bogdan.mocanu
+ * Date: 05.11.2010
+ * Time: 16:21:02
+ * To change this template use File | Settings | File Templates.
+ */
+public class TestDom {
+
+    private static final String TEST_XML = "test.xml";
+
+    /**
+     * Testing the JDK DOM
+     *
+     * @param args
+     * @throws ParserConfigurationException
+     */
+    public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException, TransformerException {
+        display();
+        create();
+    }
+
+    public static void create() throws ParserConfigurationException, TransformerException {
+        DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
+        Document doc = docBuilder.newDocument();
+
+        Element book = doc.createElement( "book" );
+        book.setAttribute( "id", "180" );
+        book.setAttribute("name", "Holiday Affair (Zebra Contemporary Romance)");
+
+        Element author = doc.createElement("author");
+        author.setTextContent("Lisa Plumley");
+        
+        book.appendChild( author );
+        doc.appendChild( book );
+
+        StringWriter stringWriter = new StringWriter();
+
+        TransformerFactory factory = TransformerFactory.newInstance();
+        Transformer transformer = factory.newTransformer();
+        transformer.transform(new DOMSource( doc ), new StreamResult( stringWriter ));
+
+        System.out.println( stringWriter.getBuffer().toString() );
+    }
+
+    public static void display() throws ParserConfigurationException, IOException, SAXException {
+        DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
+        Document doc = docBuilder.parse( TestDom.class.getClassLoader().getResourceAsStream( TEST_XML ) );
+
+        NodeList bookList =  doc.getElementsByTagName( "book" );
+        for( int bookIndex = 0; bookIndex < bookList.getLength(); bookIndex++ ) {
+            Element bookNode = (Element) bookList.item( bookIndex );
+            System.out.println( "Book" );
+            System.out.println( "    ID=" + bookNode.getAttributes().getNamedItem( "id" ).getTextContent() );
+            System.out.println( "    Name=" + bookNode.getAttributes().getNamedItem( "name" ).getTextContent() );
+
+            NodeList authorList = bookNode.getElementsByTagName("author");
+            for( int authorIndex = 0; authorIndex < authorList.getLength(); authorIndex++ ) {
+                Element authorNode = (Element) authorList.item(authorIndex);
+                System.out.println( "    Author" + authorIndex + "=" + authorNode.getTextContent() );
+            }
+        }
+    }
+
+}

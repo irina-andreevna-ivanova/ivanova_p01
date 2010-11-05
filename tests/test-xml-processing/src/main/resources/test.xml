@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library>
+    <books>
+        <book id="100" name="Critique of Pure Reason (Penguin Classics)">
+            <author>Immanuel Kant</author>
+            <author>Marcus Weigelt</author>
+            <author>Max Muller</author>
+        </book>
+        <book id="105" name="A Brief History of Disease, Science and Medicine">
+            <author>Michael Kennedy</author>
+        </book>
+        <book id="110" name="Case Files Internal Medicine, Third Edition (LANGE Case Files)">
+            <author>Eugene Toy</author>
+            <author>John Patlan</author>
+        </book>
+        <book id="120" name="From Seed to Plant (Rookie Read-About Science)">
+            <author>Allan Fowler</author>
+        </book>
+        <book id="130" name="Hungry Plants (Step-into-Reading, Step 4)">
+            <author>Mary Batten</author>
+            <author>Paul Mirocha</author>
+        </book>
+    </books>
+</library>
