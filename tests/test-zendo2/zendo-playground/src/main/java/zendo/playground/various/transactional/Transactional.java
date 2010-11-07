@@ -4,6 +4,8 @@ import java.io.*;
 import java.util.*;
 import java.util.Map.Entry;
 
+import org.apache.commons.io.IOUtils;
+
 /**
  * Provides transactional support for code blocks.
  *
@@ -29,7 +31,7 @@ public class Transactional {
         rollback = true;
     }
 
-    // ------------------------------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------
 
     public void execute( Execution exec ) {
         try {
@@ -45,28 +47,32 @@ public class Transactional {
     }
 
     private byte[] serializeObject( Object object ) {
+        ObjectOutputStream oos = null;
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ObjectOutputStream oos = new ObjectOutputStream( baos );
+            oos = new ObjectOutputStream( baos );
             oos.writeObject( object );
-            oos.close();
             return baos.toByteArray();
         } catch ( Exception exception ) {
             exception.printStackTrace();
             return null;
+        } finally {
+            IOUtils.closeQuietly( oos );
         }
     }
 
     private Object unserializeObject( byte[] content ) {
+        ObjectInputStream ois = null;
         try {
             ByteArrayInputStream bais = new ByteArrayInputStream( content );
-            ObjectInputStream ois = new ObjectInputStream( bais );
+            ois = new ObjectInputStream( bais );
             Object result = ois.readObject();
-            ois.close();
             return result;
         } catch ( Exception exception ) {
             exception.printStackTrace();
             return null;
+        } finally {
+            IOUtils.closeQuietly( ois );
         }
     }
 
@@ -80,10 +86,9 @@ public class Transactional {
         mappedObjects = originalMappedObjects;
     }
 
-    // ------------------------------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------
 
     protected static abstract class Execution {
-
         private Transactional transactionalParent;
 
         protected abstract void execute() throws Exception;
@@ -96,5 +101,4 @@ public class Transactional {
             transactionalParent.rollback();
         }
     }
-
 }

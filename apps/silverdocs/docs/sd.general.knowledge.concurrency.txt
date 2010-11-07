@@ -1,0 +1,39 @@
+Notes on Concurrency
+------------------------------------------------------------------------------------------------------------------------
+Deadlock
+    - the condition in which 2 or more agents wait one for the other to release a resource in order for the process to continue. The waiting
+      never finishes, because each agent is blocked waiting for the other agent to release the resource, which in turn waits for the next one,
+      and so on.
+    - simple example: agent A1 locks the resource R1, and tries to lock R2. Agent A2 locks the resource R2, and waits for resource R1
+
+Livelock
+    - similar to deadlock, but the agents don't freeze. They just change states, however without any progress
+    - example: two persons on a near hall, each one trying politely to step aside and let the other one pass. If they synchronize well enough,
+      they will always be one in front of another
+
+Mutex
+    - a system that is used for limiting the access to a resource when two or more agents try to get access
+    - the mutex has the notion of owner, the agent that locks the mutext must also unlock it
+    - deadlocks can easily appear when using 2 mutexes on 2 resources
+    - Dekker's algorithm:
+                     flag[0] := true
+                     while flag[1] = true {
+                         if turn ≠ 0 {
+                             flag[0] := false
+                             while turn ≠ 0 {
+                             }
+                             flag[0] := true
+                         }
+                     }
+
+                    // critical section
+                    ...
+                    turn := 1
+                    flag[0] := false
+                    // remainder section
+    - Mutexes  are typically used to serialise access to a section of re-entrant code that cannot be executed concurrently by more than one thread. A mutex object only allows one thread into a controlled section, forcing other threads which attempt to gain access to that section to wait until the first thread has exited from that section.
+
+Semaphore
+    - an algorithm used for limiting the access to a number of N resources, on which M number of agents try to get access
+    - there are binary semaphores and counting semaphores
+    - A semaphore restricts the number of simultaneous users of a shared resource up to a maximum number. Threads can request access to the resource (decrementing the semaphore), and can signal that they have finished using the resource (incrementing the semaphore)

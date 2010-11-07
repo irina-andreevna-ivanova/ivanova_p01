@@ -2,10 +2,7 @@ package zendo.playground.utils;
 
 import java.io.File;
 import java.io.FilenameFilter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -18,7 +15,7 @@ import org.apache.commons.logging.LogFactory;
 public class Mp3RandomRenamer {
     private static Log log = LogFactory.getLog( Mp3RandomRenamer.class );
 
-    private static final String TARGET_FOLDER = "E:/Downloads/CDBravo/VA_-_Bravo_Hits_Vol.67-2CD-2009-MOD";
+    private static final String TARGET_FOLDER = "G:/ACME Files/Nunta/CD Muzica";
 
     private static List<Integer> generatedNumbers = new ArrayList<Integer>();
 
