@@ -41,7 +41,7 @@ public class TestStaxCursor {
                 case XMLEvent.CHARACTERS: {
                     String characters = reader.getText();
                     if (authorFollows && characters.trim().length() > 0) {
-                        System.out.println("    Author" + (authorIndex++) + "=" + reader.getText());
+                        System.out.println("    Author" + (authorIndex++) + "=" + characters);
                     }
                     break;
                 }
