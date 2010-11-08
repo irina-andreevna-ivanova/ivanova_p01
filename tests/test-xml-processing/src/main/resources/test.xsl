@@ -3,7 +3,12 @@
     <xsl:output method="text"/>
     <xsl:template match="/" name="myTemplate">
         <xsl:for-each select="library/books/book">
-            Book <xsl:value-of select="id"/> 
+            Book
+                ID=<xsl:value-of select="@id"/>
+                Name=<xsl:value-of select="@name"/>
+                <xsl:for-each select="author">
+                    Author <xsl:text />
+                </xsl:for-each>
         </xsl:for-each>
     </xsl:template>
 </xsl:stylesheet>

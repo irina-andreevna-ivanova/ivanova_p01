@@ -1,6 +1,5 @@
 package ro.bmocanu.tests.xml.stax;
 
-import com.sun.xml.internal.fastinfoset.stax.events.CharactersEvent;
 import com.sun.xml.internal.stream.events.CharacterEvent;
 
 import javax.xml.namespace.QName;
