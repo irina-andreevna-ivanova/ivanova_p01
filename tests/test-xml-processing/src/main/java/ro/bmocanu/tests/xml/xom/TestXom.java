@@ -1,5 +1,9 @@
 package ro.bmocanu.tests.xml.xom;
 
+import nu.xom.*;
+
+import java.io.IOException;
+
 /**
  * Created by IntelliJ IDEA.
  * User: bogdan.mocanu
@@ -9,7 +13,48 @@ package ro.bmocanu.tests.xml.xom;
  */
 public class TestXom {
 
-    public static void main(String[] args) {
-        
+    public static void main(String[] args) throws IOException, ParsingException {
+        display();
+        create();
+    }
+
+    private static void display() throws IOException, ParsingException {
+        Builder xmlBuilder = new Builder();
+        Document doc = xmlBuilder.build(TestXom.class.getResourceAsStream("/test.xml") );
+
+        Elements books = doc.getRootElement().getChildElements("books").get(0).getChildElements();
+        for( int bookIndex = 0; bookIndex < books.size(); bookIndex++ ) {
+            Element book = books.get(0);
+
+            System.out.println( "Book" );
+            System.out.println( "    ID=" + book.getAttributeValue("id") );
+            System.out.println( "    Name=" + book.getAttributeValue("name") );
+            
+            Elements authors = book.getChildElements();
+            for( int authorIndex = 0; authorIndex < authors.size(); authorIndex++ ) {
+                Element author = authors.get(authorIndex);
+                System.out.println( "    Author" + authorIndex + "=" + author.getValue() );
+            }
+        }
+    }
+
+    private static void create() {
+        Element book = new Element("book");
+        book.addAttribute(new Attribute("id", "180"));
+        book.addAttribute(new Attribute("name", "Holiday Affair (Zebra Contemporary Romance)"));
+
+        Element author = new Element("author");
+        author.appendChild("Lisa Plumley");
+
+        book.appendChild(author);
+
+        Element books = new Element("books");
+        books.appendChild(book);
+
+        Element library = new Element("library");
+        library.appendChild(books);
+
+        Document doc = new Document(library);
+        System.out.println(doc.toXML());
     }
 }
