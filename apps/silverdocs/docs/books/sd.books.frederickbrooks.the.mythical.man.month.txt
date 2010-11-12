@@ -1,0 +1,51 @@
+Reading Frederick P. Brooks, The Mythical Man-Month
+----------------------------------------------------
+
+- creating a program in the garrage is very simple and fast
+	- making the program a programming product requires Generalization, Testing, Documentation, Maintenance) -> 3 times more costly
+	- making the program a programming system requires Interfaces, System Integration -> 3 times more costly
+	- making the program a programming system product -> 9 times more costly
+- why is programming fun?
+	- sheer joy of making things
+	- making things that are useful for other people
+	- fascination for complet puzzle-like objects
+	- joy of always learning
+	- delight of working in such a tractable medium
+- most projects are failing for lack of time
+	- man and months are NOT interchangeable
+	- man and months are interchangeable ONLY when a task can be partitioned among many workers, with no communication among them
+	- when a new man is added to the project
+		- it requires: training, and communication.
+		- increases the amount of communication required
+		- the cost for these operations must also be taken into account, not to forget about the man/men that must be reserved for the training
+	- rule of thumb:
+		- 1/3 planning
+		- 1/6 coding
+		- 1/4 component test and early system test
+		- 1/4 system test, all components in hand
+	- adding manpower to a late software project makes it later
+	- TO REMEMBER:
+		- the maximum number of men depends upon the number of independent tasks
+		- the maximum number of months depends upon its sequential constraints
+- the surgical team
+	- based on a study, the experienced programmer is up to 10 times more productive than the unexperienced one
+	- if a 200-man project has 25 managers who are the most competent and experienced programmers, fire the 175 troops
+	  and put the managers back to programming
+	- surgical team proposal
+		- the surgeon
+		- the copilot
+		- the administrator
+		- the editor
+		- two secretaries
+		- the program clerk
+		- the toolsmith
+		- the tester
+		- the language lawyer
+- Aristocracy, Democracy and System Design
+	- the architecture of a system must be the design and philosophy of a single mind
+	- conceptual integrity IS the most important consideration in system design
+	- ease of use is enhanced only if the time gained in functional specification exceeds the time lost in learning, remembering and searching manuals
+	- it is not to think that while the architects are designing the system, the implementers must stay and wait. There is plenty of preparation
+	  tasks for them to do before the complete specifications are done
+
+===> Continue here...

@@ -36,8 +36,7 @@ public class XmlDom4J {
             XMLWriter output = new XMLWriter(new FileWriter(new File("c:/catalog/catalog.xml")));
             output.write(document);
             output.close();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }

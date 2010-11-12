@@ -79,13 +79,9 @@ public class Dom4JParser {
                     new FileWriter(new File("c:/catalog/catalog-modified.xml")));
             output.write(document);
             output.close();
-        }
-
-        catch (DocumentException e) {
+        } catch (DocumentException e) {
             System.out.println(e.getMessage());
-        }
-
-        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }

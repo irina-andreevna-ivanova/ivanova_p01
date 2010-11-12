@@ -122,12 +122,7 @@ SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_gray";
 
 SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.dev.xml";
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "XML";
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_gray";
-
-SDSpots[ columnIndex ][ ++spotIndex ] = new Array();
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_MODULEID ] = "sd.dev.xsddtd";
-SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "XSD &amp; DTD";
+SDSpots[ columnIndex ][ spotIndex ][ SPOT_NAME     ] = "XML &amp; XSD &amp; DTD";
 SDSpots[ columnIndex ][ spotIndex ][ SPOT_COLOR    ] = "back_gr_gray";
 
 SDSpots[ columnIndex ][ ++spotIndex ] = new Array();

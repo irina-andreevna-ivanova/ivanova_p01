@@ -21,6 +21,7 @@
         <module>test-spring3-desktop</module>
         <module>test-spring-ws</module>
         <module>test-xml-processing</module>
+        <module>test-orm-transactions</module>
     </modules>
 	
 </project>

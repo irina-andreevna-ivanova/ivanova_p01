@@ -1,34 +1,105 @@
+------------------------------------------------------------------------------------------------------
+log4j.properties samples
+------------------------------------------------------------------------------------------------------
 log4j.rootCategory=INFO, Console
 log4j.appender.Console=org.apache.log4j.ConsoleAppender
 log4j.appender.Console.layout=org.apache.log4j.PatternLayout
-#log4j.appender.Console.layout.ConversionPattern=%m%n
 log4j.appender.Console.layout.ConversionPattern=%-5p: %m [%l]%n
 
-# Uncomment to debug all
-#log4j.category.xdoclet=DEBUG
+------------------------------------------------------------------------------------------------------
 
-# Uncomment to debug all Ejb Module tasks only
-#log4j.category.xdoclet.modules.ejb=DEBUG
+log4j.rootLogger=INFO, stdout, logfileDB
 
-# Uncomment to debug the class SubTask only
-#log4j.category.xdoclet.SubTask=DEBUG
-#log4j.category.xdoclet.TemplateSubTask=DEBUG
-#log4j.category.xdoclet.template.TemplateEngine=DEBUG
+#Package, with specific logging level
+log4j.logger.com.myapp=DEBUG
+log4j.logger.com.myapp.configuration=DEBUG
+log4j.logger.com.myapp.clients=DEBUG
 
-# Uncomment to debug the execute() method of SubTask only
-#log4j.category.xdoclet.SubTask.execute=DEBUG
+log4j.logger.org.springframework=WARN
+log4j.logger.org.springframework.batch=WARN
 
-# Uncomment this line if you want to see stack traces
-# Please always do so when you want to report a bug
-#log4j.category.xdoclet.DocletTask=DEBUG
-#log4j.category.xdoclet.XDocletMain=DEBUG
+#Enable header logging
+log4j.logger.httpclient.wire.header=DEBUG
 
-# Uncomment to debug the ModuleFinder
-#log4j.category.xdoclet.loader.ModuleFinder.findModules=DEBUG
+#Enable full wire (header and content) + context logging
+log4j.logger.httpclient.wire=DEBUG
+log4j.logger.org.apache.commons.httpclient=DEBUG
 
-# Uncomment to debug the MethodTagsHandler
-#log4j.category.xdoclet.tagshandler.MethodTagsHandler=DEBUG
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=%d{HH:mm:ss} %5p [%X{threadID}:%X{sessionID}] <%m> [%c{3}]%n
+#log4j.appender.stdout.layout.ConversionPattern=%d{ISO8601} %-5p [%t] [%c{3}] - <%m>%n
+log4j.appender.stdout.threshold=DEBUG
 
-# Uncomment to debug the GenerationManager
-#log4j.category.xdoclet.GenerationManager.generation=DEBUG
+#new Appender
+log4j.appender.logfile=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.logfile.file=${catalina.base}/logs/myapp.log
+log4j.appender.logfile.datePattern='.'yyyy-MM-dd'.log'
+log4j.appender.logfile.layout=org.apache.log4j.PatternLayout
+log4j.appender.logfile.layout.ConversionPattern=%d{ISO8601} %5p [%t] [%X{threadID}:%X{sessionID}] <%m> [%c{3}]%n
+log4j.appender.logfile.threshold=ERROR
 
+#new Appender
+log4j.appender.logfileDB=org.apache.log4j.RollingFileAppender
+log4j.appender.logfileDB.file=${catalina.base}/logs/myapp_debug.log
+log4j.appender.logfileDB.maxFileSize=256kb
+log4j.appender.logfileDB.layout=org.apache.log4j.PatternLayout
+log4j.appender.logfileDB.layout.ConversionPattern=%d{HH:mm:ss} %5p [%X{threadID}:%X{sessionID}] <%m> [%c{3}]%n
+log4j.appender.logfileDB.threshold=DEBUG
+
+#Syslog
+log4j.appender.SYSLOG=org.apache.log4j.net.SyslogAppender
+log4j.appender.SYSLOG.syslogHost=somehost.server.com
+log4j.appender.SYSLOG.layout=org.apache.log4j.PatternLayout
+log4j.appender.SYSLOG.layout.ConversionPattern=[%t] [%c{3}] <%m>
+log4j.appender.SYSLOG.Facility=USER
+log4j.appender.SYSLOG.threshold=WARN
+
+------------------------------------------------------------------------------------------------------
+
+#------------------------------------------------------------------------------
+#  The following properties set the logging levels and log appender.  The
+#  log4j.rootCategory variable defines the default log level and one or more
+#  appenders.  For the console, use 'S'.  For the daily rolling file, use 'R'.
+#  For an HTML formatted log, use 'H'.
+#  To override the default (rootCategory) log level, define a property of the
+#  form (see below for available values):
+#        log4j.logger. =
+#    Available logger names:
+#      TODO
+#    Possible Log Levels:
+#      FATAL, ERROR, WARN, INFO, DEBUG
+#------------------------------------------------------------------------------
+log4j.rootCategory=INFO, S
+
+log4j.logger.com.dappit.Dapper.parser=ERROR
+log4j.logger.org.w3c.tidy=FATAL
+
+#------------------------------------------------------------------------------
+#  The following properties configure the console (stdout) appender.
+#  See http://logging.apache.org/log4j/docs/api/index.html for details.
+#------------------------------------------------------------------------------
+log4j.appender.S = org.apache.log4j.ConsoleAppender
+log4j.appender.S.layout = org.apache.log4j.PatternLayout
+log4j.appender.S.layout.ConversionPattern = %d{yyyy-MM-dd HH:mm:ss} %c{1} [%p] %m%n
+
+#------------------------------------------------------------------------------
+#  The following properties configure the Daily Rolling File appender.
+#  See http://logging.apache.org/log4j/docs/api/index.html for details.
+#------------------------------------------------------------------------------
+log4j.appender.R = org.apache.log4j.DailyRollingFileAppender
+log4j.appender.R.File = logs/bensApps.log
+log4j.appender.R.Append = true
+log4j.appender.R.DatePattern = '.'yyy-MM-dd
+log4j.appender.R.layout = org.apache.log4j.PatternLayout
+log4j.appender.R.layout.ConversionPattern = %d{yyyy-MM-dd HH:mm:ss} %c{1} [%p] %m%n
+
+#------------------------------------------------------------------------------
+#  The following properties configure the Rolling File appender in HTML.
+#  See http://logging.apache.org/log4j/docs/api/index.html for details.
+#------------------------------------------------------------------------------
+log4j.appender.H = org.apache.log4j.RollingFileAppender
+log4j.appender.H.File = logs/bensApps.html
+log4j.appender.H.MaxFileSize = 100KB
+log4j.appender.H.Append = false
+log4j.appender.H.layout = org.apache.log4j.HTMLLayout

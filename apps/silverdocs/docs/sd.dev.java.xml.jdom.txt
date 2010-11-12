@@ -1,3 +1,6 @@
+JDOM
+-----------------------------------------------------------------------------------------------------------------
+
 package ro.bmocanu.tests.xml.jdom;
 
 import org.jdom.Document;
@@ -9,13 +12,6 @@ import org.jdom.output.XMLOutputter;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Created by IntelliJ IDEA.
- * User: bogdan.mocanu
- * Date: 09.11.2010
- * Time: 10:57:14
- * To change this template use File | Settings | File Templates.
- */
 public class TestJDom {
 
     public static void main(String[] args) throws JDOMException, IOException {

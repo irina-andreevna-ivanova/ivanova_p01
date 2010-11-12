@@ -1,3 +1,6 @@
+Java JAXP-TrAX
+-----------------------------------------------------------------------------------------------------------------
+
 package ro.bmocanu.tests.xml.trax;
 
 import org.w3c.dom.Document;
@@ -13,13 +16,6 @@ import javax.xml.transform.stream.StreamSource;
 import java.io.IOException;
 import java.io.StringWriter;
 
-/**
- * Created by IntelliJ IDEA.
- * User: bogdan.mocanu
- * Date: 08.11.2010
- * Time: 16:53:17
- * To change this template use File | Settings | File Templates.
- */
 public class TestTrax {
 
     public static void main(String[] args) throws TransformerException, SAXException, ParserConfigurationException, IOException {
@@ -45,3 +41,21 @@ public class TestTrax {
     }
 
 }
+
+------------------------------------------------------------------------------------------------------
+Sample XSL
+------------------------------------------------------------------------------------------------------
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+    <xsl:output method="text"/>
+    <xsl:template match="/" name="myTemplate">
+        <xsl:for-each select="library/books/book">
+            Book
+                ID=<xsl:value-of select="@id"/>
+                Name=<xsl:value-of select="@name"/>
+                <xsl:for-each select="author">
+                    Author=<xsl:value-of select="." />
+                </xsl:for-each>
+        </xsl:for-each>
+    </xsl:template>
+</xsl:stylesheet>

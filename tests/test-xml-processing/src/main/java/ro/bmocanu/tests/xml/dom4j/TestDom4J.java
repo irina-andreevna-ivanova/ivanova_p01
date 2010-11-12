@@ -26,18 +26,18 @@ public class TestDom4J {
 
     private static void display() throws DocumentException {
         SAXReader reader = new SAXReader();
-        Document doc = reader.read( TestDom4J.class.getResourceAsStream("/test.xml") );
+        Document doc = reader.read(TestDom4J.class.getResourceAsStream("/test.xml"));
         List<Element> books = doc.selectNodes("/library/books/book");
 
-        for( Element book : books ) {
-            System.out.println( "Book" );
-            System.out.println( "    ID=" + book.attributeValue("id") );
-            System.out.println( "    Name=" + book.attributeValue("name") );
+        for (Element book : books) {
+            System.out.println("Book");
+            System.out.println("    ID=" + book.attributeValue("id"));
+            System.out.println("    Name=" + book.attributeValue("name"));
 
             List<Element> authors = book.selectNodes("author");
             int authorIndex = 0;
-            for( Element author : authors ) {
-                System.out.println( "    Author" + (authorIndex++) + "=" + author.getText() );
+            for (Element author : authors) {
+                System.out.println("    Author" + (authorIndex++) + "=" + author.getText());
             }
         }
     }
@@ -51,14 +51,14 @@ public class TestDom4J {
         book.addAttribute("name", "Holiday Affair (Zebra Contemporary Romance)");
 
         Element author = book.addElement("author");
-        author.setText( "Lisa Plumley" );
+        author.setText("Lisa Plumley");
 
         StringWriter stringWriter = new StringWriter();
-        XMLWriter xmlWriter = new XMLWriter( stringWriter );
-        xmlWriter.write( doc );
+        XMLWriter xmlWriter = new XMLWriter(stringWriter);
+        xmlWriter.write(doc);
         xmlWriter.close();
 
-        System.out.println( stringWriter.getBuffer().toString() );
+        System.out.println(stringWriter.getBuffer().toString());
     }
 
 }
