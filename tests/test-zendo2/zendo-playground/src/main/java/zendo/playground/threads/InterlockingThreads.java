@@ -18,6 +18,4 @@ public class InterlockingThreads {
 
 class Interlock {
 
-    private Map<Long, V>
-
 }

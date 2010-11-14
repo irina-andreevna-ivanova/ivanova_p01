@@ -26,18 +26,9 @@
             </snapshots>
         </repository>
         <repository>
-            <id>java.net/maven/2</id>
+            <id>java.net maven 2</id>
             <name>java.net repository for Maven 2</name>
             <url>http://download.java.net/maven/2</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>java.net/maven/1</id>
-            <name>java.net repository for Maven 1</name>
-            <url>http://download.java.net/maven/1</url>
-            <layout>legacy</layout>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -141,15 +132,11 @@
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>  
-                <type>jar</type>
-                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.hamcrest</groupId>
                 <artifactId>hamcrest-all</artifactId>
                 <version>${hamcrest.version}</version>
-                <type>jar</type>
-                <scope>test</scope>
             </dependency>
 
             <!-- Spring dependencies -->

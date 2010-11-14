@@ -23,7 +23,7 @@ public class Transactional {
     }
 
     @SuppressWarnings( "unchecked" )
-    public <T> T get( String name ) {
+    public <T extends Object> T get( String name ) {
         return (T) mappedObjects.get( name );
     }
 
@@ -94,7 +94,7 @@ public class Transactional {
         protected abstract void execute() throws Exception;
 
         protected <T> T get( String name ) {
-            return transactionalParent.get( name );
+            return (T)transactionalParent.get( name );
         }
 
         protected void rollback() {
