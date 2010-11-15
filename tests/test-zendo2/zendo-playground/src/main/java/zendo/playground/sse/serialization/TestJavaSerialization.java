@@ -5,8 +5,6 @@ import org.apache.commons.io.IOUtils;
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
 
 /**
  * Created by IntelliJ IDEA.
@@ -23,15 +21,15 @@ public class TestJavaSerialization {
         apple.branchNo = 5;
         apple.pickerName = "James Conworth";
         apple.pickingDate = new SimpleDateFormat("dd.MM.yyyy").parse("10.06.2010");
-        System.out.println( "First apple=" + apple );
+        System.out.println("First apple=" + apple);
 
-        System.out.println( "-------------------------------------------------------------------------------------------------" );
+        System.out.println("-----------------------------------------------------------------------------");
         byte[] appleContent = serialize(apple);
-        System.out.println( "Content=" + new String(appleContent) );
-        System.out.println( "-------------------------------------------------------------------------------------------------" );
+        System.out.println("Content=" + friendlyBytes(appleContent));
+        System.out.println("-----------------------------------------------------------------------------");
 
-        Apple newApple = deserialize( appleContent );
-        System.out.println( "Second apple=" + newApple );
+        Apple newApple = deserialize(appleContent);
+        System.out.println("Second apple=" + newApple);
     }
 
     private static <T extends Serializable> byte[] serialize(T object) throws IOException {
@@ -50,19 +48,33 @@ public class TestJavaSerialization {
         return baos.toByteArray();
     }
 
-    private static <T extends Serializable> T deserialize( byte[] content ) throws IOException, ClassNotFoundException {
+    private static <T extends Serializable> T deserialize(byte[] content) throws IOException, ClassNotFoundException {
         ByteArrayInputStream bais = null;
         ObjectInputStream ois = null;
 
         try {
-            bais = new ByteArrayInputStream( content );
-            ois = new ObjectInputStream( bais );
+            bais = new ByteArrayInputStream(content);
+            ois = new ObjectInputStream(bais);
             return (T) ois.readObject();
 
         } finally {
-            IOUtils.closeQuietly( bais );
+            IOUtils.closeQuietly(bais);
             IOUtils.closeQuietly(ois);
         }
     }
+
+
+    private static String friendlyBytes(byte[] content) {
+        StringBuilder builder = new StringBuilder();
+        for (int index = 0; index < content.length; index++) {
+            if (Character.isLetterOrDigit(content[index])) {
+                builder.append((char)content[index]);
+            } else {
+                builder.append(".");
+            }
+        }
+        return builder.toString();
+    }
+
 
 }
