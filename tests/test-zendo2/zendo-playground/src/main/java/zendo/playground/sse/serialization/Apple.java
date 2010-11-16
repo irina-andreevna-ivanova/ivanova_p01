@@ -21,10 +21,10 @@ public class Apple implements Serializable {
 //            new ObjectStreamField( "branchNo", int.class )
 //    };
 
-    public String type;
-    public Date pickingDate;
-    public String pickerName;
-    public int branchNo;
+    public transient String type;
+    public transient Date pickingDate;
+    public transient String pickerName;
+    public transient int branchNo;
 
     public Apple() {
         System.out.println( ">> Apple Constructor" );
@@ -42,6 +42,8 @@ public class Apple implements Serializable {
 
     private void readObject( ObjectInputStream input) throws IOException, ClassNotFoundException {
         System.out.println(">> Apple readObject");
+        input.defaultReadObject();
+
         type = (String) input.readObject();
         pickingDate = (Date) input.readObject();
         branchNo = input.readInt();
@@ -49,6 +51,8 @@ public class Apple implements Serializable {
 
     private void writeObject( ObjectOutputStream output ) throws IOException {
         System.out.println( ">> Apple writeObject" );
+        output.defaultWriteObject();
+
         output.writeObject(type);
         output.writeObject(pickingDate);
         output.writeInt(branchNo);
