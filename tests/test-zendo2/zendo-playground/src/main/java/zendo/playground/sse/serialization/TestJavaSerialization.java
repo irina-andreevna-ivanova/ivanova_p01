@@ -30,10 +30,6 @@ public class TestJavaSerialization {
 
         AppleJson newApple = deserialize(appleContent);
         System.out.println("Second apple=" + newApple);
-
-
-        MyClass2 mc = new MyClass2();
-        System.out.println( ">>>" + new String(serializex(mc)));
     }
 
 

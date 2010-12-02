@@ -1,0 +1,95 @@
+------------------------------------------------------------------------------------------------------
+Spring > JMX notes
+------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------
+Configuration
+------------------------------------------------------------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+                http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+                http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+	<aop:aspectj-autoproxy />
+
+	<context:component-scan base-package="com.myapp" />
+
+	<!-- Monitoring Service -->
+	<bean id="monitoringService" class="com.myapp.MonitoringServiceImpl"/>
+
+	<!-- monitoring data sources -->
+	<bean id="persistentDataSourceMonitor" class="com.myapp.SomeParameterMonitor"/>
+
+	<!-- JMX -->
+	<bean id="mbeanExporter" class="org.springframework.jmx.export.annotation.AnnotationMBeanExporter">
+		<property name="defaultDomain" value="myappserver">
+		</property>
+	</bean>
+
+</beans>
+
+------------------------------------------------------------------------------------------------------
+ManagedResource + ManagedOperation
+------------------------------------------------------------------------------------------------------
+import org.springframework.jmx.export.annotation.ManagedOperation;
+import org.springframework.jmx.export.annotation.ManagedResource;
+
+@ManagedResource( description = "myapp service registry" )
+public class MyAppServiceRegistryImpl implements MyAppServiceRegistry {
+
+    private List<Service> services = new LinkedList<Service>();
+
+    @Override
+    public void addService( Service service ) {
+        services.add( service );
+    }
+
+    @Override
+    @ManagedOperation( description = "Reload all MyApp Service Specific Configuration" )
+    public String reloadConfigurations() {
+        boolean error = false;
+        StringBuilder resultBuilder = new StringBuilder();
+
+        // do something here
+
+        return resultBuilder.toString();
+    }
+}
+
+------------------------------------------------------------------------------------------------------
+ManagedResource
+------------------------------------------------------------------------------------------------------
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jmx.export.annotation.ManagedAttribute;
+import org.springframework.jmx.export.annotation.ManagedResource;
+
+@ManagedResource( description="some DB resource monitor", objectName="monitoring:type=database,name=requests" )
+public class DatabaseRequestMonitorImpl implements DatabaseRequestMonitor {
+
+    @Autowired
+    private JdbcTemplate myappTemplate;
+    
+    private long avgQuerymyapp = 0L;
+    private long avgUpdatemyapp = 0L;
+    
+    @Override
+    @ManagedAttribute( description="information about query requests from myapp database" )
+    public Map<String, Long> getStateQuerymyapp() {
+        
+        RequestMonitor monitor = (RequestMonitor) myappTemplate;
+        return monitor.getCurrentStateQuery();
+    }
+    
+    @Override
+    @ManagedAttribute( description="information about update requests from myapp database" )
+    public Map<String, Long> getStateUpdatemyapp() {
+        
+        RequestMonitor monitor = (RequestMonitor) myappTemplate;
+        return monitor.getCurrentStateUpdate();
+    }
+
+}

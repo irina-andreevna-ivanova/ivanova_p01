@@ -1,0 +1,42 @@
+--------------------------------------------------------------------------------------------------------------------
+OS-reinstall backup plan
+--------------------------------------------------------------------------------------------------------------------
+   1. My Documents - "c:\Documents and Settings\user.name\My Documents"
+   2. Desktop-ul - "c:\Documents and Settings\user.name\Desktop"
+   3. Quick Launch - "c:\Documents and Settings\user.name\Application Data\Microsoft\Internet Explorer\Quick Launch"
+   4. Favorites IE : "c:\Documents and Settings\user.name\Favorites"
+   5. E-Mailuri: Office Outlook – fisierele .pst de obicei din calea "C:\Documents and Settings\user.name\Local Settings\Application Data\Microsoft\Outlook\..". Fisierele .ost nu trebuie salvate continutul lor fiind pastrat pe server
+        Outlook Express – Google: “Outlook Express HowTo Save&Restore e-Mails & Settings”
+   6. E-Mail Rules: Office Outlook – Tools-> Rules Wizard->Options…
+        Outlook Express – Google: “Outlook Express HowTo Save&Restore e-Mails & Settings”
+   7. E-Mail Address Book: Office Outlook – e inclus in fisierul .pst dar daca sunt probleme -> Google…
+        Outlook Express - Google: “Outlook Express HowTo Save&Restore e-Mails & Settings”
+   8. E-Mail Addresses Autocomplete – pt Office Outlook - salveaza fisierul "c:\Documents and Settings\useru.tau\Application Data\Microsoft\Outlook\Outlook.NK2"
+   9. E-Mail Signature: "c:\Documents and Settings\user.nameApplication Data\Microsoft\Signatures"
+  10. Arhiva E-Mailuri: Office Outlook – fisierele .pst de obicei din calea "C:\Documents and Settings\user.name\Local Settings\Application Data\Microsoft\Outlook\..". Fisierele .ost nu trebuie salvate continutul lor fiind pastrat pe server
+  11. Office 2003 – All settings: Start->Programs->MS Office->MS Office Tools->MS Office 2003 Save my settings wizard (include: look-ul interfetei, mail account settings, junk email settings, rules, etc); pt refacere tot acesta se foloseste dar cu Restore
+  12. Yahoo Messenger Archive – Win XP: "c:\Program Files\Yahoo!\Messenger\Profiles\user.name"
+      - Win Vista/Win7: „C:\Users\user.name\AppData\Local\VirtualStore\Program Files\Yahoo!\Messenger\Profiles”
+  13. Skype User List – daca instalezi ultima versiune atunci ar trebui sa fie salvate pe serverele Skype, alfel copiezi continutul:C:\Documents and Settings\userul.tau\Application Data\Skype\skype_ID_name. Pentru a salva chat-history – copiati continutul foledrului c:\Documents and Settings\user.name\Application Data\Skype\[skypeusername]  in directorul echivalent de pe masina tinta
+  14. Sa notezi ce aveai share-uit.
+  15. Sa notezi ce drive-uri aveai map-uit
+  16. History la IE - "c:\Documents and Settings\user.name\Local Settings\History\History.IE5"
+  17. Firefox “Bookmarks”:   Bookmarks -> Organize Bookmarks  si in Bookmark Manager: File->Export . Ca sa salvati si colectia de username/password – copiati folderol c:\documents and sttings\username\Application Data\Mozilla Firefox\Pofiles\[nume indescifrabil+ nume profil]\ in acelasi director de pe calculatorul unde vreti sa transfrati (asta daca ati instalat déjà Mozilla)
+  18. Total Commander - lista FTP-urilor fisier C:\Windows\wcx_ftp.ini [Cristian Caprar] sau in c:\documents and settings\user.name\
+  19. Total Commander - setari - C:\Windows\wincmd.ini [Cristian Caprar] sau in c:\documents and settings\user.name\
+  20. Stuff personal si proiectele de ex: C:\Documents and Settings\user.name\IdeaProjects sau C:\Work
+  21. Setari IntellijIdea – directorul "C:\Documents and Settings\user.name\.IntelliJIdea\config"
+        - fisierul "C:\Documents and Settings\user.name\.IntelliJIdea\system\idea.license"
+        - directorul "C:\Documents and Settings\user.name\.IntelliJIdea\system\plugins"
+  22. Backup DB-ul de Oracle si cel de SQLServer – How? Ask DB Admins
+  23. Winamp : Skin – "C:\Program Files\Winamp\Skins"
+               Plugins: "C:\Program Files\Winamp\Plugins"
+  24. Cerfificate folosite : export, save : Run mmc.exe -> File ->Add/Remove Snap-in -> Select Certificates -> Add – My User account -> Finnish -> Browse for Certificates-Current User-> Personal -> Certificates – Right Click on Certificate ->All tasks -> Export -> Yes, export the private key-> Select Personal Information Exchange (PFX) -> Ckeck Include all certificates path and Export all extended properties - > Type/confirm a password -> select file location and file name-> Finish
+  25. PGP Keys
+  26. Fisierul C:\WINDOWS\system32\drivers\etc\hosts
+  27. iTunes: backups de telefon facut de iTunes (daca aveti iPhone), precum si colectia de aplicatii pe care le-ati downloadat cu iTunes si sincronizat cu telefonul – le gasiti in My Documents\My Music\iTunes
+  28. Salvati notebook folders folosite de MS One Note (de obicei in My Documents\My Notebook)
+  29. Salvati Firefox Profiles (daca aveti ceva custom GreaseMonkey scripts pe care vreti sa le pastrati...) – din app data\Firefox
+  30. Sincronizeaza Offline Files and Folders cu sursa master (daca aveti asa ceva), incat sa nu pierdeti modificarile locale facute offline
+  31. Daca folositi Pidgin si nu YM, salvati profilul si logurile (se gasesc in c:\documents and settings\user.name\Application Data\.purple)
+  32. Putty: HKEY_CURRENT_USER\Software\SimonTatham
