@@ -22,6 +22,8 @@ import java.util.List;
 
 public class Game
 {
+
+
   private Simulation sim;
   private ArrayList<AbstractPlayer> players = new ArrayList();
   private ArrayList<AbstractView> views = new ArrayList();
